@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>FBX_Extract_Local_Rotate - Hexo</title>
+  <title>FBX_Extract_Local_Rotate - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="FBX提取节点的局部旋转实现表情系统时，为了让表情看起来比较生动，通常需要提取出眼睛的运动   因为游戏中眼睛的位置，朝向等会进行校正，所以从FBX中提取的眼睛骨骼运动只能是记录偏移   当我们使用如下函数提取旋转时，得到的旋转角度并不是眼睛骨骼的局部空间旋转，而是万向空间的旋转">
 <meta name="keywords" content="FBX">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FBX_Extract_Local_Rotate">
 <meta property="og:url" content="http://yoursite.com/2017/03/25/FBX-Extract-Local-Rotate/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="FBX提取节点的局部旋转实现表情系统时，为了让表情看起来比较生动，通常需要提取出眼睛的运动   因为游戏中眼睛的位置，朝向等会进行校正，所以从FBX中提取的眼睛骨骼运动只能是记录偏移   当我们使用如下函数提取旋转时，得到的旋转角度并不是眼睛骨骼的局部空间旋转，而是万向空间的旋转">
-<meta property="og:updated_time" content="2017-03-25T08:47:51.890Z">
+<meta property="og:updated_time" content="2017-11-16T16:07:52.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FBX_Extract_Local_Rotate">
 <meta name="twitter:description" content="FBX提取节点的局部旋转实现表情系统时，为了让表情看起来比较生动，通常需要提取出眼睛的运动   因为游戏中眼睛的位置，朝向等会进行校正，所以从FBX中提取的眼睛骨骼运动只能是记录偏移   当我们使用如下函数提取旋转时，得到的旋转角度并不是眼睛骨骼的局部空间旋转，而是万向空间的旋转">
   
+  
+    <link rel="icon" href="/favicon.png">
   
   <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
   <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
@@ -33,6 +35,16 @@
       <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
       <a id="logo" class="logo" href="/"></a>
       <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
         
       </nav>
       <nav id="sub-nav">
@@ -76,6 +88,11 @@
       
     </div>
     
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FBX提取节点的局部旋转"><span class="toc-number">1.</span> <span class="toc-text">FBX提取节点的局部旋转</span></a></li></ol>
+      </div>
+    
     
       <footer class="article-footer">
         
@@ -109,6 +126,17 @@
 
 
 
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
 
 
 
@@ -117,7 +145,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 John Doe&nbsp;
+      &copy; 2017 Liuteng&nbsp;
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
@@ -126,6 +154,9 @@
 
 <script src="/js/jquery.min.js"></script>
 
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 <script src="/js/script.js"></script>
