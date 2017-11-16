@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>VPS_SSH_Git_Config - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本地配置GitGit For Windows下载路径Git for Windows 环境配置添加系统变量GIT_HOME  在系统变量PATH中加入如下项">
+<meta name="keywords" content="VPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPS_SSH_Git_Config">
+<meta property="og:url" content="http://yoursite.com/2017/02/16/2017-03-25-VPS-SSH-Git-Config/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="本地配置GitGit For Windows下载路径Git for Windows 环境配置添加系统变量GIT_HOME  在系统变量PATH中加入如下项">
+<meta property="og:updated_time" content="2017-03-25T08:47:58.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VPS_SSH_Git_Config">
+<meta name="twitter:description" content="本地配置GitGit For Windows下载路径Git for Windows 环境配置添加系统变量GIT_HOME  在系统变量PATH中加入如下项">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-2017-03-25-VPS-SSH-Git-Config" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      VPS_SSH_Git_Config
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/02/16/2017-03-25-VPS-SSH-Git-Config/" class="article-date">
+  <time datetime="2017-02-16T15:20:48.000Z" itemprop="datePublished">2017-02-16</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="本地配置Git"><a href="#本地配置Git" class="headerlink" title="本地配置Git"></a>本地配置Git</h2><p>Git For Windows下载路径<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git for Windows</a></p>
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><p>添加系统变量<code>GIT_HOME</code></p>
+
+<p>在系统变量<code>PATH</code>中加入如下项<a id="more"></a><br></p>
+<p>设置完毕之后，重开一个CMD窗口，输入<code>git</code>命令，出现下图表示配置正确</p>
+
+<h2 id="服务端配置Git"><a href="#服务端配置Git" class="headerlink" title="服务端配置Git"></a>服务端配置Git</h2><p>连接上VPS后，执行以下命令</p>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+<h3 id="新建Git用户"><a href="#新建Git用户" class="headerlink" title="新建Git用户"></a>新建Git用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser git</span><br></pre></td></tr></table></figure>
+<p>此命令将会新建用户<code>git</code>并创建<code>/home/git</code>作为该用户的目录</p>
+<h3 id="加入sudoer"><a href="#加入sudoer" class="headerlink" title="加入sudoer"></a>加入sudoer</h3><p>切换到<code>root</code>用户，输入如下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 740 /etc/sudoers</span><br><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure></p>
+<p>在列出的文本中找到如下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root	ALL=(ALL) 	ALL</span><br></pre></td></tr></table></figure></p>
+<p>在后面新增一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ALL=(ALL) 	ALL</span><br></pre></td></tr></table></figure></p>
+<p>再执行如下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 440 /etc/sudoers</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置SSH登录"><a href="#配置SSH登录" class="headerlink" title="配置SSH登录"></a>配置SSH登录</h2><p>打开CMD窗口，进入用户目录下的<code>.ssh</code>目录，路径如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\yourname\.ssh</span><br></pre></td></tr></table></figure></p>
+<p>输入以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></p>
+<p>然后一路回车即可, 在<code>~/.ssh</code>目录中将会生成<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件</p>
+<h3 id="将公钥传送到服务端"><a href="#将公钥传送到服务端" class="headerlink" title="将公钥传送到服务端"></a>将公钥传送到服务端</h3><p>切换到git用户<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su git</span><br></pre></td></tr></table></figure></p>
+<p>新建<code>authorized_keys</code>文件，并将公钥复制进去<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.ssh</span><br><span class="line">touch ~/.ssh/authorized_keys</span><br><span class="line">vi ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>然后将<code>id_rsa.pub</code>中的数据粘贴到<code>authorized_keys</code>中</p>
+<p>或者在VPS上以git用户执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.ssh</span><br><span class="line">cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>本地的<code>~</code>为你的用户目录：<code>C:\Users\yourname</code></p>
+<p>服务端以<code>git</code>用户登陆时，<code>~</code>表示<code>\home\git</code></p>
+<p>因此，若是不切到git用户的话，上述命令改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /home/git/.ssh</span><br><span class="line">cat ~/.ssh/id_rsa.pub &gt;&gt; /home/git/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>现在可以在git bash中通过以下命令免密登陆VPS：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p port git@ip</span><br></pre></td></tr></table></figure></p>
+<p><code>port</code>为你的服务端ssh端口，ip为你服务器地址，如:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 1234 git@34.15.21.145</span><br></pre></td></tr></table></figure></p>
+<p>若是依然无法连接，检查服务器的<code>/etc/ssh/sshd_config</code>这个文件，以下几行的<code>#</code>注释是否移除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line">AuthorizedKeysFile .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>若是ssh提示需要登录密码，则切到git用户，输入以下命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod o-w ~/</span><br><span class="line">chmod 700 ~/.ssh</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>重启ssh<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/sshd restart</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地配置Git"><span class="toc-number">1.</span> <span class="toc-text">本地配置Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境配置"><span class="toc-number">1.1.</span> <span class="toc-text">环境配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端配置Git"><span class="toc-number">2.</span> <span class="toc-text">服务端配置Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Git"><span class="toc-number">2.1.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建Git用户"><span class="toc-number">2.2.</span> <span class="toc-text">新建Git用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加入sudoer"><span class="toc-number">2.3.</span> <span class="toc-text">加入sudoer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置SSH登录"><span class="toc-number">3.</span> <span class="toc-text">配置SSH登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将公钥传送到服务端"><span class="toc-number">3.1.</span> <span class="toc-text">将公钥传送到服务端</span></a></li></ol></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/25/2017-03-25-FBX-Extract-Local-Rotate/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          FBX_Extract_Local_Rotate
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Liuteng&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
