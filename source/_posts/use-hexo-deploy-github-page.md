@@ -62,7 +62,7 @@ deploy:
 $ hexo generate -d
 ```
 
-## Manager Hexo
+## Manage Hexo
 
 deploy tool will sync `.deploy_git` to master branch while run deploy command
 
