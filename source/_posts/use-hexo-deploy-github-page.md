@@ -72,10 +72,75 @@ so, we should upload our blog source file to `source` branch.
 
 ## Hexo Plugin
 
-### Latex support
+### Latex
 
 ``` bash
 npm install hexo-math --save
+```
+
+### Disqus
+
+[Disqus](https://disqus.com/)
+
+#### Disqus Config
+click `GET STARTED`, select `I want to install Disqus on my site`
+
+First Step:
+
+![Create a new Site](/images/Disqus_Create_New_Site.png)
+
+Second Step:
+
+![Choose a platform](/images/Disqus_Choose_A_Platform.png)
+
+my Platform is hexo , so i select `install manually with universal code`
+
+Next Disqus will show the Universal Code install instructions page
+
+Third Step:
+
+![Configure Disqus](/images/Disqus_Config.png)
+
+Website URL is `<username>.github.io`
+
+#### Apply Disqus
+
+Open File `layout/_partial/article.ejs` under theme folder
+
+Add this snippet to the end of the file
+``` ejs
+<% if (!index && post.comments && config.disqus_shortname){ %>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+<% } %>
+```
+
+Open File `layout/_partical/after-footer.ejs` under theme folder
+
+Add this snippet to the file
+``` ejs
+<% if (config.disqus_shortname){ %>
+<script>
+  var disqus_shortname = '<%= config.disqus_shortname %>';
+  <% if (page.permalink){ %>
+  var disqus_url = '<%= page.permalink %>';
+  <% } %>
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<% } %>
+```
+modify site's `_config.yml`
+``` yml
+disqus_shortname: <shortname> # refer to Website Name in the first step
 ```
 
 More Info: 
