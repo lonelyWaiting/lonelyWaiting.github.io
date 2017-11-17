@@ -8,6 +8,7 @@ tags: [hexo,github]
 
 Create a new repo named `<username>.github.io`,`<username>` is your username on Github
 
+Create a new branch named `source`
 <!-- more -->
 
 ## Setup Hexo
@@ -28,13 +29,15 @@ $ npm install -g hexo-cli
 
 ### init hexo
 
-init hexo in the target `<folder>`
+init hexo in the target `<folder>`,such as `E\blog`
 
 ``` bash
 $ hexo init <folder>
 $ cd <folder>
 $ npm install
 ```
+
+After running the command, a directory named `node_modules` will be added under the blog root folder.
 
 ### install git deploy tool 
 
@@ -44,7 +47,7 @@ $ npm install hexo-deployer-git --save
 
 ### config deploy
 
-modify setting in `_config.yml`
+modify site's setting in `_config.yml`
 
 ``` bash
 deploy:
@@ -57,19 +60,15 @@ deploy:
 
 ``` bash
 $ hexo generate -d
-``` 
+```
 
 ## Manager Hexo
 
-when we deploy hexo, deploy tool will sync `.deploy_git` to master
+deploy tool will sync `.deploy_git` to master branch while run deploy command
 
 but our blog source file does not version control.
 
-so we should new a branch to manager source file.
-
-first create new branch, such as named `source`
-
-then clone to local , overwrite the file under local repo with the file under hexo
+so, we should upload our blog source file to `source` branch.
 
 ## Hexo Plugin
 
@@ -79,10 +78,11 @@ then clone to local , overwrite the file under local repo with the file under he
 npm install hexo-math --save
 ```
 
-[hexo math](https://github.com/hexojs/hexo-math)
-
 More Info: 
-[Create Github Page](https://pages.github.com/)
-[Setup Hexo](https://hexo.io/docs/index.html)
-[Deployment](https://hexo.io/docs/deployment.html)
-[hexo-deploy-git config](https://github.com/hexojs/hexo-deployer-git)
+- [Create Github Page](https://pages.github.com/)
+- [Setup Hexo](https://hexo.io/docs/index.html)
+- [Deployment](https://hexo.io/docs/deployment.html)
+
+Plugin:
+- [hexo math](https://github.com/hexojs/hexo-math)
+- [hexo-deploy-git](https://github.com/hexojs/hexo-deployer-git)
