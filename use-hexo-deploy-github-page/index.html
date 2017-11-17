@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <title>use hexo deploy github page - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Clone repo to local: $ git clon">
+  <meta name="description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Create a new branch named sourc">
 <meta name="keywords" content="hexo,github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="use hexo deploy github page">
 <meta property="og:url" content="http://lonelywaiting.github.io/use-hexo-deploy-github-page/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Clone repo to local: $ git clone https://github.com/&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.g">
-<meta property="og:updated_time" content="2017-11-17T12:32:52.927Z">
+<meta property="og:description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Create a new branch named source">
+<meta property="og:updated_time" content="2017-11-17T15:07:08.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="use hexo deploy github page">
-<meta name="twitter:description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Clone repo to local: $ git clone https://github.com/&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.g">
+<meta name="twitter:description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Create a new branch named source">
   
   
     <link rel="icon" href="/favicon.ico">
   
   <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
   <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 </head>
 
 <body>
-  <div id="container">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
     <header id="header">
   <div id="header-outer" class="outer">
     <div id="header-inner" class="inner">
@@ -79,27 +79,39 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Create-Github-Page"><a href="#Create-Github-Page" class="headerlink" title="Create Github Page"></a>Create Github Page</h2><p>Create a new repo named <code>&lt;username&gt;.github.io</code>,<code>&lt;username&gt;</code> is your username on Github</p>
-<p>Clone repo to local: <code>$ git clone https://github.com/&lt;username&gt;/&lt;username&gt;.github.io</code></p>
-<a id="more"></a>
+<p>Create a new branch named <code>source</code><br><a id="more"></a></p>
 <h2 id="Setup-Hexo"><a href="#Setup-Hexo" class="headerlink" title="Setup Hexo"></a>Setup Hexo</h2><h3 id="install-Node-js"><a href="#install-Node-js" class="headerlink" title="install Node.js"></a>install Node.js</h3><p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a></p>
 <h3 id="install-Git"><a href="#install-Git" class="headerlink" title="install Git"></a>install Git</h3><p><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a></p>
 <h3 id="install-hexo-command-line-interface"><a href="#install-hexo-command-line-interface" class="headerlink" title="install hexo command line interface"></a>install hexo command line interface</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h3 id="init-hexo"><a href="#init-hexo" class="headerlink" title="init hexo"></a>init hexo</h3><p>init hexo in the target <code>&lt;folder&gt;</code></p>
+<h3 id="init-hexo"><a href="#init-hexo" class="headerlink" title="init hexo"></a>init hexo</h3><p>init hexo in the target <code>&lt;folder&gt;</code>,such as <code>E\blog</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<h3 id="update-local-repo"><a href="#update-local-repo" class="headerlink" title="update local repo"></a>update local repo</h3><p>copy <code>&lt;folder&gt;</code> files to override local repo’s files</p>
+<p>After running the command, a directory named <code>node_modules</code> will be added under the blog root folder.</p>
 <h3 id="install-git-deploy-tool"><a href="#install-git-deploy-tool" class="headerlink" title="install git deploy tool"></a>install git deploy tool</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h3 id="config-deploy"><a href="#config-deploy" class="headerlink" title="config deploy"></a>config deploy</h3><p>modify setting in <code>_config.yml</code></p>
+<h3 id="config-deploy"><a href="#config-deploy" class="headerlink" title="config deploy"></a>config deploy</h3><p>modify site’s setting in <code>_config.yml</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">	<span class="built_in">type</span>: git</span><br><span class="line">	repo: git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git</span><br><span class="line">	branch: master</span><br></pre></td></tr></table></figure>
-<h3 id="generate-and-deploy-hexo"><a href="#generate-and-deploy-hexo" class="headerlink" title="generate and deploy hexo"></a>generate and deploy hexo</h3><pre><code class="bash">$ hexo generate -d
-</code></pre>
-<p>More Info:<br><a href="https://pages.github.com/" target="_blank" rel="noopener">Create Github Page</a><br><a href="https://hexo.io/docs/index.html" target="_blank" rel="noopener">Setup Hexo</a><br><a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a><br><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deploy-git config</a></p>
+<h3 id="generate-and-deploy-hexo"><a href="#generate-and-deploy-hexo" class="headerlink" title="generate and deploy hexo"></a>generate and deploy hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate -d</span><br></pre></td></tr></table></figure>
+<h2 id="Manager-Hexo"><a href="#Manager-Hexo" class="headerlink" title="Manager Hexo"></a>Manager Hexo</h2><p>deploy tool will sync <code>.deploy_git</code> to master branch while run deploy command</p>
+<p>but our blog source file does not version control.</p>
+<p>so, we should upload our blog source file to <code>source</code> branch.</p>
+<h2 id="Hexo-Plugin"><a href="#Hexo-Plugin" class="headerlink" title="Hexo Plugin"></a>Hexo Plugin</h2><h3 id="Latex-support"><a href="#Latex-support" class="headerlink" title="Latex support"></a>Latex support</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
+<p>More Info: </p>
+<ul>
+<li><a href="https://pages.github.com/" target="_blank" rel="noopener">Create Github Page</a></li>
+<li><a href="https://hexo.io/docs/index.html" target="_blank" rel="noopener">Setup Hexo</a></li>
+<li><a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></li>
+</ul>
+<p>Plugin:</p>
+<ul>
+<li><a href="https://github.com/hexojs/hexo-math" target="_blank" rel="noopener">hexo math</a></li>
+<li><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deploy-git</a></li>
+</ul>
 
       
     </div>
     
       <div class="article-toc">
         <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Github-Page"><span class="toc-number">1.</span> <span class="toc-text">Create Github Page</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setup-Hexo"><span class="toc-number">2.</span> <span class="toc-text">Setup Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Node-js"><span class="toc-number">2.1.</span> <span class="toc-text">install Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Git"><span class="toc-number">2.2.</span> <span class="toc-text">install Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-hexo-command-line-interface"><span class="toc-number">2.3.</span> <span class="toc-text">install hexo command line interface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init-hexo"><span class="toc-number">2.4.</span> <span class="toc-text">init hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#update-local-repo"><span class="toc-number">2.5.</span> <span class="toc-text">update local repo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-git-deploy-tool"><span class="toc-number">2.6.</span> <span class="toc-text">install git deploy tool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#config-deploy"><span class="toc-number">2.7.</span> <span class="toc-text">config deploy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generate-and-deploy-hexo"><span class="toc-number">2.8.</span> <span class="toc-text">generate and deploy hexo</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Github-Page"><span class="toc-number">1.</span> <span class="toc-text">Create Github Page</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setup-Hexo"><span class="toc-number">2.</span> <span class="toc-text">Setup Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Node-js"><span class="toc-number">2.1.</span> <span class="toc-text">install Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Git"><span class="toc-number">2.2.</span> <span class="toc-text">install Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-hexo-command-line-interface"><span class="toc-number">2.3.</span> <span class="toc-text">install hexo command line interface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init-hexo"><span class="toc-number">2.4.</span> <span class="toc-text">init hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-git-deploy-tool"><span class="toc-number">2.5.</span> <span class="toc-text">install git deploy tool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#config-deploy"><span class="toc-number">2.6.</span> <span class="toc-text">config deploy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generate-and-deploy-hexo"><span class="toc-number">2.7.</span> <span class="toc-text">generate and deploy hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manager-Hexo"><span class="toc-number">3.</span> <span class="toc-text">Manager Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-Plugin"><span class="toc-number">4.</span> <span class="toc-text">Hexo Plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Latex-support"><span class="toc-number">4.1.</span> <span class="toc-text">Latex support</span></a></li></ol></li></ol>
       </div>
     
     
@@ -149,6 +161,6 @@
 
 
 <script src="/js/script.js"></script>
-  </div>
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
