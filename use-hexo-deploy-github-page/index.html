@@ -15,7 +15,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/images/Disqus_Create_New_Site.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/images/Disqus_Choose_A_Platform.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/images/Disqus_Config.png">
-<meta property="og:updated_time" content="2017-11-17T16:26:42.316Z">
+<meta property="og:updated_time" content="2017-11-17T16:34:37.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="use hexo deploy github page">
 <meta name="twitter:description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Create a new branch named source">
@@ -108,7 +108,7 @@
 <p>Next Disqus will show the Universal Code install instructions page</p>
 <p>Third Step:</p>
 <p><img src="/images/Disqus_Config.png" alt="Configure Disqus"></p>
-<p>Website URL is <code>&lt;username&gt;.github.io</code></p>
+<p>Website URL is <code>http://&lt;username&gt;.github.io/</code></p>
 <h4 id="Apply-Disqus"><a href="#Apply-Disqus" class="headerlink" title="Apply Disqus"></a>Apply Disqus</h4><p>Open File <code>layout/_partial/article.ejs</code> under theme folder</p>
 <p>Add this snippet to the end of the file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=&quot;comments&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;disqus_thread&quot;&gt;</span><br><span class="line">    &lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;//disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
 <p>Open File <code>layout/_partical/after-footer.ejs</code> under theme folder</p>
