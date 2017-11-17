@@ -80,3 +80,28 @@ deploy:
   type: git
   repo: git@github.com:lonelyWaiting/lonelyWaiting.github.io.git
   branch: master
+
+# disqus
+disqus_shortname: lonelywaiting
+
+# Header
+logo_text: lonelywaiting
+menu:
+  Home: /
+  Archives: archives
+  Categories: categories
+  Tags: tags
+  About: about
+
+# Content
+excerpt_link: Read More
+toc: true #  Whether to show the table of contents in articles
+fancybox: true
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.ico
+
+# Share
+share_jia: false
+share_addthis: false
