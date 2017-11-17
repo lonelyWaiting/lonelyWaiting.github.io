@@ -101,7 +101,7 @@ Third Step:
 
 ![Configure Disqus](/images/Disqus_Config.png)
 
-Website URL is `<username>.github.io`
+Website URL is `http://<username>.github.io/`
 
 #### Apply Disqus
 
