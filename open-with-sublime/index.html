@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Open With Sublime - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Right-click Menuwin + r ， 输入regedit,打开注册表编辑器">
+<meta name="keywords" content="Windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Open With Sublime">
+<meta property="og:url" content="http://lonelywaiting.github.io/open-with-sublime/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="Right-click Menuwin + r ， 输入regedit,打开注册表编辑器">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Open_With_Sublime/EditWithSublime.jpg">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Open_With_Sublime/EditWithSublimeCommand.jpg">
+<meta property="og:updated_time" content="2017-11-18T14:08:29.802Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Open With Sublime">
+<meta name="twitter:description" content="Right-click Menuwin + r ， 输入regedit,打开注册表编辑器">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Open_With_Sublime/EditWithSublime.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-open-with-sublime" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Open With Sublime
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/open-with-sublime/" class="article-date">
+  <time datetime="2016-03-03T17:19:48.355Z" itemprop="datePublished">2016-03-04</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Right-click-Menu"><a href="#Right-click-Menu" class="headerlink" title="Right-click Menu"></a>Right-click Menu</h1><p><code>win + r</code> ， 输入<code>regedit</code>,打开注册表编辑器<a id="more"></a></p>
+<p>找到<code>HKEY_CLASSES_ROOT\*\shell</code></p>
+<p>在<code>shell</code>下新建一个项，名字取为<code>Edit With Sublime</code></p>
+<p>为该项新建字符串值,名为<code>Icon</code>,数值数据为<code>D:\Sublime Text 3\sublime_text.exe,0</code></p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Open_With_Sublime/EditWithSublime.jpg" alt="Right Click Menu Icon"></p>
+<h1 id="Edit-With-Sublime"><a href="#Edit-With-Sublime" class="headerlink" title="Edit With Sublime"></a>Edit With Sublime</h1><p>然后在<code>Edit With Sublime</code>项上右键新建项，创建一个子项，名为<code>command</code></p>
+<p>选中<code>command</code>，数值数据中设置为<code>D:\Sublime Text 3\sublime_text.exe %1</code></p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Open_With_Sublime/EditWithSublimeCommand.jpg" alt="Edit With Sublime"></p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Right-click-Menu"><span class="toc-number">1.</span> <span class="toc-text">Right-click Menu</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Edit-With-Sublime"><span class="toc-number">2.</span> <span class="toc-text">Edit With Sublime</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/VPS-SSH-Git-Config/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          VPS SSH Git Config
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/open-with-sublime/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
