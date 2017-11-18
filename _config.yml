@@ -126,8 +126,8 @@ qiniu:
   sync: true
   bucket: blog
   # secret_file: sec/qn.json or C:
-  access_key: w1f08bldEVsgZQ_b_WJ-DRBdelehXlmBvQFTG3YA
-  secret_key: GqIB5957lX8OPDdNMGmnnwFc2wg-P7cVoonWHuiN
+  access_key: 
+  secret_key: 
   dirPrefix: resources
   urlPrefix: http://ozkp9xvc9.bkt.clouddn.com/resources
   up_host: http(s)://upload-z2.qiniup.com
