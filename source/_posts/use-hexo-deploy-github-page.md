@@ -87,11 +87,11 @@ click `GET STARTED`, select `I want to install Disqus on my site`
 
 First Step:
 
-![Create a new Site](/images/Disqus_Create_New_Site.png)
+![Create a new Site](/resources/images/Disqus_Create_New_Site.png)
 
 Second Step:
 
-![Choose a platform](/images/Disqus_Choose_A_Platform.png)
+![Choose a platform](/resources/images/Disqus_Choose_A_Platform.png)
 
 my Platform is hexo , so i select `install manually with universal code`
 
@@ -99,7 +99,7 @@ Next Disqus will show the Universal Code install instructions page
 
 Third Step:
 
-![Configure Disqus](/images/Disqus_Config.png)
+![Configure Disqus](/resources/images/Disqus_Config.png)
 
 Website URL is `http://<username>.github.io/`
 

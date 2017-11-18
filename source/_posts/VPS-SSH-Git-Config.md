@@ -12,13 +12,13 @@ Git For Windows下载路径[Git for Windows](https://git-scm.com/download/win)
 
 添加系统变量`GIT_HOME`
 
-![GIT HOME System Var](\images\GIT_HOME_SYSTEM_VAR.png)
+![GIT HOME System Var](/resources/images/GIT_HOME_SYSTEM_VAR.png)
 
 在系统变量`PATH`中加入如下项
-![Git Path Add to System Path](\images\GIT_ADDTO_SYSTEM_PATH.png)
+![Git Path Add to System Path](/resources/images/GIT_ADDTO_SYSTEM_PATH.png)
 
 设置完毕之后，重开一个CMD窗口，输入`git`命令，出现下图表示配置正确
-![Git Config Verify](\images\Git_Config_Verify.png)
+![Git Config Verify](/resources/images/Git_Config_Verify.png)
 
 ## 服务端配置Git
 

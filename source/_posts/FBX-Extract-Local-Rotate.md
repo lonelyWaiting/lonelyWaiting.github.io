@@ -15,7 +15,7 @@ FbxNode* pEyeNode = nullptr;
 ...
 FbxVector4 R = pEyeNode->EvaluateLocalTransform().GetR();
 ```
-![3dmax Gimbal Space](\images\local_rotate_extract.png)
+![3dmax Gimbal Space](/resources/images/local_rotate_extract.png)
 
 若想要提取局部空间的旋转，应该使用如下接口：
 ```C++
