@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/customDomainName/godaddy_modify_dns.png">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/customDomainName/custom_domain_name.png">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/customDomainName/add_host_parse_recode.png">
-<meta property="og:updated_time" content="2017-11-21T15:19:59.664Z">
+<meta property="og:updated_time" content="2017-11-21T15:27:42.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github page custom domain name">
 <meta name="twitter:description" content="域名注册登录GoDaddy,选择域名进行购买">
@@ -95,19 +95,48 @@
 <p>域名服务器填写<code>f1g1ns1.dnspod.net</code>,<code>f1g1ns2.dnspod.net</code></p>
 <p>回到腾讯云,解析域名,添加以下两条记录</p>
 <p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/customDomainName/add_host_parse_recode.png" alt="添加记录"></p>
-<p>记录值为<code>&lt;your github name&gt;.github.io</code></p>
+<table>
+<thead>
+<tr>
+<th>主机记录</th>
+<th>记录类型</th>
+<th>线路类型</th>
+<th>记录值</th>
+<th>TTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@</td>
+<td>CNAME</td>
+<td>默认</td>
+<td><code>&lt;your github name&gt;.github.io</code></td>
+<td>600</td>
+</tr>
+<tr>
+<td>www</td>
+<td>CNAME</td>
+<td>默认</td>
+<td><code>&lt;your github name&gt;.github.io</code></td>
+<td>600</td>
+</tr>
+</tbody>
+</table>
 <h1 id="Github-Page配置"><a href="#Github-Page配置" class="headerlink" title="Github Page配置"></a>Github Page配置</h1><p>上传一个<code>CNAME</code>文件在Github Page根目录下,其内容为你的域名</p>
-<p><code>hexo</code>每次部署都是将本地覆盖远程,因此,需要在本地的<code>source</code>文件中存放<code>CNAME</code>文件</p>
+<p><code>hexo</code>每次部署都是将本地文件覆盖远程,因此,需要在本地的<code>source</code>文件夹中存放<code>CNAME</code>文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.&lt;your_domain_name&gt;.com</span><br></pre></td></tr></table></figure>
 <p><code>CNAME</code>没有后缀名</p>
-<p>More Infos:<br><a href="https://www.zhihu.com/question/31377141" target="_blank" rel="noopener">Github怎么绑定自己的域名</a><br><a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages/" target="_blank" rel="noopener">Using a custom domain with Github Pages</a></p>
+<h1 id="More-Infos"><a href="#More-Infos" class="headerlink" title="More Infos"></a>More Infos</h1><ul>
+<li><a href="https://www.zhihu.com/question/31377141" target="_blank" rel="noopener">Github怎么绑定自己的域名</a></li>
+<li><a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages/" target="_blank" rel="noopener">Using a custom domain with Github Pages</a></li>
+</ul>
 
       
     </div>
     
       <div class="article-toc">
         <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#域名注册"><span class="toc-number">1.</span> <span class="toc-text">域名注册</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS解析"><span class="toc-number">2.</span> <span class="toc-text">DNS解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github-Page配置"><span class="toc-number">3.</span> <span class="toc-text">Github Page配置</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#域名注册"><span class="toc-number">1.</span> <span class="toc-text">域名注册</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS解析"><span class="toc-number">2.</span> <span class="toc-text">DNS解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github-Page配置"><span class="toc-number">3.</span> <span class="toc-text">Github Page配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#More-Infos"><span class="toc-number">4.</span> <span class="toc-text">More Infos</span></a></li></ol>
       </div>
     
     
