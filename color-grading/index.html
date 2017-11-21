@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>color grading - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介简化来说就是色阶到色阶的映射">
+<meta name="keywords" content="rendering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="color grading">
+<meta property="og:url" content="http://lonelywaiting.github.io/color-grading/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="简介简化来说就是色阶到色阶的映射">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/color_grading.bmp">
+<meta property="og:updated_time" content="2017-11-19T15:57:38.299Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="color grading">
+<meta name="twitter:description" content="简介简化来说就是色阶到色阶的映射">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/color_grading.bmp">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-color-grading" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      color grading
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/color-grading/" class="article-date">
+  <time datetime="2017-11-18T14:35:50.000Z" itemprop="datePublished">2017-11-18</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>简化来说就是色阶到色阶的映射<a id="more"></a></p>
+<p>相比HSV调色等具有更强的表现力,可由美术进行色彩,对比度,亮暗等等方面的控制</p>
+<h1 id="适用场合"><a href="#适用场合" class="headerlink" title="适用场合"></a>适用场合</h1><ol>
+<li>用于做后处理,改变场景的风格</li>
+<li>换肤等</li>
+</ol>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><p><code>Color Grading</code>通过生成3D LUT(LookUp Texture)来实现颜色的映射</p>
+<p>以正常计算所得的颜色值(0~1)作为3D纹理的纹理坐标,采样得到新的颜色值</p>
+<p>我们以R8G8B8A8来存储LUT的话,256<em>256</em>256的查找表大小为64M.</p>
+<p>因此,我们将其划分为32阶,也就是尺寸为32<em>32</em>32.大小为128k,实际应用中精度足够,内存占用也不大</p>
+<h2 id="生成色阶"><a href="#生成色阶" class="headerlink" title="生成色阶"></a>生成色阶</h2><p>首先需要一张包含32<em>32</em>32个色阶的2D纹理,可以将其存储在256*128的2D纹理中</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/color_grading.bmp" alt="color Grading"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">generate_grading</span><span class="params">(color* pixels, <span class="keyword">const</span> bitmap_info&amp; info, <span class="keyword">const</span> cmd_config&amp; cfg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> blue_stride = info.width / cfg.size;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> row = <span class="number">0</span>; row &lt; info.height; row++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> g = row % <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> offset = (<span class="keyword">int</span>)(row / <span class="number">32</span>) * blue_stride;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> col = <span class="number">0</span>; col &lt; info.width; col++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> r = col % <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">int</span> b = offset + col / <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">auto</span>&amp; c = pixels[row * info.width + col];</span><br><span class="line"></span><br><span class="line">			c.r = <span class="keyword">char</span>(r * cfg.grading);</span><br><span class="line">			c.g = <span class="keyword">char</span>(g * cfg.grading);</span><br><span class="line">			c.b = <span class="keyword">char</span>(b * cfg.grading);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="调节图像"><a href="#调节图像" class="headerlink" title="调节图像"></a>调节图像</h2><p>在PS中打开想要调节的图像,将上述的2D纹理置于右下角,合并图层,另存BMP至本地</p>
+<p>对图像进行整体性调色,如HSV,对比度等等,调至满意为止,另存BMP至本地</p>
+<h2 id="生成映射表"><a href="#生成映射表" class="headerlink" title="生成映射表"></a>生成映射表</h2><p>现在,我们有两张BMP纹理(使用BMP主要是为了不对图像进行压缩),假设为<code>Base.bmp</code>和<code>Target.bmp</code></p>
+<p><code>Base.bmp</code>右下角256<em>128的区域为原始色阶,<code>Target.bmp</code>右下角的258</em>128的区域为目标色阶</p>
+<p>以原始色阶值为三维数组索引,目标色阶为元素值,可得到一个32<em>32</em>32的数组</p>
+<p>将该数组写入3D纹理中,即得到最终的查找表</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>shader中根据pixel shader中计算出的颜色值对该3D纹理进行采样,得到映射后的颜色值</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul>
+<li><p>生成查找表纹理时,输入源必须是未压缩的,保证32<em>32</em>32每个元素都能填充值</p>
+</li>
+<li><p>3D查找纹理不需要生成MipMap</p>
+</li>
+<li><p>采用双线性采样,即<code>D3D11_Filter_MIN_MAG_LINEAR_MIP_POINT</code></p>
+</li>
+</ul>
+<p>Reference:<br><a href="https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/ColorGrading/" target="_blank" rel="noopener">UE4 Color Grading</a></p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用场合"><span class="toc-number">2.</span> <span class="toc-text">适用场合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法描述"><span class="toc-number">3.</span> <span class="toc-text">算法描述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成色阶"><span class="toc-number">3.1.</span> <span class="toc-text">生成色阶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调节图像"><span class="toc-number">3.2.</span> <span class="toc-text">调节图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成映射表"><span class="toc-number">3.3.</span> <span class="toc-text">生成映射表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-number">3.4.</span> <span class="toc-text">应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-number">4.</span> <span class="toc-text">注意事项</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rendering/">rendering</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/dds-file-format-parse/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          dds file format parse
+        
+      </div>
+    </a>
+  
+  
+    <a href="/hexo-qiniu-config/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo qiniu config&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/color-grading/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
