@@ -77,6 +77,74 @@ so, we should upload our blog source file to `source` branch.
 ``` bash
 npm install hexo-math --save
 ```
+latex still can't work after install hexo-math
+ 
+After installing the plug-in I did not find the hexo-math folder.
+
+then i install [hexo-renderer-mathjax](https://github.com/phoenixcw/hexo-renderer-mathjax)
+
+now i found `hexo-math` folder under `node_modules` directory.but still can't work.
+
+open `node_modules\hexo-math\lib\option.js`
+``` javascript
+var DEFAULT_OPTS = exports.DEFAULT_OPTS = {
+  engine: 'mathjax',
+  mathjax: {
+    src: "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js",
+    config: {
+      tex2jax: {
+        inlineMath: [['$', '$'], ["\\(", "\\)"]],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        processEscapes: true
+      },
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      }
+    }
+  },
+  katex: {
+    css: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css",
+    js: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js",
+    config: {
+      throwOnError: false,
+      errorColor: "#cc0000"
+    }
+  }
+};
+```
+
+but The official website is described below
+``` javascript
+const DEFAULT_OPTS = {
+  engine: 'mathjax',
+  mathjax: {
+    src: "//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML",
+    config: {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        processEscapes: true
+      },
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      }
+    }
+  },
+  katex: {
+    css: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css",
+    js: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js",
+    config: {
+      throwOnError: false,
+      errorColor: "#cc0000"
+    }
+  }  
+}
+```
+now it work after modify.
 
 ### Disqus
 

@@ -1,5 +1,5 @@
 ---
-title: VPS_SSH_Git_Config
+title: VPS SSH Git Config
 date: 2017-02-16 23:20:48
 tags: VPS
 ---

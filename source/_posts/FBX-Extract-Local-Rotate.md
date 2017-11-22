@@ -1,5 +1,5 @@
 ---
-title: FBX_Extract_Local_Rotate
+title: FBX Extract Local Rotate
 date: 2017-03-25 15:56:53
 tags: FBX
 ---
