@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>reflect and refraction - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="方向计算光线入射到在光滑的平面上，将会表现出反射与折射">
+<meta name="keywords" content="Rendering,Math">
+<meta property="og:type" content="article">
+<meta property="og:title" content="reflect and refraction">
+<meta property="og:url" content="http://lonelywaiting.github.io/reflect-refraction/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="方向计算光线入射到在光滑的平面上，将会表现出反射与折射">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/refraction.jpg">
+<meta property="og:updated_time" content="2017-11-22T17:40:28.611Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="reflect and refraction">
+<meta name="twitter:description" content="方向计算光线入射到在光滑的平面上，将会表现出反射与折射">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-reflect-refraction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      reflect and refraction
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/reflect-refraction/" class="article-date">
+  <time datetime="2017-11-21T16:00:00.000Z" itemprop="datePublished">2017-11-22</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="方向计算"><a href="#方向计算" class="headerlink" title="方向计算"></a>方向计算</h3><p>光线入射到在光滑的平面上，将会表现出反射与折射<a id="more"></a></p>
+<p>对于沿着给定方向$\omega_i$入射的光线，所有的光线都将沿着同一个方向$\omega_o$出射</p>
+<p>对于镜面反射而言,入射角与反射角一致,即:$\theta_i = \theta_o$</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg" alt="reflect"><br>入射角与反射角是指与法线的交点</p>
+<p>折射满足<em>Snell’s law</em>:$\eta_i \sin\theta_i = \eta_t sin\theta_t$</p>
+<p>$\eta_i$和$\eta_t$分别为光线进入交界面前媒介的折射率以及进入交界面后媒介的折射率</p>
+<p>$\theta_i$和$\theta_t$分别表示入射光与法线的夹角，折射光与法线的夹角</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/refraction.jpg" alt="refraction"></p>
+<p>折射率是随着光的波长变换的，因此，在两种不同媒介的交界面处入射光将会沿着多个方向散射，即色散</p>
+<p>但是其计算复杂，不予考虑</p>
+<h3 id="菲涅尔反射"><a href="#菲涅尔反射" class="headerlink" title="菲涅尔反射"></a>菲涅尔反射</h3><p>刚介绍了如何计算反射方向和折射方向，那么入射光中有多少能量被反射，又有多少能量被折射呢？</p>
+<p>菲涅尔方程描述了光被表面反射的比例，菲涅尔方程为麦克斯韦方程在平滑表面的解(写这句只为装逼~~)</p>
+<p>需要说明的是，菲涅尔方程存在两种，一种是用于描述电解质媒介(不导电，如玻璃)，一种能够用于描述导体媒介(如金属)</p>
+<p>对于每一种菲涅尔方程都存在两种形式，取决于入射光的偏振状态</p>
+<p>渲染中考虑光的偏振比较复杂，因此不予考虑，我们假设入射光全是非偏振光</p>
+<p>在该假定下，菲涅尔反射率为平行偏振分量的平方与垂直偏振分量的平方的平均值</p>
+<p>以计算电介质的菲涅尔反射率为例，首先我们需要知道两中媒介的折射率</p>
+<p>对于电介质而言，菲涅尔方程的一个近似表达如下:</p>
+<p>$$r_| = \frac{\eta_t \cos\theta_i - \eta_i\cos\theta_t}{\eta_t\cos\theta_i + \eta_i\cos\theta_t}$$</p>
+<p>$$r_\bot = \frac{\eta_icos\theta_i - \eta_tcos\theta_t}{\eta_icos\theta_i + \eta_t\cos\theta_t}$$</p>
+<ul>
+<li>$r_|$为平行偏振光的菲涅尔反射率</li>
+<li>$r_\bot$为垂直偏振光的反射率</li>
+<li>$\eta_i$为入射媒介的折射率</li>
+<li>$\eta_t$为折射媒介的折射率</li>
+</ul>
+<p>折射率为光在真空中传播的速度除以光在该媒介中传播的速度</p>
+<p>$\theta_i$为入射光$\omega_i$与法线的夹角</p>
+<p>$\theta_t$为折射光$\omega_t$与法线的夹角，$\omega_t$由<em>Snell’s law</em>计算得出</p>
+<p>需要提醒的一点是$\cos\theta$必须大于或等于0</p>
+<p>最后，对非偏振光而言，菲涅尔反射率为:$F_{r} = \frac{r_{|}^{2} + r_{\bot}^{2}}{2}$</p>
+<p>根据能量守恒，我们可以得出，电介质折射的能量比例为:$1 - F_r$</p>
+<p>对于导体而言，导体是不会透射光的，但是会吸收部分光转换为热量。</p>
+<p>对于导体的菲涅尔方程描述了多少光背反射，具体取决于导体的折射率$\eta$与吸收因子$k$</p>
+<p>常用的导体的菲涅尔方程如下:</p>
+<p>$$r_|^2 = \frac{(\eta^2 + k^2)cos\theta_i^2 - 2\eta\cos\theta_i + 1}{(\eta^2 + k^2)cos\theta_i^2 + 2\eta\cos\theta_i + 1}$$</p>
+<p>$$r_\bot^2 = \frac{(\eta^2 + k^2) - 2\eta\cos\theta_i + \cos\theta_i^2}{(\eta^2 + k^2) + 2\eta\cos\theta_i + \cos\theta_i^2}$$</p>
+<h3 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h3><p>接下来讲讲镜面反射和镜面折射的BRDF</p>
+<p>由于菲涅尔方程给出了光被反射的量$F_r(\omega_i)$,因此：</p>
+<p>$$L_o(\omega_o) = f_r(\omega_o , \omega_i)L_i(\omega_i) = F_r(\omega_i)L_i(\omega_i)$$</p>
+<p>$\omega_i$为$\omega_o$关于表面法线的反射向量($\theta_i == \theta_o$,因此,$F_r(\omega_o)=F_r(\omega_i)$.)</p>
+<p>该BRDF可以使用脉冲函数进行构造，因为对于任意一个方向的入射光，只有一个方向上将会有反射光</p>
+<p>$$\int f(x)\delta(x-x_o)d_x = f(x_o)$$</p>
+<p>只有当$x$取值为$x_o$时，$\delta$函数才为1，其它全为0</p>
+<p>因此我们可以使用脉冲函数来表示:$f_r(p , \omega_o , \omega_i) = \delta(\omega_i - \omega_r) = \delta(\cos\theta_i - \cos\theta_r)\delta(\phi_i - \phi_r)$</p>
+<p>该等式的第二部分是将其用球面坐标表示:</p>
+<p>$$L_o(\theta_o,\phi_o) = \int_\Omega \delta(cos\theta_i - cos\theta_r) \delta(\phi_o - \phi_r \pm \pi) L_i(\theta_i,\phi_i)|cos\theta_i|d\omega_i = L_i(\theta_r,\phi_r \pm \pi)|cos\theta_i|$$</p>
+<p>很明显，多了一个$\cos_i$因子，因此对于完美镜面反射可以构造如下BRDF:</p>
+<p>$$f_r(p , \omega_o , \omega_i) = F_r(\omega_o)\frac{\omega_i - R(\omega_o , n))}{|\cos\theta_i|}$$</p>
+<p>$R(\omega_o , n)$为$\omega_o$关于表面法线的镜面反射方向</p>
+<p>此时$L_o(\theta_o , \phi_o) = F_r(\omega_o)L_i(\theta_r , \phi_r\pm \pi)$</p>
+<p>前面说过了$F_r(\omega_o)$表示入射光被反射的量</p>
+<p>至此，镜面反射的BRDF计算完毕</p>
+<p>讲完镜面反射的BRDF，接下来讲讲镜面折射的BRDF</p>
+<p>这里我们使用$\tau = 1 - F_r(\omega_i)$表示入射能量被折射的量</p>
+<p>因此，微分通量可以表示如下:</p>
+<p>$$d\Phi_o = \tau d\Phi_i$$</p>
+<p>$$L_o cos\theta_o dA d\omega_o = \tau(L_i\cos\theta_i dAd\omega_i)$$</p>
+<p>表示为球面坐标如下:<br>$$L_o cos\theta_o dA \sin\theta_o d\theta_o d\phi_o = \tau(L_i\cos\theta_idA\sin\theta_id\theta_id\phi_i)$$</p>
+<p>由于$\eta_i \sin\theta_i = \eta_o \sin\theta_o$</p>
+<p>因此对其求微分可得:</p>
+<p>$$\eta_o cos\theta_o d\theta_o = \eta_i\cos\theta_id\theta_i$$</p>
+<p>因此:</p>
+<p>$$\frac{cos\theta_od\theta_o}{\cos\theta_id\theta_i} = \frac{\eta_i}{\eta_o}$$</p>
+<p>又因为$\frac{\sin\theta_o}{\sin\theta_i} = \frac{\eta_i}{\eta_o}$</p>
+<p>因此:</p>
+<p>$$\frac{\sin\theta_o\cos\theta_od\theta_o}{\sin\theta_i\cos\theta_id\theta_i} = \frac{\eta_i^2}{\eta_o^2}$$</p>
+<p>所以</p>
+<p>$$L_o\eta_i^2d\phi_o = \tau L_i\eta_o^2 d\phi_i$$</p>
+<p>由于$\phi_i = \phi_o + \pi$，因此$d\phi_i = d\phi_o$</p>
+<p>所以:</p>
+<p>$$L_o = \tau L_i\frac{\eta_o^2}{\eta_i^2}$$</p>
+<p>因此镜面折射的BRDF为:</p>
+<p>$$f_t(p , \omega_i , \omega_o) = \frac{\eta_o^2}{\eta_i^2}(1 - F_r(\omega_i))\frac{\delta(\omega_i - T(\omega_o , n))}{|\cos\theta_i|}$$</p>
+<p>$T(\omega_o , n)$为$\omega_o$关于表面法线的镜面折射向量</p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方向计算"><span class="toc-number">1.</span> <span class="toc-text">方向计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#菲涅尔反射"><span class="toc-number">2.</span> <span class="toc-text">菲涅尔反射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BRDF"><span class="toc-number">3.</span> <span class="toc-text">BRDF</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/github-page-custom-domain-name/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">github page custom domain name&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/reflect-refraction/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
