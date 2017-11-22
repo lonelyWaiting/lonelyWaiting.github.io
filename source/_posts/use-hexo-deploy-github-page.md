@@ -81,12 +81,12 @@ latex still can't work after install hexo-math
  
 After installing the plug-in I did not find the hexo-math folder.
 
-then i install [hexo-renderer-mathjax](https://github.com/phoenixcw/hexo-renderer-mathjax)
+then i install [hexo-renderer-mathjax](https://github.com/phoenixcw/hexo-renderer-mathjax),don't add `hexo-renderer-mathjax` to `plugins` of `_config.yml`
 
 now i found `hexo-math` folder under `node_modules` directory.but still can't work.
 
 open `node_modules\hexo-math\lib\option.js`
-``` javascript
+``` js
 var DEFAULT_OPTS = exports.DEFAULT_OPTS = {
   engine: 'mathjax',
   mathjax: {
@@ -116,7 +116,7 @@ var DEFAULT_OPTS = exports.DEFAULT_OPTS = {
 ```
 
 but The official website is described below
-``` javascript
+``` js
 const DEFAULT_OPTS = {
   engine: 'mathjax',
   mathjax: {
@@ -215,7 +215,9 @@ More Info:
 - [Create Github Page](https://pages.github.com/)
 - [Setup Hexo](https://hexo.io/docs/index.html)
 - [Deployment](https://hexo.io/docs/deployment.html)
+- [How to config it to make it work](https://github.com/hexojs/hexo-math/issues/26)
 
 Plugin:
 - [hexo math](https://github.com/hexojs/hexo-math)
 - [hexo-deploy-git](https://github.com/hexojs/hexo-deployer-git)
+- [hexo-renderer-mathjax](https://github.com/phoenixcw/hexo-renderer-mathjax)
