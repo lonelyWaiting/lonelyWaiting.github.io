@@ -146,6 +146,77 @@ const DEFAULT_OPTS = {
 ```
 now it work after modify.
 
+but still not perfect,`hexo-math` can't will parse multi `_` tag as Italic.
+
+such as:
+``` latex
+$F_{r} = \frac{r_{\|}^{2} + r_{\bot}^{2}}{2}$
+```
+Modify the regular expression in file `node_modules/marked/lib/marked.js`
+
+source:
+``` js
+/**
+ * Inline-Level Grammar
+ */
+
+var inline = {
+  escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
+  autolink: /^<([^ >]+(@|:\/)[^ >]+)>/,
+  url: noop,
+  tag: /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
+  link: /^!?\[(inside)\]\(href\)/,
+  reflink: /^!?\[(inside)\]\s*\[([^\]]*)\]/,
+  nolink: /^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,
+  strong: /^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
+  em: /^\b_((?:[^_]|__)+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+  code: /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
+  br: /^ {2,}\n(?!\s*$)/,
+  del: noop,
+  text: /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/
+};
+
+/**
+ * Pedantic Inline Grammar
+ */
+
+inline.pedantic = merge({}, inline.normal, {
+  strong: /^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
+  em: /^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/
+});
+```
+
+target:
+``` js
+/**
+ * Inline-Level Grammar
+ */
+
+var inline = {
+  escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
+  autolink: /^<([^ >]+(@|:\/)[^ >]+)>/,
+  url: noop,
+  tag: /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
+  link: /^!?\[(inside)\]\(href\)/,
+  reflink: /^!?\[(inside)\]\s*\[([^\]]*)\]/,
+  nolink: /^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,
+  strong: /^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
+  em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+  code: /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
+  br: /^ {2,}\n(?!\s*$)/,
+  del: noop,
+  text: /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/
+};
+
+/**
+ * Pedantic Inline Grammar
+ */
+
+inline.pedantic = merge({}, inline.normal, {
+  strong: /^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
+  em: /^\*(?=\S)([\s\S]*?\S)\*(?!\*)/
+});
+```
 ### Disqus
 
 [Disqus](https://disqus.com/)
@@ -216,6 +287,8 @@ More Info:
 - [Setup Hexo](https://hexo.io/docs/index.html)
 - [Deployment](https://hexo.io/docs/deployment.html)
 - [How to config it to make it work](https://github.com/hexojs/hexo-math/issues/26)
+- [为什么这个公式没法解析](https://github.com/hexojs/hexo-math/issues/40)
+- [修复Hexo写Mathjax公式多个下标失效的问题](http://kubicode.me/2016/03/16/Hexo/Fix-Hexo-Bug-In-Mathjax/)
 
 Plugin:
 - [hexo math](https://github.com/hexojs/hexo-math)
