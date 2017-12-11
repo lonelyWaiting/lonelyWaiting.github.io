@@ -3,18 +3,18 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>skeleton customize SRT is not good method - lonelyWaiting</title>
+  <title>SRT represent&#39;s disadvantage - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Runtime and Offline Render">
+  <meta name="description" content="$SRT$是指使用缩放,旋转,平移来表示变换矩阵">
 <meta property="og:type" content="article">
-<meta property="og:title" content="skeleton customize SRT is not good method">
+<meta property="og:title" content="SRT represent&#39;s disadvantage">
 <meta property="og:url" content="http://lonelywaiting.github.io/skeleton-customize-SRT-is-not-good-method/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Runtime and Offline Render">
-<meta property="og:updated_time" content="2017-11-19T16:15:48.410Z">
+<meta property="og:description" content="$SRT$是指使用缩放,旋转,平移来表示变换矩阵">
+<meta property="og:updated_time" content="2017-12-11T14:40:16.154Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="skeleton customize SRT is not good method">
-<meta name="twitter:description" content="Runtime and Offline Render">
+<meta name="twitter:title" content="SRT represent&#39;s disadvantage">
+<meta name="twitter:description" content="$SRT$是指使用缩放,旋转,平移来表示变换矩阵">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -62,7 +62,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      skeleton customize SRT is not good method
+      SRT represent&#39;s disadvantage
     </h1>
   
 
@@ -77,9 +77,39 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>$SRT$是指使用缩放,旋转,平移来表示变换矩阵<a id="more"></a></p>
+<h1 id="SRT表示法"><a href="#SRT表示法" class="headerlink" title="SRT表示法"></a>SRT表示法</h1><p>矩阵$M$可以使用$SRT$表示:</p>
+<p>$$\overrightarrow{v}M = \overrightarrow{v} SRT = \overrightarrow{v} SR + \overrightarrow{T}$$</p>
+<h1 id="非等比缩放"><a href="#非等比缩放" class="headerlink" title="非等比缩放"></a>非等比缩放</h1><p>考虑如下情况:</p>
+<p>$$<br>\begin{align}<br>\overrightarrow{v_2} &amp;= \overrightarrow{v_1} M_1\notag\\<br>&amp;= \overrightarrow{v_0}M_0M_1\notag\\<br>&amp;= \overrightarrow{v_1}S_1R_1 + \overrightarrow{T_1}\notag\\<br>&amp;= (\overrightarrow{v_0}S_0R_0 + \overrightarrow{T_0})S_1R_1 + \overrightarrow{T_1}\notag\\<br>&amp;= \overrightarrow{v_0}(S_0R_0S_1R_1) + (\overrightarrow{T_0}S_1R_1 + \overrightarrow{T_1})\notag<br>\end{align}<br>$$</p>
+<p>如果我们要将$M_0M_1$表示为$SRT$,那么说明$S_0R_0S_1R_1$可以表示为$SR$</p>
+<p>如果$S_1$为等比缩放,那么$S_0R_0S_1R_1 = S_0S_1R_0R_1$</p>
+<p>那么不是等比缩放呢？</p>
+<p>问题转化为存在正交旋转矩阵$R$与缩放矩阵$S$,则$RS$能否表达为$S^{‘}R^{‘}$?</p>
+<p>通过反证法来证明,考虑如下矩阵:</p>
+<p>$$<br>S =<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 \\<br>0 &amp; 2 &amp; 0 \\<br>0 &amp; 0 &amp; 1<br>\end{bmatrix} \quad<br>R =<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 \\<br>0 &amp; \frac{\sqrt{2}}{2} &amp; -\frac{\sqrt{2}}{2} \\<br>0 &amp; \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2}<br>\end{bmatrix}<br>$$</p>
+<p>假设存在$S’$和$R’$使得$RS=S’R’$</p>
+<p>$$<br>\begin{alignat}{2}<br>R’ &amp;=<br>\begin{bmatrix}<br>r’_{11} &amp; r’_{12} &amp; r’_{13} \\<br>r’_{21} &amp; r’_{22} &amp; r’_{23} \\<br>r’_{31} &amp; r’_{32} &amp; r’_{33}<br>\end{bmatrix} &amp;\quad<br>S’ &amp;=<br>\begin{bmatrix}<br>s’_1 &amp; r0 &amp; 0 \\<br>0 &amp; s’_2 &amp; 0 \\<br>0 &amp; 0 &amp; s’_3<br>\end{bmatrix}\notag\\[2ex]<br>RS &amp;=<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 \\<br>0 &amp; \sqrt{2} &amp; -\frac{\sqrt{2}}{2} \\<br>0 &amp; \sqrt{2} &amp; \frac{\sqrt{2}}{2}<br>\end{bmatrix} &amp;\quad<br>S’R’ &amp;=<br>\begin{bmatrix}<br>s’_1r’_{11} &amp; s’_1r’_{12} &amp; s’_1r’_{13} \\<br>s’2r’_{21} &amp; s’_2r’_{22} &amp; s’_2r’_{23} \\<br>s’3r’_{31} &amp; s’_3r’_{32} &amp; s’_3r’_{33}<br>\end{bmatrix}\notag<br>\end{alignat}<br>$$</p>
+<p>结合$RS = S’R’$与$R’$为正交矩阵可得:<br>$$<br>\begin{cases}<br>1 = s’_1 r’_{11} \\[2ex]<br>0 = s’_1 r’_{12} \\[2ex]<br>0 = s’_1 r’_{13} \\[2ex]<br>r’^2_{11} + r’^2_{12} + r’^2_{13} = 1<br>\end{cases}<br>$$</p>
+<p>$\therefore s’_1 = \pm{1}$,同理可得:$s’_2 = \pm \frac{\sqrt{2}\sqrt{5}}{2}$与$s’_3 = \pm \frac{\sqrt{2}\sqrt{5}}{2}$</p>
+<p>$$<br>\begin{align}<br>\because det(AB) &amp;= det(A)det(B) \quad RS = S’R’ \quad det(S’) = s’_1s’_2s’_3\notag\\[2ex]<br>\therefore det(R’) &amp;= \frac{det(R)det(S)}{det(S’)}\notag\\[2ex]<br>&amp;= \frac{1\times (1\times 2 \times 1)}{\pm{1}\times \frac{\sqrt{2}\sqrt{5}}{2}\times \frac{\sqrt{2}\sqrt{5}}{2}}\notag\\[2ex]<br>&amp;= \pm \frac{4}{5} \neq 1\notag<br>\end{align}<br>$$<br>与$R’$为正交矩阵的假设不符.</p>
+<h1 id="分解矩阵为SRT"><a href="#分解矩阵为SRT" class="headerlink" title="分解矩阵为SRT"></a>分解矩阵为SRT</h1><p>假设某个节点有n个祖先,其局部变换矩阵分别为$M_1,M_2,\cdots M_n$.</p>
+<p>$$<br>\begin{align}<br>M_{SRT} &amp;= M_0M_1\cdots M_n\notag\\[2ex]<br>M_{RT} &amp;= R_0T_0R_1T_1\cdots R_nT_n\notag<br>\end{align}<br>$$</p>
+<p>从$M_{SRT}$中很容易分解出平移项,提取第四行元素即可</p>
+<p>从$M_{RT}$中剥离平移,可以得到$M_R$矩阵,这个矩阵必须被转换为四元数或欧拉角</p>
+<p>最麻烦的是提取缩放,首先将$M_{SRT}$中的平移项置零,得到$M_{SR}$.</p>
+<p>然后通过如下公式计算缩放矩阵:</p>
+<p>$$M_S = M_{SR}M_R^{-1}$$</p>
+<p>只需要从该矩阵中提取对角线的元素作为缩放,其余元素是产生倾斜(变形))的部分</p>
+<h1 id="More-Info"><a href="#More-Info" class="headerlink" title="More Info"></a>More Info</h1><p><a href="http://what-when-how.com/Tutorial/topic-547pjramj8/GPU-Pro-Advanced-Rendering-Techniques-412.html" target="_blank" rel="noopener">GPU Pro 5 - Managing Transformations in Hierarchy</a><br><a href="https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%98%B5#.E8.A1.8C.E5.88.97.E5.BC.8F" target="_blank" rel="noopener">矩阵乘积的行列式等于行列式的乘积</a><br><a href="https://zhuanlan.zhihu.com/p/31188118" target="_blank" rel="noopener">插入公式诀窍</a><br><a href="http://blog.csdn.net/u012302219/article/details/51452649" target="_blank" rel="noopener">MathJax语法</a></p>
+
       
     </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SRT表示法"><span class="toc-number">1.</span> <span class="toc-text">SRT表示法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#非等比缩放"><span class="toc-number">2.</span> <span class="toc-text">非等比缩放</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分解矩阵为SRT"><span class="toc-number">3.</span> <span class="toc-text">分解矩阵为SRT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#More-Info"><span class="toc-number">4.</span> <span class="toc-text">More Info</span></a></li></ol>
+      </div>
     
     
       <footer class="article-footer">
@@ -154,6 +184,23 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
