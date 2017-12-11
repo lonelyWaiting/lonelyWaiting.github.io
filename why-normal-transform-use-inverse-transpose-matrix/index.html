@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>why normal transform use inverse-transpose matrix - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义$T$为切线,$N$为法线,$M$为切线的变换矩阵,$Q$为法线的变换矩阵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="why normal transform use inverse-transpose matrix">
+<meta property="og:url" content="http://lonelywaiting.github.io/why-normal-transform-use-inverse-transpose-matrix/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="定义$T$为切线,$N$为法线,$M$为切线的变换矩阵,$Q$为法线的变换矩阵">
+<meta property="og:updated_time" content="2017-12-11T15:02:22.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="why normal transform use inverse-transpose matrix">
+<meta name="twitter:description" content="定义$T$为切线,$N$为法线,$M$为切线的变换矩阵,$Q$为法线的变换矩阵">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-why-normal-transform-use-inverse-transpose-matrix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      why normal transform use inverse-transpose matrix
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/why-normal-transform-use-inverse-transpose-matrix/" class="article-date">
+  <time datetime="2017-12-11T14:48:33.000Z" itemprop="datePublished">2017-12-11</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>定义$T$为切线,$N$为法线,$M$为切线的变换矩阵,$Q$为法线的变换矩阵<a id="more"></a></p>
+<h1 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h1><p>$$<br>T\cdot N^T = 0\\[2ex]<br>T\cdot M = T’\\[2ex]<br>N\cdot Q = N’\\[2ex]<br>T’\cdot (N’)^T = 0\\[2ex]<br>T\cdot M \cdot (N\cdot Q)^T = 0\\[2ex]<br>T\cdot M \cdot Q^T \cdot N^T = 0\\[2ex]<br>\therefore M\cdot Q^T = I\\[2ex]<br>\therefore Q = (M^{-1})^T<br>$$</p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#证明"><span class="toc-number">1.</span> <span class="toc-text">证明</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/reflect-refraction/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">reflect and refraction&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/why-normal-transform-use-inverse-transpose-matrix/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
