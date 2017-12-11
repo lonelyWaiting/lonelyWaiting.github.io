@@ -1,7 +1,7 @@
 ---
 title: SRT represent's disadvantage
 date: 2017-11-20 00:15:48
-tags:
+tags: Rendering
 ---
 
 $SRT$是指使用缩放,旋转,平移来表示变换矩阵<!-- more -->

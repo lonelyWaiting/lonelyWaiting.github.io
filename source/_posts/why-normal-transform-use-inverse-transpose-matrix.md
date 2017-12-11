@@ -1,7 +1,7 @@
 ---
 title: why normal transform use inverse-transpose matrix
 date: 2017-12-11 22:48:33
-tags:
+tags: Math
 ---
 
 定义$T$为切线,$N$为法线,$M$为切线的变换矩阵,$Q$为法线的变换矩阵<!-- more -->
