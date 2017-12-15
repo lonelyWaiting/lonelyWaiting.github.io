@@ -54,6 +54,69 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-compute-refract-direction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/compute-refract-direction/">compute refract direction</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/compute-refract-direction/" class="article-date">
+  <time datetime="2017-12-14T16:20:15.000Z" itemprop="datePublished">2017-12-15</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Snell’s-Law"><a href="#Snell’s-Law" class="headerlink" title="Snell’s Law"></a>Snell’s Law</h1><p>首先介绍下菲涅尔定律，光入射到不同介质的界面上会发生反射和折射。其中入射光和折射光位于同一平面，且满足以下公式：</p>
+<p>$$\eta{_1} \sin(\theta_1) = \eta{_2}\sin(\theta{_2})$$</p>
+<p>$$\frac{\eta_1}{\eta_2} = \frac{\sin({\theta_2})}{\sin({\theta_1})}$$</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/refraction_direction/Refraction.png" alt="refraction direction"></p>
+<p>入射光线L可以表示为:$$(-\sin(\theta_1) , \cos(\theta_1))$$</p>
+<p>法线$$n$$表示为:$$(0 , 1)$$</p>
+<p>折射光线T可以表示为:$$(\sin(\theta_2) , -\cos(\theta_2))$$</p>
+<p>设两个未知数：x , y , 使得以下式子成立:</p>
+<p>$$\overrightarrow{T} = x <em> \overrightarrow{L} + y </em> \overrightarrow{n}$$</p>
+<p>因此:</p>
+<p>$$<br>\begin{equation}<br>\begin{cases}<br>\sin(\theta_2) = -\sin(\theta_1) <em> x + 0 </em> y \<br>-\cos(\theta_2) = \cos(\theta_1) <em> x + 1 </em> y<br>\end{cases}<br>\end{equation}<br>$$</p>
+<p>$$<br>\begin{equation}<br>\begin{cases}<br>x = -\frac{\sin(\theta_2)}{\sin(\theta_1)} \<br>y = \cos(\theta_1) * \frac{\sin(\theta_2)}{\sin(\theta_1)} - \cos(\theta_2)<br>\end{cases}<br>\end{equation}<br>$$</p>
+<p>因此：</p>
+<p>$$\overrightarrow{T} = -\frac{\sin(\theta_2)}{\sin(\theta_1)} <em> \overrightarrow{L} + (\cos(\theta_1) </em> \frac{\sin(\theta_2)}{\sin(\theta_1)} - \cos(\theta_2)) * \overrightarrow{n}$$</p>
+<p>$$\because$$<br>$$\cos(\theta_2) = \sqrt{1 - \sin^2(\theta_2)} = \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - \cos^2(\theta_1))} = \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}$$</p>
+<p>$$\overrightarrow{T} = -\frac{\sin(\theta_2)}{\sin(\theta_1)} <em> \overrightarrow{L} + (\cos(\theta_1) </em> \frac{\sin(\theta_2)}{\sin(\theta_1)} - \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}) * \overrightarrow{n}$$</p>
+<p>$$\overrightarrow{T} = -\frac{\eta_1}{\eta_2} * \overrightarrow{L} + \overrightarrow{n}(\frac{\eta_1}{\eta_2}(\overrightarrow{L} \cdot \overrightarrow{n}) - \sqrt{1 - \frac{\eta_1^2}{\eta_2^2}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)})$$</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-software-recommend" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -179,7 +242,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="方向计算"><a href="#方向计算" class="headerlink" title="方向计算"></a>方向计算</h3><p>光线入射到在光滑的平面上，将会表现出反射与折射</p>
+        <h1 id="反射方向"><a href="#反射方向" class="headerlink" title="反射方向"></a>反射方向</h1><p>光线反射满足入射角等于反射角</p>
         
           <p class="article-more-link">
             <a href="/reflect-refraction/#more">Read More</a>
@@ -451,46 +514,6 @@
     <div class="article-meta">
       <a href="/character-customize/" class="article-date">
   <time datetime="2017-11-19T16:10:28.000Z" itemprop="datePublished">2017-11-20</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-sampling-theory" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/sampling-theory/">sampling theory</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/sampling-theory/" class="article-date">
-  <time datetime="2017-11-19T16:09:38.000Z" itemprop="datePublished">2017-11-20</time>
 </a>
       
       

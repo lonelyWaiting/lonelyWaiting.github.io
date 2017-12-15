@@ -5,19 +5,19 @@
   
   <title>reflect and refraction - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="方向计算光线入射到在光滑的平面上，将会表现出反射与折射">
+  <meta name="description" content="反射方向光线反射满足入射角等于反射角">
 <meta name="keywords" content="Rendering,Math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="reflect and refraction">
 <meta property="og:url" content="http://lonelywaiting.github.io/reflect-refraction/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="方向计算光线入射到在光滑的平面上，将会表现出反射与折射">
+<meta property="og:description" content="反射方向光线反射满足入射角等于反射角">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/refraction.jpg">
-<meta property="og:updated_time" content="2017-12-14T16:05:21.707Z">
+<meta property="og:updated_time" content="2017-12-14T16:28:32.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="reflect and refraction">
-<meta name="twitter:description" content="方向计算光线入射到在光滑的平面上，将会表现出反射与折射">
+<meta name="twitter:description" content="反射方向光线反射满足入射角等于反射角">
 <meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg">
   
   
@@ -81,18 +81,21 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="方向计算"><a href="#方向计算" class="headerlink" title="方向计算"></a>方向计算</h3><p>光线入射到在光滑的平面上，将会表现出反射与折射<a id="more"></a></p>
-<p>对于沿着给定方向$\omega_i$入射的光线，所有的光线都将沿着同一个方向$\omega_o$出射</p>
-<p>对于镜面反射而言,入射角与反射角一致,即:$\theta_i = \theta_o$</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg" alt="reflect"><br>入射角与反射角是指与法线的交点</p>
-<p>折射满足<em>Snell’s law</em>:$\eta_i \sin\theta_i = \eta_t sin\theta_t$</p>
-<p>$\eta_i$和$\eta_t$分别为光线进入交界面前媒介的折射率以及进入交界面后媒介的折射率</p>
-<p>$\theta_i$和$\theta_t$分别表示入射光与法线的夹角，折射光与法线的夹角</p>
+        <h1 id="反射方向"><a href="#反射方向" class="headerlink" title="反射方向"></a>反射方向</h1><p>光线反射满足入射角等于反射角<a id="more"></a></p>
+<p>即$\theta_i = \theta_o$</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg" alt="$\theta_i$为入射角,$\theta_o$为出射角"></p>
+<h1 id="折射方向"><a href="#折射方向" class="headerlink" title="折射方向"></a>折射方向</h1><p>折射满足<em>Snell’s law</em>:</p>
+<p>$$\eta_i \sin\theta_i = \eta_t sin\theta_t$$</p>
+<ul>
+<li>$\eta_i$,$\eta_o$:折射率</li>
+<li>$\theta_i$: 入射角</li>
+<li>$\theta_o$: 折射角</li>
+</ul>
 <p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/refraction.jpg" alt="refraction"></p>
-<p>折射率是随着光的波长变换的，因此，在两种不同媒介的交界面处入射光将会沿着多个方向散射，即色散</p>
-<p>但是其计算复杂，不予考虑</p>
-<h3 id="菲涅尔反射"><a href="#菲涅尔反射" class="headerlink" title="菲涅尔反射"></a>菲涅尔反射</h3><p>刚介绍了如何计算反射方向和折射方向，那么入射光中有多少能量被反射，又有多少能量被折射呢？</p>
-<p>菲涅尔方程描述了光被表面反射的比例，菲涅尔方程为麦克斯韦方程在平滑表面的解</p>
+<p>折射率是随着光的波长变换的，因此，在两种不同媒介的交界面处入射的自然光将会沿着多个方向散射，即色散，但是其计算复杂，不予考虑</p>
+<p><a href="www.lonelywaiting.com/compute_refract_direction/">折射方向计算</a></p>
+<h1 id="菲涅尔方程"><a href="#菲涅尔方程" class="headerlink" title="菲涅尔方程"></a>菲涅尔方程</h1><p>当光经过两种不同折射率的界面时,在两者的交界处可能会同时发生光的反射与折射</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E8%8F%B2%E6%B6%85%E8%80%B3%E6%96%B9%E7%A8%8B" target="_blank" rel="noopener">菲涅尔方程</a>描述了不同光波分量被折射和反射的情况</p>
 <p>需要说明的是，菲涅尔方程存在两种，一种是用于描述电解质媒介(不导电，如玻璃)，一种能够用于描述导体媒介(如金属)</p>
 <p>对于每一种菲涅尔方程都存在两种形式，取决于入射光的偏振状态</p>
 <p>渲染中考虑光的偏振比较复杂，因此不予考虑，我们假设入射光全是非偏振光</p>
@@ -162,7 +165,7 @@
     
       <div class="article-toc">
         <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方向计算"><span class="toc-number">1.</span> <span class="toc-text">方向计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#菲涅尔反射"><span class="toc-number">2.</span> <span class="toc-text">菲涅尔反射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BRDF"><span class="toc-number">3.</span> <span class="toc-text">BRDF</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#反射方向"><span class="toc-number">1.</span> <span class="toc-text">反射方向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#折射方向"><span class="toc-number">2.</span> <span class="toc-text">折射方向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#菲涅尔方程"><span class="toc-number">3.</span> <span class="toc-text">菲涅尔方程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BRDF"><span class="toc-number">3.0.1.</span> <span class="toc-text">BRDF</span></a></li></ol></li></ol></li></ol>
       </div>
     
     
