@@ -14,7 +14,7 @@
 <meta property="og:description" content="反射定律反射定律:$\theta_i = \theta_o$">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/refraction.jpg">
-<meta property="og:updated_time" content="2017-12-18T17:06:57.257Z">
+<meta property="og:updated_time" content="2017-12-18T17:31:35.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="reflect and refraction">
 <meta name="twitter:description" content="反射定律反射定律:$\theta_i = \theta_o$">
@@ -109,17 +109,18 @@
 <p>$$r_|^2 = \frac{(\eta^2 + k^2)cos\theta_i^2 - 2\eta\cos\theta_i + 1}{(\eta^2 + k^2)cos\theta_i^2 + 2\eta\cos\theta_i + 1}$$</p>
 <p>$$r_\bot^2 = \frac{(\eta^2 + k^2) - 2\eta\cos\theta_i + \cos\theta_i^2}{(\eta^2 + k^2) + 2\eta\cos\theta_i + \cos\theta_i^2}$$</p>
 <h3 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h3><p>接下来讲讲镜面反射和镜面折射的BRDF</p>
-<p>由于菲涅尔方程给出了光被反射的量$F_r(\omega_i)$,因此：</p>
-<p>$$L_o(\omega_o) = \int f_r(\omega_o , \omega_i)L_i(\omega_i)cos(\theta)d\omega_i = F_r(\omega_i)L_i(\omega_i)$$</p>
-<p>$\omega_i$为$\omega_o$关于表面法线的反射向量($\theta_i == \theta_o$,因此,$F_r(\omega_o)=F_r(\omega_i)$.)</p>
-<p>该BRDF可以使用脉冲函数进行构造，因为对于任意一个方向的入射光，只有一个方向上将会有反射光</p>
-<p>$$\int f(x)\delta(x-x_o)d_x = f(x_o)$$</p>
-<p>只有当$x$取值为$x_o$时，$\delta$函数才为1，其它全为0</p>
-<p>因此我们可以使用脉冲函数来表示:$f_r(p , \omega_o , \omega_i) = \delta(\omega_i - \omega_r) = \delta(\cos\theta_i - \cos\theta_r)\delta(\phi_i - \phi_r)$</p>
-<p>该等式的第二部分是将其用球面坐标表示:</p>
-<p>$$L_o(\theta_o,\phi_o) = \int_\Omega \delta(cos\theta_i - cos\theta_r) \delta(\phi_o - \phi_r \pm \pi) L_i(\theta_i,\phi_i)|cos\theta_i|d\omega_i = L_i(\theta_r,\phi_r \pm \pi)|cos\theta_i|$$</p>
-<p>很明显，多了一个$\cos_i$因子，因此对于完美镜面反射可以构造如下BRDF:</p>
-<p>$$f_r(p , \omega_o , \omega_i) = F_r(\omega_o)\frac{\delta(\omega_i - R(\omega_o , n))}{|\cos\theta_i|}$$</p>
+<p>由于菲涅尔方程给出了光被反射的量$F_r(\omega_o)$,因此：</p>
+<p>$$L_o(\omega_r) = \int f_r(p, \omega_i, \omega_r )L_i(\omega_i)cos(\theta)d\omega_i = F_r(\omega_o)L_i(\omega_i) = F_r(\omega_i)L_i(\omega_i)\tag{1}$$</p>
+<p>$\omega_o$为$\omega_i$关于表面法线的反射向量,$\theta_i = \theta_o$,因此,$F_r(\omega_o)=F_r(\omega_i)$</p>
+<p>该BRDF可以使用脉冲函数进行构造:</p>
+<p>$$f_r(p , \omega_o , \omega_i) = f \times \delta(\omega_i - \omega_r) = f \times \delta(\cos\theta_i - \cos\theta_r)\delta(\phi_i - \phi_r \pm \pi)\tag{2}$$</p>
+<p>因此:</p>
+<p>$$L_o(\theta_o,\phi_o) = \int_\Omega f \times \delta(cos\theta_i - cos\theta_r) \delta(\phi_o - \phi_r \pm \pi) L_i(\theta_i,\phi_i)|cos\theta_i|d\omega_i = f \times L_i(\theta_r,\phi_r \pm \pi)|cos\theta_i|$$</p>
+<p>结合方程(1):</p>
+<p>$$L_o(\omega_o) = f \times L_i(\theta_r,\phi_r \pm \pi)|cos\theta_i| = F_r(\omega_i)L_i(\omega_i)$$</p>
+<p>$$\Rightarrow f = \frac{F_r(\omega_o)}{|cos\theta_i|}$$</p>
+<p>结合方程(2):</p>
+<p>$$\Rightarrow f_r(p , \omega_o , \omega_i) = F_r(\omega_o)\frac{\delta(\omega_i - R(\omega_o , n))}{|\cos\theta_i|}$$</p>
 <p>$R(\omega_o , n)$为$\omega_o$关于表面法线的镜面反射方向</p>
 <p>此时$L_o(\theta_o , \phi_o) = F_r(\omega_o)L_i(\theta_r , \phi_r\pm \pi)$</p>
 <p>前面说过了$F_r(\omega_o)$表示入射光被反射的量</p>
