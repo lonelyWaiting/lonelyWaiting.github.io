@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Radiometry - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="光模型图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长">
+<meta name="keywords" content="Rendering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Radiometry">
+<meta property="og:url" content="http://lonelywaiting.github.io/Radiometry/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="光模型图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/Flux.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_define.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/solid_angle_define.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_invariance.png">
+<meta property="og:updated_time" content="2018-01-04T13:28:18.645Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Radiometry">
+<meta name="twitter:description" content="光模型图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/Flux.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-Radiometry" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Radiometry
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/Radiometry/" class="article-date">
+  <time datetime="2018-01-04T12:39:18.585Z" itemprop="datePublished">2018-01-04</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="光模型"><a href="#光模型" class="headerlink" title="光模型"></a>光模型</h1><p>图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长<br><a id="more"></a><br>在几何光学下,衍射,干涉以及极化现象是不会发生的.</p>
+<p>几何光学假定光是发射,反射以及透射,并对于光的行为做出如下假设:</p>
+<ul>
+<li>直线传播</li>
+<li>传播速度无限快,用于保证场景光能的温态分布</li>
+<li>不受其它因素的影响,如重力,磁场</li>
+</ul>
+<h1 id="辐射度"><a href="#辐射度" class="headerlink" title="辐射度"></a>辐射度</h1><p>全局光照的目的就是计算场景光能的稳态分布,因此涉及到一些光的物理量</p>
+<h2 id="通量-Flux"><a href="#通量-Flux" class="headerlink" title="通量(Flux)"></a>通量(Flux)</h2><p>辐射通量也称之为功率,为<strong>每单位时间</strong>通过一个表面或区域的所有能量，单位为焦尔每秒<code>J/s</code>或瓦<code>W</code>,通常用符号$\Phi$</p>
+<p>下图中通过两个球面的通量是一样的</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/Flux.png" alt="Flux"></p>
+<h2 id="辐照度-Irradiance"><a href="#辐照度-Irradiance" class="headerlink" title="辐照度(Irradiance)"></a>辐照度(Irradiance)</h2><p>辐照度为<strong>每单位面积</strong>上的<strong>入射</strong>辐射通量,单位为$W/m^2$</p>
+<p>$$E = \frac{d\Phi}{dA}$$</p>
+<h2 id="辐射出射度-辐射度Radiosity"><a href="#辐射出射度-辐射度Radiosity" class="headerlink" title="辐射出射度(辐射度Radiosity)"></a>辐射出射度(辐射度Radiosity)</h2><p>辐射出射度(M)也称之为辐射度(B),为<strong>每单位面积</strong>上的<strong>出射</strong>辐射通量,单位为$W/m^2$</p>
+<p>$$M=B=\frac{d\Phi}{dA}$$</p>
+<h2 id="辐射率"><a href="#辐射率" class="headerlink" title="辐射率"></a>辐射率</h2><p>辐射率为<strong>每单位投影面积每单位立体角上</strong>的辐射通量</p>
+<p>$$L = \frac{d^2\Phi}{d\omega dA^{\perp}}=\frac{d^2\Phi}{d\omega dA\cos\theta}$$</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_define.png" alt="radiance define"></p>
+<p>对着半球上一块区域的立体角$\Omega$定义为区域面积除以半球半径的平方,即:</p>
+<p>$$\Omega = \frac{A}{r^2}$$</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/solid_angle_define.png" alt="solid angle define"></p>
+<h2 id="各个量的关系"><a href="#各个量的关系" class="headerlink" title="各个量的关系"></a>各个量的关系</h2><p>$$<br>\begin{align}<br>\Phi \quad &amp;= \quad \int_A\int_{\Omega}L(x\rightarrow \Theta)\cos\theta d\omega_{\Theta}dA_x \notag \\[2ex]<br>E(x) \quad &amp;= \quad \int_\Omega L(x \leftarrow \Theta)\cos\theta d\omega_\Theta    \notag \\[2ex]<br>B(x) \quad &amp;= \quad \int_\Omega L(x \rightarrow \Theta)\cos\theta d\omega_\Theta \notag \\<br>\end{align}<br>$$</p>
+<h2 id="辐射率属性"><a href="#辐射率属性" class="headerlink" title="辐射率属性"></a>辐射率属性</h2><h3 id="沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x"><a href="#沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x" class="headerlink" title="沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$"></a>沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$</h3><p>表示从点x向y发射的辐射率等于由点x到达点y的辐射率(注意一个是发射，一个是到达)</p>
+<p>即假定光是在真空中传播,假设微分通量$d\Phi$离开微分表面$dA_x$到达微分表面$dA_y$,那么:</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_invariance.png" alt="radiance invariance"></p>
+<p>$$<br>\begin{align}<br>L(x \rightarrow y) &amp;= \frac{d^2\Phi}{(\cos\theta_x dA_x)d\omega_{x\leftarrow dA_y}} \notag\\[2ex]<br>d^2\Phi &amp;= L(x \rightarrow y)cos\theta_x d\omega_{x\leftarrow dA_y}dA_x\notag<br>\end{align}<br>$$</p>
+<p>$d\omega_{x\leftarrow dA_y}$表示从x看对着$dA_y$的立体角</p>
+<p>$$<br>\begin{align}<br>L(y\leftarrow x) &amp;= \frac{d^2\Phi}{(\cos\theta_y dA_y)d\omega_{y\leftarrow dA_x}dA_y} \notag\\[2ex]<br>d^2\Phi &amp;= L(y \rightarrow x)cos\theta_y d\omega_{y \leftarrow dA_x}dA_y\notag<br>\end{align}<br>$$</p>
+<p>微分立体角为:</p>
+<p>$$d\omega_{x \leftarrow dA_y} = \frac{cos\theta_y dA_y}{r^2_{xy}}$$</p>
+<p>$$d\omega_{y \leftarrow dA_x} = \frac{cos\theta_x dA_x}{r^2_{xy}}$$</p>
+<p>假设没有外部光源提供能量到达$dA_y$,且位于真空,不存在能量损失.根据能量守恒:</p>
+<p>$$<br>\begin{align}<br>L(x \rightarrow y)cos\theta_x d\omega_{x\leftarrow dA_y}dA_x &amp;= L(y\leftarrow x)cos\theta_y d\omega_{y \leftarrow dA_x}dA_y\notag\\[2ex]<br>L(x \rightarrow y)cos\theta_x \frac{cos\theta_y dA_y}{r^2_{xy}}dA_x &amp;= L(y \leftarrow x)cos\theta_y \frac{cos\theta_x dA_x}{r^2_{xy}}dA_y\notag\\<br>\end{align}<br>$$</p>
+<p>$$\Rightarrow L(x \rightarrow y) = L(y \leftarrow x)$$</p>
+<p><strong>该性质只在两个表面之间没有可以吸收,散射能量的介质时成立</strong></p>
+<h1 id="传输理论"><a href="#传输理论" class="headerlink" title="传输理论"></a>传输理论</h1><p>假设光子的密度为$p(x)$,即在点x处每单位体积的光子数为$p(x)$,则$dV$中的光子数为$p(x)dV$</p>
+<p>那么假设光子穿过截面$dA$,持续时间为$dt$,光子的运动方向与截面法线的夹角为$\theta$,且已知光速为$c$</p>
+<p>则穿过截面的光子总数为$p(x)cdtdA\cos\theta$</p>
+<p> 因此，通过$dA$的总光子数为:</p>
+<p> $$N = p(x,\omega,\lambda)cdtdA\cos\theta d\omega d\lambda$$</p>
+<p>$d\omega$为微分方向,$\lambda$为波长</p>
+<p>通量为单位时间的光子能量总数，因此：</p>
+<p>$$\Phi \propto p(x,\omega,\lambda)dA\cos\theta d\omega d\lambda$$</p>
+<p>$$\frac{\Phi}{dA\cos\theta d\omega} \propto p(x,\omega,\lambda)d\lambda$$</p>
+<p>光子的能量为:$E=\frac{hc}{\lambda}$</p>
+<p>辐射率被定义为每单位体积的辐射能:</p>
+<p>$$L(x,\omega)=\int p(x,\omega,\lambda)h\frac{c}{\lambda}d\lambda$$</p>
+<p>因此,可见辐射率不仅依赖位置,方向,还依赖波长,当显式指定了波长时,辐射率称之为光谱辐射</p>
+<p>辐射率是将光谱辐射对所有的可见光波长积分：</p>
+<p>$$L(x\rightarrow \Theta) = \int_{spectrum}L(x\rightarrow \Theta,\lambda)d\lambda$$</p>
+<p>全局光照中对于波长的依赖往往都是隐式假定，不会显式指出.</p>
+<h1 id="发射光"><a href="#发射光" class="headerlink" title="发射光"></a>发射光</h1><p>全局光照的计算需要为每种光源指出以下三种分布:</p>
+<ul>
+<li>空间分布:理想化的空间分布为点光源,更普遍的是区域光源</li>
+<li>方向分布:由灯具的形状决定</li>
+<li>频谱分布:虽然光的频谱分布可以精确模拟,但出于效率考虑普遍使用RGB</li>
+</ul>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#光模型"><span class="toc-number">1.</span> <span class="toc-text">光模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#辐射度"><span class="toc-number">2.</span> <span class="toc-text">辐射度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通量-Flux"><span class="toc-number">2.1.</span> <span class="toc-text">通量(Flux)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐照度-Irradiance"><span class="toc-number">2.2.</span> <span class="toc-text">辐照度(Irradiance)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射出射度-辐射度Radiosity"><span class="toc-number">2.3.</span> <span class="toc-text">辐射出射度(辐射度Radiosity)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率"><span class="toc-number">2.4.</span> <span class="toc-text">辐射率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各个量的关系"><span class="toc-number">2.5.</span> <span class="toc-text">各个量的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率属性"><span class="toc-number">2.6.</span> <span class="toc-text">辐射率属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x"><span class="toc-number">2.6.1.</span> <span class="toc-text">沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输理论"><span class="toc-number">3.</span> <span class="toc-text">传输理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发射光"><span class="toc-number">4.</span> <span class="toc-text">发射光</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Color-And-Radiometry/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          Color and Radiometry
+        
+      </div>
+    </a>
+  
+  
+    <a href="/D3D-Event-Query/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">D3D Event Query&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/Radiometry/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
