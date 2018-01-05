@@ -5,19 +5,19 @@
   
   <title>reflect and refraction - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="反射定律反射定律:$\theta_i = \theta_o$">
+  <meta name="description" content="反射方向反射定律:$\theta_i = \theta_o$">
 <meta name="keywords" content="Rendering,Math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="reflect and refraction">
 <meta property="og:url" content="http://lonelywaiting.github.io/reflect-refraction/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="反射定律反射定律:$\theta_i = \theta_o$">
+<meta property="og:description" content="反射方向反射定律:$\theta_i = \theta_o$">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/refraction.jpg">
-<meta property="og:updated_time" content="2017-12-18T17:31:35.692Z">
+<meta property="og:updated_time" content="2018-01-05T15:33:15.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="reflect and refraction">
-<meta name="twitter:description" content="反射定律反射定律:$\theta_i = \theta_o$">
+<meta name="twitter:description" content="反射方向反射定律:$\theta_i = \theta_o$">
 <meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg">
   
   
@@ -74,16 +74,16 @@
     
     <div class="article-meta">
       <a href="/reflect-refraction/" class="article-date">
-  <time datetime="2017-11-21T16:00:00.000Z" itemprop="datePublished">2017-11-22</time>
+  <time datetime="2016-04-23T19:32:54.409Z" itemprop="datePublished">2016-04-24</time>
 </a>
       
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="反射定律"><a href="#反射定律" class="headerlink" title="反射定律"></a>反射定律</h1><p>反射定律:$\theta_i = \theta_o$<a id="more"></a></p>
+        <h1 id="反射方向"><a href="#反射方向" class="headerlink" title="反射方向"></a>反射方向</h1><p>反射定律:$\theta_i = \theta_o$<a id="more"></a></p>
 <p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/reflect.jpg" alt="$\theta_i$为入射角,$\theta_o$为出射角"></p>
-<h1 id="折射定律"><a href="#折射定律" class="headerlink" title="折射定律"></a>折射定律</h1><p><a href="https://zh.wikipedia.org/wiki/%E6%96%AF%E6%B6%85%E5%B0%94%E5%AE%9A%E5%BE%8B" target="_blank" rel="noopener">折射定律</a>:$\quad$ $\eta_i \sin\theta_i = \eta_t sin\theta_t$</p>
+<h1 id="折射方向"><a href="#折射方向" class="headerlink" title="折射方向"></a>折射方向</h1><p><a href="https://zh.wikipedia.org/wiki/%E6%96%AF%E6%B6%85%E5%B0%94%E5%AE%9A%E5%BE%8B" target="_blank" rel="noopener">折射定律</a>:$\quad$ $\eta_i \sin\theta_i = \eta_t sin\theta_t$</p>
 <p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/reflect_refraction/refraction.jpg" alt="refraction"></p>
 <ul>
 <li>$\eta_i$: 入射介质折射率</li>
@@ -92,22 +92,21 @@
 <li>$\theta_o$: 折射角</li>
 </ul>
 <p><a href="www.lonelywaiting.com/compute_refract_direction/">折射方向计算</a></p>
-<p>折射率是随着光的波长变换的</p>
-<p>因此，在两种不同媒介的交界面入射的自然光将会沿着多个方向散射，即色散</p>
-<p>但是其计算复杂，不予考虑</p>
+<p>折射率与波长相关，因此,在两种不同媒介的交界面入射的自然光将会沿着多个方向散射,即色散</p>
 <h1 id="菲涅尔方程"><a href="#菲涅尔方程" class="headerlink" title="菲涅尔方程"></a>菲涅尔方程</h1><p>当光经过两种不同折射率的界面时,在两者的交界处可能会同时发生光的反射与折射</p>
 <p><a href="https://zh.wikipedia.org/wiki/%E8%8F%B2%E6%B6%85%E8%80%B3%E6%96%B9%E7%A8%8B" target="_blank" rel="noopener">菲涅尔方程</a>描述了不同光波分量被折射和反射的情况</p>
 <p>入射光的功率被界面反射的比例，称之为<strong>反射比</strong>$R$;折射的比例称之为<strong>透射比</strong>$T$</p>
 <p>反射比和透射比的具体形式与入射光的偏振有关</p>
 <p>垂直偏振光反射比:<br>$$R_\bot = (\frac{\eta_icos\theta_i - \eta_tcos\theta_t}{\eta_icos\theta_i + \eta_t\cos\theta_t})^2$$</p>
-<p>平行偏振光反射比:<br>$$R_| = (\frac{\eta_t \cos\theta_i - \eta_i\cos\theta_t}{\eta_t\cos\theta_i + \eta_i\cos\theta_t})^2$$</p>
-<p>无论哪种情况透射比都满足:$T = 1 -R$</p>
+<p>平行偏振光反射比:<br>$$R_\parallel  = (\frac{\eta_t \cos\theta_i - \eta_i\cos\theta_t}{\eta_t\cos\theta_i + \eta_i\cos\theta_t})^2$$</p>
+<p>根据能量守恒,透射比都满足:$T = 1 -R$</p>
 <p>图形学中通常考虑光是无偏振的，也就是偏振是等量的:$R = \frac{R_{|}+R_{\bot}}{2}$</p>
 <p>反射和折射光的振幅与入射光的振幅比值通常称之为反射率($r$)和透射率($t$)</p>
 <p>$$R = r^2 \quad T = (\frac{\eta_t\cos\theta_t}{\eta_1\cos\theta_i})t^2$$</p>
-<p>常用的导体的菲涅尔方程如下:</p>
+<p>导体不能透射光,但会部分入射光会被吸收转换为热能,常用的导体的菲涅尔方程如下:</p>
 <p>$$r_|^2 = \frac{(\eta^2 + k^2)cos\theta_i^2 - 2\eta\cos\theta_i + 1}{(\eta^2 + k^2)cos\theta_i^2 + 2\eta\cos\theta_i + 1}$$</p>
 <p>$$r_\bot^2 = \frac{(\eta^2 + k^2) - 2\eta\cos\theta_i + \cos\theta_i^2}{(\eta^2 + k^2) + 2\eta\cos\theta_i + \cos\theta_i^2}$$</p>
+<p>因为导体不能透射光,因此方程中并无透射角与透射面的折射率</p>
 <h3 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h3><p>接下来讲讲镜面反射和镜面折射的BRDF</p>
 <p>由于菲涅尔方程给出了光被反射的量$F_r(\omega_o)$,因此：</p>
 <p>$$L_o(\omega_r) = \int f_r(p, \omega_i, \omega_r )L_i(\omega_i)cos(\theta)d\omega_i = F_r(\omega_o)L_i(\omega_i) = F_r(\omega_i)L_i(\omega_i)\tag{1}$$</p>
@@ -152,8 +151,8 @@
     </div>
     
       <div class="article-toc">
-        <h3>目录</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#反射定律"><span class="toc-number">1.</span> <span class="toc-text">反射定律</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#折射定律"><span class="toc-number">2.</span> <span class="toc-text">折射定律</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#菲涅尔方程"><span class="toc-number">3.</span> <span class="toc-text">菲涅尔方程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BRDF"><span class="toc-number">3.0.1.</span> <span class="toc-text">BRDF</span></a></li></ol></li></ol></li></ol>
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#反射方向"><span class="toc-number">1.</span> <span class="toc-text">反射方向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#折射方向"><span class="toc-number">2.</span> <span class="toc-text">折射方向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#菲涅尔方程"><span class="toc-number">3.</span> <span class="toc-text">菲涅尔方程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BRDF"><span class="toc-number">3.0.1.</span> <span class="toc-text">BRDF</span></a></li></ol></li></ol></li></ol>
       </div>
     
     
@@ -168,17 +167,17 @@
     
 <nav id="article-nav">
   
-    <a href="/why-normal-transform-use-inverse-transpose-matrix/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/VPS-SSH-Git-Config/" id="article-nav-newer" class="article-nav-link-wrap">
       <div class="article-nav-title"><span>&lt;</span>&nbsp;
         
-          why normal transform use inverse-transpose matrix
+          VPS SSH Git Config
         
       </div>
     </a>
   
   
-    <a href="/github-page-custom-domain-name/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">github page custom domain name&nbsp;<span>&gt;</span></div>
+    <a href="/open-with-sublime/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Open With Sublime&nbsp;<span>&gt;</span></div>
     </a>
   
 </nav>
