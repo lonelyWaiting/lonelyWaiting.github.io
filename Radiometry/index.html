@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_define.png">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/solid_angle_define.png">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_invariance.png">
-<meta property="og:updated_time" content="2018-01-04T13:28:18.645Z">
+<meta property="og:updated_time" content="2018-01-05T15:14:34.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Radiometry">
 <meta name="twitter:description" content="光模型图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长">
@@ -83,7 +83,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="光模型"><a href="#光模型" class="headerlink" title="光模型"></a>光模型</h1><p>图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长<br><a id="more"></a><br>在几何光学下,衍射,干涉以及极化现象是不会发生的.</p>
+        <h1 id="光模型"><a href="#光模型" class="headerlink" title="光模型"></a>光模型</h1><p>图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长<br><a id="more"></a><br>几何光学中,衍射,干涉以及极化现象是不会发生的.</p>
 <p>几何光学假定光是发射,反射以及透射,并对于光的行为做出如下假设:</p>
 <ul>
 <li>直线传播</li>
@@ -118,9 +118,10 @@
 <p>$$<br>\begin{align}<br>L(x \rightarrow y)cos\theta_x d\omega_{x\leftarrow dA_y}dA_x &amp;= L(y\leftarrow x)cos\theta_y d\omega_{y \leftarrow dA_x}dA_y\notag\\[2ex]<br>L(x \rightarrow y)cos\theta_x \frac{cos\theta_y dA_y}{r^2_{xy}}dA_x &amp;= L(y \leftarrow x)cos\theta_y \frac{cos\theta_x dA_x}{r^2_{xy}}dA_y\notag\\<br>\end{align}<br>$$</p>
 <p>$$\Rightarrow L(x \rightarrow y) = L(y \leftarrow x)$$</p>
 <p><strong>该性质只在两个表面之间没有可以吸收,散射能量的介质时成立</strong></p>
+<h3 id="传感器-例如相机-人眼-对辐射敏感"><a href="#传感器-例如相机-人眼-对辐射敏感" class="headerlink" title="传感器,例如相机,人眼,对辐射敏感"></a>传感器,例如相机,人眼,对辐射敏感</h3><p>入射到传感器上的辐射与传感器的响应成正比,比例常熟取决于传感器的几何形状</p>
+<p><strong>这两个属性解释了为何感知的物体颜色与亮度不会随着距离发生变化</strong></p>
 <h1 id="传输理论"><a href="#传输理论" class="headerlink" title="传输理论"></a>传输理论</h1><p>假设光子的密度为$p(x)$,即在点x处每单位体积的光子数为$p(x)$,则$dV$中的光子数为$p(x)dV$</p>
 <p>那么假设光子穿过截面$dA$,持续时间为$dt$,光子的运动方向与截面法线的夹角为$\theta$,且已知光速为$c$</p>
-<p>则穿过截面的光子总数为$p(x)cdtdA\cos\theta$</p>
 <p> 因此，通过$dA$的总光子数为:</p>
 <p> $$N = p(x,\omega,\lambda)cdtdA\cos\theta d\omega d\lambda$$</p>
 <p>$d\omega$为微分方向,$\lambda$为波长</p>
@@ -145,8 +146,8 @@
     </div>
     
       <div class="article-toc">
-        <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#光模型"><span class="toc-number">1.</span> <span class="toc-text">光模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#辐射度"><span class="toc-number">2.</span> <span class="toc-text">辐射度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通量-Flux"><span class="toc-number">2.1.</span> <span class="toc-text">通量(Flux)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐照度-Irradiance"><span class="toc-number">2.2.</span> <span class="toc-text">辐照度(Irradiance)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射出射度-辐射度Radiosity"><span class="toc-number">2.3.</span> <span class="toc-text">辐射出射度(辐射度Radiosity)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率"><span class="toc-number">2.4.</span> <span class="toc-text">辐射率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各个量的关系"><span class="toc-number">2.5.</span> <span class="toc-text">各个量的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率属性"><span class="toc-number">2.6.</span> <span class="toc-text">辐射率属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x"><span class="toc-number">2.6.1.</span> <span class="toc-text">沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输理论"><span class="toc-number">3.</span> <span class="toc-text">传输理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发射光"><span class="toc-number">4.</span> <span class="toc-text">发射光</span></a></li></ol>
+        <h3>目录</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#光模型"><span class="toc-number">1.</span> <span class="toc-text">光模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#辐射度"><span class="toc-number">2.</span> <span class="toc-text">辐射度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通量-Flux"><span class="toc-number">2.1.</span> <span class="toc-text">通量(Flux)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐照度-Irradiance"><span class="toc-number">2.2.</span> <span class="toc-text">辐照度(Irradiance)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射出射度-辐射度Radiosity"><span class="toc-number">2.3.</span> <span class="toc-text">辐射出射度(辐射度Radiosity)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率"><span class="toc-number">2.4.</span> <span class="toc-text">辐射率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各个量的关系"><span class="toc-number">2.5.</span> <span class="toc-text">各个量的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率属性"><span class="toc-number">2.6.</span> <span class="toc-text">辐射率属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x"><span class="toc-number">2.6.1.</span> <span class="toc-text">沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传感器-例如相机-人眼-对辐射敏感"><span class="toc-number">2.6.2.</span> <span class="toc-text">传感器,例如相机,人眼,对辐射敏感</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输理论"><span class="toc-number">3.</span> <span class="toc-text">传输理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发射光"><span class="toc-number">4.</span> <span class="toc-text">发射光</span></a></li></ol>
       </div>
     
     
