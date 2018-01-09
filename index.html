@@ -54,6 +54,103 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-shading-model" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/shading-model/">shading model</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/shading-model/" class="article-date">
+  <time datetime="2018-01-09T16:22:00.495Z" itemprop="datePublished">2018-01-10</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Lambert-Model"><a href="#Lambert-Model" class="headerlink" title="Lambert Model"></a>Lambert Model</h3><p>$$I_o = D * I_i\cos(\theta)$$</p>
+<p>$$D  = \frac{\rho_d}{\pi}$$</p>
+<p>$\rho_d$表示表面的反射率：用于描述入射光能量在表面被反射的比例。范围在[0 , 1]</p>
+<p>$\theta$为入射光线$L$与法线$n$的夹角</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/DiffuseModel.png" alt="Lambert"></p>
+<p>Lambert Model是漫反射模型，在任何出射方向的光能都是一样</p>
+<p>因此</p>
+<p>$$I_o = \frac{\rho_d}{\pi}I_i\cos(\theta)$$</p>
+<p>那么我们对所有的出射光进行积分：</p>
+<p>$$I_{total-ouput} = \int_\Omega \frac{\rho_d}{\pi}I_i\cos(\theta)d\omega$$</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/solid_angle.png" alt="solid angle"></p>
+<p>$$d\omega = \sin(\theta)d\theta d\varphi$$</p>
+<p>$$I_{total-ouput} = \int_0^{2\pi}d\varphi\int_0^{\frac{\pi}{2}}I_i\frac{\rho_d}{\pi}\cos(\theta)\sin(\theta)d\theta$$</p>
+<p>$$I_{total-ouput} = 2\pi\frac{\rho_d}{\pi}I_i\int_0^{\frac{\pi}{2}}\frac{\sin(2\theta)}{2}d\theta$$</p>
+<p>$$I_{total-ouput} = \rho_dI_i*(-\frac{\cos(2\theta)}{2})\mid_0^{\frac{\pi}{2}}$$</p>
+<p>$$I_{total-ouput} = \rho_dI_i$$</p>
+<p>与$\rho_d$的定义一致</p>
+<h3 id="Phong-Model"><a href="#Phong-Model" class="headerlink" title="Phong Model"></a>Phong Model</h3><p>该模型是个经验模型<br><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/Phong.png" alt="phong"></p>
+<p>$$I_o = k_a I_a + \sum_{m\in lights}(k_d(\overrightarrow{L_m}\cdot \overrightarrow{N})I_{m , d}) + \sum_{m\in lights}(k_s(\overrightarrow{R_m} \cdot \overrightarrow{V})^{\alpha}I_{m , s})$$</p>
+<ul>
+<li>$k_a$：环境光反射率</li>
+<li>$k_d$：漫反射光反射率</li>
+<li>$k_s$：镜面光反射率</li>
+<li>$\alpha$：光泽度，该值越大，表面越光滑，高亮区域越小</li>
+<li>$I_a$：环境光</li>
+<li>$I_d$：光源的漫反射分量</li>
+<li>$I_s$：光源的镜面分量</li>
+<li>$\overrightarrow{R}$：反射光方向</li>
+<li>$\overrightarrow{N}$：法线方向</li>
+<li>$\overrightarrow{L}$：光线入射的反方向，通常都是使用入射的反方向</li>
+<li>$\overrightarrow{V}$：指向viewer的方向</li>
+</ul>
+<p>该模型由三个分量组成：环境光，漫反射光，镜面光。</p>
+<p>环境光部分：</p>
+<p>$$I_{o , a} = k_a I_a$$</p>
+<p>漫反射部分：</p>
+<p>$$I_{o , d} = \sum_{m\in lights}(k_d(\overrightarrow{L_m}\cdot \overrightarrow{N})I_{m , d})$$</p>
+<p>镜面光部分：</p>
+<p>$$I_{o , s} = \sum_{m\in lights}(k_s(\overrightarrow{R_m}\cdot \overrightarrow{V})^{\alpha}I_{m , s})$$</p>
+<h3 id="Blinn-Phong-Model"><a href="#Blinn-Phong-Model" class="headerlink" title="Blinn-Phong Model"></a>Blinn-Phong Model</h3><p>该模型在Phong Model的基础上改进了计算方法</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/Blinn-Phong.png" alt="blinn phong"></p>
+<p>$$H = \frac{\overrightarrow{L} + \overrightarrow{V}}{\lVert \overrightarrow{L} + \overrightarrow{V} \rVert}$$</p>
+<p>使用$\overrightarrow{N}\cdot \overrightarrow{H_m}$代替$\overrightarrow{R_m}\cdot \overrightarrow{V}$</p>
+<p>因为$\overrightarrow{N}\cdot \overrightarrow{H_m}$可以在一开始就计算好，因此可以加快计算。</p>
+<p>$$I_o = k_aI_a + \sum_{m \in lights}(k_d(\overrightarrow{L_m} \cdot \overrightarrow{N})I_{m , d}) + \sum_{m \in lights}(k_s(\overrightarrow{N}\cdot \overrightarrow{H_m})^{\alpha}I_{m , s})$$</p>
+<p>环境光分量：</p>
+<p>$$I_{o , a} = k_a I_a$$</p>
+<p>漫反射分量：</p>
+<p>$$I_{o , d} = \sum_{m \in lights}(k_d(\overrightarrow{L_m} \cdot \overrightarrow{N})I_{m , d})$$</p>
+<p>镜面光分量：</p>
+<p>$$I_{o , s} = \sum_{m \in lights}(k_s(\overrightarrow{N}\cdot \overrightarrow{H_m})^{\alpha}I_{m , s})$$</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-motion-blur" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -86,6 +183,12 @@
       
     </div>
     
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
+
+      </footer>
     
   </div>
   
@@ -482,57 +585,6 @@
         
           <p class="article-more-link">
             <a href="/skeleton-customize-SRT-is-not-good-method/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-character-wrinkle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/character-wrinkle/">character wrinkle</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/character-wrinkle/" class="article-date">
-  <time datetime="2017-11-19T16:10:56.000Z" itemprop="datePublished">2017-11-20</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>将表情与区域掩码相关联,使用表情权重作为正常法线与皱纹法线的过渡权重<br>通过颜色值来区分皱纹区域<br></p>
-        
-          <p class="article-more-link">
-            <a href="/character-wrinkle/#more">Read More</a>
           </p>
         
       

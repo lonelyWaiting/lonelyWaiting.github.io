@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>shading model - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$ $\rho_d$表示表面的反射率：用于描述入射光能量在表面被反射的比例。范围在[0 , 1] $\theta$为入射光线$L$与法线$n$的夹角  Lambert Model是漫">
+<meta name="keywords" content="Rendering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shading model">
+<meta property="og:url" content="http://lonelywaiting.github.io/shading-model/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$ $\rho_d$表示表面的反射率：用于描述入射光能量在表面被反射的比例。范围在[0 , 1] $\theta$为入射光线$L$与法线$n$的夹角  Lambert Model是漫反射模型，在任何出射方向的光能都是一样 因此 $$I_o = \frac{\rh">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/DiffuseModel.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/solid_angle.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/Phong.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/Blinn-Phong.png">
+<meta property="og:updated_time" content="2018-01-09T16:27:16.270Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shading model">
+<meta name="twitter:description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$ $\rho_d$表示表面的反射率：用于描述入射光能量在表面被反射的比例。范围在[0 , 1] $\theta$为入射光线$L$与法线$n$的夹角  Lambert Model是漫反射模型，在任何出射方向的光能都是一样 因此 $$I_o = \frac{\rh">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/DiffuseModel.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-shading-model" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shading model
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/shading-model/" class="article-date">
+  <time datetime="2018-01-09T16:22:00.495Z" itemprop="datePublished">2018-01-10</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Lambert-Model"><a href="#Lambert-Model" class="headerlink" title="Lambert Model"></a>Lambert Model</h3><p>$$I_o = D * I_i\cos(\theta)$$</p>
+<p>$$D  = \frac{\rho_d}{\pi}$$</p>
+<p>$\rho_d$表示表面的反射率：用于描述入射光能量在表面被反射的比例。范围在[0 , 1]</p>
+<p>$\theta$为入射光线$L$与法线$n$的夹角</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/DiffuseModel.png" alt="Lambert"></p>
+<p>Lambert Model是漫反射模型，在任何出射方向的光能都是一样</p>
+<p>因此</p>
+<p>$$I_o = \frac{\rho_d}{\pi}I_i\cos(\theta)$$</p>
+<p>那么我们对所有的出射光进行积分：</p>
+<p>$$I_{total-ouput} = \int_\Omega \frac{\rho_d}{\pi}I_i\cos(\theta)d\omega$$</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/solid_angle.png" alt="solid angle"></p>
+<p>$$d\omega = \sin(\theta)d\theta d\varphi$$</p>
+<p>$$I_{total-ouput} = \int_0^{2\pi}d\varphi\int_0^{\frac{\pi}{2}}I_i\frac{\rho_d}{\pi}\cos(\theta)\sin(\theta)d\theta$$</p>
+<p>$$I_{total-ouput} = 2\pi\frac{\rho_d}{\pi}I_i\int_0^{\frac{\pi}{2}}\frac{\sin(2\theta)}{2}d\theta$$</p>
+<p>$$I_{total-ouput} = \rho_dI_i*(-\frac{\cos(2\theta)}{2})\mid_0^{\frac{\pi}{2}}$$</p>
+<p>$$I_{total-ouput} = \rho_dI_i$$</p>
+<p>与$\rho_d$的定义一致</p>
+<h3 id="Phong-Model"><a href="#Phong-Model" class="headerlink" title="Phong Model"></a>Phong Model</h3><p>该模型是个经验模型<br><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/Phong.png" alt="phong"></p>
+<p>$$I_o = k_a I_a + \sum_{m\in lights}(k_d(\overrightarrow{L_m}\cdot \overrightarrow{N})I_{m , d}) + \sum_{m\in lights}(k_s(\overrightarrow{R_m} \cdot \overrightarrow{V})^{\alpha}I_{m , s})$$</p>
+<ul>
+<li>$k_a$：环境光反射率</li>
+<li>$k_d$：漫反射光反射率</li>
+<li>$k_s$：镜面光反射率</li>
+<li>$\alpha$：光泽度，该值越大，表面越光滑，高亮区域越小</li>
+<li>$I_a$：环境光</li>
+<li>$I_d$：光源的漫反射分量</li>
+<li>$I_s$：光源的镜面分量</li>
+<li>$\overrightarrow{R}$：反射光方向</li>
+<li>$\overrightarrow{N}$：法线方向</li>
+<li>$\overrightarrow{L}$：光线入射的反方向，通常都是使用入射的反方向</li>
+<li>$\overrightarrow{V}$：指向viewer的方向</li>
+</ul>
+<p>该模型由三个分量组成：环境光，漫反射光，镜面光。</p>
+<p>环境光部分：</p>
+<p>$$I_{o , a} = k_a I_a$$</p>
+<p>漫反射部分：</p>
+<p>$$I_{o , d} = \sum_{m\in lights}(k_d(\overrightarrow{L_m}\cdot \overrightarrow{N})I_{m , d})$$</p>
+<p>镜面光部分：</p>
+<p>$$I_{o , s} = \sum_{m\in lights}(k_s(\overrightarrow{R_m}\cdot \overrightarrow{V})^{\alpha}I_{m , s})$$</p>
+<h3 id="Blinn-Phong-Model"><a href="#Blinn-Phong-Model" class="headerlink" title="Blinn-Phong Model"></a>Blinn-Phong Model</h3><p>该模型在Phong Model的基础上改进了计算方法</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/shadingModel/Blinn-Phong.png" alt="blinn phong"></p>
+<p>$$H = \frac{\overrightarrow{L} + \overrightarrow{V}}{\lVert \overrightarrow{L} + \overrightarrow{V} \rVert}$$</p>
+<p>使用$\overrightarrow{N}\cdot \overrightarrow{H_m}$代替$\overrightarrow{R_m}\cdot \overrightarrow{V}$</p>
+<p>因为$\overrightarrow{N}\cdot \overrightarrow{H_m}$可以在一开始就计算好，因此可以加快计算。</p>
+<p>$$I_o = k_aI_a + \sum_{m \in lights}(k_d(\overrightarrow{L_m} \cdot \overrightarrow{N})I_{m , d}) + \sum_{m \in lights}(k_s(\overrightarrow{N}\cdot \overrightarrow{H_m})^{\alpha}I_{m , s})$$</p>
+<p>环境光分量：</p>
+<p>$$I_{o , a} = k_a I_a$$</p>
+<p>漫反射分量：</p>
+<p>$$I_{o , d} = \sum_{m \in lights}(k_d(\overrightarrow{L_m} \cdot \overrightarrow{N})I_{m , d})$$</p>
+<p>镜面光分量：</p>
+<p>$$I_{o , s} = \sum_{m \in lights}(k_s(\overrightarrow{N}\cdot \overrightarrow{H_m})^{\alpha}I_{m , s})$$</p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambert-Model"><span class="toc-number">1.</span> <span class="toc-text">Lambert Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phong-Model"><span class="toc-number">2.</span> <span class="toc-text">Phong Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blinn-Phong-Model"><span class="toc-number">3.</span> <span class="toc-text">Blinn-Phong Model</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/motion-blur/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">motion blur&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/shading-model/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
