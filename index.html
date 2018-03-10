@@ -81,15 +81,12 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h1 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h1><p>安装python库时报错，UnicodeDecodeError</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png" alt="pip install package UnicodeDecodeError"></p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>打开<code>python36\lib\site-packages\pip\compat\__init__.py</code></p>
-<p>修改<code>console_to_str</code>函数,将编码改为<code>gbk</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> s.decode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
-<p>改为:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> s.decode(<span class="string">'gbk'</span>)</span><br></pre></td></tr></table></figure></p>
-<h1 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h1><p>我的路径中含有中文,解码失败后,<code>python</code>默认使用<code>utf-8</code>,然而windows中文应该使用<code>gbk</code></p>
-
+        <h1 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h1><p>安装python库时报错，UnicodeDecodeError<br></p>
+        
+          <p class="article-more-link">
+            <a href="/python-3-UnicodeDecodeError-when-pip-install-package/#more">Read More</a>
+          </p>
+        
       
     </div>
     
