@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>python 3 UnicodeDecodeError when pip install package - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Issue安装python库时报错，UnicodeDecodeError  Solution打开python36\lib\site-packages\pip\compat\__init__.py 修改console_to_str函数,将编码改为gbk 1return s.decode(&apos;utf-8&apos;">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 3 UnicodeDecodeError when pip install package">
+<meta property="og:url" content="http://lonelywaiting.github.io/python-3-UnicodeDecodeError-when-pip-install-package/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="Issue安装python库时报错，UnicodeDecodeError  Solution打开python36\lib\site-packages\pip\compat\__init__.py 修改console_to_str函数,将编码改为gbk 1return s.decode(&apos;utf-8&apos;) 改为:1return s.decode(&apos;gbk&apos;) Reason我的路径中含有中文,解码失败">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png">
+<meta property="og:updated_time" content="2018-03-10T06:38:57.279Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python 3 UnicodeDecodeError when pip install package">
+<meta name="twitter:description" content="Issue安装python库时报错，UnicodeDecodeError  Solution打开python36\lib\site-packages\pip\compat\__init__.py 修改console_to_str函数,将编码改为gbk 1return s.decode(&apos;utf-8&apos;) 改为:1return s.decode(&apos;gbk&apos;) Reason我的路径中含有中文,解码失败">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-python-3-UnicodeDecodeError-when-pip-install-package" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python 3 UnicodeDecodeError when pip install package
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/python-3-UnicodeDecodeError-when-pip-install-package/" class="article-date">
+  <time datetime="2018-03-10T06:29:13.000Z" itemprop="datePublished">2018-03-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h1 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h1><p>安装python库时报错，UnicodeDecodeError</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png" alt="pip install package UnicodeDecodeError"></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>打开<code>python36\lib\site-packages\pip\compat\__init__.py</code></p>
+<p>修改<code>console_to_str</code>函数,将编码改为<code>gbk</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> s.decode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+<p>改为:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> s.decode(<span class="string">'gbk'</span>)</span><br></pre></td></tr></table></figure></p>
+<h1 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h1><p>我的路径中含有中文,解码失败后,<code>python</code>默认使用<code>utf-8</code>,然而windows中文应该使用<code>gbk</code></p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Issue"><span class="toc-number">1.</span> <span class="toc-text">Issue</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reason"><span class="toc-number">3.</span> <span class="toc-text">Reason</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/shading-model/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shading model&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/python-3-UnicodeDecodeError-when-pip-install-package/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

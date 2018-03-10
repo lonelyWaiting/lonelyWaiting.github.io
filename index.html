@@ -54,6 +54,64 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-python-3-UnicodeDecodeError-when-pip-install-package" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/python-3-UnicodeDecodeError-when-pip-install-package/">python 3 UnicodeDecodeError when pip install package</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/python-3-UnicodeDecodeError-when-pip-install-package/" class="article-date">
+  <time datetime="2018-03-10T06:29:13.000Z" itemprop="datePublished">2018-03-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h1 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h1><p>安装python库时报错，UnicodeDecodeError</p>
+<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png" alt="pip install package UnicodeDecodeError"></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>打开<code>python36\lib\site-packages\pip\compat\__init__.py</code></p>
+<p>修改<code>console_to_str</code>函数,将编码改为<code>gbk</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> s.decode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+<p>改为:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> s.decode(<span class="string">'gbk'</span>)</span><br></pre></td></tr></table></figure></p>
+<h1 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h1><p>我的路径中含有中文,解码失败后,<code>python</code>默认使用<code>utf-8</code>,然而windows中文应该使用<code>gbk</code></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-shading-model" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -500,57 +558,6 @@
       
     </div>
     
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-skeleton-customize-SRT-is-not-good-method" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/skeleton-customize-SRT-is-not-good-method/">SRT represent&#39;s disadvantage</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/skeleton-customize-SRT-is-not-good-method/" class="article-date">
-  <time datetime="2017-11-19T16:15:48.000Z" itemprop="datePublished">2017-11-20</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>$SRT$是指使用缩放,旋转,平移来表示变换矩阵</p>
-        
-          <p class="article-more-link">
-            <a href="/skeleton-customize-SRT-is-not-good-method/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
     
   </div>
   
