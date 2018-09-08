@@ -5,17 +5,17 @@
   
   <title>directx 11 create device and swap chain - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain.aspx)第一个参数如果传NULL,则以默认Adapter创建如果参数不为NULL,DriverType必须为D3D_DRIVER_TYPE_UNKNOWN">
+  <meta name="description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain第一个参数如果传NULL,则以默认Adapter创建如果参数不为NULL,DriverType必须为D3D_DRIVER_TYPE_UNKNOWN">
 <meta name="keywords" content="directx11">
 <meta property="og:type" content="article">
 <meta property="og:title" content="directx 11 create device and swap chain">
 <meta property="og:url" content="http://lonelywaiting.github.io/directx-11-create-device-and-swap-chain/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain.aspx)第一个参数如果传NULL,则以默认Adapter创建如果参数不为NULL,DriverType必须为D3D_DRIVER_TYPE_UNKNOWN">
-<meta property="og:updated_time" content="2018-04-18T14:02:48.842Z">
+<meta property="og:description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain第一个参数如果传NULL,则以默认Adapter创建如果参数不为NULL,DriverType必须为D3D_DRIVER_TYPE_UNKNOWN">
+<meta property="og:updated_time" content="2018-09-08T13:57:57.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="directx 11 create device and swap chain">
-<meta name="twitter:description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain.aspx)第一个参数如果传NULL,则以默认Adapter创建如果参数不为NULL,DriverType必须为D3D_DRIVER_TYPE_UNKNOWN">
+<meta name="twitter:description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain第一个参数如果传NULL,则以默认Adapter创建如果参数不为NULL,DriverType必须为D3D_DRIVER_TYPE_UNKNOWN">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -82,7 +82,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Create-Device-with-adapter"><a href="#Create-Device-with-adapter" class="headerlink" title="Create Device with adapter"></a>Create Device with adapter</h1><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ff476083(v=vs.85\" target="_blank" rel="noopener">D3D11CreateDeviceAndSwapChain</a>.aspx)<br>第一个参数如果传NULL,则以默认Adapter创建<br>如果参数不为NULL,<code>DriverType</code>必须为<code>D3D_DRIVER_TYPE_UNKNOWN</code><br><a id="more"></a></p>
+        <h1 id="Create-Device-with-adapter"><a href="#Create-Device-with-adapter" class="headerlink" title="Create Device with adapter"></a>Create Device with adapter</h1><p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/api/d3d11/nf-d3d11-d3d11createdeviceandswapchain" target="_blank" rel="noopener">D3D11CreateDeviceAndSwapChain</a><br>第一个参数如果传NULL,则以默认Adapter创建<br>如果参数不为NULL,<code>DriverType</code>必须为<code>D3D_DRIVER_TYPE_UNKNOWN</code><br><a id="more"></a></p>
 <h1 id="DXGI-SWAP-CHAIN-DESC-SwapEffect"><a href="#DXGI-SWAP-CHAIN-DESC-SwapEffect" class="headerlink" title="DXGI_SWAP_CHAIN_DESC SwapEffect"></a>DXGI_SWAP_CHAIN_DESC SwapEffect</h1><p>DXGI支持两种模式:</p>
 <ul>
 <li>BitBlt: DXGI_SWAP_EFFECT_DISCARD,DXGI_SWAP_EFFECT_SEQUENTIAL</li>
@@ -92,9 +92,9 @@
 <p>DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL:从Win8开始支持<br>DXGI_SWAP_EFFECT_FLIP_DISCARD:从Win10开始支持</p>
 <p>Flip比BitBlt效率更高,但是对于需要GDI与DirectX混合显示的程序来说，BitBlt是唯一的选择</p>
 <p>当SwapChain使用DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL创建,一次成功的Present将会把BackBuffer0从管线解绑,因此需要重新绑定RenderTarget</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/hh446797(v=vs.85" target="_blank" rel="noopener">For flip presentation model swap chains that you create with the DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL value set, a successful presentation results in an unbind of back buffer 0 from the graphics pipeline</a>.aspx)</p>
-<p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/hh706346(v=vs.85" target="_blank" rel="noopener">DXGI Flip Mode</a>.aspx)</p>
-<p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ff476083(v=vs.85" target="_blank" rel="noopener">If you set the pAdapter parameter to a non-NULL value, you must also set the DriverType parameter to the D3D_DRIVER_TYPE_UNKNOWN value</a>.aspx)</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-present1" target="_blank" rel="noopener">For flip presentation model swap chains that you create with the DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL value set, a successful presentation results in an unbind of back buffer 0 from the graphics pipeline</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/direct3ddxgi/dxgi-flip-model" target="_blank" rel="noopener">DXGI Flip Mode</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/api/d3d11/nf-d3d11-d3d11createdeviceandswapchain" target="_blank" rel="noopener">If you set the pAdapter parameter to a non-NULL value, you must also set the DriverType parameter to the D3D_DRIVER_TYPE_UNKNOWN value</a></p>
 
       
     </div>
