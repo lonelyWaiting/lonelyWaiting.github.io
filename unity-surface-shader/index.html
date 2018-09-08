@@ -3,17 +3,21 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>lonelyWaiting</title>
+  <title>unity surface shader - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Runtime and Offline Render">
-<meta property="og:type" content="website">
-<meta property="og:title" content="lonelyWaiting">
-<meta property="og:url" content="http://lonelywaiting.github.io/index.html">
+  <meta name="description" content="Flow Code Structure1234567891011121314151617181920212223242526272829Shader &quot;xxx&quot;&amp;#123;    Properties    &amp;#123;        ...    &amp;#125;    Sub">
+<meta name="keywords" content="unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unity surface shader">
+<meta property="og:url" content="http://lonelywaiting.github.io/unity-surface-shader/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Runtime and Offline Render">
+<meta property="og:description" content="Flow Code Structure1234567891011121314151617181920212223242526272829Shader &quot;xxx&quot;&amp;#123;    Properties    &amp;#123;        ...    &amp;#125;    SubShader    &amp;#123;        Tags &amp;#123;...&amp;#125;        LOD ...">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity_surface_shader/unity_surface_shader.png">
+<meta property="og:updated_time" content="2018-09-08T17:47:14.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lonelyWaiting">
-<meta name="twitter:description" content="Runtime and Offline Render">
+<meta name="twitter:title" content="unity surface shader">
+<meta name="twitter:description" content="Flow Code Structure1234567891011121314151617181920212223242526272829Shader &quot;xxx&quot;&amp;#123;    Properties    &amp;#123;        ...    &amp;#125;    SubShader    &amp;#123;        Tags &amp;#123;...&amp;#125;        LOD ...">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity_surface_shader/unity_surface_shader.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -53,16 +57,15 @@
     </div>
   </div>
 </header>
-    <section id="main" class="outer">
-      <article id="post-unity-surface-shader" class="article article-type-post" itemscope itemprop="blogPost">
+    <section id="main" class="outer"><article id="post-unity-surface-shader" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/unity-surface-shader/">unity surface shader</a>
+    <h1 class="article-title" itemprop="name">
+      unity surface shader
     </h1>
   
 
@@ -102,60 +105,10 @@
       
     </div>
     
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-unity-WorldSpaceLightDir-in-forwardBase-lightMode" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/">unity _WorldSpaceLightDir in forwardBase lightMode</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/" class="article-date">
-  <time datetime="2018-09-08T14:07:32.000Z" itemprop="datePublished">2018-09-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/unity/">unity</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>将方向光的旋转全部设为0，此时方向光朝向<code>+Z</code>,因此方向光的朝向为<code>(0,0,1)</code></p>
-        
-          <p class="article-more-link">
-            <a href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/#more">Read More</a>
-          </p>
-        
-      
-    </div>
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flow"><span class="toc-number">1.</span> <span class="toc-text">Flow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code-Structure"><span class="toc-number">2.</span> <span class="toc-text">Code Structure</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BlinnPhong-Surface-Analysis"><span class="toc-number">3.</span> <span class="toc-text">BlinnPhong Surface Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LightingBlinnPhong"><span class="toc-number">3.1.</span> <span class="toc-text">LightingBlinnPhong</span></a></li></ol></li></ol>
+      </div>
     
     
       <footer class="article-footer">
@@ -166,60 +119,16 @@
     
   </div>
   
-</article>
-
-
-
-
-
-
-
-
     
-      <article id="post-directx-11-create-device-and-swap-chain" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/directx-11-create-device-and-swap-chain/">directx 11 create device and swap chain</a>
-    </h1>
   
+    <a href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">unity _WorldSpaceLightDir in forwardBase lightMode&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-meta">
-      <a href="/directx-11-create-device-and-swap-chain/" class="article-date">
-  <time datetime="2018-04-18T13:27:10.000Z" itemprop="datePublished">2018-04-18</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/directx11/">directx11</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Create-Device-with-adapter"><a href="#Create-Device-with-adapter" class="headerlink" title="Create Device with adapter"></a>Create Device with adapter</h1><p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/api/d3d11/nf-d3d11-d3d11createdeviceandswapchain" target="_blank" rel="noopener">D3D11CreateDeviceAndSwapChain</a><br>第一个参数如果传NULL,则以默认Adapter创建<br>如果参数不为NULL,<code>DriverType</code>必须为<code>D3D_DRIVER_TYPE_UNKNOWN</code><br></p>
-        
-          <p class="article-more-link">
-            <a href="/directx-11-create-device-and-swap-chain/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/directx11/">directx11</a></li></ul>
-
-      </footer>
-    
-  </div>
   
 </article>
 
@@ -228,384 +137,14 @@
 
 
 
-
-
-    
-      <article id="post-cpp-template-check-if-type-is-class" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/cpp-template-check-if-type-is-class/">c++模板检测类型是否为Class</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/cpp-template-check-if-type-is-class/" class="article-date">
-  <time datetime="2018-03-11T15:02:32.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/c/">c++</a>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
+</section>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>利用成员变量指针的实例化来实现</p>
-        
-          <p class="article-more-link">
-            <a href="/cpp-template-check-if-type-is-class/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
 
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-visual-studio-code-convert-tab-to-space" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/visual-studio-code-convert-tab-to-space/">visual studio code convert tab to space</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/visual-studio-code-convert-tab-to-space/" class="article-date">
-  <time datetime="2018-03-11T10:11:32.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/software/">software</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用空格缩进"><a href="#使用空格缩进" class="headerlink" title="使用空格缩进"></a>使用空格缩进</h1><p>打开VSCode控制面板,选择<code>Indent Using Spaces</code><br></p>
-        
-          <p class="article-more-link">
-            <a href="/visual-studio-code-convert-tab-to-space/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-python-3-UnicodeDecodeError-when-pip-install-package" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/python-3-UnicodeDecodeError-when-pip-install-package/">python 3 UnicodeDecodeError when pip install package</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/python-3-UnicodeDecodeError-when-pip-install-package/" class="article-date">
-  <time datetime="2018-03-10T06:29:13.000Z" itemprop="datePublished">2018-03-10</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h1><p>安装python库时报错，UnicodeDecodeError<br></p>
-        
-          <p class="article-more-link">
-            <a href="/python-3-UnicodeDecodeError-when-pip-install-package/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-shading-model" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/shading-model/">shading model</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/shading-model/" class="article-date">
-  <time datetime="2018-01-09T16:22:00.495Z" itemprop="datePublished">2018-01-10</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Lambert-Model"><a href="#Lambert-Model" class="headerlink" title="Lambert Model"></a>Lambert Model</h3><p>$$I_o = D * I_i\cos(\theta)$$</p>
-<p>$$D  = \frac{\rho_d}{\pi}$$<br></p>
-        
-          <p class="article-more-link">
-            <a href="/shading-model/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-motion-blur" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/motion-blur/">motion blur</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/motion-blur/" class="article-date">
-  <time datetime="2018-01-08T16:06:34.000Z" itemprop="datePublished">2018-01-09</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>motion blur用于表现速度感.一种很常用的后处理技术</p>
-        
-          <p class="article-more-link">
-            <a href="/motion-blur/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-Color-And-Radiometry" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Color-And-Radiometry/">Color and Radiometry</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/Color-And-Radiometry/" class="article-date">
-  <time datetime="2018-01-04T13:29:49.007Z" itemprop="datePublished">2018-01-04</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="可见光"><a href="#可见光" class="headerlink" title="可见光"></a>可见光</h1><p>人眼的可见光波谱范围约为370nm~730nm</p>
-<p>蓝光：400nm,绿光：550nm,红光：650nm<br></p>
-        
-          <p class="article-more-link">
-            <a href="/Color-And-Radiometry/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-Radiometry" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Radiometry/">Radiometry</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/Radiometry/" class="article-date">
-  <time datetime="2018-01-04T12:39:18.585Z" itemprop="datePublished">2018-01-04</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="光模型"><a href="#光模型" class="headerlink" title="光模型"></a>光模型</h1><p>图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长<br></p>
-        
-          <p class="article-more-link">
-            <a href="/Radiometry/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-      </nav>
-    </section>
+</section>
     <footer id="footer">
   
   <div class="outer">
@@ -618,11 +157,13 @@
 <script>
   var disqus_shortname = 'lonelywaiting';
   
+  var disqus_url = 'http://lonelywaiting.github.io/unity-surface-shader/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
@@ -636,23 +177,6 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
