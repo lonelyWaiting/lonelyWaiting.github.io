@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>unity _WorldSpaceLightDir in forwardBase lightMode - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="现象将方向光的旋转全部设为0，此时方向光朝向+Z,因此方向光的朝向为(0,0,1) 代码如下:123456789101112131415161718192021222324252627282930313233343536373839404142Shader &quot;Custom/Test&quot;&amp;#12">
+<meta name="keywords" content="unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unity _WorldSpaceLightDir in forwardBase lightMode">
+<meta property="og:url" content="http://lonelywaiting.github.io/unity-WorldSpaceLightDir-in-forwardBase-lightMode/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="现象将方向光的旋转全部设为0，此时方向光朝向+Z,因此方向光的朝向为(0,0,1) 代码如下:123456789101112131415161718192021222324252627282930313233343536373839404142Shader &quot;Custom/Test&quot;&amp;#123;	Properties	&amp;#123;	&amp;#125;	SubShader	&amp;#123;		Pass		&amp;#">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/scene.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/blue_duck.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/black_duck.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/turnon_forwardbase_shader_disassembly.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/turnoff_forwardbase_shader_disassembly.png">
+<meta property="og:updated_time" content="2018-09-08T14:30:18.867Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="unity _WorldSpaceLightDir in forwardBase lightMode">
+<meta name="twitter:description" content="现象将方向光的旋转全部设为0，此时方向光朝向+Z,因此方向光的朝向为(0,0,1) 代码如下:123456789101112131415161718192021222324252627282930313233343536373839404142Shader &quot;Custom/Test&quot;&amp;#123;	Properties	&amp;#123;	&amp;#125;	SubShader	&amp;#123;		Pass		&amp;#">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/scene.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-unity-WorldSpaceLightDir-in-forwardBase-lightMode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      unity _WorldSpaceLightDir in forwardBase lightMode
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/" class="article-date">
+  <time datetime="2018-09-08T14:07:32.000Z" itemprop="datePublished">2018-09-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/unity/">unity</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>将方向光的旋转全部设为0，此时方向光朝向<code>+Z</code>,因此方向光的朝向为<code>(0,0,1)</code><br><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/scene.png" alt="scene"></p>
+<p>代码如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="string">"Custom/Test"</span></span><br><span class="line">&#123;</span><br><span class="line">	Properties</span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	SubShader</span><br><span class="line">	&#123;</span><br><span class="line">		Pass</span><br><span class="line">		&#123;</span><br><span class="line">			CGPROGRAM</span><br><span class="line">			<span class="meta">#<span class="meta-keyword">pragma</span> vertex vert</span></span><br><span class="line">			<span class="meta">#<span class="meta-keyword">pragma</span> fragment frag</span></span><br><span class="line">			</span><br><span class="line">			<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"UnityCG.cginc"</span></span></span><br><span class="line"></span><br><span class="line">			<span class="class"><span class="keyword">struct</span> <span class="title">appdata</span></span></span><br><span class="line"><span class="class">			&#123;</span></span><br><span class="line">				float4 pos : POSITION;</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line">			<span class="class"><span class="keyword">struct</span> <span class="title">v2f</span></span></span><br><span class="line"><span class="class">			&#123;</span></span><br><span class="line">				float4 pos      : SV_POSITION;</span><br><span class="line">				float3 worldPos    : TEXCOORD1;</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line">			<span class="function">v2f <span class="title">vert</span> <span class="params">(appdata v)</span></span></span><br><span class="line"><span class="function">			</span>&#123;</span><br><span class="line">				v2f o;</span><br><span class="line">				o.pos         = UnityObjectToClipPos(v.pos);</span><br><span class="line">				o.worldPos    = mul(unity_ObjectToWorld, v.pos);</span><br><span class="line">				<span class="keyword">return</span> o;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			fixed4 frag (v2f i) : SV_Target</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span> float4(UnityWorldSpaceLightDir(i.worldPos), <span class="number">1.0f</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			ENDCG</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此时渲染结果为一个蓝色的鸭子<br><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/blue_duck.png" alt="TurnOff LightMode Render Result"></p>
+<p>当加上<code>Tags { &quot;LightMode&quot; = &quot;ForwardBase&quot; }</code>后:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="string">"Custom/Test"</span></span><br><span class="line">&#123;</span><br><span class="line">	Properties</span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	SubShader</span><br><span class="line">	&#123;</span><br><span class="line">		Pass</span><br><span class="line">		&#123;</span><br><span class="line">			Tags &#123; <span class="string">"LightMode"</span> = <span class="string">"ForwardBase"</span> &#125;</span><br><span class="line"></span><br><span class="line">			CGPROGRAM</span><br><span class="line">			#pragma vertex vert</span><br><span class="line">			#pragma fragment frag</span><br><span class="line">			</span><br><span class="line">			#include <span class="string">"UnityCG.cginc"</span></span><br><span class="line"></span><br><span class="line">			struct appdata</span><br><span class="line">			&#123;</span><br><span class="line">				float4 pos : POSITION;</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line">			<span class="class"><span class="keyword">struct</span> <span class="title">v2f</span></span></span><br><span class="line"><span class="class">			&#123;</span></span><br><span class="line">				float4 pos      : SV_POSITION;</span><br><span class="line">				float3 worldPos    : TEXCOORD1;</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line">			<span class="function">v2f <span class="title">vert</span> <span class="params">(appdata v)</span></span></span><br><span class="line"><span class="function">			</span>&#123;</span><br><span class="line">				v2f o;</span><br><span class="line">				o.pos         = UnityObjectToClipPos(v.pos);</span><br><span class="line">				o.worldPos    = mul(unity_ObjectToWorld, v.pos);</span><br><span class="line">				<span class="keyword">return</span> o;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			fixed4 frag (v2f i) : SV_Target</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span> float4(UnityWorldSpaceLightDir(i.worldPos), <span class="number">1.0f</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			ENDCG</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此时渲染结果为一只黑色的鸭子:<br><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/black_duck.png" alt="TurnOn black duck"></p>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>用<code>RenderDoc</code>剖析一下,打开<code>ForwardBase</code>时:<br><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/turnon_forwardbase_shader_disassembly.png" alt="turnon forwardbase shader disassembly"></p>
+<p>关闭<code>ForwardBase</code>后:<br><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/turnoff_forwardbase_shader_disassembly.png" alt="turnoff forwardbase shader disassembly"></p>
+<p>可见在设置<code>LightMode</code>为<code>ForwardBase</code>时,<code>CB</code>中传入的光方向发生了反转<br>经过测试，当<code>LightMode</code>为<code>ForwardAdd</code>时,<code>CB</code>中传入的光方向也被反转了</p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#现象"><span class="toc-number">1.</span> <span class="toc-text">现象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原因"><span class="toc-number">2.</span> <span class="toc-text">原因</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/directx-11-create-device-and-swap-chain/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">directx 11 create device and swap chain&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/unity-WorldSpaceLightDir-in-forwardBase-lightMode/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
