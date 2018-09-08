@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>directx 11 create device and swap chain - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain.aspx)第一个参数如果传NULL,则以默认Adapter创建如果参数不为NULL,DriverType必须为D3D_DRIVER_TYPE_UNKNOWN">
+<meta name="keywords" content="directx11">
+<meta property="og:type" content="article">
+<meta property="og:title" content="directx 11 create device and swap chain">
+<meta property="og:url" content="http://lonelywaiting.github.io/directx-11-create-device-and-swap-chain/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain.aspx)第一个参数如果传NULL,则以默认Adapter创建如果参数不为NULL,DriverType必须为D3D_DRIVER_TYPE_UNKNOWN">
+<meta property="og:updated_time" content="2018-04-18T14:02:48.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="directx 11 create device and swap chain">
+<meta name="twitter:description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain.aspx)第一个参数如果传NULL,则以默认Adapter创建如果参数不为NULL,DriverType必须为D3D_DRIVER_TYPE_UNKNOWN">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-directx-11-create-device-and-swap-chain" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      directx 11 create device and swap chain
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/directx-11-create-device-and-swap-chain/" class="article-date">
+  <time datetime="2018-04-18T13:27:10.000Z" itemprop="datePublished">2018-04-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/directx11/">directx11</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Create-Device-with-adapter"><a href="#Create-Device-with-adapter" class="headerlink" title="Create Device with adapter"></a>Create Device with adapter</h1><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ff476083(v=vs.85\" target="_blank" rel="noopener">D3D11CreateDeviceAndSwapChain</a>.aspx)<br>第一个参数如果传NULL,则以默认Adapter创建<br>如果参数不为NULL,<code>DriverType</code>必须为<code>D3D_DRIVER_TYPE_UNKNOWN</code><br><a id="more"></a></p>
+<h1 id="DXGI-SWAP-CHAIN-DESC-SwapEffect"><a href="#DXGI-SWAP-CHAIN-DESC-SwapEffect" class="headerlink" title="DXGI_SWAP_CHAIN_DESC SwapEffect"></a>DXGI_SWAP_CHAIN_DESC SwapEffect</h1><p>DXGI支持两种模式:</p>
+<ul>
+<li>BitBlt: DXGI_SWAP_EFFECT_DISCARD,DXGI_SWAP_EFFECT_SEQUENTIAL</li>
+<li>Flip: DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL,DXGI_SWAP_EFFECT_FLIP_DISCARD</li>
+</ul>
+<p>Flip不支持MultiSampling</p>
+<p>DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL:从Win8开始支持<br>DXGI_SWAP_EFFECT_FLIP_DISCARD:从Win10开始支持</p>
+<p>Flip比BitBlt效率更高,但是对于需要GDI与DirectX混合显示的程序来说，BitBlt是唯一的选择</p>
+<p>当SwapChain使用DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL创建,一次成功的Present将会把BackBuffer0从管线解绑,因此需要重新绑定RenderTarget</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/hh446797(v=vs.85" target="_blank" rel="noopener">For flip presentation model swap chains that you create with the DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL value set, a successful presentation results in an unbind of back buffer 0 from the graphics pipeline</a>.aspx)</p>
+<p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/hh706346(v=vs.85" target="_blank" rel="noopener">DXGI Flip Mode</a>.aspx)</p>
+<p><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ff476083(v=vs.85" target="_blank" rel="noopener">If you set the pAdapter parameter to a non-NULL value, you must also set the DriverType parameter to the D3D_DRIVER_TYPE_UNKNOWN value</a>.aspx)</p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Create-Device-with-adapter"><span class="toc-number">1.</span> <span class="toc-text">Create Device with adapter</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DXGI-SWAP-CHAIN-DESC-SwapEffect"><span class="toc-number">2.</span> <span class="toc-text">DXGI_SWAP_CHAIN_DESC SwapEffect</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/directx11/">directx11</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/cpp-template-check-if-type-is-class/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">c++模板检测类型是否为Class&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/directx-11-create-device-and-swap-chain/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
