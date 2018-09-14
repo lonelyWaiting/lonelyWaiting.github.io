@@ -54,6 +54,177 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-perspective-correction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/perspective-correction/">perspective correction</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/perspective-correction/" class="article-date">
+  <time datetime="2018-09-14T14:27:05.000Z" itemprop="datePublished">2018-09-14</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/perspective_correction/perspective_correction.png" alt="perspective correction"></p>
+        
+          <p class="article-more-link">
+            <a href="/perspective-correction/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-Disney-BRDF" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Disney-BRDF/">Disney BRDF</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/Disney-BRDF/" class="article-date">
+  <time datetime="2018-09-09T09:51:55.000Z" itemprop="datePublished">2018-09-09</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Disney-BRDF"><a href="#Disney-BRDF" class="headerlink" title="Disney BRDF"></a>Disney BRDF</h1><h2 id="Diffuse"><a href="#Diffuse" class="headerlink" title="Diffuse"></a>Diffuse</h2><p>该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些:<br>$$f_d = \frac{baseColor}{\pi}(1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} - 1)(1 - cos\theta_v)^5)$$</p>
+<p>$$F_{D90} = 0.5 + 2\times roughness \times cos^2\theta_d$$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">float3 <span class="title">diffuse</span><span class="params">(<span class="keyword">float</span> roughness, <span class="keyword">float</span> LdotH, <span class="keyword">float</span> NdotL, <span class="keyword">float</span> NdotV, float3 BaseColor)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> FresnelDiffuse = <span class="number">0.5</span> + <span class="number">2</span> * sqr(LdotH) * roughness;</span><br><span class="line">    <span class="keyword">float</span> fresnelL = <span class="number">1</span> + (fresnelDiffuse - <span class="number">1</span>) * <span class="built_in">pow</span>(<span class="number">1</span> - NdotL, <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">float</span> fresnelV = <span class="number">1</span> + (fresnelDiffuse - <span class="number">1</span>) * <span class="built_in">pow</span>(<span class="number">1</span> - NdotV, <span class="number">5</span>);</span><br><span class="line">    float3 Fd = (BaseColor / PI) * fresnelL * fresnelV;</span><br><span class="line">    <span class="keyword">return</span> Fd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Specular"><a href="#Specular" class="headerlink" title="Specular"></a>Specular</h2><h3 id="法线分布"><a href="#法线分布" class="headerlink" title="法线分布"></a>法线分布</h3><p>$$D_{GTR} = \frac{c}{(\alpha^2\cos^2\theta_h + \sin^2\theta_h)^\gamma}$$</p>
+<ul>
+<li>$\alpha$: 粗糙度</li>
+<li>c: 缩放常量</li>
+<li>$\theta_h$: </li>
+</ul>
+<p><code>GTR</code>是<code>Generalized-Trowbridge-Reitz</code>的缩写,因为该模型是从Trowbridge-Reitz分布启发而来<br>该模型有着更长的拖尾,高光淡出更柔和</p>
+<h3 id="菲涅尔"><a href="#菲涅尔" class="headerlink" title="菲涅尔"></a>菲涅尔</h3><p>使用<code>Schick</code>近似:<br>$$F_{schlick}(F_0,l,h) = F_0 + (1 - F_0)(1-(l\cdot h))^5$$</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-Microfacet-BRDF" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Microfacet-BRDF/">Cook-Torrance Microfacet BRDF</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/Microfacet-BRDF/" class="article-date">
+  <time datetime="2018-09-09T09:15:05.000Z" itemprop="datePublished">2018-09-09</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Cook-Torrance-Microfacet-BRDF"><a href="#Cook-Torrance-Microfacet-BRDF" class="headerlink" title="Cook-Torrance Microfacet BRDF"></a>Cook-Torrance Microfacet BRDF</h1><p>$$f(l,v) = \frac{D(h)F(l,h)G(l,v,h)}{4(n\cdot l)(n\cdot v)}$$</p>
+        
+          <p class="article-more-link">
+            <a href="/Microfacet-BRDF/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-unity-surface-shader" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -412,160 +583,6 @@
         
           <p class="article-more-link">
             <a href="/shading-model/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-motion-blur" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/motion-blur/">motion blur</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/motion-blur/" class="article-date">
-  <time datetime="2018-01-08T16:06:34.000Z" itemprop="datePublished">2018-01-09</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>motion blur用于表现速度感.一种很常用的后处理技术</p>
-        
-          <p class="article-more-link">
-            <a href="/motion-blur/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-Color-And-Radiometry" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Color-And-Radiometry/">Color and Radiometry</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/Color-And-Radiometry/" class="article-date">
-  <time datetime="2018-01-04T13:29:49.007Z" itemprop="datePublished">2018-01-04</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="可见光"><a href="#可见光" class="headerlink" title="可见光"></a>可见光</h1><p>人眼的可见光波谱范围约为370nm~730nm</p>
-<p>蓝光：400nm,绿光：550nm,红光：650nm<br></p>
-        
-          <p class="article-more-link">
-            <a href="/Color-And-Radiometry/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-Radiometry" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Radiometry/">Radiometry</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/Radiometry/" class="article-date">
-  <time datetime="2018-01-04T12:39:18.585Z" itemprop="datePublished">2018-01-04</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="光模型"><a href="#光模型" class="headerlink" title="光模型"></a>光模型</h1><p>图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长<br></p>
-        
-          <p class="article-more-link">
-            <a href="/Radiometry/#more">Read More</a>
           </p>
         
       
