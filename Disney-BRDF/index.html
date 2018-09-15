@@ -5,17 +5,17 @@
   
   <title>Disney BRDF - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Disney BRDFDiffuse该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些:$$f_d = \frac{baseColor}{\pi}(1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} - 1)(1 - c">
+  <meta name="description" content="Disney Diffuse BRDF该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些">
 <meta name="keywords" content="Rendering">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Disney BRDF">
 <meta property="og:url" content="http://lonelywaiting.github.io/Disney-BRDF/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Disney BRDFDiffuse该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些:$$f_d = \frac{baseColor}{\pi}(1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} - 1)(1 - cos\theta_v)^5)$$ $$F_{D90} = 0.5 + 2\tim">
-<meta property="og:updated_time" content="2018-09-15T18:58:13.007Z">
+<meta property="og:description" content="Disney Diffuse BRDF该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些">
+<meta property="og:updated_time" content="2018-09-15T19:20:48.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Disney BRDF">
-<meta name="twitter:description" content="Disney BRDFDiffuse该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些:$$f_d = \frac{baseColor}{\pi}(1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} - 1)(1 - cos\theta_v)^5)$$ $$F_{D90} = 0.5 + 2\tim">
+<meta name="twitter:description" content="Disney Diffuse BRDF该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -82,7 +82,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Disney-BRDF"><a href="#Disney-BRDF" class="headerlink" title="Disney BRDF"></a>Disney BRDF</h1><h2 id="Diffuse"><a href="#Diffuse" class="headerlink" title="Diffuse"></a>Diffuse</h2><p>该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些:<br>$$f_d = \frac{baseColor}{\pi}(1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} - 1)(1 - cos\theta_v)^5)$$</p>
+        <h1 id="Disney-Diffuse-BRDF"><a href="#Disney-Diffuse-BRDF" class="headerlink" title="Disney Diffuse BRDF"></a>Disney Diffuse BRDF</h1><p>该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些<a id="more"></a>:<br>$$f_d = \frac{baseColor}{\pi}(1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} - 1)(1 - cos\theta_v)^5)$$</p>
 <p>$$F_{D90} = 0.5 + 2\times roughness \times cos^2\theta_d$$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">float3 <span class="title">diffuse</span><span class="params">(<span class="keyword">float</span> roughness, <span class="keyword">float</span> LdotH, <span class="keyword">float</span> NdotL, <span class="keyword">float</span> NdotV, float3 BaseColor)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> FresnelDiffuse = <span class="number">0.5</span> + <span class="number">2</span> * sqr(LdotH) * roughness;</span><br><span class="line">    <span class="keyword">float</span> fresnelL = <span class="number">1</span> + (fresnelDiffuse - <span class="number">1</span>) * <span class="built_in">pow</span>(<span class="number">1</span> - NdotL, <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">float</span> fresnelV = <span class="number">1</span> + (fresnelDiffuse - <span class="number">1</span>) * <span class="built_in">pow</span>(<span class="number">1</span> - NdotV, <span class="number">5</span>);</span><br><span class="line">    float3 Fd = (BaseColor / PI) * fresnelL * fresnelV;</span><br><span class="line">    <span class="keyword">return</span> Fd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
@@ -90,7 +90,7 @@
     
       <div class="article-toc">
         <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Disney-BRDF"><span class="toc-number">1.</span> <span class="toc-text">Disney BRDF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Diffuse"><span class="toc-number">1.1.</span> <span class="toc-text">Diffuse</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Disney-Diffuse-BRDF"><span class="toc-number">1.</span> <span class="toc-text">Disney Diffuse BRDF</span></a></li></ol>
       </div>
     
     
