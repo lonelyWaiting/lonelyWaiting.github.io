@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="微面元理论微面元理论认为粗糙表面是由细小的微面组成的,每个微面元都满足完美镜面反射">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Microfacet Theory/spherical_coordinate_system_oriented_wo.png">
-<meta property="og:updated_time" content="2018-09-15T15:42:30.754Z">
+<meta property="og:updated_time" content="2018-09-15T15:47:08.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Microfacet Theory">
 <meta name="twitter:description" content="微面元理论微面元理论认为粗糙表面是由细小的微面组成的,每个微面元都满足完美镜面反射">
@@ -184,13 +184,16 @@
 </tbody>
 </table>
 <p>代码实现:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">SchlickFresnel</span><span class="params">(float4 SpecColor, <span class="keyword">float</span> lightDir, float3 halfVector)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> SpecColor + (<span class="number">1</span> - SpecColor) * <span class="built_in">pow</span>(<span class="number">1</span> - dot(lightDir, halfVector), <span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="http://renderwonk.com/publications/s2010-shading-course/hoffman/s2010_physically_based_shading_hoffman_a.pdf" target="_blank" rel="noopener">Physically-Based Shading Models inFilm and Game Production</a></li>
+</ul>
 
       
     </div>
     
       <div class="article-toc">
         <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微面元理论"><span class="toc-number">1.</span> <span class="toc-text">微面元理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#法线分布项"><span class="toc-number">1.1.</span> <span class="toc-text">法线分布项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GGX"><span class="toc-number">1.1.1.</span> <span class="toc-text">GGX</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几何衰减项"><span class="toc-number">1.2.</span> <span class="toc-text">几何衰减项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Smith"><span class="toc-number">1.2.1.</span> <span class="toc-text">Smith</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#菲涅尔项"><span class="toc-number">1.3.</span> <span class="toc-text">菲涅尔项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shclick"><span class="toc-number">1.3.1.</span> <span class="toc-text">Shclick</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微面元理论"><span class="toc-number">1.</span> <span class="toc-text">微面元理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#法线分布项"><span class="toc-number">1.1.</span> <span class="toc-text">法线分布项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GGX"><span class="toc-number">1.1.1.</span> <span class="toc-text">GGX</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几何衰减项"><span class="toc-number">1.2.</span> <span class="toc-text">几何衰减项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Smith"><span class="toc-number">1.2.1.</span> <span class="toc-text">Smith</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#菲涅尔项"><span class="toc-number">1.3.</span> <span class="toc-text">菲涅尔项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shclick"><span class="toc-number">1.3.1.</span> <span class="toc-text">Shclick</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
       </div>
     
     
