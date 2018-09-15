@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://lonelywaiting.github.io/Disney-BRDF/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="Disney BRDFDiffuse该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些:$$f_d = \frac{baseColor}{\pi}(1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} - 1)(1 - cos\theta_v)^5)$$ $$F_{D90} = 0.5 + 2\tim">
-<meta property="og:updated_time" content="2018-09-09T10:13:08.465Z">
+<meta property="og:updated_time" content="2018-09-15T18:58:13.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Disney BRDF">
 <meta name="twitter:description" content="Disney BRDFDiffuse该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些:$$f_d = \frac{baseColor}{\pi}(1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} - 1)(1 - cos\theta_v)^5)$$ $$F_{D90} = 0.5 + 2\tim">
@@ -85,21 +85,12 @@
         <h1 id="Disney-BRDF"><a href="#Disney-BRDF" class="headerlink" title="Disney BRDF"></a>Disney BRDF</h1><h2 id="Diffuse"><a href="#Diffuse" class="headerlink" title="Diffuse"></a>Diffuse</h2><p>该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些:<br>$$f_d = \frac{baseColor}{\pi}(1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} - 1)(1 - cos\theta_v)^5)$$</p>
 <p>$$F_{D90} = 0.5 + 2\times roughness \times cos^2\theta_d$$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">float3 <span class="title">diffuse</span><span class="params">(<span class="keyword">float</span> roughness, <span class="keyword">float</span> LdotH, <span class="keyword">float</span> NdotL, <span class="keyword">float</span> NdotV, float3 BaseColor)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> FresnelDiffuse = <span class="number">0.5</span> + <span class="number">2</span> * sqr(LdotH) * roughness;</span><br><span class="line">    <span class="keyword">float</span> fresnelL = <span class="number">1</span> + (fresnelDiffuse - <span class="number">1</span>) * <span class="built_in">pow</span>(<span class="number">1</span> - NdotL, <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">float</span> fresnelV = <span class="number">1</span> + (fresnelDiffuse - <span class="number">1</span>) * <span class="built_in">pow</span>(<span class="number">1</span> - NdotV, <span class="number">5</span>);</span><br><span class="line">    float3 Fd = (BaseColor / PI) * fresnelL * fresnelV;</span><br><span class="line">    <span class="keyword">return</span> Fd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Specular"><a href="#Specular" class="headerlink" title="Specular"></a>Specular</h2><h3 id="法线分布"><a href="#法线分布" class="headerlink" title="法线分布"></a>法线分布</h3><p>$$D_{GTR} = \frac{c}{(\alpha^2\cos^2\theta_h + \sin^2\theta_h)^\gamma}$$</p>
-<ul>
-<li>$\alpha$: 粗糙度</li>
-<li>c: 缩放常量</li>
-<li>$\theta_h$: </li>
-</ul>
-<p><code>GTR</code>是<code>Generalized-Trowbridge-Reitz</code>的缩写,因为该模型是从Trowbridge-Reitz分布启发而来<br>该模型有着更长的拖尾,高光淡出更柔和</p>
-<h3 id="菲涅尔"><a href="#菲涅尔" class="headerlink" title="菲涅尔"></a>菲涅尔</h3><p>使用<code>Schick</code>近似:<br>$$F_{schlick}(F_0,l,h) = F_0 + (1 - F_0)(1-(l\cdot h))^5$$</p>
-
       
     </div>
     
       <div class="article-toc">
         <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Disney-BRDF"><span class="toc-number">1.</span> <span class="toc-text">Disney BRDF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Diffuse"><span class="toc-number">1.1.</span> <span class="toc-text">Diffuse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Specular"><span class="toc-number">1.2.</span> <span class="toc-text">Specular</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#法线分布"><span class="toc-number">1.2.1.</span> <span class="toc-text">法线分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#菲涅尔"><span class="toc-number">1.2.2.</span> <span class="toc-text">菲涅尔</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Disney-BRDF"><span class="toc-number">1.</span> <span class="toc-text">Disney BRDF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Diffuse"><span class="toc-number">1.1.</span> <span class="toc-text">Diffuse</span></a></li></ol></li></ol>
       </div>
     
     
