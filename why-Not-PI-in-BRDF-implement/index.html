@@ -5,16 +5,17 @@
   
   <title>why Not PI in BRDF implement - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Runtime and Offline Render">
+  <meta name="description" content="案例分析Lambert的BRDF为$\frac{c_{d}}{\pi}$,在Unity中,Lambert光照实现为:">
+<meta name="keywords" content="Rendering">
 <meta property="og:type" content="article">
 <meta property="og:title" content="why Not PI in BRDF implement">
 <meta property="og:url" content="http://lonelywaiting.github.io/why-Not-PI-in-BRDF-implement/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Runtime and Offline Render">
-<meta property="og:updated_time" content="2018-09-15T06:41:08.017Z">
+<meta property="og:description" content="案例分析Lambert的BRDF为$\frac{c_{d}}{\pi}$,在Unity中,Lambert光照实现为:">
+<meta property="og:updated_time" content="2018-09-15T08:47:58.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="why Not PI in BRDF implement">
-<meta name="twitter:description" content="Runtime and Offline Render">
+<meta name="twitter:description" content="案例分析Lambert的BRDF为$\frac{c_{d}}{\pi}$,在Unity中,Lambert光照实现为:">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -73,17 +74,49 @@
   <time datetime="2018-09-15T06:41:07.000Z" itemprop="datePublished">2018-09-15</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
+  </div>
+
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>Lambert的BRDF为$\frac{c_{d}}{\pi}$,在Unity中,Lambert光照实现为:<a id="more"></a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> fixed4 <span class="title">UnityLambertLight</span> <span class="params">(SurfaceOutput s, UnityLight light)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fixed diff = max (<span class="number">0</span>, dot (s.Normal, light.dir));</span><br><span class="line"></span><br><span class="line">    fixed4 c;</span><br><span class="line">    c.rgb = s.Albedo * light.color * diff;</span><br><span class="line">    c.a = s.Alpha;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> fixed4 <span class="title">LightingLambert</span> <span class="params">(SurfaceOutput s, UnityGI gi)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fixed4 c;</span><br><span class="line">    c = UnityLambertLight (s, gi.light);</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifdef</span> UNITY_LIGHT_FUNCTION_APPLY_INDIRECT</span></span><br><span class="line">        c.rgb += s.Albedo * gi.indirect.diffuse;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可见并没有除$\pi$</p>
+<p>这里首先介绍一下<a href="http://renderwonk.com/publications/s2010-shading-course/hoffman/s2010_physically_based_shading_hoffman_a_notes.pdf" target="_blank" rel="noopener">精确光源(Punctual Light Sources)</a></p>
+<h2 id="精确光源"><a href="#精确光源" class="headerlink" title="精确光源"></a>精确光源</h2><p>精确光源的定义是无限小,无限亮的光源,如点光源,方向光,聚光灯<br>虽然并非是物理真实的,但是可以产生比较合理的光照结果且计算非常方便<br>精确光源可参数化为关于光源颜色$c_{light}$以及光方向$l_c$的方程</p>
+<p>其中$c_{light}$的定义为:</p>
+<blockquote>
+<p>白色Lambert表面被光方向平行于表面法线($l_c$ == n)的光源照亮时的颜色</p>
+</blockquote>
+<p>精确光源主要的好处是极大的简化了反射方程,以下为推导过程</p>
+<p>定义一个微面光源,光源中心方向为$l_c$,且光照角度范围为$\varepsilon$:<br>$$\forall l|\angle(l,l_c) &gt; \varepsilon, \quad L_{tiny}(l) = 0$$<br>$$if \quad l_c = n, then \quad c_{light} = \int_\Omega\frac{1}{\pi} L_{tiny}(l)(n\cdot l)d_{\omega_i}$$</p>
+<p>由于$l_c = n$且$\varepsilon \rightarrow 0$,因此可以假定$(n\cdot l) = 1$</p>
+<p>$$\Rightarrow c_{light} = \lim_{\varepsilon \rightarrow 0}(\frac{1}{\pi}\int_\Omega L_{tiny}(l)d_{\omega_i})$$</p>
+<p>$$\Rightarrow \lim_{\varepsilon \rightarrow 0}(\int_\Omega L_{tiny}(l)d_{\omega_i}) = \pi c_{light}$$</p>
+<p>接下来将其代入通用的BRDF:<br>$$L_o(v) = \lim_{\varepsilon \rightarrow 0}(\int_\Omega f(l,v)\otimes L_{tiny}(l)(n\cdot l)d_{\omega_i} = f(l_c,v)\otimes \lim_{\varepsilon \rightarrow 0}(\int_\Omega L_{tiny}(l)d_{\omega_i})(n\cdot l_c)$$</p>
+<p>$$\Rightarrow L_o(v) = \pi f(l_c,v)\otimes c_{light}(n\cdot l_c)\tag{1}$$</p>
+<p>式(1)即为精确光源的反射方程</p>
+<h2 id="Lambert光照实现"><a href="#Lambert光照实现" class="headerlink" title="Lambert光照实现"></a>Lambert光照实现</h2><p>Lambert的BRDF为$\frac{c_d}{\pi}$,代入(1)式:<br>$$\Rightarrow L_o(v) = \pi \frac{c_d}{\pi}\otimes c_{light}(n \cdot l_c) = c_d \otimes c_{light}(n \cdot l_c)$$</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="http://renderwonk.com/publications/s2010-shading-course/hoffman/s2010_physically_based_shading_hoffman_a_notes.pdf" target="_blank" rel="noopener">Physically-Based Shading Models in Film and Game Production</a></li>
+<li><a href="https://seblagarde.wordpress.com/2012/01/08/pi-or-not-to-pi-in-game-lighting-equation/" target="_blank" rel="noopener">PI or not to PI in game lighting equation</a></li>
+</ul>
+
       
     </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#案例分析"><span class="toc-number">1.</span> <span class="toc-text">案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#精确光源"><span class="toc-number">1.1.</span> <span class="toc-text">精确光源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambert光照实现"><span class="toc-number">1.2.</span> <span class="toc-text">Lambert光照实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
+      </div>
     
     
       <footer class="article-footer">
         
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
+
       </footer>
     
   </div>
@@ -146,6 +179,23 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
