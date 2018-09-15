@@ -3,19 +3,21 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Cook-Torrance Microfacet BRDF - lonelyWaiting</title>
+  <title>Microfacet Theory - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Cook-Torrance Microfacet BRDF$$f(l,v) = \frac{D(h)F(l,h)G(l,v,h)}{4(n\cdot l)(n\cdot v)}$$">
+  <meta name="description" content="微面元理论微面元理论认为粗糙表面是由细小的微面组成的,每个微面元都满足完美镜面反射">
 <meta name="keywords" content="Rendering">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cook-Torrance Microfacet BRDF">
+<meta property="og:title" content="Microfacet Theory">
 <meta property="og:url" content="http://lonelywaiting.github.io/Microfacet-BRDF/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Cook-Torrance Microfacet BRDF$$f(l,v) = \frac{D(h)F(l,h)G(l,v,h)}{4(n\cdot l)(n\cdot v)}$$">
-<meta property="og:updated_time" content="2018-09-09T10:38:14.734Z">
+<meta property="og:description" content="微面元理论微面元理论认为粗糙表面是由细小的微面组成的,每个微面元都满足完美镜面反射">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Microfacet Theory/spherical_coordinate_system_oriented_wo.png">
+<meta property="og:updated_time" content="2018-09-15T15:42:30.754Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cook-Torrance Microfacet BRDF">
-<meta name="twitter:description" content="Cook-Torrance Microfacet BRDF$$f(l,v) = \frac{D(h)F(l,h)G(l,v,h)}{4(n\cdot l)(n\cdot v)}$$">
+<meta name="twitter:title" content="Microfacet Theory">
+<meta name="twitter:description" content="微面元理论微面元理论认为粗糙表面是由细小的微面组成的,每个微面元都满足完美镜面反射">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Microfacet Theory/spherical_coordinate_system_oriented_wo.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -63,7 +65,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Cook-Torrance Microfacet BRDF
+      Microfacet Theory
     </h1>
   
 
@@ -82,33 +84,105 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Cook-Torrance-Microfacet-BRDF"><a href="#Cook-Torrance-Microfacet-BRDF" class="headerlink" title="Cook-Torrance Microfacet BRDF"></a>Cook-Torrance Microfacet BRDF</h1><p>$$f(l,v) = \frac{D(h)F(l,h)G(l,v,h)}{4(n\cdot l)(n\cdot v)}$$<a id="more"></a></p>
+        <h1 id="微面元理论"><a href="#微面元理论" class="headerlink" title="微面元理论"></a>微面元理论</h1><p>微面元理论认为粗糙表面是由细小的微面组成的,每个微面元都满足完美镜面反射<a id="more"></a></p>
+<p>$$\omega_h = \omega_i \hat{+} \omega_o$$</p>
+<p>$$d\Phi_h = L_i(\omega_i)d\omega_i dA^{\perp}(\omega_h) = L_i(\omega_i)d\omega_i cos\theta_h dA(\omega_h)$$</p>
+<p>$$dA(\omega_h) = D(\omega_h)d\omega_h dA$$</p>
 <ul>
-<li>D: 法线分布项</li>
-<li>G: 几何遮蔽项</li>
-<li>F: 菲涅尔项</li>
-<li>l: 入射光方向</li>
-<li>n：法线方向</li>
-<li>h: 半向量,入射方向与观察方向的合向量</li>
+<li>$D(\omega_h)$:法线分布项,描述微面元的法线为$\omega_h$的比例,只有法线为$\omega_h$的才能被看见</li>
 </ul>
-<h2 id="法线分布项"><a href="#法线分布项" class="headerlink" title="法线分布项"></a>法线分布项</h2><h3 id="GGX"><a href="#GGX" class="headerlink" title="GGX"></a>GGX</h3><p>$$D(h) = \frac{\alpha^2}{\pi((n\cdot h)^2(\alpha^2 - 1) + 1)^2}$$</p>
+<p>$$\Rightarrow d\Phi_h = L_i(\omega_i)d\omega_i cos\theta_h D(\omega_h)d\omega_h dA$$</p>
+<p>假设每个微面元都各自按照<code>Fresnel&#39;s Law</code>反射光线</p>
+<p>$$\Rightarrow d\Phi_o = F_r(\omega_o)d\Phi_h$$</p>
+<p>$$\because L(\omega_o) = \frac{d\Phi_o}{d\omega_o cos\theta_o dA}$$</p>
+<p>$$\therefore L(\omega_o) = \frac{F_r(\omega_o)L_i(\omega_i)d\omega_i cos\theta_h D(\omega_h) d\omega_h dA}{d\omega_o cos\theta_o dA}\tag{1}$$</p>
+<p>接下来计算$\frac{d\omega_h}{d\omega_i}$,考虑基于$\omega_o$的球坐标系,如下图:<br><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Microfacet Theory/spherical_coordinate_system_oriented_wo.png" alt="基于$\omega_o$的球坐标系,来源PBRT"></p>
+<p>$$\frac{d\omega_h}{d\omega_i} = \frac{sin\theta_h d\theta_h d\phi_h}{sin\theta_i d\theta_i d\phi_i}$$</p>
+<p>$$\because \theta_i = 2\theta_h$$</p>
+<p>$$\therefore \frac{d\omega_h}{d\omega_i} = \frac{sin\theta_h d\theta_h d\phi_h}{sin(2\theta_h)2d\theta_h d\phi_h} = \frac{sin\theta_h}{4sin\theta_h cos\theta_h} = \frac{1}{4cos\theta_h}$$</p>
+<p>$$\Rightarrow \frac{d\omega_h}{d\omega_i} = \frac{1}{4cos\theta_h} = \frac{1}{4\omega_i \cdot \omega_h} = \frac{1}{4\omega_o \cdot \omega_h}$$<br>$$\Rightarrow \frac{d\omega_h}{d\omega_o} = \frac{1}{4cos\theta_h} = \frac{1}{4\omega_i \cdot \omega_h} = \frac{1}{4\omega_o \cdot \omega_h}$$</p>
+<p>代入(1)式:<br>$$\Rightarrow L(\omega_o) = \frac{F_r(\omega_o)L_i(\omega_i)D(\omega_h)d\omega_i}{4cos\theta_o}$$</p>
+<p>$$\because L(\omega_o) = L(\omega_i) f_r(p,\omega_i, \omega_o)cos\theta_i d\omega_i$$</p>
+<p>$$\therefore f_r(p,\omega_i,\omega_o) = \frac{L(\omega_o)}{L(\omega_i) cos\theta_i d\omega_i} = \frac{F_r(\omega_o)D(\omega_h)}{4cos\theta_i cos\theta_o} = \frac{F_r(\omega_o)D(\omega_h)}{4(n\cdot l)(n \cdot v)}$$</p>
+<p>再乘上一个几何衰减项G,用于描述微面元被遮挡或者处于阴影中的比例</p>
+<p>$$\Rightarrow f_r(p,\omega_i,\omega_o) = \frac{F_r(\omega_o)D(\omega_h)G(\omega_i,\omega_o)}{4cos\theta_o cos\theta_i}$$</p>
+<p>接下来讲下<code>D,F,G</code>的常用实现方案</p>
+<h2 id="法线分布项"><a href="#法线分布项" class="headerlink" title="法线分布项"></a>法线分布项</h2><h3 id="GGX"><a href="#GGX" class="headerlink" title="GGX"></a>GGX</h3><p>$$D(h) = \frac{\alpha^2}{\pi((n\cdot h)^2(\alpha^2 - 1) + 1)^2}$$<br>$$\alpha = roughness^2$$</p>
 <ul>
-<li>$\alpha$: $roughness^2$</li>
-<li>n: 法线</li>
-<li>h: 半向量,入射方向与观察方向的合向量方向</li>
+<li>roughness: 粗糙度</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">D</span><span class="params">(<span class="keyword">float</span> alpha, <span class="keyword">float</span> NdotH)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> alphaSqr = sqr(alpha);</span><br><span class="line">    <span class="keyword">float</span> denominator = sqr(NdotH) * (alphaSqr - <span class="number">1.0f</span>) + <span class="number">1.0f</span>;</span><br><span class="line">    <span class="keyword">float</span> D = alphaSqr / (PI * sqr(denominator));</span><br><span class="line">    <span class="keyword">return</span> D;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="几何遮蔽项"><a href="#几何遮蔽项" class="headerlink" title="几何遮蔽项"></a>几何遮蔽项</h2><h3 id="Smith"><a href="#Smith" class="headerlink" title="Smith"></a>Smith</h3><p>$$G(l,v,h) = G_1(l)G_1(v)$$<br>$$G_1(v) = \frac{n\cdot v}{(n\cdot v)(1 - k) + k}$$<br>$$k = \frac{(Roughness + 1)^2}{8}$$</p>
-<ul>
-<li>v: 观察方向</li>
-<li>n: 法线方向</li>
-<li>l: 入射方向</li>
-</ul>
+<h2 id="几何衰减项"><a href="#几何衰减项" class="headerlink" title="几何衰减项"></a>几何衰减项</h2><h3 id="Smith"><a href="#Smith" class="headerlink" title="Smith"></a>Smith</h3><p><code>Smith</code>函数对G做了一个近似,即假设入射遮挡与出射遮挡是不相关的,因此可以被分离开来</p>
+<p>$$G(l,v,h) = G_1(n,l)G_1(n,v)$$<br>$$G_1(n,v) = \frac{n\cdot v}{(n\cdot v)(1 - k) + k}$$<br>$$k = \frac{(Roughness + 1)^2}{8}$$</p>
 <p>实现:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">K</span><span class="params">(<span class="keyword">float</span> _Roughness)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> modifiedRoughness = _Roughness + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> sqr(modifiedRoughness) / <span class="number">8</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">G1</span><span class="params">(<span class="keyword">float</span> k, <span class="keyword">float</span> NdotV)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> NdotV / (NdotV * (<span class="number">1</span> - k) + k);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">G_Smith</span><span class="params">(<span class="keyword">float</span> _Roughness, <span class="keyword">float</span> NdotL, <span class="keyword">float</span> NdotV)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> k   = K(_Roughness);</span><br><span class="line">    <span class="keyword">float</span> G1L = G1(k, NdotL);</span><br><span class="line">    <span class="keyword">float</span> G1V = G1(k, NdotV);</span><br><span class="line">    <span class="keyword">float</span> G = G1L * G1V;</span><br><span class="line">    <span class="keyword">return</span> G;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="菲涅尔项"><a href="#菲涅尔项" class="headerlink" title="菲涅尔项"></a>菲涅尔项</h2><h3 id="Shclick"><a href="#Shclick" class="headerlink" title="Shclick"></a>Shclick</h3><p>$$F_{schlick}(F_0,l,h) = F_0 + (1 - F_0)(1-(l\cdot h))^5$$</p>
+<h2 id="菲涅尔项"><a href="#菲涅尔项" class="headerlink" title="菲涅尔项"></a>菲涅尔项</h2><h3 id="Shclick"><a href="#Shclick" class="headerlink" title="Shclick"></a>Shclick</h3><p>原始的菲涅尔公式计算比较复杂,一般都是使用如下方程进行近似:</p>
+<p>$$F_{schlick}(F_0,l,h) = F_0 + (1 - F_0)(1-(l\cdot h))^5$$</p>
 <ul>
-<li>$F_0$: 0度(法线与视线平行)时的菲涅尔值,也表示高光颜色</li>
+<li>$F_0$: 入射光垂直于表面时的菲涅尔反射率值,也称之为镜面颜色</li>
 </ul>
+<p>$$F(0) = (\frac{\eta_i - \eta_o}{\eta_i + \eta_o})^2$$</p>
+<p>以下为常见材质的<code>F(0)</code>值</p>
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>F(0) (Linear)</th>
+<th>F(0) (sRGB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Water</td>
+<td>0.02,0.02,0.02</td>
+<td>0.15,0.15,0.15</td>
+</tr>
+<tr>
+<td>Plastic / Glass (Low)</td>
+<td>0.03,0.03,0.03</td>
+<td>0.21,0.21,0.21</td>
+</tr>
+<tr>
+<td>Plastic High</td>
+<td>0.05,0.05,0.05</td>
+<td>0.24,0.24,0.24</td>
+</tr>
+<tr>
+<td>Glass (High) / Ruby</td>
+<td>0.08,0.08,0.08</td>
+<td>0.31,0.31,0.31</td>
+</tr>
+<tr>
+<td>Diamond</td>
+<td>0.17,0.17,0.17</td>
+<td>0.45,0.45,0.45</td>
+</tr>
+<tr>
+<td>Iron</td>
+<td>0.56,0.57,0.58</td>
+<td>0.77,0.78,0.78</td>
+</tr>
+<tr>
+<td>Copper</td>
+<td>0.95,0.64,0.54</td>
+<td>0.98,0.82,0.76</td>
+</tr>
+<tr>
+<td>Gold</td>
+<td>1.00,0.71,0.29</td>
+<td>1.00,0.86,0.57</td>
+</tr>
+<tr>
+<td>Aluminum</td>
+<td>0.91,0.92,0.92</td>
+<td>0.96,0.96,0.97</td>
+</tr>
+<tr>
+<td>Silver</td>
+<td>0.95,0.93,0.88</td>
+<td>0.98,0.97,0.95</td>
+</tr>
+</tbody>
+</table>
 <p>代码实现:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">SchlickFresnel</span><span class="params">(float4 SpecColor, <span class="keyword">float</span> lightDir, float3 halfVector)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> SpecColor + (<span class="number">1</span> - SpecColor) * <span class="built_in">pow</span>(<span class="number">1</span> - dot(lightDir, halfVector), <span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
@@ -116,7 +190,7 @@
     
       <div class="article-toc">
         <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cook-Torrance-Microfacet-BRDF"><span class="toc-number">1.</span> <span class="toc-text">Cook-Torrance Microfacet BRDF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#法线分布项"><span class="toc-number">1.1.</span> <span class="toc-text">法线分布项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GGX"><span class="toc-number">1.1.1.</span> <span class="toc-text">GGX</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几何遮蔽项"><span class="toc-number">1.2.</span> <span class="toc-text">几何遮蔽项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Smith"><span class="toc-number">1.2.1.</span> <span class="toc-text">Smith</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#菲涅尔项"><span class="toc-number">1.3.</span> <span class="toc-text">菲涅尔项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shclick"><span class="toc-number">1.3.1.</span> <span class="toc-text">Shclick</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微面元理论"><span class="toc-number">1.</span> <span class="toc-text">微面元理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#法线分布项"><span class="toc-number">1.1.</span> <span class="toc-text">法线分布项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GGX"><span class="toc-number">1.1.1.</span> <span class="toc-text">GGX</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几何衰减项"><span class="toc-number">1.2.</span> <span class="toc-text">几何衰减项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Smith"><span class="toc-number">1.2.1.</span> <span class="toc-text">Smith</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#菲涅尔项"><span class="toc-number">1.3.</span> <span class="toc-text">菲涅尔项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shclick"><span class="toc-number">1.3.1.</span> <span class="toc-text">Shclick</span></a></li></ol></li></ol></li></ol>
       </div>
     
     
