@@ -12,7 +12,7 @@ layout: "about"
 
 - 刘腾/男/1995/09
 - 本科/江南大学/数字媒体技术系/2012-2016
-- 工作年限: 2年
+- 工作年限: 3年
 
 # 工作经历
 
@@ -37,14 +37,18 @@ layout: "about"
 菲涅尔效果以及多种采样算法
 HDR,,纹理采样,棋盘纹理,噪声纹理等
 
+## [FFT Ocean](https://github.com/lonelyWaiting/Ocean)
+
+实现[Simulation Ocean Water Jerry Tessendorf](https://people.cs.clemson.edu/~jtessen/papers_files/coursenotes2004.pdf)
+
 # 技能清单
 
 - C++
-- DirectX
+- dx11
 - 图形学
 - Git
 - 3ds Max
-- Photoshop
+- python
 
 # 自我评价
 

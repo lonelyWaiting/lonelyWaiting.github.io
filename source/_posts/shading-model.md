@@ -1,5 +1,6 @@
 ---
 title: shading model
+date: 2018‎-‎01‎-10‎ ‏‎0:22:00
 tags: [Rendering]
 ---
 

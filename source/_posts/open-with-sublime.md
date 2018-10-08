@@ -1,6 +1,6 @@
 ---
 title: Open With Sublime
-data: 2016-03-05
+date: 2016-03-05 ‏‎1:19:48
 tags: [Windows]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Radiometry
+date: 2018‎-01‎-04‎ 20:39:18
 tags: [Rendering]
 ---
 

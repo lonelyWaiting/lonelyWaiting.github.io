@@ -131,3 +131,29 @@ $$
 0 & 0 & \frac{-n\times f}{f - n} & 0
 \end{bmatrix}
 $$
+
+## 相关推导
+
+首先推导下如何从`Depth Buffer`还原深度值,`Depth Buffer存的值为`:$Z_{buffer} = \frac{f}{f - n} - \frac{n \times f}{f - n} \times \frac{1}{z}$
+
+$$Z_{buffer} \in [0,1]$$
+$$\Rightarrow \frac{n \times f}{f - n} \times \frac{1}{z} = \frac{f}{f - n} - Z_{buffer}$$
+$$\Rightarrow \frac{n \times f}{z} = f - Z_{buffer} \times (f - n)$$
+$$\Rightarrow z = \frac{n \times f}{f - Z_{buffer} \times (f - n)}$$
+$$\Rightarrow z = \frac{1}{\frac{1}{n} - \frac{f - n}{n \times f} Z_{buffer}}$$
+$$z \in [n, f]$$
+
+
+Unity中实现如下:
+```cpp
+// x = \frac{1 - f}{n}
+// y = \frac{f}{n}
+// z = \frac{x}{f} = \frac{1 - f}{n \times f}
+// w = \frac{y}{f} = \frac{1}{n}
+float4 _ZBufferParams;
+
+float LinearEyeDepth(float z)
+{
+    return 1.0f / (_ZBufferParams.z * z + _ZBufferParams.w);
+}
+```

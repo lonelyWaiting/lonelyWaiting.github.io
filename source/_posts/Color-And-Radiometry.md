@@ -1,5 +1,6 @@
 ---
 title: Color and Radiometry
+date: 2018‎-01‎-04‎ 21:29:49
 tags: [Rendering]
 ---
 
