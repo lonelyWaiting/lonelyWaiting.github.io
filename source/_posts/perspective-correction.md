@@ -132,7 +132,9 @@ $$
 \end{bmatrix}
 $$
 
-## 相关推导
+# 深度重建
+
+## 还原深度值
 
 首先推导下如何从`Depth Buffer`还原深度值,`Depth Buffer存的值为`:$Z_{buffer} = \frac{f}{f - n} - \frac{n \times f}{f - n} \times \frac{1}{z}$
 
@@ -141,4 +143,15 @@ $$\Rightarrow \frac{n \times f}{f - n} \times \frac{1}{z} = \frac{f}{f - n} - Z_
 $$\Rightarrow \frac{n \times f}{z} = f - Z_{buffer} \times (f - n)$$
 $$\Rightarrow z = \frac{n \times f}{f - Z_{buffer} \times (f - n)}$$
 $$\Rightarrow z = \frac{1}{\frac{1}{n} - \frac{f - n}{n \times f} Z_{buffer}}$$
+$$\Rightarrow z = \frac{1}{\frac{1}{n} + \frac{n - f}{n \times f} Z_{buffer}}$$
+$$\Rightarrow z = \frac{1}{\frac{1}{n} + \frac{1}{f}\times (1 - \frac{f}{n}) Z_{buffer}}$$
 $$z \in [n, f]$$
+
+
+## CameraSpace重映射深度值为[0,1]
+
+将CameraSpace原点映射至0,远平面映射至1
+$$z_{cs} = \frac{z}{f} = \frac{n \times f}{f - Z_{buffer} \times (f - n)} \times \frac{1}{f}$$
+$$\Rightarrow z_{cs} = \frac{n}{f - Z_{buffer} \times (f - n)}$$
+$$\Rightarrow z_{cs} = \frac{1}{\frac{f}{n} + \frac{n - f}{n} \times Z_{buffer}}$$
+$$\Rightarrow z_{cs} = \frac{1}{\frac{f}{n} + (1 - \frac{f}{n}) \times Z_{buffer}}$$
