@@ -13,7 +13,7 @@
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/perspective_correction/perspective_correction.png">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/perspective_correction/perspective_x_item.png">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/perspective_correction/perspective_y_item.png">
-<meta property="og:updated_time" content="2018-09-15T06:47:08.920Z">
+<meta property="og:updated_time" content="2018-09-28T14:56:52.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="perspective correction">
 <meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/perspective_correction/perspective_correction.png">
@@ -138,13 +138,16 @@
 <p>$$\Rightarrow A = \frac{-n\times f}{f - n}, B = \frac{f}{f - n}$$</p>
 <p>$$\therefore 0 \leq \frac{f}{f - n} - \frac{n \times f}{f - n} \times \frac{1}{z} \leq 1$$</p>
 <p>因此,透视投影矩阵如下:<br>$$<br>\begin{bmatrix}<br>\frac{1}{r\times tan(\frac{\alpha}{2})} &amp; 0 &amp; 0 &amp; 0 \\<br>0 &amp; \frac{1}{tan(\frac{\alpha}{2})} &amp; 0 &amp; 0 \\<br>0 &amp; 0 &amp; \frac{f}{f - n} &amp; 1 \\<br>0 &amp; 0 &amp; \frac{-n\times f}{f - n} &amp; 0<br>\end{bmatrix}<br>$$</p>
+<h2 id="相关推导"><a href="#相关推导" class="headerlink" title="相关推导"></a>相关推导</h2><p>首先推导下如何从<code>Depth Buffer</code>还原深度值,<code>Depth Buffer存的值为</code>:$Z_{buffer} = \frac{f}{f - n} - \frac{n \times f}{f - n} \times \frac{1}{z}$</p>
+<p>$$Z_{buffer} \in [0,1]$$<br>$$\Rightarrow \frac{n \times f}{f - n} \times \frac{1}{z} = \frac{f}{f - n} - Z_{buffer}$$<br>$$\Rightarrow \frac{n \times f}{z} = f - Z_{buffer} \times (f - n)$$<br>$$\Rightarrow z = \frac{n \times f}{f - Z_{buffer} \times (f - n)}$$<br>$$\Rightarrow z = \frac{1}{\frac{1}{n} - \frac{f - n}{n \times f} Z_{buffer}}$$<br>$$z \in [n, f]$$</p>
+<p>Unity中实现如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x = \frac&#123;1 - f&#125;&#123;n&#125;</span></span><br><span class="line"><span class="comment">// y = \frac&#123;f&#125;&#123;n&#125;</span></span><br><span class="line"><span class="comment">// z = \frac&#123;x&#125;&#123;f&#125; = \frac&#123;1 - f&#125;&#123;n \times f&#125;</span></span><br><span class="line"><span class="comment">// w = \frac&#123;y&#125;&#123;f&#125; = \frac&#123;1&#125;&#123;n&#125;</span></span><br><span class="line">float4 _ZBufferParams;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">LinearEyeDepth</span><span class="params">(<span class="keyword">float</span> z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0f</span> / (_ZBufferParams.z * z + _ZBufferParams.w);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     
       <div class="article-toc">
         <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推导"><span class="toc-number">2.</span> <span class="toc-text">推导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#顶点属性插值"><span class="toc-number">3.</span> <span class="toc-text">顶点属性插值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#透视矩阵推导"><span class="toc-number">4.</span> <span class="toc-text">透视矩阵推导</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推导"><span class="toc-number">2.</span> <span class="toc-text">推导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#顶点属性插值"><span class="toc-number">3.</span> <span class="toc-text">顶点属性插值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#透视矩阵推导"><span class="toc-number">4.</span> <span class="toc-text">透视矩阵推导</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#相关推导"><span class="toc-number">4.1.</span> <span class="toc-text">相关推导</span></a></li></ol></li></ol>
       </div>
     
     
