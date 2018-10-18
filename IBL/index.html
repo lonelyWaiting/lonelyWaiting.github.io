@@ -3,17 +3,24 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>lonelyWaiting</title>
+  <title>IBL - lonelyWaiting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Runtime and Offline Render">
-<meta property="og:type" content="website">
-<meta property="og:title" content="lonelyWaiting">
-<meta property="og:url" content="http://lonelywaiting.github.io/index.html">
+  <meta name="description" content="Reflectance equation这里采用的反射模型如下:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)n\cdot">
+<meta name="keywords" content="Rendering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IBL">
+<meta property="og:url" content="http://lonelywaiting.github.io/IBL/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Runtime and Offline Render">
+<meta property="og:description" content="Reflectance equation这里采用的反射模型如下:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)n\cdot \omega_i d\omega_i$$ $$\Rightarrow L_o(">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_Source.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_Irradiance.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_Prefilter.png">
+<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_BRDF_LUT.png">
+<meta property="og:updated_time" content="2018-10-18T10:44:45.172Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lonelyWaiting">
-<meta name="twitter:description" content="Runtime and Offline Render">
+<meta name="twitter:title" content="IBL">
+<meta name="twitter:description" content="Reflectance equation这里采用的反射模型如下:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)n\cdot \omega_i d\omega_i$$ $$\Rightarrow L_o(">
+<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_Source.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -53,16 +60,15 @@
     </div>
   </div>
 </header>
-    <section id="main" class="outer">
-      <article id="post-IBL" class="article article-type-post" itemscope itemprop="blogPost">
+    <section id="main" class="outer"><article id="post-IBL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/IBL/">IBL</a>
+    <h1 class="article-title" itemprop="name">
+      IBL
     </h1>
   
 
@@ -111,60 +117,10 @@
       
     </div>
     
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-FFT-Ocean-Implement" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/FFT-Ocean-Implement/">FFT Ocean Implement</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/FFT-Ocean-Implement/" class="article-date">
-  <time datetime="2018-09-15T19:46:55.000Z" itemprop="datePublished">2018-09-16</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Ocean/FFT_Diagram.png" alt="The Diagram of Update Displacement Map,来源:Nvidia DirectX 11 Sample OceanCS"><br></p>
-        
-          <p class="article-more-link">
-            <a href="/FFT-Ocean-Implement/#more">Read More</a>
-          </p>
-        
-      
-    </div>
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reflectance-equation"><span class="toc-number">1.</span> <span class="toc-text">Reflectance equation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Diffuse-Irradiance"><span class="toc-number">2.</span> <span class="toc-text">Diffuse Irradiance</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#蒙特卡洛方法"><span class="toc-number">2.1.</span> <span class="toc-text">蒙特卡洛方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Specular-IBL"><span class="toc-number">3.</span> <span class="toc-text">Specular IBL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pre-Filtered-Environment-Map"><span class="toc-number">3.1.</span> <span class="toc-text">Pre-Filtered Environment Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Precompute-BRDF-LUT"><span class="toc-number">3.2.</span> <span class="toc-text">Precompute BRDF LUT</span></a></li></ol></li></ol>
+      </div>
     
     
       <footer class="article-footer">
@@ -175,60 +131,16 @@
     
   </div>
   
-</article>
-
-
-
-
-
-
-
-
     
-      <article id="post-why-Not-PI-in-BRDF-implement" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/why-Not-PI-in-BRDF-implement/">why Not PI in BRDF implement</a>
-    </h1>
   
+    <a href="/FFT-Ocean-Implement/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">FFT Ocean Implement&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-meta">
-      <a href="/why-Not-PI-in-BRDF-implement/" class="article-date">
-  <time datetime="2018-09-15T06:41:07.000Z" itemprop="datePublished">2018-09-15</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h1><p>Lambert的BRDF为$\frac{c_{d}}{\pi}$,在Unity中,Lambert光照实现为:</p>
-        
-          <p class="article-more-link">
-            <a href="/why-Not-PI-in-BRDF-implement/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
   
 </article>
 
@@ -237,398 +149,14 @@
 
 
 
-
-
-    
-      <article id="post-perspective-correction" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/perspective-correction/">perspective correction</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/perspective-correction/" class="article-date">
-  <time datetime="2018-09-14T14:27:05.000Z" itemprop="datePublished">2018-09-14</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
+</section>
 
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/perspective_correction/perspective_correction.png" alt="perspective correction"></p>
-        
-          <p class="article-more-link">
-            <a href="/perspective-correction/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
 
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-Disney-BRDF" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Disney-BRDF/">Disney BRDF</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/Disney-BRDF/" class="article-date">
-  <time datetime="2018-09-09T09:51:55.000Z" itemprop="datePublished">2018-09-09</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Disney-Diffuse-BRDF"><a href="#Disney-Diffuse-BRDF" class="headerlink" title="Disney Diffuse BRDF"></a>Disney Diffuse BRDF</h1><p>该模型为经验模型,目的是根据材质的roughness表现的不同,平滑的表面更暗一些,粗糙的表面亮一些</p>
-        
-          <p class="article-more-link">
-            <a href="/Disney-BRDF/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-Microfacet-BRDF" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Microfacet-BRDF/">Microfacet Theory</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/Microfacet-BRDF/" class="article-date">
-  <time datetime="2018-09-09T09:15:05.000Z" itemprop="datePublished">2018-09-09</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="微面元理论"><a href="#微面元理论" class="headerlink" title="微面元理论"></a>微面元理论</h1><p>微面元理论认为粗糙表面是由细小的微面组成的,每个微面元都满足完美镜面反射</p>
-        
-          <p class="article-more-link">
-            <a href="/Microfacet-BRDF/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering/">Rendering</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-unity-surface-shader" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/unity-surface-shader/">unity surface shader</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/unity-surface-shader/" class="article-date">
-  <time datetime="2018-09-08T16:25:40.000Z" itemprop="datePublished">2018-09-09</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Unity/">Unity</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h1><p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/unity_surface_shader/surface_shader_flow.png" alt="surface shader flow"></p>
-        
-          <p class="article-more-link">
-            <a href="/unity-surface-shader/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-unity-WorldSpaceLightDir-in-forwardBase-lightMode" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/">unity _WorldSpaceLightDir in forwardBase lightMode</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/" class="article-date">
-  <time datetime="2018-09-08T14:07:32.000Z" itemprop="datePublished">2018-09-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Unity/">Unity</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>将方向光的旋转全部设为0，此时方向光朝向<code>+Z</code>,因此方向光的朝向为<code>(0,0,1)</code></p>
-        
-          <p class="article-more-link">
-            <a href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-directx-11-create-device-and-swap-chain" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/directx-11-create-device-and-swap-chain/">directx 11 create device and swap chain</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/directx-11-create-device-and-swap-chain/" class="article-date">
-  <time datetime="2018-04-18T13:27:10.000Z" itemprop="datePublished">2018-04-18</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/directx11/">directx11</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Create-Device-with-adapter"><a href="#Create-Device-with-adapter" class="headerlink" title="Create Device with adapter"></a>Create Device with adapter</h1><p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/api/d3d11/nf-d3d11-d3d11createdeviceandswapchain" target="_blank" rel="noopener">D3D11CreateDeviceAndSwapChain</a><br>第一个参数如果传NULL,则以默认Adapter创建<br>如果参数不为NULL,<code>DriverType</code>必须为<code>D3D_DRIVER_TYPE_UNKNOWN</code><br></p>
-        
-          <p class="article-more-link">
-            <a href="/directx-11-create-device-and-swap-chain/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/directx11/">directx11</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-cpp-template-check-if-type-is-class" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/cpp-template-check-if-type-is-class/">c++模板检测类型是否为Class</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/cpp-template-check-if-type-is-class/" class="article-date">
-  <time datetime="2018-03-11T15:02:32.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/c/">c++</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>利用成员变量指针的实例化来实现</p>
-        
-          <p class="article-more-link">
-            <a href="/cpp-template-check-if-type-is-class/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-      </nav>
-    </section>
+</section>
     <footer id="footer">
   
   <div class="outer">
@@ -641,11 +169,13 @@
 <script>
   var disqus_shortname = 'lonelywaiting';
   
+  var disqus_url = 'http://lonelywaiting.github.io/IBL/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
