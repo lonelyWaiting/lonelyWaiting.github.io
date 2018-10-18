@@ -11,15 +11,15 @@
 <meta property="og:title" content="IBL">
 <meta property="og:url" content="http://lonelywaiting.github.io/IBL/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Reflectance equation这里采用的反射模型如下:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)n\cdot \omega_i d\omega_i$$ $$\Rightarrow L_o(">
+<meta property="og:description" content="Reflectance equation这里采用的反射模型如下:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)n\cdot \omega_i d\omega_i$$">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_Source.png">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_Irradiance.png">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_Prefilter.png">
 <meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_BRDF_LUT.png">
-<meta property="og:updated_time" content="2018-10-18T10:44:45.172Z">
+<meta property="og:updated_time" content="2018-10-18T10:58:15.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IBL">
-<meta name="twitter:description" content="Reflectance equation这里采用的反射模型如下:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)n\cdot \omega_i d\omega_i$$ $$\Rightarrow L_o(">
+<meta name="twitter:description" content="Reflectance equation这里采用的反射模型如下:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)n\cdot \omega_i d\omega_i$$">
 <meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/IBL/IBL_Source.png">
   
   
@@ -87,7 +87,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Reflectance-equation"><a href="#Reflectance-equation" class="headerlink" title="Reflectance equation"></a>Reflectance equation</h1><p>这里采用的反射模型如下:<br>$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)n\cdot \omega_i d\omega_i$$</p>
+        <h1 id="Reflectance-equation"><a href="#Reflectance-equation" class="headerlink" title="Reflectance equation"></a>Reflectance equation</h1><p>这里采用的反射模型如下:<br>$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)n\cdot \omega_i d\omega_i$$<br><a id="more"></a></p>
 <p>$$\Rightarrow L_o(p,\omega_i) = \int_\Omega k_d \frac{c}{\pi}L_i(p,\omega_i)n\cdot \omega_i d\omega_i + \int_\Omega k_s \frac{DFG}{4(\omega_i \cdot n)(\omega_o \cdot n)}L_i(p,\omega_i)n \cdot \omega_i d\omega_i$$</p>
 <h1 id="Diffuse-Irradiance"><a href="#Diffuse-Irradiance" class="headerlink" title="Diffuse Irradiance"></a>Diffuse Irradiance</h1><p>接下来先看diffuse项:<br>$$L_o = \int_\Omega k_d\frac{c}{\pi}L_i(p,\omega_i) n \cdot \omega_i d\omega_i$$<br>$$\Rightarrow L_o = k_d\frac{c}{\pi}\int_\Omega L_i(p,\omega_i) n\cdot \omega_i d\omega_i$$<br>$$\Rightarrow L_o = k_d \frac{c}{\pi}\int_{\phi = 0}^{2\pi} \int_{\theta = 0}^{\frac{\pi}{2}}L_i(p,\phi_i,\theta_i)\cos(\theta)\sin(\theta)d\phi d\theta \tag{1}$$</p>
 <h2 id="蒙特卡洛方法"><a href="#蒙特卡洛方法" class="headerlink" title="蒙特卡洛方法"></a>蒙特卡洛方法</h2><p>$$\because E[\frac{f(x)}{p(x)}] = \int f(x)dx$$<br>根据<a href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B" target="_blank" rel="noopener">大数定律</a>得知,样本均值将会收敛于期望值</p>
