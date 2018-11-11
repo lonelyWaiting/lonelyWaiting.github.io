@@ -155,3 +155,8 @@ $$z_{cs} = \frac{z}{f} = \frac{n \times f}{f - Z_{buffer} \times (f - n)} \times
 $$\Rightarrow z_{cs} = \frac{n}{f - Z_{buffer} \times (f - n)}$$
 $$\Rightarrow z_{cs} = \frac{1}{\frac{f}{n} + \frac{n - f}{n} \times Z_{buffer}}$$
 $$\Rightarrow z_{cs} = \frac{1}{\frac{f}{n} + (1 - \frac{f}{n}) \times Z_{buffer}}$$
+
+# Screen Space Ray March
+
+假设屏幕空间坐标(x,y),则齐次坐标为($2\times x - 1$,2 \times y - 1)
+
