@@ -12,12 +12,12 @@
 <meta property="og:url" content="http://lonelywaiting.github.io/python-3-UnicodeDecodeError-when-pip-install-package/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="Issue安装python库时报错，UnicodeDecodeError">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png">
 <meta property="og:updated_time" content="2018-03-10T09:12:48.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 3 UnicodeDecodeError when pip install package">
 <meta name="twitter:description" content="Issue安装python库时报错，UnicodeDecodeError">
-<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png">
+<meta name="twitter:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -84,7 +84,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h1><p>安装python库时报错，UnicodeDecodeError<br><a id="more"></a><br><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png" alt="pip install package UnicodeDecodeError"></p>
+        <h1 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h1><p>安装python库时报错，UnicodeDecodeError<br><a id="more"></a><br><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png" alt="pip install package UnicodeDecodeError"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>打开<code>python36\lib\site-packages\pip\compat\__init__.py</code></p>
 <p>修改<code>console_to_str</code>函数,将编码改为<code>gbk</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> s.decode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
@@ -120,8 +120,8 @@
     </a>
   
   
-    <a href="/shading-model/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">shading model&nbsp;<span>&gt;</span></div>
+    <a href="/motion-blur/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">motion blur&nbsp;<span>&gt;</span></div>
     </a>
   
 </nav>

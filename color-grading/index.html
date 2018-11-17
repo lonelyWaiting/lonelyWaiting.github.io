@@ -12,15 +12,15 @@
 <meta property="og:url" content="http://lonelywaiting.github.io/color-grading/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="简介简单来说就是颜色查找表,以颜色值作为3D纹理的纹理坐标,利用插值与色阶实现全色映射">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/color_grading.bmp">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/src.bmp">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/dst.bmp">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/bmp_save_option.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/color_grading/color_grading.bmp">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/color_grading/src.bmp">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/color_grading/dst.bmp">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/color_grading/bmp_save_option.png">
 <meta property="og:updated_time" content="2017-11-26T12:10:14.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="color grading">
 <meta name="twitter:description" content="简介简单来说就是颜色查找表,以颜色值作为3D纹理的纹理坐标,利用插值与色阶实现全色映射">
-<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/color_grading.bmp">
+<meta name="twitter:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/color_grading/color_grading.bmp">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -97,12 +97,12 @@
 <p>当以<code>R8G8B8A8</code>来存储LUT的话,$256\times 256\times 256$的查找表大小为64M.</p>
 <p>因此,通常是将其划分为32阶,也就是尺寸为$32\times 32\times 32$.大小为128k,实际应用中精度足够,内存占用也不大</p>
 <h1 id="资源制作"><a href="#资源制作" class="headerlink" title="资源制作"></a>资源制作</h1><h2 id="原始色阶"><a href="#原始色阶" class="headerlink" title="原始色阶"></a>原始色阶</h2><p>首先制作一张原始色阶图,下图为256*128的原始色阶图,包含32阶的所有颜色值</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/color_grading.bmp" alt="color Grading"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/color_grading/color_grading.bmp" alt="color Grading"></p>
 <p>生成算法如下:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">generate_pixels</span><span class="params">(color* pixels, <span class="keyword">const</span> bitmap_info&amp; info, <span class="keyword">int</span> size, <span class="keyword">int</span> downscale_shift)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> blue_stride = info.width / size;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> row = <span class="number">0</span>; row &lt; info.height; row++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> g = row % size;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> offset = (<span class="keyword">int</span>)(row / size) * blue_stride;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> col = <span class="number">0</span>; col &lt; info.width; col++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> r = col % size;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">int</span> b = offset + col / size;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">auto</span>&amp; c = pixels[row * info.width + col];</span><br><span class="line"></span><br><span class="line">			c.r = r &lt;&lt; downscale_shift;</span><br><span class="line">			c.g = g &lt;&lt; downscale_shift;</span><br><span class="line">			c.b = b &lt;&lt; downscale_shift;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="调节图像"><a href="#调节图像" class="headerlink" title="调节图像"></a>调节图像</h2><p>假设原图为A,希望将其变换为B.首先将原始色阶图置于图像右下角,另存为<code>src.bmp</code></p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/src.bmp" alt="将色阶置于原图右下角"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/color_grading/src.bmp" alt="将色阶置于原图右下角"></p>
 <p>然后开始P图,直到满意为止,针对图像的个别区域P图无意义,需要应用到全图.如下:</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/dst.bmp" alt="P图至期望效果"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/color_grading/dst.bmp" alt="P图至期望效果"></p>
 <p>将P好的图像另存为<code>dst.bmp</code></p>
 <p>接下来通过两张图像右下角的色阶图来提取LUT.</p>
 <h2 id="LUT生成"><a href="#LUT生成" class="headerlink" title="LUT生成"></a>LUT生成</h2><ul>
@@ -126,7 +126,7 @@
 </ul>
 <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p><a href="https://github.com/BentleyBlanks/Misc/tree/master/Misc/tools/color%20grading" target="_blank" rel="noopener">tool source code</a></p>
 <p>此工具仅支持24位未压缩的版本的BMP.</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/color_grading/bmp_save_option.png" alt="photoshop save option"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/color_grading/bmp_save_option.png" alt="photoshop save option"></p>
 <h1 id="More-Info"><a href="#More-Info" class="headerlink" title="More Info"></a>More Info</h1><p><a href="https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/ColorGrading/" target="_blank" rel="noopener">UE4 Color Grading</a></p>
 
       

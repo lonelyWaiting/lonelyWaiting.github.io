@@ -12,15 +12,15 @@
 <meta property="og:url" content="http://lonelywaiting.github.io/Radiometry/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="光模型图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/Flux.png">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_define.png">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/solid_angle_define.png">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_invariance.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Radiometry/Flux.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Radiometry/radiance_define.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Radiometry/solid_angle_define.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Radiometry/radiance_invariance.png">
 <meta property="og:updated_time" content="2018-10-08T00:49:52.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Radiometry">
 <meta name="twitter:description" content="光模型图形学中使用最常用的是几何光学,该模型中,物体的尺寸远大于光的波长">
-<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/Flux.png">
+<meta name="twitter:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Radiometry/Flux.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -76,7 +76,7 @@
     
     <div class="article-meta">
       <a href="/Radiometry/" class="article-date">
-  <time datetime="2018-01-04T12:39:18.585Z" itemprop="datePublished">2018-01-04</time>
+  <time datetime="2018-11-17T06:53:45.315Z" itemprop="datePublished">2018-11-17</time>
 </a>
       
       
@@ -93,21 +93,21 @@
 <h1 id="辐射度"><a href="#辐射度" class="headerlink" title="辐射度"></a>辐射度</h1><p>全局光照的目的就是计算场景光能的稳态分布,因此涉及到一些光的物理量</p>
 <h2 id="通量-Flux"><a href="#通量-Flux" class="headerlink" title="通量(Flux)"></a>通量(Flux)</h2><p>辐射通量也称之为功率,为<strong>每单位时间</strong>通过一个表面或区域的所有能量，单位为焦尔每秒<code>J/s</code>或瓦<code>W</code>,通常用符号$\Phi$</p>
 <p>下图中通过两个球面的通量是一样的</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/Flux.png" alt="Flux"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Radiometry/Flux.png" alt="Flux"></p>
 <h2 id="辐照度-Irradiance"><a href="#辐照度-Irradiance" class="headerlink" title="辐照度(Irradiance)"></a>辐照度(Irradiance)</h2><p>辐照度为<strong>每单位面积</strong>上的<strong>入射</strong>辐射通量,单位为$W/m^2$</p>
 <p>$$E = \frac{d\Phi}{dA}$$</p>
 <h2 id="辐射出射度-辐射度Radiosity"><a href="#辐射出射度-辐射度Radiosity" class="headerlink" title="辐射出射度(辐射度Radiosity)"></a>辐射出射度(辐射度Radiosity)</h2><p>辐射出射度(M)也称之为辐射度(B),为<strong>每单位面积</strong>上的<strong>出射</strong>辐射通量,单位为$W/m^2$</p>
 <p>$$M=B=\frac{d\Phi}{dA}$$</p>
 <h2 id="辐射率"><a href="#辐射率" class="headerlink" title="辐射率"></a>辐射率</h2><p>辐射率为<strong>每单位投影面积每单位立体角上</strong>的辐射通量</p>
 <p>$$L = \frac{d^2\Phi}{d\omega dA^{\perp}}=\frac{d^2\Phi}{d\omega dA\cos\theta}$$</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_define.png" alt="radiance define"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Radiometry/radiance_define.png" alt="radiance define"></p>
 <p>对着半球上一块区域的立体角$\Omega$定义为区域面积除以半球半径的平方,即:</p>
 <p>$$\Omega = \frac{A}{r^2}$$</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/solid_angle_define.png" alt="solid angle define"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Radiometry/solid_angle_define.png" alt="solid angle define"></p>
 <h2 id="各个量的关系"><a href="#各个量的关系" class="headerlink" title="各个量的关系"></a>各个量的关系</h2><p>$$<br>\begin{align}<br>\Phi \quad &amp;= \quad \int_A\int_{\Omega}L(x\rightarrow \Theta)\cos\theta d\omega_{\Theta}dA_x \notag \\[2ex]<br>E(x) \quad &amp;= \quad \int_\Omega L(x \leftarrow \Theta)\cos\theta d\omega_\Theta    \notag \\[2ex]<br>B(x) \quad &amp;= \quad \int_\Omega L(x \rightarrow \Theta)\cos\theta d\omega_\Theta \notag \\<br>\end{align}<br>$$</p>
 <h2 id="辐射率属性"><a href="#辐射率属性" class="headerlink" title="辐射率属性"></a>辐射率属性</h2><h3 id="沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x"><a href="#沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x" class="headerlink" title="沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$"></a>沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$</h3><p>表示从点x向y发射的辐射率等于由点x到达点y的辐射率(注意一个是发射，一个是到达)</p>
 <p>即假定光是在真空中传播,假设微分通量$d\Phi$离开微分表面$dA_x$到达微分表面$dA_y$,那么:</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Radiometry/radiance_invariance.png" alt="radiance invariance"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Radiometry/radiance_invariance.png" alt="radiance invariance"></p>
 <p>$$<br>\begin{align}<br>L(x \rightarrow y) &amp;= \frac{d^2\Phi}{(\cos\theta_x dA_x)d\omega_{x\leftarrow dA_y}} \notag\\[2ex]<br>d^2\Phi &amp;= L(x \rightarrow y)cos\theta_x d\omega_{x\leftarrow dA_y}dA_x\notag<br>\end{align}<br>$$</p>
 <p>$d\omega_{x\leftarrow dA_y}$表示从x看对着$dA_y$的立体角</p>
 <p>$$<br>\begin{align}<br>L(y\leftarrow x) &amp;= \frac{d^2\Phi}{(\cos\theta_y dA_y)d\omega_{y\leftarrow dA_x}dA_y} \notag\\[2ex]<br>d^2\Phi &amp;= L(y \rightarrow x)cos\theta_y d\omega_{y \leftarrow dA_x}dA_y\notag<br>\end{align}<br>$$</p>
@@ -162,17 +162,17 @@
     
 <nav id="article-nav">
   
-    <a href="/Color-And-Radiometry/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/reflect-refraction/" id="article-nav-newer" class="article-nav-link-wrap">
       <div class="article-nav-title"><span>&lt;</span>&nbsp;
         
-          Color and Radiometry
+          reflect and refraction
         
       </div>
     </a>
   
   
-    <a href="/D3D-Event-Query/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">D3D Event Query&nbsp;<span>&gt;</span></div>
+    <a href="/open-with-sublime/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Open With Sublime&nbsp;<span>&gt;</span></div>
     </a>
   
 </nav>

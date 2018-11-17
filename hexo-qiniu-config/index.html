@@ -11,16 +11,16 @@
 <meta property="og:url" content="http://lonelywaiting.github.io/hexo-qiniu-config/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="简单来说就是七牛可以用来管理图片,加速访问,标准用户有10G的免费存储空间,超出收费 Github毕竟空间有限,而且国内Github访问慢,所以选用了七牛作为图床">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_create.png">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_bucket_create.png">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_ak_sk.png">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_url_prefix.png">
-<meta property="og:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_region_endpoint.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_create.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_bucket_create.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_ak_sk.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_url_prefix.png">
+<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_region_endpoint.png">
 <meta property="og:updated_time" content="2017-11-18T11:31:18.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo qiniu config">
 <meta name="twitter:description" content="简单来说就是七牛可以用来管理图片,加速访问,标准用户有10G的免费存储空间,超出收费 Github毕竟空间有限,而且国内Github访问慢,所以选用了七牛作为图床">
-<meta name="twitter:image" content="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_create.png">
+<meta name="twitter:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_create.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -87,9 +87,9 @@
 <p>Github毕竟空间有限,而且国内Github访问慢,所以选用了七牛作为图床<a id="more"></a></p>
 <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h2 id="七牛空间设置"><a href="#七牛空间设置" class="headerlink" title="七牛空间设置"></a>七牛空间设置</h2><p>首先注册<a href="https://www.qiniu.com/" target="_blank" rel="noopener">七牛</a>,实名后有10G的免费空间,不实名也能用,有1G的免费空间</p>
 <p>注册完之后,到这个界面创建存储空间</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_create.png" alt="Qiniu Create"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_create.png" alt="Qiniu Create"></p>
 <p>填写存储空间信息</p>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_bucket_create.png" alt="Qiniu bucket Create"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_bucket_create.png" alt="Qiniu bucket Create"></p>
 <ol>
 <li>不同的地区存储空间超出免费范围收费不同,仅此而已,自行抉择</li>
 <li>存储空间名字随便填,只是方便自己管理</li>
@@ -103,19 +103,19 @@
 <li><p>access_key,secret_key: 与七牛云通讯的密钥,参考<a href="https://portal.qiniu.com/user/key" target="_blank" rel="noopener">access key and secret key</a></p>
 </li>
 </ul>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_ak_sk.png" alt="access key and secret key"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_ak_sk.png" alt="access key and secret key"></p>
 <ul>
 <li><p>dirPrefix: 存储空间中的虚拟目录,如上面的配置中,可以认为在存储空间中有一个叫做<code>resources</code>的文件夹</p>
 </li>
 <li><p>urlPrefix: 外链前缀,图片在七牛云上地址前缀</p>
 </li>
 </ul>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_url_prefix.png" alt="Qiniu url Prefix"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_url_prefix.png" alt="Qiniu url Prefix"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">urlPrefix = domain_address + <span class="string">'/'</span> + dirPrefix</span><br></pre></td></tr></table></figure>
 <ul>
 <li>up_host: 上传服务器路径,参考<a href="https://developer.qiniu.com/kodo/manual/1671/region-endpoint" target="_blank" rel="noopener">Qiniu upload host</a></li>
 </ul>
-<p><img src="http://ozkp9xvc9.bkt.clouddn.com/resources/images/Qiniu/qiniu_region_endpoint.png" alt="Qiniu Region Endpoint"></p>
+<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Qiniu/qiniu_region_endpoint.png" alt="Qiniu Region Endpoint"></p>
 <ul>
 <li>local_dir: 本地存放图片的文件夹,如上述配置中为<code>source\resources</code></li>
 </ul>
