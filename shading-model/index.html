@@ -12,15 +12,15 @@
 <meta property="og:url" content="http://lonelywaiting.github.io/shading-model/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/DiffuseModel.png">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/solid_angle.png">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/Phong.png">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/Blinn-Phong.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/DiffuseModel.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/solid_angle.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/Phong.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/Blinn-Phong.png">
 <meta property="og:updated_time" content="2018-11-17T08:43:31.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shading model">
 <meta name="twitter:description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$">
-<meta name="twitter:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/DiffuseModel.png">
+<meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/DiffuseModel.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -91,20 +91,20 @@
 <p>$$D  = \frac{\rho_d}{\pi}$$<br><a id="more"></a></p>
 <p>$\rho_d$表示表面的反射率：用于描述入射光能量在表面被反射的比例。范围在[0 , 1]</p>
 <p>$\theta$为入射光线$L$与法线$n$的夹角</p>
-<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/DiffuseModel.png" alt="Lambert"></p>
+<p><img src="../resources/images/shadingModel/DiffuseModel.png" alt="Lambert"></p>
 <p>Lambert Model是漫反射模型，在任何出射方向的光能都是一样</p>
 <p>因此</p>
 <p>$$I_o = \frac{\rho_d}{\pi}I_i\cos(\theta)$$</p>
 <p>那么我们对所有的出射光进行积分：</p>
 <p>$$I_{total-ouput} = \int_\Omega \frac{\rho_d}{\pi}I_i\cos(\theta)d\omega$$</p>
-<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/solid_angle.png" alt="solid angle"></p>
+<p><img src="../resources/images/shadingModel/solid_angle.png" alt="solid angle"></p>
 <p>$$d\omega = \sin(\theta)d\theta d\varphi$$</p>
 <p>$$I_{total-ouput} = \int_0^{2\pi}d\varphi\int_0^{\frac{\pi}{2}}I_i\frac{\rho_d}{\pi}\cos(\theta)\sin(\theta)d\theta$$</p>
 <p>$$I_{total-ouput} = 2\pi\frac{\rho_d}{\pi}I_i\int_0^{\frac{\pi}{2}}\frac{\sin(2\theta)}{2}d\theta$$</p>
 <p>$$I_{total-ouput} = \rho_dI_i*(-\frac{\cos(2\theta)}{2})\mid_0^{\frac{\pi}{2}}$$</p>
 <p>$$I_{total-ouput} = \rho_dI_i$$</p>
 <p>与$\rho_d$的定义一致</p>
-<h3 id="Phong-Model"><a href="#Phong-Model" class="headerlink" title="Phong Model"></a>Phong Model</h3><p>该模型是个经验模型<br><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/Phong.png" alt="phong"></p>
+<h3 id="Phong-Model"><a href="#Phong-Model" class="headerlink" title="Phong Model"></a>Phong Model</h3><p>该模型是个经验模型<br><img src="../resources/images/shadingModel/Phong.png" alt="phong"></p>
 <p>$$I_o = k_a I_a + \sum_{m\in lights}(k_d(\overrightarrow{L_m}\cdot \overrightarrow{N})I_{m , d}) + \sum_{m\in lights}(k_s(\overrightarrow{R_m} \cdot \overrightarrow{V})^{\alpha}I_{m , s})$$</p>
 <ul>
 <li>$k_a$：环境光反射率</li>
@@ -127,7 +127,7 @@
 <p>镜面光部分：</p>
 <p>$$I_{o , s} = \sum_{m\in lights}(k_s(\overrightarrow{R_m}\cdot \overrightarrow{V})^{\alpha}I_{m , s})$$</p>
 <h3 id="Blinn-Phong-Model"><a href="#Blinn-Phong-Model" class="headerlink" title="Blinn-Phong Model"></a>Blinn-Phong Model</h3><p>该模型在Phong Model的基础上改进了计算方法</p>
-<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/Blinn-Phong.png" alt="blinn phong"></p>
+<p><img src="../resources/images/shadingModel/Blinn-Phong.png" alt="blinn phong"></p>
 <p>$$H = \frac{\overrightarrow{L} + \overrightarrow{V}}{\lVert \overrightarrow{L} + \overrightarrow{V} \rVert}$$</p>
 <p>使用$\overrightarrow{N}\cdot \overrightarrow{H_m}$代替$\overrightarrow{R_m}\cdot \overrightarrow{V}$</p>
 <p>因为$\overrightarrow{N}\cdot \overrightarrow{H_m}$可以在一开始就计算好，因此可以加快计算。</p>

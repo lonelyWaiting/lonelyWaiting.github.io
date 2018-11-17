@@ -12,14 +12,14 @@
 <meta property="og:url" content="http://lonelywaiting.github.io/use-hexo-deploy-github-page/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Create a new branch named source">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Disqus_Create_New_Site.png">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Disqus_Choose_A_Platform.png">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Disqus_Config.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Create_New_Site.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Choose_A_Platform.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Config.png">
 <meta property="og:updated_time" content="2017-11-23T15:05:50.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="use hexo deploy github page">
 <meta name="twitter:description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Create a new branch named source">
-<meta name="twitter:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Disqus_Create_New_Site.png">
+<meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Create_New_Site.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -113,13 +113,13 @@
 <h3 id="Disqus"><a href="#Disqus" class="headerlink" title="Disqus"></a>Disqus</h3><p><a href="https://disqus.com/" target="_blank" rel="noopener">Disqus</a></p>
 <h4 id="Disqus-Config"><a href="#Disqus-Config" class="headerlink" title="Disqus Config"></a>Disqus Config</h4><p>click <code>GET STARTED</code>, select <code>I want to install Disqus on my site</code></p>
 <p>First Step:</p>
-<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Disqus_Create_New_Site.png" alt="Create a new Site"></p>
+<p><img src="../resources/images/Disqus_Create_New_Site.png" alt="Create a new Site"></p>
 <p>Second Step:</p>
-<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Disqus_Choose_A_Platform.png" alt="Choose a platform"></p>
+<p><img src="../resources/images/Disqus_Choose_A_Platform.png" alt="Choose a platform"></p>
 <p>my Platform is hexo , so i select <code>install manually with universal code</code></p>
 <p>Next Disqus will show the Universal Code install instructions page</p>
 <p>Third Step:</p>
-<p><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Disqus_Config.png" alt="Configure Disqus"></p>
+<p><img src="../resources/images/Disqus_Config.png" alt="Configure Disqus"></p>
 <p>Website URL is <code>http://&lt;username&gt;.github.io/</code></p>
 <h4 id="Apply-Disqus"><a href="#Apply-Disqus" class="headerlink" title="Apply Disqus"></a>Apply Disqus</h4><p>Open File <code>layout/_partial/article.ejs</code> under theme folder</p>
 <p>Add this snippet to the end of the file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=&quot;comments&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;disqus_thread&quot;&gt;</span><br><span class="line">    &lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;//disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>

@@ -12,15 +12,15 @@
 <meta property="og:url" content="http://lonelywaiting.github.io/Color-And-Radiometry/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="可见光人眼的可见光波谱范围约为370nm~730nm 蓝光：400nm,绿光：550nm,红光：650nm">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Color-And-Radiometry/spectrum.png">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Color-And-Radiometry/spectral_matching_curves.png">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Color-And-Radiometry/spectral_response_curves.png">
-<meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Color-And-Radiometry/SPDs_from_Displaying_Same_RGB.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/spectrum.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/spectral_matching_curves.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/spectral_response_curves.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/SPDs_from_Displaying_Same_RGB.png">
 <meta property="og:updated_time" content="2018-10-08T00:51:35.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Color and Radiometry">
 <meta name="twitter:description" content="可见光人眼的可见光波谱范围约为370nm~730nm 蓝光：400nm,绿光：550nm,红光：650nm">
-<meta name="twitter:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Color-And-Radiometry/spectrum.png">
+<meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/spectrum.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -91,7 +91,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;CoefficientSpecturm <span class="keyword">protected</span> data&gt; =</span><br><span class="line">	<span class="keyword">float</span> c[nSamples];</span><br></pre></td></tr></table></figure>
 <p>接下来介绍两种常用的表示方法</p>
 <h2 id="SampleSpectrum"><a href="#SampleSpectrum" class="headerlink" title="SampleSpectrum"></a>SampleSpectrum</h2><p>这种方法是将光谱重新均匀采样来进行拟合</p>
-<p>考虑波长为400nm~700nm的可见光，可以将区间分为N段，以30段为例，通常足以拟合比较复杂的光谱数据<br><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Color-And-Radiometry/spectrum.png" alt="sample construct"></p>
+<p>考虑波长为400nm~700nm的可见光，可以将区间分为N段，以30段为例，通常足以拟合比较复杂的光谱数据<br><img src="../resources/images/Color-And-Radiometry/spectrum.png" alt="sample construct"></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectrum Utility Declarations&gt; =</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> sampledLambdaStart = <span class="number">370</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> sampledLambdaEnd   = <span class="number">700</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> nSpectralSamples   = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line">&lt;Spectrum Declarations&gt; =</span><br><span class="line">	class SampledSpectrum : <span class="keyword">public</span> CoefficientSpectrum&lt;nSpectralSamples&gt;</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">public</span>:</span><br><span class="line">			&lt;SampledSpectrum <span class="keyword">public</span> Methods&gt;</span><br><span class="line">		<span class="keyword">private</span>:</span><br><span class="line">			&lt;SampledSpectrum Private Data&gt;</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>那么如何从一组光谱数据来构造光谱表示?</strong></p>
 <p>假设现在有一组光谱数据$(\lambda_i,v_i)$，表示第$i$个采样点的波长为$\lambda_i$，值为$v_i$,这些采样点往往分布不均匀</p>
@@ -111,7 +111,7 @@
 <p>$$y_\lambda = \frac{1}{\int Y(\lambda)d\lambda}\int_\lambda S(\lambda)Y(\lambda)d\lambda$$</p>
 <p>$$z_\lambda = \frac{1}{\int Y(\lambda)d\lambda}\int_\lambda S(\lambda)Z(\lambda)d\lambda$$</p>
 <p>$X(\lambda),Y(\lambda),Z(\lambda)$为光谱匹配曲线,是由国际照明委员会经过一系列实验制定的.</p>
-<p>这三条曲线被认为与人类视网膜的三种感色视椎体细胞响应类似<br><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Color-And-Radiometry/spectral_matching_curves.png" alt="spectral matching curves"></p>
+<p>这三条曲线被认为与人类视网膜的三种感色视椎体细胞响应类似<br><img src="../resources/images/Color-And-Radiometry/spectral_matching_curves.png" alt="spectral matching curves"></p>
 <p>两个由多种不同波长的光混合而成的光源可以表现出同样的颜色，这叫做“异谱同色”(metamerism)</p>
 <p>尽管对于人类观察者而言，XYZ可以很好的表示SPD，然而对于光谱计算并不是一种好的方案</p>
 <p>XYZ的乘积与SPD的乘积再计算得到的XYZ相差很大</p>
@@ -129,8 +129,8 @@
 <p>XYZ中的y与亮度密切相关.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampledSpectrum <span class="keyword">public</span> Methods&gt; += </span><br><span class="line">	<span class="keyword">float</span> y() <span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">float</span> yy = <span class="number">0.0f</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nSpectralSamples; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			yy += Y.c[i] * c[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> yy / yInt;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>现在我们已经将SPD转换为了XYZ,那么如何将XYZ转化为RGB用于显示呢？</strong></p>
 <p>当我们将RGB显示在显示器上时，真实显示的光谱主要由三色光谱响应曲线的加权和确定.，由发光材料决定</p>
-<p>LED,LCD,以及等离子体的三色光谱响应曲线不同，因此相同的SPD,在这三种情况下显示出来的RGB是不同的.<br><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Color-And-Radiometry/spectral_response_curves.png" alt="spectral response curves"></p>
-<p>在LCD,LED显示RGB(0.6,0.3,0.2)的光谱分别如下图所示：<br><img src="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/Color-And-Radiometry/SPDs_from_Displaying_Same_RGB.png" alt="SPD from display same rgb"></p>
+<p>LED,LCD,以及等离子体的三色光谱响应曲线不同，因此相同的SPD,在这三种情况下显示出来的RGB是不同的.<br><img src="../resources/images/Color-And-Radiometry/spectral_response_curves.png" alt="spectral response curves"></p>
+<p>在LCD,LED显示RGB(0.6,0.3,0.2)的光谱分别如下图所示：<br><img src="../resources/images/Color-And-Radiometry/SPDs_from_Displaying_Same_RGB.png" alt="SPD from display same rgb"></p>
 <p>可见SPD相差很大.因此，RGB作为颜色只在知道显示器属性的情况下才是有意义的.</p>
 <p>给定一个SPD的$x_{\lambda},y_\lambda,z_\lambda$</p>
 <p>在给定显示器的情况下,也就是给定三色光谱响应曲线$$R(\lambda),G(\lambda),B(\lambda)$$</p>
