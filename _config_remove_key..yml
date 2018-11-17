@@ -141,4 +141,4 @@ share_addthis: false
 #   css:
 #     folder: css
 
-github_resource_prefix: https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources
+github_resource_prefix: ../resources
