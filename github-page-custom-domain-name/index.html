@@ -135,7 +135,7 @@
     </div>
     
       <div class="article-toc">
-        <h3>Contents</h3>
+        <h3>目录</h3>
         <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#域名注册"><span class="toc-number">1.</span> <span class="toc-text">域名注册</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DNS解析"><span class="toc-number">2.</span> <span class="toc-text">DNS解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github-Page配置"><span class="toc-number">3.</span> <span class="toc-text">Github Page配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#More-Infos"><span class="toc-number">4.</span> <span class="toc-text">More Infos</span></a></li></ol>
       </div>
     
@@ -212,6 +212,38 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

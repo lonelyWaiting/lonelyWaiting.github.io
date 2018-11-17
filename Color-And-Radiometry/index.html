@@ -173,7 +173,7 @@
     </div>
     
       <div class="article-toc">
-        <h3>Contents</h3>
+        <h3>目录</h3>
         <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#可见光"><span class="toc-number">1.</span> <span class="toc-text">可见光</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#光谱表示"><span class="toc-number">2.</span> <span class="toc-text">光谱表示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SampleSpectrum"><span class="toc-number">2.1.</span> <span class="toc-text">SampleSpectrum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RGBSpectrum"><span class="toc-number">2.2.</span> <span class="toc-text">RGBSpectrum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LinearSpace-RGB-to-sRGB"><span class="toc-number">2.3.</span> <span class="toc-text">LinearSpace RGB to sRGB</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
       </div>
     
@@ -189,10 +189,10 @@
     
 <nav id="article-nav">
   
-    <a href="/open-with-sublime/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Radiometry/" id="article-nav-newer" class="article-nav-link-wrap">
       <div class="article-nav-title"><span>&lt;</span>&nbsp;
         
-          Open With Sublime
+          Radiometry
         
       </div>
     </a>
@@ -252,7 +252,22 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>

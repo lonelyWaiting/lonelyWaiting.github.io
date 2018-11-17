@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/solid_angle.png">
 <meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/Phong.png">
 <meta property="og:image" content="https://github.com/lonelyWaiting/lonelyWaiting.github.io/tree/source/source/resources/images/shadingModel/Blinn-Phong.png">
-<meta property="og:updated_time" content="2018-10-08T00:48:14.589Z">
+<meta property="og:updated_time" content="2018-11-17T08:43:31.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shading model">
 <meta name="twitter:description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$">
@@ -79,6 +79,10 @@
   <time datetime="2018-11-17T06:53:45.329Z" itemprop="datePublished">2018-11-17</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
+  </div>
+
       
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -139,7 +143,7 @@
     </div>
     
       <div class="article-toc">
-        <h3>Contents</h3>
+        <h3>目录</h3>
         <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambert-Model"><span class="toc-number">1.</span> <span class="toc-text">Lambert Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phong-Model"><span class="toc-number">2.</span> <span class="toc-text">Phong Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blinn-Phong-Model"><span class="toc-number">3.</span> <span class="toc-text">Blinn-Phong Model</span></a></li></ol>
       </div>
     
@@ -210,7 +214,22 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>

@@ -146,7 +146,7 @@
     </div>
     
       <div class="article-toc">
-        <h3>Contents</h3>
+        <h3>目录</h3>
         <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#光模型"><span class="toc-number">1.</span> <span class="toc-text">光模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#辐射度"><span class="toc-number">2.</span> <span class="toc-text">辐射度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通量-Flux"><span class="toc-number">2.1.</span> <span class="toc-text">通量(Flux)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐照度-Irradiance"><span class="toc-number">2.2.</span> <span class="toc-text">辐照度(Irradiance)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射出射度-辐射度Radiosity"><span class="toc-number">2.3.</span> <span class="toc-text">辐射出射度(辐射度Radiosity)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率"><span class="toc-number">2.4.</span> <span class="toc-text">辐射率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各个量的关系"><span class="toc-number">2.5.</span> <span class="toc-text">各个量的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率属性"><span class="toc-number">2.6.</span> <span class="toc-text">辐射率属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x"><span class="toc-number">2.6.1.</span> <span class="toc-text">沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传感器-例如相机-人眼-对辐射敏感"><span class="toc-number">2.6.2.</span> <span class="toc-text">传感器,例如相机,人眼,对辐射敏感</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输理论"><span class="toc-number">3.</span> <span class="toc-text">传输理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发射光"><span class="toc-number">4.</span> <span class="toc-text">发射光</span></a></li></ol>
       </div>
     
@@ -171,8 +171,8 @@
     </a>
   
   
-    <a href="/open-with-sublime/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Open With Sublime&nbsp;<span>&gt;</span></div>
+    <a href="/Color-And-Radiometry/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Color and Radiometry&nbsp;<span>&gt;</span></div>
     </a>
   
 </nav>
@@ -225,7 +225,22 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>

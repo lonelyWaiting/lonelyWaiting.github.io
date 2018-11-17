@@ -133,7 +133,7 @@
     </div>
     
       <div class="article-toc">
-        <h3>Contents</h3>
+        <h3>目录</h3>
         <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用场合"><span class="toc-number">2.</span> <span class="toc-text">适用场合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法描述"><span class="toc-number">3.</span> <span class="toc-text">算法描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#资源要求"><span class="toc-number">4.</span> <span class="toc-text">资源要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#资源制作"><span class="toc-number">5.</span> <span class="toc-text">资源制作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始色阶"><span class="toc-number">5.1.</span> <span class="toc-text">原始色阶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调节图像"><span class="toc-number">5.2.</span> <span class="toc-text">调节图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LUT生成"><span class="toc-number">5.3.</span> <span class="toc-text">LUT生成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-number">6.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工具"><span class="toc-number">7.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#More-Info"><span class="toc-number">8.</span> <span class="toc-text">More Info</span></a></li></ol>
       </div>
     
@@ -212,7 +212,22 @@
 
 
 <script src="/js/script.js"></script>
-  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
