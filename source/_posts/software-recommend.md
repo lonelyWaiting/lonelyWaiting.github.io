@@ -38,7 +38,6 @@ tags: software
 
 ![vimium](/resources/images/software/vimium.png)
 
-# [Clover](http://cn.ejie.me/)
 
 # [Tampermonkey](http://tampermonkey.net/)
 
@@ -47,6 +46,8 @@ tags: software
 可以安装各种用户脚本,比如百度云下载链接转为迅雷下载,VIP视频破解等
 
 ![tampermonkey](/resources/images/software/tampermonkey.png)
+
+# [Clover](http://cn.ejie.me/)
 
 - 资源管理器标签页,Win10有bug,Win7可用
 
@@ -85,3 +86,17 @@ tags: software
 ![CCleaner](/resources/images/software/ccleaner.png)
 
 注册码:`C2YW-N8ZC-FMC7-AHR9-UZPC`
+
+# [Bandzip](https://en.bandisoft.com/bandizip/)
+
+- 解压缩
+
+![Bandzip](/resources/images/software/bandzip.png)
+
+压缩包内是一个文件夹时就不会再建一个文件夹
+
+# [OneQuick](https://onequick.org/)
+
+- 热键快捷工具
+
+![OneQuick](/resources/images/software/onequick.gif)
