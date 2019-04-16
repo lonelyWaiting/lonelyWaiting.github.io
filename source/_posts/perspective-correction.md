@@ -128,7 +128,17 @@ $$
 \frac{1}{r\times tan(\frac{\alpha}{2})} & 0 & 0 & 0 \\\\
 0 & \frac{1}{tan(\frac{\alpha}{2})} & 0 & 0 \\\\
 0 & 0 & \frac{f}{f - n} & 1 \\\\
-0 & 0 & \frac{-n\times f}{f - n} & 0
+0 & 0 & \frac{n\times f}{n - f} & 0
+\end{bmatrix}
+$$
+
+逆矩阵如下:
+$$
+\begin{bmatrix}
+r \times tan(\frac{\alpha}{2}) & 0 & 0 & 0 \\\\
+0 & tan(\frac{\alpha}{2}) & 0 & 0 \\\\
+0 & 0 & 0 & \frac{n - f}{n\times f} \\\\
+0 & 0 & 1 & \frac{1}{n}
 \end{bmatrix}
 $$
 
@@ -158,5 +168,5 @@ $$\Rightarrow z_{cs} = \frac{1}{\frac{f}{n} + (1 - \frac{f}{n}) \times Z_{buffer
 
 # Screen Space Ray March
 
-假设屏幕空间坐标(x,y),则齐次坐标为($2\times x - 1$,2 \times y - 1)
+假设屏幕空间坐标(x,y),则齐次坐标为($2\times x - 1$,2 \times y - 1$)
 
