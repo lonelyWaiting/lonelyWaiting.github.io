@@ -13,6 +13,7 @@ tags: Unreal
 # FMeshDrawCommand
 
 保存了在一个特定`Pass`下绘制一个`Mesh`所需要知道的所有信息
+
 ![MeshDrawCommand](/resources/images/MeshDrawingPipeline/FMeshDrawCommand.png)
 
 - ShaderBindings: 记录了`Shader`各个阶段绑定的参数集
@@ -28,12 +29,14 @@ tags: Unreal
 
 ![橙色表示每帧都执行,蓝色表示只执行一次然后被Cache](/resources/images/MeshDrawingPipeline/MeshBatchGeneratePath.png)
 
-对于`StaticMesh`来说就是`Cache`的方式,在`Proxy`添加到场景时调用`DrawStaticElements`
+`StaticMesh`来说就是`Cache`的方式,在`Proxy`添加到场景时调用`DrawStaticElements`
 生成的`FMeshBatch`被保存在`FPrimitiveSceneInfo`的`StaticMeshes`中
 每帧进行重用直到`Proxy`从场景中移除
+![Cache Path](/resources/images/MeshDrawingPipeline/StaticGenerateMeshBatch.png)
 
 `Dynamic`的方式将会每帧重建`FMeshBatch`,适用于粒子这种
 通过调用`GetDynamicElements`来生成
+![Dynamic Path](/resources/images/MeshDrawingPipeline/DynamicGenerateMeshBatch.png)
 
 # MeshProcessor
 
@@ -50,7 +53,20 @@ tags: Unreal
 通过调用`BuildMeshDrawCommands`生成`MeshDrawCommand`
 ![DepthPass BuildMeshDrawCommand](/resources/images/MeshDrawingPipeline/DepthPass_Process.png)
 
-# MeshDrawCommand如何产生
+# MeshDrawCommand如何产生?
+
+![Cached Mesh Draw Command](/resources/images/MeshDrawingPipeline/CacheMeshDrawCommand.png)
+
+`DynamicMesh`的`MeshDrawCommand`需要每帧产生
+目前只有`FLocalVertexFactoy`,即(`UStaticComponent`)可以被`Cached`
+因为其它的`VertexFactory`需要依赖`View`来设置`Shader Binding`
+
+## Dynamic Relevance
+
+## Static Relevance, VF needs View
+
+## Static Relevance, VF doesn't need View
+
 
 以`DepthPass`为例
 
@@ -292,3 +308,6 @@ FRegisterPassProcessorCreateFunction RegisterDepthPass(&CreateDepthPassProcessor
 
 # custom mesh pass
 
+# Reference
+- [MeshDrawingPipeline](https://docs.unrealengine.com/en-us/Programming/Rendering/MeshDrawingPipeline)
+- [Refactoring the Mesh Drawing Pipeline for Unreal Engine 4.22](https://www.youtube.com/watch?v=qx1c190aGhs&feature=youtu.be)
