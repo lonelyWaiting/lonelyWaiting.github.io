@@ -27,6 +27,8 @@ tags: Unreal
 - Cache
 - Dynamic
 
+具体由哪个途径生成`FMeshBatch`通过`FPrimitiveSceneProxy::GetViewRelevance`决定
+
 ![橙色表示每帧都执行,蓝色表示只执行一次然后被Cache](/resources/images/MeshDrawingPipeline/MeshBatchGeneratePath.png)
 
 `StaticMesh`来说就是`Cache`的方式,在`Proxy`添加到场景时调用`DrawStaticElements`
@@ -61,256 +63,89 @@ tags: Unreal
 目前只有`FLocalVertexFactoy`,即(`UStaticComponent`)可以被`Cached`
 因为其它的`VertexFactory`需要依赖`View`来设置`Shader Binding`
 
-## Dynamic Relevance
+- Static Relevance
 
-![Dynamic Generate MeshDrawCommand](/resources/images/MeshDrawingPipeline/DynamicMeshDrawCommandGenerate.png)
+![Static MeshBatch Cache Flow](/resources/images/MeshDrawingPipeline/Cache_MeshBatch.png)
 
-## Static Relevance, VF doesn't need View
+`FBatchingSPDI::DrawMesh`如下:
+![生成MeshBatch,并确定是否支持Cache为MeshDrawCommand](/resources/images/MeshDrawingPipeline/DrawMesh_SupportCacheMeshDrawCommand.png)
 
+可见对于`StaticMesh`而言,`MeshBatch`可以提前Cache
+`MeshDrawCommand`需要根据`SupportsCachingMeshDrawCommands`确定是否能`Cache`
+
+`SupportsCachingMeshDrawCommands`如下:
+![SupportsCachingMeshDrawCommands](/resources/images/MeshDrawingPipeline/SupportsCachingMeshDrawCommands.png)
+
+目前只有`FLocalVertexFactory`支持Cache `MeshDrawCommand`
+如果`VertexFactory`依赖于`View`,由于`View`会变,则`Shader Bindings`需要每帧更新,因此无法Cache `MeshDrawCommand`
+
+Shader Bindings:
+- Pass-Constant uniform buffer, 如`ViewUniformBuffer`,`DepthPassUniformBuffer`
+- Vertex Factory Bindings
+- Materail Bindings
+- Primitive Bindings
+- Pass specific bindings which change between draws
+
+目前已知`DynamicMesh`需要每帧生成`MeshDrawCommand`
+`StaticMesh`根据`StaticMeshBatchRelevance`决定是否需要重新生成
+
+先看下Cache `MeshDrawCommand`的过程:
 ![Cache Generate MeshDrawCommand](/resources/images/MeshDrawingPipeline/CacheGenerateMeshDrawCommand.png)
 
-## Static Relevance, VF needs View
+`CacheMeshDrawCommands`的实现如下:
+![CacheMeshDrawCommands](/resources/images/MeshDrawingPipeline/CacheMeshDrawCommands.png)
 
+会按`PassType`存储在`Scene::CacheDrawLists[PassType]`中
 
-以`DepthPass`为例
+接下来看下如何收集`MeshDrawCommand`
+![Gather MeshDrawCommand](/resources/images/MeshDrawingPipeline/GatherMeshDrawCommand.png)
 
-## FScene::AddPrimitive
+`MeshDrawCommand`的收集就在`ComputeViewVisibility`中完成
+
+- Static MeshDrawCommand的收集如下:
+![Gather Static MeshDrawCommand](/resources/images/MeshDrawingPipeline/Gather_StaticMeshDrawCommand.png)
+
+`AddCommandsForMesh`中会根据`bSupportsCachingMeshDrawCommands`来决定是否已经`Cache`好了
+![AddCommandsForMesh](/resources/images/MeshDrawingPipeline/AddCommandsForMesh.png)
+
+需要生成`MeshDrawCommand`的`StaticMeshBatch`记录在`DynamicBuildRequests`中
+
+- Dynamic MeshDrawCommand收集
+
+DynamicMesh的`MeshBatch`需要每帧收集:
+![Dynamic Path](/resources/images/MeshDrawingPipeline/DynamicGenerateMeshBatch.png)
+
+然后通过`SetupMeshPass`将`StaticMeshBatch`和`DynamicMeshBatch`转换为`MeshDrawCommand`
+
+因此生成`MeshDrawCommand`的大致流程如下:
 ```cpp
-void FScene::AddPrimitive(UPrimitiveComponent* Primitve)
+void ComputeViewVisibility(...)
 {
     ...
-    FPrimitiveSceneProxy* PrimitiveSceneProxy = Primitive->CreateSceneProxy();
-    Primitive->SceneProxy = PrimitiveSceneProxy;
-    if(!PrimitiveSceneProxy)    return;
 
-    FPrimitiveSceneInfo* PrimitiveSceneInfo = new PrimitiveSceneInfo(Primitive, this);
-    PrimitiveSceneProxy->PrimitiveSceneInfo = PrimitiveSceneInfo;
+    GatherStaticMeshDrawCommandAndUnCachedMeshBatch(...);
 
-    ...
+    GatherDynamicMeshBatch(...);
 
-    FScene* Scene = this;
-    ENQUEUE_RENDER_COMMAND(AddPrimitiveCommand)
-    (
-        [Scene, PrimitiveSceneInfo](FRHICommandListImmediate& RHICmdList)
-        {
-            FScopeCycleCounter Context(PrimitiveSceneInfo->Proxy->GetStateId());
-            Scene->AddPrimitiveSceneInfo_RenderThread(RHICmdList, PrimitiveSceneInfo);
-        }
-    )
-}
-```
-
-## FScene::AddPrimitiveSceneInfo_RenderThread
-```cpp
-void FScene::AddPrimitiveSceneInfo_RenderThread(FRHICommandListImmediate& RHICmdList, 
-                                                FPrimitiveSceneInfo* PrimitiveSceneInfo)
-{
-    Primitives.Add(PrimitiveSceneInfo);
-    ...
-
-    if(GIsEditor)
+    for(int viewIndex = 0; viewIndex < Views.Num(); ViewIndex++)
     {
-        PrimitiveSceneInfo->AddToScene(RHICmdList, true);
-    }
-    else
-    {
-        const bool bAddToDrawList = !(CVarDoLazyStaticMeshUpdate.GetValueOnRenderThread());
-
-        if(bAddToDrawList)
-        {
-            PrimitiveSceneInfo->AddToScene(RHICmdList, true);
-        }
-        else
-        {
-            PrimitiveSceneInfo->AddToScene(RHICmdList, true, false);
-            PrimitiveSceneInfo->BeginDeferredUpdateStaticMeshes();
-        }
-    }
-    ...
-}
-```
-这步将`PrimitiveSceneInfo`添加至`Scene`内部的`FPrimitiveSceneInfo`列表中
-并调用`PrimitiveSceneInfo->AddToScene()`
-
-## FPrimitiveSceneInfo::AddToScene
-```cpp
-void FPrimitiveSceneInfo::AddToScene(FRHICommandListImmediate& RHICmdList, 
-                                bool bUpdateStaticDrawList, 
-                                bool bAddToStaticDrawLists)
-{
-    ...
-    if (bUpdateStaticDrawList)
-    {
-        AddStaticMeshes(RHICmdList, bAddToStaticDrawList);
-    }
-    ...
-}
-```
-
-## FPrimitiveSceneInfo::AddStaticMeshes
-
-添加图元的`Static Meshes`到`Scene`中
-```cpp
-void FPrimitiveSceneInfo::AddStaticMeshes(FRHICommandListImmediate& RHICmdList, bool bAddToStaticDrawLists)
-{
-    ...
-    for (int32 MeshIndex = 0; MeshIndex < StaticMeshes.Num(); MeshIndex++)
-    {
-        FStaticMeshBatchRelevance& MeshRelevance = StaticMeshRelevances[MeshIndex];
-        FStaticMeshBatch& Mesh = StaticMeshes[MeshIndex];
-
-        FSparseArrayAllocationInfo SceneArrayAllocation = Scene->StaticMeshes.AddUninitialized();
-        Scene->StaticMeshes[SceneArrayAllocation.Index] = &Mesh;
-        Mesh.Id = SceneArrayAllocation.Index;
-        MeshRelevance.Id = SceneArrayAllocation.Index;
-
-        if(Mesh.bRequiresPerElementVisibility)
-        {
-            Mesh.BatchVisibilityId = Scene->StaticMeshBatchVisibility.AddUninitialized().Index;
-            Scene->StaticMeshBatchVisibility[Mesh.BatchVisibilityId] = true;
-        }
-    }
-
-    if (bAddToStaticDrawLists)
-    {
-        CachedMeshDrawCommands(RHICmdList);
+        SetupMeshPass(Views[viewIndex], ...)
     }
 }
 ```
-先将`StaticMeshBatch`添加至`Scene`的`StaticMeshes`和`StaticMeshBatchVisibility`列表中
-再调用`CachedMeshDrawCommands`生成`MeshDrawCommand`
+最终这些`MeshDrawCommand`被存储于`FViewInfo::ParallelMeshDrawCommandPasses[PassType]`中
 
-## FPrimitiveSceneInfo::CachedMeshDrawCommands
+# MeshDrawCommand如何使用
 
-```cpp
-void FPrimitiveSceneInfo::CacheMeshDrawCommands(FRHICommandListImmediate& RHICmdList)
-{
-    ...
-
-    for(int32 MeshIndex = 0; MeshIndex < StaticMeshes.Num(); MeshIndex++)
-    {
-        FStaticMeshBatchRelevance& MeshRelevance = StaticMeshRelevances[MeshIndex];
-        FStaticMeshBatch& Mesh = StaticMeshes[MeshIndex];
-
-        ...
-
-        if (SupportsCachingMeshDrawCommands(Mesh.VertexFactory, Proxy))
-        {
-            for (int32 PassIndex = 0; PassIndex < EMeshPass::Num; PassIndex++)
-            {
-                EMeshPass::Type PassType = (EMeshPass::Type)PassIndex;
-
-                if ((FPassProcessorManager::GetPassFlags(ShadingPath, PassType) & EMeshPassFlags::CachedMeshCommands) != EMeshPassFlag::None)
-                {
-                    FCachedMeshDrawCommandInfo CommandInfo;
-                    CommandInfo.MeshPass = PassType;
-
-                    FCachedPassMeshDrawList& SceneDrawList = Scene->CachedDrawLists[PassType];
-                    FCachedPassMeshDrawListContext CachedPassMeshDrawListContext(CommandInfo, SceneDrawList, *Scene);
-
-                    PassProcessorCreateFunction CreateFunction = FPassProcessorManager::GetCreateFunction(ShadingPath, PassType);
-                    FMeshPassProcessor* PassMeshProcessor = CreateFunction(Scene, nullptr, &CachedPassMeshDrawListContext);
-
-                    if (PassMeshProcessor != nullptr)
-                    {
-                        check(!Mesh.bRequiresPerElementVisibility);
-                        uint64 BatchElementMask = ~0ull;
-                        PassMeshProcessor->AddMeshBatch(Mesh, BatchElementMask, Proxy);
-
-                        PassMeshProcessor->~FMeshPassProcessor();
-                    }
-
-                    if (CommandInfo.CommandIndex != -1 || CommandInfo.StateBucketId != -1)
-                    {
-                        MeshRelevance.CommandInfosMask.Set(PassType);
-
-                        StaticMeshCommandInfos.Add(CommandInfo);
-                    }
-                }
-            }
-        }
-    }
-}
+最终通过调用以下语句触发`DrawCall`
 ```
-
-该函数为遍历每个`StaticMesh`,并为每个`FStaticMeshBatch`遍历所有的`MeshPass`
-每个`MeshPass`都会根据当前的`ShadingPath`和`MeshPass`选择相应的`FMeshPassProcessor`
-然后调用`FMeshPassProcessor`的`AddMeshBatch`生成`MeshDrawCommand`
-
-`Scene`对于每个`MeshPass`有一个`CachedDrawList`
-该函数为每个`MeshPass`产生的`MeshDrawCommand`都将记录到对应的列表中
-
-# 注册FMeshPassProcessor
-
-正如上面所说的,需要根据`ShadingPath`和`MeshPass`来选择对应的`MeshPassProcessor`
-因为每个`Mesh Pass`,我们都需要实现一个`MeshPassProcessor`,并注册到`FPassProcessorManager`中
-
-以`DepthRendering`为例:
-```cpp
-class FDepthPassMeshProcessor : public FMeshPassProcessor
-{
-public:
-    FDepthPassMeshProcessor(const FScene* Scene,
-                            const FSceneView* InViewIfDynamicMeshCommand,
-                            const FMeshPassProcessorRenderState& InPassDrawRenderState,
-                            const bool InbRespectUseAsOccluderFlag,
-                            const EDepthDrawingMode InEarlyZPassMode,
-                            const bool InbEarlyZPassMovable,
-                            FMeshPassDrawListContext* InDrawListContext);
-
-    virtual void AddMeshBatch(const FMeshBatch& MeshBatch,
-                              uint64 BatchElementMask,
-                              const FPrimitiveSceneProxy* PrimitiveSceneProxy,
-                              int StaticMeshId = -1) override final;
-    
-private:
-    template<bool bPositionOnly>
-	void Process(const FMeshBatch& MeshBatch,
-                 uint64 BatchElementMask,
-                 int32 StaticMeshId,
-                 const FPrimitiveSceneProxy* RESTRICT PrimitiveSceneProxy,
-                 const FMaterialRenderProxy& RESTRICT MaterialRenderProxy,
-                 const FMaterial& RESTRICT MaterialResource,
-                 ERasterizerFillMode MeshFillMode,
-                 ERasterizerCullMode MeshCullMode);
-
-	FMeshPassProcessorRenderState PassDrawRenderState;
-
-	const bool bRespectUseAsOccluderFlag;
-	const EDepthDrawingMode EarlyZPassMode;
-	const bool bEarlyZPassMovable;
-}
+View.ParallelMeshDrawCommandPasses[MeshPassType].DispatchDraw(nullptr, RHICmdList);
 ```
-从`FMeshPassProcessor`继承，并实现`AddMeshBatch`
-
-然后通过以下方式,将其注册至`FPassProcessorManager`中:
-```cpp
-FMeshPassProcessor* CreateDepthPassProcessor(const FScene* Scene, 
-                                             const FSceneView* InViewIfDynamicMeshCommand, 
-                                             FMeshPassDrawListContext* InDrawListContext)
-{
-	FMeshPassProcessorRenderState DepthPassState;
-	SetupDepthPassState(DepthPassState);
-	return new(FMemStack::Get()) FDepthPassMeshProcessor(Scene, 
-                                                         InViewIfDynamicMeshCommand, 
-                                                         DepthPassState, 
-                                                         true, 
-                                                         Scene->EarlyZPassMode, 
-                                                         Scene->bEarlyZPassMovable, 
-                                                         InDrawListContext);
-}
-
-FRegisterPassProcessorCreateFunction RegisterDepthPass(&CreateDepthPassProcessor, 
-                                                        EShadingPath::Deferred, 
-                                                        EMeshPass::DepthPass, 
-                                                        EMeshPassFlags::CachedMeshCommands | EMeshPassFlags::MainView);
-```
-
-`EMeshPassFlags::CachedMeshCommands`指定是否允许Cache MeshDrawCommand
-
-# MeshDrawCommand怎么被调用
 
 # custom mesh pass
+
+以复制一个简化版的`DepthPass`为例
+
 
 # Reference
 - [MeshDrawingPipeline](https://docs.unrealengine.com/en-us/Programming/Rendering/MeshDrawingPipeline)
