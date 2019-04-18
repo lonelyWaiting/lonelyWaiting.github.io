@@ -9,7 +9,7 @@ tags: Unreal
 - UPrimitiveComponent: 可用于渲染或者物理交互的基类,游戏线程拥有其所有变量和状态
 - FPrimitiveSceneProxy: `UPrimitiveComponent`的渲染线程版本
 - FPrimitiveSceneInfo: `UPrimitiveComponent`在渲染器的内部状态,与`FPrimitiveSceneProxy`一一映射
-
+<!-- more -->
 # FMeshDrawCommand
 
 保存了在一个特定`Pass`下绘制一个`Mesh`所需要知道的所有信息
