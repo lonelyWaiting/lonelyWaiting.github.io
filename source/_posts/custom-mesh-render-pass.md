@@ -258,6 +258,53 @@ View.ParallelMeshDrawCommandPasses[MeshPassType].DispatchDraw(nullptr, RHICmdLis
 然后找个地方调用一下,比如放在`RenderPrePass`之后
 ![Invoke RenderMyTestPass](/resources/images/MeshDrawingPipeline/InvokeRenderMyTestPass.png)
 
+到这一步只能靠renderdoc这种剖析工具查看渲染
+
+# Buffer Visualization
+
+修改`DeferredShadingCommon.ush`的`FGbufferData`
+![FGBufferData](/resources/images/MeshDrawingPipeline/FGBufferData.png)
+
+修改`DeferredShadingCommon.ush`的`DecodeGBufferData`
+![DecodeGBufferData](/resources/images/MeshDrawingPipeline/DecodeGBufferData.png)
+
+这样就把自定义的值放到`FGBufferData`里了
+
+修改`SceneRenderTargetParameters.h`
+![SceneTextureStruct](/resources/images/MeshDrawingPipeline/SceneTextureStruct.png)
+该结构定义了一个变量`SceneTexturesStruct`,可见`SceneRenderTargets.cpp`
+
+修改`SceneRenderTargets`的`SetupSceneTetureUniformParameters`
+![SetupSceneTextureUniformParameters](/resources/images/MeshDrawingPipeline/SetupSceneTextureUniformParameters.png)
+
+在`RenderMyTestPass`中我们会调用`SetupSceneTetureUniformParameters`
+将`MyTestSceneDepthZ`绑定到`SceneTexturesStruct.MyTestTexture`上
+因此,在`Shader`代码中可通过`SceneTexturesStruct.MyTestTexture`访问
+
+修改`DeferredShadingCommon.ush`的`GetGBufferDataUint`
+![GetGBufferDataUint](/resources/images/MeshDrawingPipeline/GetGBufferDataUint.png)
+
+修改`DeferredShadingCommon.ush`的`GetGBufferData`
+![GetGBufferData](/resources/images/MeshDrawingPipeline/GetGBufferData.png)
+
+修改`SceneViewFamilyBlackboard.h`
+![Modify FSceneViewFamilyBlackboard](/resources/images/MeshDrawingPipeline/SceneViewFamilyBlackboard_Declaration.png)
+
+修改`SceneViewFamilyBlackboard.cpp`
+![Register MyTestSceneDepthZ](/resources/images/MeshDrawingPipeline/Register_MyTestSceneDepthZ.png)
+
+修改`SceneViewFamilyBlackboard.ush`
+![Modify SceneViewFamilyBlackboard.ush](/resources/images/MeshDrawingPipeline/SceneViewFamilyBlackboard_Modify.png)
+
+修改`BaseEngine.ini`
+![Add Config](/resources/images/MeshDrawingPipeline/BaseEngine_InI.png)
+
+接下来新建一个材质,名为`MyTestDepth`,放在`Engine/Content/BufferVisualization`目录下:
+![MyTestDepth](/resources/images/MeshDrawingPipeline/MyTestDepth.png)
+
+效果如下:
+![BufferVisualization](/resources/images/MeshDrawingPipeline/BufferVisualization.png)
+
 # Reference
 
 - [MeshDrawingPipeline](https://docs.unrealengine.com/en-us/Programming/Rendering/MeshDrawingPipeline)
