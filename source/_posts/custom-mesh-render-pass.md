@@ -146,7 +146,119 @@ View.ParallelMeshDrawCommandPasses[MeshPassType].DispatchDraw(nullptr, RHICmdLis
 
 以复制一个简化版的`DepthPass`为例
 
+## 添加Pass枚举
+
+打开文件MeshPassProcessor.h,修改`EMeshPass`结构体,如下:
+![Modify MeshPass Enum](/resources/images/MeshDrawingPipeline/AddMeshPassEnum.png)
+
+修改`GetMeshPassName`,如下:
+![Modify GetMeshPassName](/resources/images/MeshDrawingPipeline/GetMeshPassName.png)
+
+## 新建文件
+新增`MyTestPassRendering.h`,`MyTestPassRendering.cpp`
+存至`Engine/Source/Runtime/Renderer/Private`目录
+
+## 添加Shader
+新建文件`MyTestVertexShader.usf`,存于`Engine\Shaders\Private`目录
+![MyTestVertexShader](/resources/images/MeshDrawingPipeline/MyTestVertexShader.png)
+(照抄的PositionOnlyDepthVertexShader.usf)
+
+## 修改`MyTestPassRendering.h`
+新增类`FMyTestVS`,如下:
+![MyTestVS](/resources/images/MeshDrawingPipeline/MyTestVS.png)
+
+在`MyTestPassRendering.cpp`中通过`IMPLEMENT_MATERIAL_SHADER_TYPE`实现材质shader
+![Implement Material Shader](/resources/images/MeshDrawingPipeline/IMPLEMENT_MATERIAL_SAHDER.png)
+`IMPLEMENT_SHADERPIPELINE_TYPE_VS`就是构建一个只有`VS`的`FShaderPipelineType`对象
+
+## 添加`MeshPassProcessor`
+![FMyTestPassMeshProcessor](/resources/images/MeshDrawingPipeline/MyTestPassMeshProcessor.png)
+
+`AddMeshBatch`是必须要重载的函数
+
+然后需要把这个类型的`MeshPassProcessor`通过以下方式注册到`FPassProcessorManager`中
+![Register PassProcessor Create Function](/resources/images/MeshDrawingPipeline/RegisterPassProcessorCreateFunction.png)
+
+这里是把一个函数指针通过`FRegisterPassProcessorCreateFunction`的构造函数,记录到`FPassProcessorManager`中
+
+`SetupMyTestPassState`负责设置渲染状态,这里实现如下:
+![SetupMeshPassState](/resources/images/MeshDrawingPipeline/SetupDepthPassState.png)
+
+构造函数实现如下:
+![FMyTestPassMeshProcessor Constructor](/resources/images/MeshDrawingPipeline/FMyTestPassMeshProcessorConstructor.png)
+
+构造函数中调用了三个`SetUniformBuffer`
+- SetViewUniformBuffer: ViewUniformBuffer中包含各种变换矩阵以及计算用的贴图数据等等
+- SetInstancedViewUniformBuffer: 和ViewUniformBuffer差不多,用于`Instance Stereo`
+- SetPassUniformBuffer: 包含SceneTexture,如GBuffer,SceneDepthTexture等,便于`MaterialGraph`和`GlobalShader`使用
+
+这里我们自己定义一个`MyTestPassUniformBuffer`:
+![Define MyTestPassUniformBuffer](/resources/images/MeshDrawingPipeline/DefineMyTestPassUniformBuffer.png)
+
+初始化`MyTestPassUniformBuffer`:
+![InitMyTestPassUniformBuffer](/resources/images/MeshDrawingPipeline/InitMyTestPassUniformBuffer.png)
+
+接下来看`AddMeshBatch`:
+![AddMeshBatch](/resources/images/MeshDrawingPipeline/AddMeshBatch.png)
+做了个`Pass Filter`
+这个实现里也没啥东西...调用了`Process`函数,直接看`Process`
+![Process](/resources/images/MeshDrawingPipeline/Process.png)
+
+这个函数就是先做了下`Shader Filter`,然后生成`MeshDrawCommand`
+
+调用`BuildMeshDrawCommands`时,传入了一个参数`PassDrawRenderState`
+在构造函数中对`PassDrawRenderState`设置了三个`UniformBuffer`
+因此生成的`MeshDrawCommand`都是绑定了这三个`UniformBuffer`的
+
+`GetMyTestPassShaders`实现`Shader Filter`:
+![GetMyTestPassShaders](/resources/images/MeshDrawingPipeline/GetMyTestPassShaders.png)
+
+## 收集MeshDrawCommand
+
+之前讲过了`MeshDrawCommand`的三个来源,那么生成了`MeshDrawCommand`之后,还需要确定哪些需要被这个Pass调用
+
+打开`SceneVisibility.cpp`,修改`MarkRelevant()`:
+![MarkRelevant](/resources/images/MeshDrawingPipeline/MarkRelevant.png)
+这步是收集Cache过的`MeshDrawCommand`
+
+修改`SceneVisibility.cpp`中的`ComputeDynamicMeshRelevance`:
+![ComputeDynamicMeshRelevance](/resources/images/MeshDrawingPipeline/ComputeDynamicMeshRelevance.png)
+这步是收集Dynamic的`MeshDrawCommand`
+
+## 创建`RenderTarget`
+打开`SceneRenderTargets.h`,添加成员`MyTestSceneDepthZ`:
+![MyTestSceneDepthZ](/resources/images/MeshDrawingPipeline/MyTestSceneDepthZ.png)
+
+然后创建RT,修改`AllocateDeferredShadingPathRenderTargets`
+![Allocate MyTestSceneDepthZ](/resources/images/MeshDrawingPipeline/AllocateMyTestDepth.png)
+
+释放时机,修改`ReleaseSceneColor`,`ReleaseAllTargets`
+![Release MyTestSceneDepthZ](/resources/images/MeshDrawingPipeline/ReleaseMyTestDepthZ.png)
+
+以及复制构造函数:
+![MyTestSceneDepthZ Copy Constructor](/resources/images/MeshDrawingPipeline/RTCopyConstructor.png)
+
+打开`SceneRenderTargets.h`,在`FSceneRenderTargets`中添加两个函数:
+- BeginRenderingMyTestPass
+- FinishRenderingMyTestPass
+![Function Declaration](/resources/images/MeshDrawingPipeline/BindRTDeclaration.png)
+![MyTestPass Bind RT](/resources/images/MeshDrawingPipeline/BindMyTestPass.png)
+
+上面定义了一个临时变量`FRHIRenderPassInfo RPInfo`,这个类型可以设置`ColorRT`,`DepthRT`
+然后通过`RHICmdList.BeginRenderPass(RPInfo, TEXT("PassName"))`来绑定RT
+
+## 渲染
+
+在`FDeferredShadingSceneRenderer`中增加函数`RenderMyTestPass`,并在`MyTestPassRendering.cpp`中实现
+![RenderMyTestPass](/resources/images/MeshDrawingPipeline/RenderMyTestPass.png)
+
+`SetupMyTestPassView`如下:
+![SetupMyTestPassView](/resources/images/MeshDrawingPipeline/SetupMyTestPassView.png)
+
+然后找个地方调用一下,比如放在`RenderPrePass`之后
+![Invoke RenderMyTestPass](/resources/images/MeshDrawingPipeline/InvokeRenderMyTestPass.png)
 
 # Reference
+
 - [MeshDrawingPipeline](https://docs.unrealengine.com/en-us/Programming/Rendering/MeshDrawingPipeline)
 - [Refactoring the Mesh Drawing Pipeline for Unreal Engine 4.22](https://www.youtube.com/watch?v=qx1c190aGhs&feature=youtu.be)
