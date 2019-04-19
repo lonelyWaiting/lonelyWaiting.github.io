@@ -59,12 +59,6 @@ tags: software
 
 ![potplayer](/resources/images/software/potplayer.png)
 
-# [马克飞象](https://maxiang.io/)
-
-- 很美观的一款Markdown编辑器,网页版与客户端版都有
-
-![马克飞象](/resources/images/software/maxiang.png)
-
 # [xshell](http://www.netsarang.com/)
 
 - 很好用的shell工具
@@ -101,7 +95,7 @@ tags: software
 
 ![OneQuick](/resources/images/software/onequick.gif)
 
-# Typora(https://typora.io/)
+# [Typora](https://typora.io/)
 
 - Markdown编辑器
 
