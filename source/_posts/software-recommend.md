@@ -99,4 +99,4 @@ tags: software
 
 - Markdown编辑器
 
-![Typora](/resources/images/typora.png)
+![Typora](/resources/images/software/typora.png)
