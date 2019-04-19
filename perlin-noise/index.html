@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>perlin-noise - lonelyWaiting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="算法过程 设置晶格点,如以整数位置为晶格点 为每个晶格点设定一个梯度值 计算当前采样点位于哪些晶格点内部 计算晶格点到采样点的向量,并与晶格点的梯度点乘 将与各个晶格点的计算结果做插值,二维噪声就做个双线性插值  实现1234567891011121314151617181920212223242526float pe">
+<meta name="keywords" content="Noise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="perlin-noise">
+<meta property="og:url" content="http://lonelywaiting.github.io/perlin-noise/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="算法过程 设置晶格点,如以整数位置为晶格点 为每个晶格点设定一个梯度值 计算当前采样点位于哪些晶格点内部 计算晶格点到采样点的向量,并与晶格点的梯度点乘 将与各个晶格点的计算结果做插值,二维噪声就做个双线性插值  实现1234567891011121314151617181920212223242526float perlin_noise(float2 pos)&amp;#123;    // compu">
+<meta property="og:updated_time" content="2019-04-13T16:00:55.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="perlin-noise">
+<meta name="twitter:description" content="算法过程 设置晶格点,如以整数位置为晶格点 为每个晶格点设定一个梯度值 计算当前采样点位于哪些晶格点内部 计算晶格点到采样点的向量,并与晶格点的梯度点乘 将与各个晶格点的计算结果做插值,二维噪声就做个双线性插值  实现1234567891011121314151617181920212223242526float perlin_noise(float2 pos)&amp;#123;    // compu">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">lonelywaiting</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lonelywaiting.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-perlin-noise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      perlin-noise
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/perlin-noise/" class="article-date">
+  <time datetime="2019-04-13T15:44:21.000Z" itemprop="datePublished">2019-04-13</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h1><ul>
+<li>设置晶格点,如以整数位置为晶格点</li>
+<li>为每个晶格点设定一个梯度值</li>
+<li>计算当前采样点位于哪些晶格点内部</li>
+<li>计算晶格点到采样点的向量,并与晶格点的梯度点乘</li>
+<li>将与各个晶格点的计算结果做插值,二维噪声就做个双线性插值</li>
+</ul>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">perlin_noise</span><span class="params">(float2 pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// compute lattice point</span></span><br><span class="line">    int2 p00 = <span class="built_in">floor</span>(pos);</span><br><span class="line">    int2 p01 = p00 + int2(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    int2 p10 = p00 + int2(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    int2 p11 = p00 + int2(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    float2 lerp_factor = pos - p00;</span><br><span class="line"></span><br><span class="line">    float2 gradient00 = float2(<span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">    float2 gradient01 = float2(<span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">    float2 gradient10 = float2(<span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">    float2 gradient11 = float2(<span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> v00 = dot(pos - (float2)p00, gradient00);</span><br><span class="line">    <span class="keyword">float</span> v01 = dot(pos - (float2)p01, gradient01);</span><br><span class="line">    <span class="keyword">float</span> v10 = dot(pos - (float2)p10, gradient10);</span><br><span class="line">    <span class="keyword">float</span> v11 = dot(pos - (float2)p11, gradient11);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> v0 = lerp(v00, v01, lerp_factor.y);</span><br><span class="line">    <span class="keyword">float</span> v1 = lerp(v10, v11, lerp_factor.y);</span><br><span class="line">    <span class="keyword">float</span> v  = lerp(v0, v1, lerp_factor.x);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://en.wikipedia.org/wiki/Perlin_noise" target="_blank" rel="noopener">Perlin Noise</a></p>
+
+      
+    </div>
+    
+      <div class="article-toc">
+        <h3>Contents</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法过程"><span class="toc-number">1.</span> <span class="toc-text">算法过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+      </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Noise/">Noise</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/custom-mesh-render-pass/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">custom mesh render pass&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Liuteng
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'lonelywaiting';
+  
+  var disqus_url = 'http://lonelywaiting.github.io/perlin-noise/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
