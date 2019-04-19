@@ -100,3 +100,9 @@ tags: software
 - 热键快捷工具
 
 ![OneQuick](/resources/images/software/onequick.gif)
+
+# Typora(https://typora.io/)
+
+- Markdown编辑器
+
+![Typora](/resources/images/typora.png)
