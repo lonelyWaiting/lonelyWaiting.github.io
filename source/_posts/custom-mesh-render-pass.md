@@ -299,6 +299,10 @@ View.ParallelMeshDrawCommandPasses[MeshPassType].DispatchDraw(nullptr, RHICmdLis
 修改`BaseEngine.ini`
 ![Add Config](/resources/images/MeshDrawingPipeline/BaseEngine_InI.png)
 
+修改`MaterialExpressionSceneTexture.h
+
+![Add MaterialEditor InputSlot](/resources/images/MeshDrawingPipeline/MaterialSlot.png)
+
 接下来新建一个材质,名为`MyTestDepth`,放在`Engine/Content/BufferVisualization`目录下:
 ![MyTestDepth](/resources/images/MeshDrawingPipeline/MyTestDepth.png)
 
