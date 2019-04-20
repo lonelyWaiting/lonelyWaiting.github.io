@@ -10,11 +10,11 @@ tags: software
 
 - 控制台神器
 
-![cmder](/resources/images/software/cmder.png)
+![cmder][Cmder]
 
 # [Autohotkey](https://autohotkey.com/)
 
-![Autohotkey](/resources/images/software/autohotkey.png)
+![Autohotkey][autohotkey]
 
 - 快捷键神器
 
@@ -22,7 +22,7 @@ tags: software
 
 - 文件检索神器
 
-![Listary](/resources/images/software/listary.png)
+![Listary][Listary]
 
 [破解版](http://www.sdifen.com/listarypro5.html),正版很便宜,建议正版
 
@@ -30,13 +30,13 @@ tags: software
 
 - 贴图软件
 
-![snipaste](/resources/images/software/snipaste.png)
+![snipaste][snipaste]
 
 # [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
 
 - Chrome插件,纯键盘操作
 
-![vimium](/resources/images/software/vimium.png)
+![vimium][Vimium]
 
 
 # [Tampermonkey](http://tampermonkey.net/)
@@ -45,7 +45,7 @@ tags: software
 
 可以安装各种用户脚本,比如百度云下载链接转为迅雷下载,VIP视频破解等
 
-![tampermonkey](/resources/images/software/tampermonkey.png)
+![tampermonkey][Tampermonkey]
 
 # [Clover](http://cn.ejie.me/)
 
@@ -57,7 +57,7 @@ tags: software
 
 - 最爱的视频播放器,[Zone皮肤](https://pan.baidu.com/s/1dEP3BeL)
 
-![potplayer](/resources/images/software/potplayer.png)
+![potplayer][potplayer]
 
 # [xshell](http://www.netsarang.com/)
 
@@ -65,19 +65,19 @@ tags: software
 
 激活码:`101210-450789-147200`
 
-![xshell5](/resources/images/software/xshell.png)
+![xshell5][xshell]
 
 # [total commander](https://www.ghisler.com/)
 
 - 神级文件管理器
 
-![total commander](/resources/images/software/total_commander.png)
+![total commander][TotalCommander]
 
 # [CCleaner](https://www.piriform.com/ccleaner/download)
 
 - 清理工具
 
-![CCleaner](/resources/images/software/ccleaner.png)
+![CCleaner][CCleaner]
 
 注册码:`C2YW-N8ZC-FMC7-AHR9-UZPC`
 
@@ -85,7 +85,7 @@ tags: software
 
 - 解压缩
 
-![Bandzip](/resources/images/software/bandzip.png)
+![Bandzip][Bandzip]
 
 压缩包内是一个文件夹时就不会再建一个文件夹
 
@@ -93,10 +93,24 @@ tags: software
 
 - 热键快捷工具
 
-![OneQuick](/resources/images/software/onequick.gif)
+![OneQuick][OneQuick]
 
 # [Typora](https://typora.io/)
 
 - Markdown编辑器
 
-![Typora](/resources/images/software/typora.png)
+![Typora][typora]
+
+[potplayer]: https://s2.ax1x.com/2019/04/20/ECa4Dx.png
+[autohotkey]: https://s2.ax1x.com/2019/04/20/ECaq8H.png
+[typora]: https://s2.ax1x.com/2019/04/20/ECaoVK.png
+[snipaste]: https://s2.ax1x.com/2019/04/20/ECaR29.png
+[xshell]: https://s2.ax1x.com/2019/04/20/ECa75D.png
+[Tampermonkey]: https://s2.ax1x.com/2019/04/20/ECabPe.png
+[OneQuick]: https://s2.ax1x.com/2019/04/20/ECa28J.gif
+[Bandzip]: https://s2.ax1x.com/2019/04/20/ECasET.png
+[CCleaner]: https://s2.ax1x.com/2019/04/20/ECaWvR.png
+[TotalCommander]: https://s2.ax1x.com/2019/04/20/ECahK1.png
+[Cmder]: https://s2.ax1x.com/2019/04/20/ECa65F.png
+[Vimium]: https://s2.ax1x.com/2019/04/20/ECaTUO.png
+[Listary]: https://s2.ax1x.com/2019/04/20/ECagC4.png
