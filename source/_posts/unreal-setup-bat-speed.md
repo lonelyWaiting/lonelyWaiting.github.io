@@ -5,4 +5,7 @@ tags: Unreal
 ---
 
 修改`Setup.bat`:
-![setup.bat](/resources/images/unreal_setup_speed/setup_modify.png)
+![setup.bat][setup]
+
+[setup]: https://s2.ax1x.com/2019/04/20/ECDCmn.png
+
