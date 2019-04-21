@@ -8,10 +8,16 @@ tags: Noise
 # 算法过程
 
 - 设置晶格点,如以整数位置为晶格点
+
 - 为每个晶格点设定一个梯度值
+
 - 计算当前采样点位于哪些晶格点内部
+
 - 计算晶格点到采样点的向量,并与晶格点的梯度点乘
+
 - 将与各个晶格点的计算结果做插值,二维噪声就做个双线性插值
+
+<!-- more -->
 
 # 实现
 
@@ -26,10 +32,10 @@ float perlin_noise(float2 pos)
 
     float2 lerp_factor = pos - p00;
 
-    float2 gradient00 = float2(0.0f, 0.0f);
-    float2 gradient01 = float2(0.0f, 0.0f);
-    float2 gradient10 = float2(0.0f, 0.0f);
-    float2 gradient11 = float2(0.0f, 0.0f);
+    float2 gradient00 = compute_gradient(p00);
+    float2 gradient01 = compute_gradient(p01);
+    float2 gradient10 = compute_gradient(p10);
+    float2 gradient11 = compute_gradient(p11);
 
     float v00 = dot(pos - (float2)p00, gradient00);
     float v01 = dot(pos - (float2)p01, gradient01);
