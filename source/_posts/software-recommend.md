@@ -47,12 +47,6 @@ tags: software
 
 ![tampermonkey][Tampermonkey]
 
-# [Clover](http://cn.ejie.me/)
-
-- 资源管理器标签页,Win10有bug,Win7可用
-
-![clover](/resources/images/software/clover.png)
-
 # [Potplayer](https://potplayer.daum.net/)
 
 - 最爱的视频播放器,[Zone皮肤](https://pan.baidu.com/s/1dEP3BeL)
