@@ -95,6 +95,12 @@ tags: software
 
 ![Typora][typora]
 
+# [MathPix](https://mathpix.com/)
+
+- 识别图像中的公式并生成对应的`Latex`
+
+![MathPix][MathPix]
+
 [potplayer]: https://s2.ax1x.com/2019/04/20/ECa4Dx.png
 [autohotkey]: https://s2.ax1x.com/2019/04/20/ECaq8H.png
 [typora]: https://s2.ax1x.com/2019/04/20/ECaoVK.png
@@ -108,3 +114,4 @@ tags: software
 [Cmder]: https://s2.ax1x.com/2019/04/20/ECa65F.png
 [Vimium]: https://s2.ax1x.com/2019/04/20/ECaTUO.png
 [Listary]: https://s2.ax1x.com/2019/04/20/ECagC4.png
+[MathPix]: https://s2.ax1x.com/2019/04/27/EKgNlT.png
