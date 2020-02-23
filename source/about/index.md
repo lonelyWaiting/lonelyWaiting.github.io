@@ -12,11 +12,11 @@ layout: "about"
 
 - 刘腾/男/1995/09
 - 本科/江南大学/数字媒体技术系/2012-2016
-- 工作年限: 3年
+- 工作年限: 4年
 
 # 工作经历
 
-## 上海烛龙(2016年1月-至今)
+## 上海烛龙(2016年1月-2018年10月)
 
 ### 古剑奇谭网络版
 
@@ -27,28 +27,24 @@ layout: "about"
 | 角色表情系统  | 制作工具链开发,导入导出,编辑器,Runtime,口型分析生成等 |
 | 角色动画  | 维护,优化以及新功能实现 |
 
-# 个人项目
+## 米哈游(2018年11月-2020-2月)
 
-## [光线跟踪](https://github.com/lonelyWaiting/OpenLight)
+### `ProjectX`
 
-学习离线渲染
-实现了Path Tracing算法,
-镜面反射,折射材质
-菲涅尔效果以及多种采样算法
-HDR,,纹理采样,棋盘纹理,噪声纹理等
-
-## [FFT Ocean](https://github.com/lonelyWaiting/Ocean)
-
-实现[Simulation Ocean Water Jerry Tessendorf](https://people.cs.clemson.edu/~jtessen/papers_files/coursenotes2004.pdf)
+| 模块 | 职责 |
+| :----: | :---- |
+| 星球过程式生成 | 使用噪声系统实现星球外观过程式生成 |
+| 星球工具链开发 | 在`UE4`中实现一套编辑器用于星球预览与编辑 |
+| 平面关卡上球的改造 | 分离平面关卡与星球，使其二者无缝衔接 |
+| `GPU`异步回读 | 使用`DX11`的Query实现地形高度的回读给植被系统使用 |
 
 # 技能清单
 
 - C++
-- dx11
-- 图形学
+- `DX11`
+- rendering
 - Git
-- 3ds Max
-- python
+- `UE4`
 
 # 自我评价
 
