@@ -101,6 +101,12 @@ tags: software
 
 ![MathPix][MathPix]
 
+# [FalconX](https://chrisandriessen.nl/taskbarx)
+
+- 任务栏透明居中
+
+![FalconX][FalconX]
+
 [potplayer]: https://s2.ax1x.com/2019/04/20/ECa4Dx.png
 [autohotkey]: https://s2.ax1x.com/2019/04/20/ECaq8H.png
 [typora]: https://s2.ax1x.com/2019/04/20/ECaoVK.png
@@ -115,3 +121,4 @@ tags: software
 [Vimium]: https://s2.ax1x.com/2019/04/20/ECaTUO.png
 [Listary]: https://s2.ax1x.com/2019/04/20/ECagC4.png
 [MathPix]: https://s2.ax1x.com/2019/04/27/EKgNlT.png
+[FalconX]: ../resources/images/software/FalconX.png
