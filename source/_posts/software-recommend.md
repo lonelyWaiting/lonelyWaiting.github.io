@@ -107,6 +107,16 @@ tags: software
 
 ![FalconX][FalconX]
 
+
+
+# [Office Tool Plus](https://otp.landian.vip/zh-cn/)
+
+-   Office激活工具
+
+![Office Tool Plus][OfficeToolPlus]
+
+
+
 [potplayer]: https://s2.ax1x.com/2019/04/20/ECa4Dx.png
 [autohotkey]: https://s2.ax1x.com/2019/04/20/ECaq8H.png
 [typora]: https://s2.ax1x.com/2019/04/20/ECaoVK.png
@@ -122,3 +132,4 @@ tags: software
 [Listary]: https://s2.ax1x.com/2019/04/20/ECagC4.png
 [MathPix]: https://s2.ax1x.com/2019/04/27/EKgNlT.png
 [FalconX]: ../resources/images/software/FalconX.png
+[OfficeToolPlus]: ../resources/images/software/OfficeToolPlus.png
