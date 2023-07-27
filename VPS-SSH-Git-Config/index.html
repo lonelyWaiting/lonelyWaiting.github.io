@@ -16,11 +16,28 @@
 
 
 
+    <meta name="description" content="&amp;#x672C;&amp;#x5730;&amp;#x914D;&amp;#x7F6E;GitGit For Windows&amp;#x4E0B;&amp;#x8F7D;&amp;#x8DEF;&amp;#x5F84;Git for Windows">
+<meta name="keywords" content="VPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPS SSH Git Config">
+<meta property="og:url" content="http://lonelywaiting.github.io/VPS-SSH-Git-Config/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="&amp;#x672C;&amp;#x5730;&amp;#x914D;&amp;#x7F6E;GitGit For Windows&amp;#x4E0B;&amp;#x8F7D;&amp;#x8DEF;&amp;#x5F84;Git for Windows">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/GIT_HOME_SYSTEM_VAR.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/GIT_ADDTO_SYSTEM_PATH.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Git_Config_Verify.png">
+<meta property="og:updated_time" content="2023-07-27T09:37:13.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VPS SSH Git Config">
+<meta name="twitter:description" content="&amp;#x672C;&amp;#x5730;&amp;#x914D;&amp;#x7F6E;GitGit For Windows&amp;#x4E0B;&amp;#x8F7D;&amp;#x8DEF;&amp;#x5F84;Git for Windows">
+<meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/GIT_HOME_SYSTEM_VAR.png">
 
 
 
 
-<link rel="icon" href="/favicon.ico">
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -35,8 +52,23 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
 
 
 </head>
@@ -59,13 +91,13 @@
         
         <div class="navbar-menu navbar-start">
             
-            <a class="navbar-item " href="/">Home</a>
-            
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -73,53 +105,18 @@
         
         <div class="navbar-menu navbar-end">
             
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
             
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Inhaltsverzeichnis">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x672C;&amp;#x5730;&amp;#x914D;&amp;#x7F6E;Git">1&nbsp;&nbsp;<b>&amp;amp;#x672C;&amp;amp;#x5730;&amp;amp;#x914D;&amp;amp;#x7F6E;Git</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x73AF;&amp;#x5883;&amp;#x914D;&amp;#x7F6E;">1.1&nbsp;&nbsp;&amp;amp;#x73AF;&amp;amp;#x5883;&amp;amp;#x914D;&amp;amp;#x7F6E;</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x670D;&amp;#x52A1;&amp;#x7AEF;&amp;#x914D;&amp;#x7F6E;Git">2&nbsp;&nbsp;<b>&amp;amp;#x670D;&amp;amp;#x52A1;&amp;amp;#x7AEF;&amp;amp;#x914D;&amp;amp;#x7F6E;Git</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x5B89;&amp;#x88C5;Git">2.1&nbsp;&nbsp;&amp;amp;#x5B89;&amp;amp;#x88C5;Git</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x65B0;&amp;#x5EFA;Git&amp;#x7528;&amp;#x6237;">2.2&nbsp;&nbsp;&amp;amp;#x65B0;&amp;amp;#x5EFA;Git&amp;amp;#x7528;&amp;amp;#x6237;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x52A0;&amp;#x5165;sudoer">2.3&nbsp;&nbsp;&amp;amp;#x52A0;&amp;amp;#x5165;sudoer</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x914D;&amp;#x7F6E;SSH&amp;#x767B;&amp;#x5F55;">3&nbsp;&nbsp;<b>&amp;amp;#x914D;&amp;amp;#x7F6E;SSH&amp;amp;#x767B;&amp;amp;#x5F55;</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x5C06;&amp;#x516C;&amp;#x94A5;&amp;#x4F20;&amp;#x9001;&amp;#x5230;&amp;#x670D;&amp;#x52A1;&amp;#x7AEF;">3.1&nbsp;&nbsp;&amp;amp;#x5C06;&amp;amp;#x516C;&amp;amp;#x94A5;&amp;amp;#x4F20;&amp;amp;#x9001;&amp;amp;#x5230;&amp;amp;#x670D;&amp;amp;#x52A1;&amp;amp;#x7AEF;</a>
-                    
-                </div>
-            </div>
             
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
             
         </div>
     </div>
@@ -150,7 +147,8 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h2 id="&#x672C;&#x5730;&#x914D;&#x7F6E;Git"><a href="#&#x672C;&#x5730;&#x914D;&#x7F6E;Git" class="headerlink" title="&#x672C;&#x5730;&#x914D;&#x7F6E;Git"></a>&#x672C;&#x5730;&#x914D;&#x7F6E;Git</h2><p>Git For Windows&#x4E0B;&#x8F7D;&#x8DEF;&#x5F84;<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git for Windows</a><br><a id="more"></a></p>
+        
+            <h2 id="&#x672C;&#x5730;&#x914D;&#x7F6E;Git"><a href="#&#x672C;&#x5730;&#x914D;&#x7F6E;Git" class="headerlink" title="&#x672C;&#x5730;&#x914D;&#x7F6E;Git"></a>&#x672C;&#x5730;&#x914D;&#x7F6E;Git</h2><p>Git For Windows&#x4E0B;&#x8F7D;&#x8DEF;&#x5F84;<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git for Windows</a><br><a id="more"></a></p>
 <h3 id="&#x73AF;&#x5883;&#x914D;&#x7F6E;"><a href="#&#x73AF;&#x5883;&#x914D;&#x7F6E;" class="headerlink" title="&#x73AF;&#x5883;&#x914D;&#x7F6E;"></a>&#x73AF;&#x5883;&#x914D;&#x7F6E;</h3><p>&#x6DFB;&#x52A0;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;<code>GIT_HOME</code></p>
 <p><img src="/resources/images/GIT_HOME_SYSTEM_VAR.png" alt="GIT HOME System Var"></p>
 <p>&#x5728;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;<code>PATH</code>&#x4E2D;&#x52A0;&#x5165;&#x5982;&#x4E0B;&#x9879;<br><img src="/resources/images/GIT_ADDTO_SYSTEM_PATH.png" alt="Git Path Add to System Path"></p>
@@ -209,6 +207,7 @@
 
 <p>&#x91CD;&#x542F;ssh</p>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/sshd restart</span><br></pre></td></tr></table></figure>
+          
     
     </div>
     
@@ -233,7 +232,28 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
 
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Kommentare</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
 
     </div>
 </section>
@@ -246,6 +266,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -280,9 +313,153 @@
 </script>
 
 
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    
+
 
 <script src="/js/script.js"></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
     
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

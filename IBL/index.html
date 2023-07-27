@@ -16,11 +16,31 @@
 
 
 
+    <meta name="description" content="Reflectance equation&amp;#x8FD9;&amp;#x91CC;&amp;#x91C7;&amp;#x7528;&amp;#x7684;&amp;#x53CD;&amp;#x5C04;&amp;#x6A21;&amp;#x578B;&amp;#x5982;&amp;#x4E0B;:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\om">
+<meta name="keywords" content="Rendering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IBL">
+<meta property="og:url" content="http://lonelywaiting.github.io/IBL/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="Reflectance equation&amp;#x8FD9;&amp;#x91CC;&amp;#x91C7;&amp;#x7528;&amp;#x7684;&amp;#x53CD;&amp;#x5C04;&amp;#x6A21;&amp;#x578B;&amp;#x5982;&amp;#x4E0B;:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\om">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_Source.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_Irradiance.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_Prefilter.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_BRDF_LUT.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_1.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_2.png">
+<meta property="og:updated_time" content="2023-07-27T09:37:13.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IBL">
+<meta name="twitter:description" content="Reflectance equation&amp;#x8FD9;&amp;#x91CC;&amp;#x91C7;&amp;#x7528;&amp;#x7684;&amp;#x53CD;&amp;#x5C04;&amp;#x6A21;&amp;#x578B;&amp;#x5982;&amp;#x4E0B;:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\om">
+<meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_Source.png">
 
 
 
 
-<link rel="icon" href="/favicon.ico">
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -35,8 +55,23 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
 
 
 </head>
@@ -59,13 +94,13 @@
         
         <div class="navbar-menu navbar-start">
             
-            <a class="navbar-item " href="/">Home</a>
-            
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -73,51 +108,18 @@
         
         <div class="navbar-menu navbar-end">
             
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
             
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Inhaltsverzeichnis">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Reflectance-equation">1&nbsp;&nbsp;<b>Reflectance equation</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#Diffuse-Irradiance">2&nbsp;&nbsp;<b>Diffuse Irradiance</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x8499;&amp;#x7279;&amp;#x5361;&amp;#x6D1B;&amp;#x65B9;&amp;#x6CD5;">2.1&nbsp;&nbsp;&amp;amp;#x8499;&amp;amp;#x7279;&amp;amp;#x5361;&amp;amp;#x6D1B;&amp;amp;#x65B9;&amp;amp;#x6CD5;</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#Specular-IBL">3&nbsp;&nbsp;<b>Specular IBL</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Pre-Filtered-Environment-Map">3.1&nbsp;&nbsp;Pre-Filtered Environment Map</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Precompute-BRDF-LUT">3.2&nbsp;&nbsp;Precompute BRDF LUT</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#Reference">4&nbsp;&nbsp;<b>Reference</b></a>
-                    
-                </div>
-            </div>
             
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
             
         </div>
     </div>
@@ -153,7 +155,8 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h1 id="Reflectance-equation"><a href="#Reflectance-equation" class="headerlink" title="Reflectance equation"></a>Reflectance equation</h1><p>&#x8FD9;&#x91CC;&#x91C7;&#x7528;&#x7684;&#x53CD;&#x5C04;&#x6A21;&#x578B;&#x5982;&#x4E0B;:<br>$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)(n \cdot \omega_i) d\omega_i$$<br><a id="more"></a></p>
+        
+            <h1 id="Reflectance-equation"><a href="#Reflectance-equation" class="headerlink" title="Reflectance equation"></a>Reflectance equation</h1><p>&#x8FD9;&#x91CC;&#x91C7;&#x7528;&#x7684;&#x53CD;&#x5C04;&#x6A21;&#x578B;&#x5982;&#x4E0B;:<br>$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)(n \cdot \omega_i) d\omega_i$$<br><a id="more"></a></p>
 <p>$$\Rightarrow L_o(p,\omega_i) = \int_\Omega k_d \frac{c}{\pi}L_i(p,\omega_i)n\cdot \omega_i d\omega_i + \int_\Omega k_s \frac{DFG}{4(\omega_i \cdot n)(\omega_o \cdot n)}L_i(p,\omega_i)(n \cdot \omega_i) d\omega_i$$</p>
 <h1 id="Diffuse-Irradiance"><a href="#Diffuse-Irradiance" class="headerlink" title="Diffuse Irradiance"></a>Diffuse Irradiance</h1><p>&#x63A5;&#x4E0B;&#x6765;&#x5148;&#x770B;diffuse&#x9879;:<br>$$L_o = \int_\Omega k_d\frac{c}{\pi}L_i(p,\omega_i) (n \cdot \omega_i ) d\omega_i$$<br>$$\Rightarrow L_o = k_d\frac{c}{\pi}\int_\Omega L_i(p,\omega_i) (n\cdot \omega_i) d\omega_i$$<br>$$\Rightarrow L_o = k_d \frac{c}{\pi}\int_{\phi = 0}^{2\pi} \int_{\theta = 0}^{\frac{\pi}{2}}L_i(p,\phi_i,\theta_i)\cos(\theta)\sin(\theta)d\phi d\theta \tag{1}$$</p>
 <h2 id="&#x8499;&#x7279;&#x5361;&#x6D1B;&#x65B9;&#x6CD5;"><a href="#&#x8499;&#x7279;&#x5361;&#x6D1B;&#x65B9;&#x6CD5;" class="headerlink" title="&#x8499;&#x7279;&#x5361;&#x6D1B;&#x65B9;&#x6CD5;"></a>&#x8499;&#x7279;&#x5361;&#x6D1B;&#x65B9;&#x6CD5;</h2><p>$$\because E[\frac{f(x)}{p(x)}] = \int f(x)dx$$</p>
@@ -199,6 +202,7 @@
 </li>
 </ul>
 
+          
     
     </div>
     
@@ -225,7 +229,28 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
 
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Kommentare</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
 
     </div>
 </section>
@@ -238,6 +263,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -272,9 +310,153 @@
 </script>
 
 
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    
+
 
 <script src="/js/script.js"></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
     
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

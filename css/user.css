@@ -1,0 +1,70 @@
+body {
+    counter-reset: body;
+    
+    /* 修改正文字体 */
+    font-family: "Vollkorn", Palatino, Times;
+	color: #333;
+	line-height: 1.4;
+	text-align: justify;
+}
+
+/* 正文标题自动序号 */
+h1 {
+    counter-reset: h1;
+}
+
+h2 {
+    counter-reset: h2;
+}
+h3 {
+    counter-reset: h3;
+}
+h4 {
+    counter-reset: h4;
+}
+h5 {
+    counter-reset: h5;
+}
+h6 {
+    counter-reset: h6;
+}
+
+.article-inner {
+    counter-reset: body h1 h2 h3 h4 h5 h6;
+}
+h1:before {
+    counter-increment: body;
+    content: counter(body) ". ";
+}
+/*h1元素的class为article-title，则不添加序号*/
+.article-title h1:before {
+    content: none;
+}
+/*h1元素的class为article-header，则不添加序号*/
+.article-header h1:before {
+    content: none;
+}
+
+h2:before {
+    counter-increment: h1;
+    content: counter(body) "." counter(h1) ". ";
+}
+h3:before {
+    counter-increment: h2;
+    content: counter(body) "." counter(h1)"." counter(h2) ". ";
+}
+.article-toc h3:before {
+    content: none;
+}
+h4:before {
+    counter-increment: h3;
+    content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3) ". ";
+}
+h5:before {
+    counter-increment: h4;
+    content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3)"." counter(h4) ". ";
+}
+h6:before {
+    counter-increment: h5;
+    content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3)"." counter(h4)"." counter(h5) ". ";
+}

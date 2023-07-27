@@ -16,11 +16,24 @@
 
 
 
+    <meta name="description" content="&amp;#x6848;&amp;#x4F8B;&amp;#x5206;&amp;#x6790;Lambert&amp;#x7684;BRDF&amp;#x4E3A;$\frac{c_{d}}{\pi}$,&amp;#x5728;Unity&amp;#x4E2D;,Lambert&amp;#x5149;&amp;#x7167;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E3A;:">
+<meta name="keywords" content="Rendering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="why Not PI in BRDF implement">
+<meta property="og:url" content="http://lonelywaiting.github.io/why-Not-PI-in-BRDF-implement/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="&amp;#x6848;&amp;#x4F8B;&amp;#x5206;&amp;#x6790;Lambert&amp;#x7684;BRDF&amp;#x4E3A;$\frac{c_{d}}{\pi}$,&amp;#x5728;Unity&amp;#x4E2D;,Lambert&amp;#x5149;&amp;#x7167;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E3A;:">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2023-07-27T09:37:13.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="why Not PI in BRDF implement">
+<meta name="twitter:description" content="&amp;#x6848;&amp;#x4F8B;&amp;#x5206;&amp;#x6790;Lambert&amp;#x7684;BRDF&amp;#x4E3A;$\frac{c_{d}}{\pi}$,&amp;#x5728;Unity&amp;#x4E2D;,Lambert&amp;#x5149;&amp;#x7167;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E3A;:">
 
 
 
 
-<link rel="icon" href="/favicon.ico">
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -35,8 +48,23 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
 
 
 </head>
@@ -59,13 +87,13 @@
         
         <div class="navbar-menu navbar-start">
             
-            <a class="navbar-item " href="/">Home</a>
-            
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -73,35 +101,18 @@
         
         <div class="navbar-menu navbar-end">
             
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
             
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Inhaltsverzeichnis">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x6848;&amp;#x4F8B;&amp;#x5206;&amp;#x6790;">1&nbsp;&nbsp;<b>&amp;amp;#x6848;&amp;amp;#x4F8B;&amp;amp;#x5206;&amp;amp;#x6790;</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x7CBE;&amp;#x786E;&amp;#x5149;&amp;#x6E90;">1.1&nbsp;&nbsp;&amp;amp;#x7CBE;&amp;amp;#x786E;&amp;amp;#x5149;&amp;amp;#x6E90;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Lambert&amp;#x5149;&amp;#x7167;&amp;#x5B9E;&amp;#x73B0;">1.2&nbsp;&nbsp;Lambert&amp;amp;#x5149;&amp;amp;#x7167;&amp;amp;#x5B9E;&amp;amp;#x73B0;</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#Reference">2&nbsp;&nbsp;<b>Reference</b></a>
-                    
-                </div>
-            </div>
             
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
             
         </div>
     </div>
@@ -137,7 +148,8 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h1 id="&#x6848;&#x4F8B;&#x5206;&#x6790;"><a href="#&#x6848;&#x4F8B;&#x5206;&#x6790;" class="headerlink" title="&#x6848;&#x4F8B;&#x5206;&#x6790;"></a>&#x6848;&#x4F8B;&#x5206;&#x6790;</h1><p>Lambert&#x7684;BRDF&#x4E3A;$\frac{c_{d}}{\pi}$,&#x5728;Unity&#x4E2D;,Lambert&#x5149;&#x7167;&#x5B9E;&#x73B0;&#x4E3A;:<a id="more"></a></p>
+        
+            <h1 id="&#x6848;&#x4F8B;&#x5206;&#x6790;"><a href="#&#x6848;&#x4F8B;&#x5206;&#x6790;" class="headerlink" title="&#x6848;&#x4F8B;&#x5206;&#x6790;"></a>&#x6848;&#x4F8B;&#x5206;&#x6790;</h1><p>Lambert&#x7684;BRDF&#x4E3A;$\frac{c_{d}}{\pi}$,&#x5728;Unity&#x4E2D;,Lambert&#x5149;&#x7167;&#x5B9E;&#x73B0;&#x4E3A;:<a id="more"></a></p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> fixed4 <span class="hljs-title">UnityLambertLight</span> <span class="hljs-params">(SurfaceOutput s, UnityLight light)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    fixed diff = max (<span class="hljs-number">0</span>, dot (s.Normal, light.dir));</span><br><span class="line"></span><br><span class="line">    fixed4 c;</span><br><span class="line">    c.rgb = s.Albedo * light.color * diff;</span><br><span class="line">    c.a = s.Alpha;</span><br><span class="line">    <span class="hljs-keyword">return</span> c;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> fixed4 <span class="hljs-title">LightingLambert</span> <span class="hljs-params">(SurfaceOutput s, UnityGI gi)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    fixed4 c;</span><br><span class="line">    c = UnityLambertLight (s, gi.light);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> UNITY_LIGHT_FUNCTION_APPLY_INDIRECT</span></span><br><span class="line">        c.rgb += s.Albedo * gi.indirect.diffuse;</span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> c;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <p>&#x53EF;&#x89C1;&#x5E76;&#x6CA1;&#x6709;&#x9664;$\pi$</p>
@@ -161,6 +173,7 @@
 <li><a href="https://seblagarde.wordpress.com/2012/01/08/pi-or-not-to-pi-in-game-lighting-equation/" target="_blank" rel="noopener">PI or not to PI in game lighting equation</a></li>
 </ul>
 
+          
     
     </div>
     
@@ -187,7 +200,28 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
 
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Kommentare</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
 
     </div>
 </section>
@@ -200,6 +234,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -234,9 +281,153 @@
 </script>
 
 
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    
+
 
 <script src="/js/script.js"></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
     
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

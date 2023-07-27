@@ -16,11 +16,24 @@
 
 
 
+    <meta name="description" content="&amp;#x672C;&amp;#x6587;&amp;#x5C06;&amp;#x4ECB;&amp;#x7ECD;&amp;#x5404;&amp;#x7C7B;&amp;#x5F00;&amp;#x53D1;&amp;#x8C03;&amp;#x8BD5;&amp;#x5DE5;&amp;#x5177;&amp;#x7684;&amp;#x4E3B;&amp;#x8981;&amp;#x7528;&amp;#x9014;&amp;#x4EE5;&amp;#x53CA;&amp;#x4F7F;&amp;#x7528;&amp;#x65B9;&amp;#x5F0F;">
+<meta name="keywords" content="Debug, Tool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="debug tool for game develop">
+<meta property="og:url" content="http://lonelywaiting.github.io/Debug-Tools/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5C06;&amp;#x4ECB;&amp;#x7ECD;&amp;#x5404;&amp;#x7C7B;&amp;#x5F00;&amp;#x53D1;&amp;#x8C03;&amp;#x8BD5;&amp;#x5DE5;&amp;#x5177;&amp;#x7684;&amp;#x4E3B;&amp;#x8981;&amp;#x7528;&amp;#x9014;&amp;#x4EE5;&amp;#x53CA;&amp;#x4F7F;&amp;#x7528;&amp;#x65B9;&amp;#x5F0F;">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2023-07-27T09:37:13.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="debug tool for game develop">
+<meta name="twitter:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5C06;&amp;#x4ECB;&amp;#x7ECD;&amp;#x5404;&amp;#x7C7B;&amp;#x5F00;&amp;#x53D1;&amp;#x8C03;&amp;#x8BD5;&amp;#x5DE5;&amp;#x5177;&amp;#x7684;&amp;#x4E3B;&amp;#x8981;&amp;#x7528;&amp;#x9014;&amp;#x4EE5;&amp;#x53CA;&amp;#x4F7F;&amp;#x7528;&amp;#x65B9;&amp;#x5F0F;">
 
 
 
 
-<link rel="icon" href="/favicon.ico">
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -35,8 +48,23 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
 
 
 </head>
@@ -59,13 +87,13 @@
         
         <div class="navbar-menu navbar-start">
             
-            <a class="navbar-item " href="/">Home</a>
-            
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -73,153 +101,18 @@
         
         <div class="navbar-menu navbar-end">
             
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
             
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Inhaltsverzeichnis">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#GPU">1&nbsp;&nbsp;<b>GPU</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Snapdragon-Profiler">1.1&nbsp;&nbsp;Snapdragon Profiler</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#GMEM-Load-GMEM-Store">1.1.1&nbsp;&nbsp;GMEM Load/GMEM Store</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Arm-Graphics-Tool">1.2&nbsp;&nbsp;Arm Graphics Tool</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Adreno-GPU">1.3&nbsp;&nbsp;Adreno GPU</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#PVRTune">1.4&nbsp;&nbsp;PVRTune</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Renderdoc">1.5&nbsp;&nbsp;Renderdoc</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#XCode-GPU-Frame-Capture">1.6&nbsp;&nbsp;XCode GPU Frame Capture</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#CPU">2&nbsp;&nbsp;<b>CPU</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Unreal-Insight">2.1&nbsp;&nbsp;Unreal Insight</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#Memory-Tools">3&nbsp;&nbsp;<b>Memory Tools</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Adroid-Address-Sanitizer">3.1&nbsp;&nbsp;Adroid Address Sanitizer</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#HWAddress-Sanitizer">3.2&nbsp;&nbsp;HWAddress Sanitizer</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Loli-Profiler">3.3&nbsp;&nbsp;Loli Profiler</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#UE4&amp;#x5185;&amp;#x7F6E;Memory&amp;#x5DE5;&amp;#x5177;">3.4&nbsp;&nbsp;UE4&amp;amp;#x5185;&amp;amp;#x7F6E;Memory&amp;amp;#x5DE5;&amp;amp;#x5177;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#MemoryReport">3.4.1&nbsp;&nbsp;MemoryReport</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#LLM">3.4.2&nbsp;&nbsp;LLM</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#StompMalloc">3.4.3&nbsp;&nbsp;StompMalloc</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#MmeoryProfile2">3.4.4&nbsp;&nbsp;MmeoryProfile2</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#XCode&amp;#x5185;&amp;#x7F6E;&amp;#x5DE5;&amp;#x5177;">3.5&nbsp;&nbsp;XCode&amp;amp;#x5185;&amp;amp;#x7F6E;&amp;amp;#x5DE5;&amp;amp;#x5177;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Address-Sanitizer">3.5.1&nbsp;&nbsp;Address Sanitizer</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Zombie-Object">3.5.2&nbsp;&nbsp;Zombie Object</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Malloc-History">3.5.3&nbsp;&nbsp;Malloc History</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Memory-Graph">3.5.4&nbsp;&nbsp;Memory Graph</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x80FD;&amp;#x8017;">4&nbsp;&nbsp;<b>&amp;amp;#x80FD;&amp;amp;#x8017;</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#Prefotto">4.1&nbsp;&nbsp;Prefotto</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#XCode">4.2&nbsp;&nbsp;XCode</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x53CD;&amp;#x7F16;&amp;#x8BD1;">5&nbsp;&nbsp;<b>&amp;amp;#x53CD;&amp;amp;#x7F16;&amp;amp;#x8BD1;</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#IDA">5.1&nbsp;&nbsp;IDA</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x771F;&amp;#x673A;&amp;#x8C03;&amp;#x8BD5;">5.1.1&nbsp;&nbsp;&amp;amp;#x771F;&amp;amp;#x673A;&amp;amp;#x8C03;&amp;amp;#x8BD5;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x5E38;&amp;#x7528;&amp;#x5FEB;&amp;#x6377;&amp;#x952E;">5.1.2&nbsp;&nbsp;&amp;amp;#x5E38;&amp;amp;#x7528;&amp;amp;#x5FEB;&amp;amp;#x6377;&amp;amp;#x952E;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#x64dbg">5.2&nbsp;&nbsp;x64dbg</a>
-                    
-                </div>
-            </div>
             
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
             
         </div>
     </div>
@@ -255,11 +148,13 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <blockquote>
+        
+            <blockquote>
 <p>&#x672C;&#x6587;&#x5C06;&#x4ECB;&#x7ECD;&#x5404;&#x7C7B;&#x5F00;&#x53D1;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#x7684;&#x4E3B;&#x8981;&#x7528;&#x9014;&#x4EE5;&#x53CA;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;</p>
 </blockquote>
 <a id="more"></a>
 <h1 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h1><h2 id="Snapdragon-Profiler"><a href="#Snapdragon-Profiler" class="headerlink" title="Snapdragon Profiler"></a>Snapdragon Profiler</h2><h3 id="GMEM-Load-GMEM-Store"><a href="#GMEM-Load-GMEM-Store" class="headerlink" title="GMEM Load/GMEM Store"></a>GMEM Load/GMEM Store</h3><h2 id="Arm-Graphics-Tool"><a href="#Arm-Graphics-Tool" class="headerlink" title="Arm Graphics Tool"></a>Arm Graphics Tool</h2><h2 id="Adreno-GPU"><a href="#Adreno-GPU" class="headerlink" title="Adreno GPU"></a>Adreno GPU</h2><h2 id="PVRTune"><a href="#PVRTune" class="headerlink" title="PVRTune"></a>PVRTune</h2><h2 id="Renderdoc"><a href="#Renderdoc" class="headerlink" title="Renderdoc"></a>Renderdoc</h2><h2 id="XCode-GPU-Frame-Capture"><a href="#XCode-GPU-Frame-Capture" class="headerlink" title="XCode GPU Frame Capture"></a>XCode GPU Frame Capture</h2><h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><h2 id="Unreal-Insight"><a href="#Unreal-Insight" class="headerlink" title="Unreal Insight"></a>Unreal Insight</h2><h1 id="Memory-Tools"><a href="#Memory-Tools" class="headerlink" title="Memory Tools"></a>Memory Tools</h1><h2 id="Adroid-Address-Sanitizer"><a href="#Adroid-Address-Sanitizer" class="headerlink" title="Adroid Address Sanitizer"></a>Adroid Address Sanitizer</h2><h2 id="HWAddress-Sanitizer"><a href="#HWAddress-Sanitizer" class="headerlink" title="HWAddress Sanitizer"></a>HWAddress Sanitizer</h2><h2 id="Loli-Profiler"><a href="#Loli-Profiler" class="headerlink" title="Loli Profiler"></a>Loli Profiler</h2><h2 id="UE4&#x5185;&#x7F6E;Memory&#x5DE5;&#x5177;"><a href="#UE4&#x5185;&#x7F6E;Memory&#x5DE5;&#x5177;" class="headerlink" title="UE4&#x5185;&#x7F6E;Memory&#x5DE5;&#x5177;"></a>UE4&#x5185;&#x7F6E;Memory&#x5DE5;&#x5177;</h2><h3 id="MemoryReport"><a href="#MemoryReport" class="headerlink" title="MemoryReport"></a>MemoryReport</h3><h3 id="LLM"><a href="#LLM" class="headerlink" title="LLM"></a>LLM</h3><h3 id="StompMalloc"><a href="#StompMalloc" class="headerlink" title="StompMalloc"></a>StompMalloc</h3><h3 id="MmeoryProfile2"><a href="#MmeoryProfile2" class="headerlink" title="MmeoryProfile2"></a>MmeoryProfile2</h3><h2 id="XCode&#x5185;&#x7F6E;&#x5DE5;&#x5177;"><a href="#XCode&#x5185;&#x7F6E;&#x5DE5;&#x5177;" class="headerlink" title="XCode&#x5185;&#x7F6E;&#x5DE5;&#x5177;"></a>XCode&#x5185;&#x7F6E;&#x5DE5;&#x5177;</h2><h3 id="Address-Sanitizer"><a href="#Address-Sanitizer" class="headerlink" title="Address Sanitizer"></a>Address Sanitizer</h3><h3 id="Zombie-Object"><a href="#Zombie-Object" class="headerlink" title="Zombie Object"></a>Zombie Object</h3><h3 id="Malloc-History"><a href="#Malloc-History" class="headerlink" title="Malloc History"></a>Malloc History</h3><h3 id="Memory-Graph"><a href="#Memory-Graph" class="headerlink" title="Memory Graph"></a>Memory Graph</h3><h1 id="&#x80FD;&#x8017;"><a href="#&#x80FD;&#x8017;" class="headerlink" title="&#x80FD;&#x8017;"></a>&#x80FD;&#x8017;</h1><h2 id="Prefotto"><a href="#Prefotto" class="headerlink" title="Prefotto"></a>Prefotto</h2><h2 id="XCode"><a href="#XCode" class="headerlink" title="XCode"></a>XCode</h2><h1 id="&#x53CD;&#x7F16;&#x8BD1;"><a href="#&#x53CD;&#x7F16;&#x8BD1;" class="headerlink" title="&#x53CD;&#x7F16;&#x8BD1;"></a>&#x53CD;&#x7F16;&#x8BD1;</h1><h2 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h2><h3 id="&#x771F;&#x673A;&#x8C03;&#x8BD5;"><a href="#&#x771F;&#x673A;&#x8C03;&#x8BD5;" class="headerlink" title="&#x771F;&#x673A;&#x8C03;&#x8BD5;"></a>&#x771F;&#x673A;&#x8C03;&#x8BD5;</h3><h3 id="&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;"><a href="#&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;" class="headerlink" title="&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;"></a>&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;</h3><h2 id="x64dbg"><a href="#x64dbg" class="headerlink" title="x64dbg"></a>x64dbg</h2>
+          
     
     </div>
     
@@ -286,7 +181,28 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
 
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Kommentare</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
 
     </div>
 </section>
@@ -299,6 +215,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -333,9 +262,153 @@
 </script>
 
 
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    
+
 
 <script src="/js/script.js"></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
     
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

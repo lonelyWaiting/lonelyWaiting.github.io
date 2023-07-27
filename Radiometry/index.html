@@ -16,11 +16,29 @@
 
 
 
+    <meta name="description" content="&amp;#x5149;&amp;#x6A21;&amp;#x578B;&amp;#x56FE;&amp;#x5F62;&amp;#x5B66;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;&amp;#x6700;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x662F;&amp;#x51E0;&amp;#x4F55;&amp;#x5149;&amp;#x5B66;,&amp;#x8BE5;&amp;#x6A21;&amp;#x578B;&amp;#x4E2D;,&amp;#x7269;&amp;#x4F53;&amp;#x768">
+<meta name="keywords" content="Rendering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Radiometry">
+<meta property="og:url" content="http://lonelywaiting.github.io/Radiometry/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="&amp;#x5149;&amp;#x6A21;&amp;#x578B;&amp;#x56FE;&amp;#x5F62;&amp;#x5B66;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;&amp;#x6700;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x662F;&amp;#x51E0;&amp;#x4F55;&amp;#x5149;&amp;#x5B66;,&amp;#x8BE5;&amp;#x6A21;&amp;#x578B;&amp;#x4E2D;,&amp;#x7269;&amp;#x4F53;&amp;#x768">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/Flux.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/radiance_define.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/solid_angle_define.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/radiance_invariance.png">
+<meta property="og:updated_time" content="2023-07-27T09:37:13.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Radiometry">
+<meta name="twitter:description" content="&amp;#x5149;&amp;#x6A21;&amp;#x578B;&amp;#x56FE;&amp;#x5F62;&amp;#x5B66;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;&amp;#x6700;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x662F;&amp;#x51E0;&amp;#x4F55;&amp;#x5149;&amp;#x5B66;,&amp;#x8BE5;&amp;#x6A21;&amp;#x578B;&amp;#x4E2D;,&amp;#x7269;&amp;#x4F53;&amp;#x768">
+<meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/Flux.png">
 
 
 
 
-<link rel="icon" href="/favicon.ico">
+
+<link rel="icon" href="/favicon.png">
 
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
@@ -35,8 +53,23 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
 
 
 </head>
@@ -59,13 +92,13 @@
         
         <div class="navbar-menu navbar-start">
             
-            <a class="navbar-item " href="/">Home</a>
-            
             <a class="navbar-item " href="/archives">Archives</a>
             
-            <a class="navbar-item " href="/categories">Categories</a>
+            <a class="navbar-item " href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item " href="/tags">Tags</a>
+            <a class="navbar-item " href="/categories/Music">Music</a>
+            
+            <a class="navbar-item " href="/categories/Technology">Technology</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -73,71 +106,18 @@
         
         <div class="navbar-menu navbar-end">
             
+            <a class="navbar-item search" title="Suche" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
             
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Inhaltsverzeichnis">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x5149;&amp;#x6A21;&amp;#x578B;">1&nbsp;&nbsp;<b>&amp;amp;#x5149;&amp;amp;#x6A21;&amp;amp;#x578B;</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x5C04;&amp;#x5EA6;">2&nbsp;&nbsp;<b>&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x5EA6;</b></a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x901A;&amp;#x91CF;-Flux">2.1&nbsp;&nbsp;&amp;amp;#x901A;&amp;amp;#x91CF;(Flux)</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x7167;&amp;#x5EA6;-Irradiance">2.2&nbsp;&nbsp;&amp;amp;#x8F90;&amp;amp;#x7167;&amp;amp;#x5EA6;(Irradiance)</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x5C04;&amp;#x51FA;&amp;#x5C04;&amp;#x5EA6;-&amp;#x8F90;&amp;#x5C04;&amp;#x5EA6;Radiosity">2.3&nbsp;&nbsp;&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x51FA;&amp;amp;#x5C04;&amp;amp;#x5EA6;(&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x5EA6;Radiosity)</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x5C04;&amp;#x7387;">2.4&nbsp;&nbsp;&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x7387;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x5404;&amp;#x4E2A;&amp;#x91CF;&amp;#x7684;&amp;#x5173;&amp;#x7CFB;">2.5&nbsp;&nbsp;&amp;amp;#x5404;&amp;amp;#x4E2A;&amp;amp;#x91CF;&amp;amp;#x7684;&amp;amp;#x5173;&amp;amp;#x7CFB;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x5C04;&amp;#x7387;&amp;#x5C5E;&amp;#x6027;">2.6&nbsp;&nbsp;&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x7387;&amp;amp;#x5C5E;&amp;amp;#x6027;</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x6CBF;&amp;#x8DEF;&amp;#x5F84;&amp;#x53EF;&amp;#x4EA4;&amp;#x6362;-L-x-rightarrow-y-L-y-leftarrow-x">2.6.1&nbsp;&nbsp;&amp;amp;#x6CBF;&amp;amp;#x8DEF;&amp;amp;#x5F84;&amp;amp;#x53EF;&amp;amp;#x4EA4;&amp;amp;#x6362; $L(x \rightarrow y) = L(y \leftarrow x)$</a>
-                    
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x4F20;&amp;#x611F;&amp;#x5668;-&amp;#x4F8B;&amp;#x5982;&amp;#x76F8;&amp;#x673A;-&amp;#x4EBA;&amp;#x773C;-&amp;#x5BF9;&amp;#x8F90;&amp;#x5C04;&amp;#x654F;&amp;#x611F;">2.6.2&nbsp;&nbsp;&amp;amp;#x4F20;&amp;amp;#x611F;&amp;amp;#x5668;,&amp;amp;#x4F8B;&amp;amp;#x5982;&amp;amp;#x76F8;&amp;amp;#x673A;,&amp;amp;#x4EBA;&amp;amp;#x773C;,&amp;amp;#x5BF9;&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x654F;&amp;amp;#x611F;</a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x4F20;&amp;#x8F93;&amp;#x7406;&amp;#x8BBA;">3&nbsp;&nbsp;<b>&amp;amp;#x4F20;&amp;amp;#x8F93;&amp;amp;#x7406;&amp;amp;#x8BBA;</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#&amp;#x53D1;&amp;#x5C04;&amp;#x5149;">4&nbsp;&nbsp;<b>&amp;amp;#x53D1;&amp;amp;#x5C04;&amp;amp;#x5149;</b></a>
-                    
-                </div>
-            </div>
             
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
             
         </div>
     </div>
@@ -154,7 +134,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2023-07-27T07:40:58.701Z" itemprop="datePublished">7月 27 2023</time>
+                <time datetime="2023-07-27T09:37:13.165Z" itemprop="datePublished">7月 27 2023</time>
             
         </span>
         
@@ -168,7 +148,8 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h1 id="&#x5149;&#x6A21;&#x578B;"><a href="#&#x5149;&#x6A21;&#x578B;" class="headerlink" title="&#x5149;&#x6A21;&#x578B;"></a>&#x5149;&#x6A21;&#x578B;</h1><p>&#x56FE;&#x5F62;&#x5B66;&#x4E2D;&#x4F7F;&#x7528;&#x6700;&#x5E38;&#x7528;&#x7684;&#x662F;&#x51E0;&#x4F55;&#x5149;&#x5B66;,&#x8BE5;&#x6A21;&#x578B;&#x4E2D;,&#x7269;&#x4F53;&#x7684;&#x5C3A;&#x5BF8;&#x8FDC;&#x5927;&#x4E8E;&#x5149;&#x7684;&#x6CE2;&#x957F;<br><a id="more"></a><br>&#x51E0;&#x4F55;&#x5149;&#x5B66;&#x4E2D;,&#x884D;&#x5C04;,&#x5E72;&#x6D89;&#x4EE5;&#x53CA;&#x6781;&#x5316;&#x73B0;&#x8C61;&#x662F;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;&#x7684;.</p>
+        
+            <h1 id="&#x5149;&#x6A21;&#x578B;"><a href="#&#x5149;&#x6A21;&#x578B;" class="headerlink" title="&#x5149;&#x6A21;&#x578B;"></a>&#x5149;&#x6A21;&#x578B;</h1><p>&#x56FE;&#x5F62;&#x5B66;&#x4E2D;&#x4F7F;&#x7528;&#x6700;&#x5E38;&#x7528;&#x7684;&#x662F;&#x51E0;&#x4F55;&#x5149;&#x5B66;,&#x8BE5;&#x6A21;&#x578B;&#x4E2D;,&#x7269;&#x4F53;&#x7684;&#x5C3A;&#x5BF8;&#x8FDC;&#x5927;&#x4E8E;&#x5149;&#x7684;&#x6CE2;&#x957F;<br><a id="more"></a><br>&#x51E0;&#x4F55;&#x5149;&#x5B66;&#x4E2D;,&#x884D;&#x5C04;,&#x5E72;&#x6D89;&#x4EE5;&#x53CA;&#x6781;&#x5316;&#x73B0;&#x8C61;&#x662F;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;&#x7684;.</p>
 <p>&#x51E0;&#x4F55;&#x5149;&#x5B66;&#x5047;&#x5B9A;&#x5149;&#x662F;&#x53D1;&#x5C04;,&#x53CD;&#x5C04;&#x4EE5;&#x53CA;&#x900F;&#x5C04;,&#x5E76;&#x5BF9;&#x4E8E;&#x5149;&#x7684;&#x884C;&#x4E3A;&#x505A;&#x51FA;&#x5982;&#x4E0B;&#x5047;&#x8BBE;:</p>
 <ul>
 <li>&#x76F4;&#x7EBF;&#x4F20;&#x64AD;</li>
@@ -227,6 +208,7 @@
 <li>&#x9891;&#x8C31;&#x5206;&#x5E03;:&#x867D;&#x7136;&#x5149;&#x7684;&#x9891;&#x8C31;&#x5206;&#x5E03;&#x53EF;&#x4EE5;&#x7CBE;&#x786E;&#x6A21;&#x62DF;,&#x4F46;&#x51FA;&#x4E8E;&#x6548;&#x7387;&#x8003;&#x8651;&#x666E;&#x904D;&#x4F7F;&#x7528;RGB</li>
 </ul>
 
+          
     
     </div>
     
@@ -253,7 +235,28 @@
 </article>
 
 
+<div class="sharebox">
+    
+<div class="notification is-danger">
+    You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.
+</div>
 
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Kommentare</h3>
+    
+<div id="disqus_thread">
+    
+    <div class="notification is-danger">
+        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
+    </div>
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
 
     </div>
 </section>
@@ -266,6 +269,19 @@
             </div>
             <div class="column is-hidden-mobile"></div>
 
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/ppoffice/hexo-theme-minos">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
             
             
         </div>
@@ -300,9 +316,153 @@
 </script>
 
 
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    
+
 
 <script src="/js/script.js"></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Suche etwas...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Seiten',
+                CATEGORIES: 'Kategorien',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
     
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
