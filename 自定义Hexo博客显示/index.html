@@ -23,17 +23,18 @@
 <meta property="og:url" content="http://lonelywaiting.github.io/自定义Hexo博客显示/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="Hexo&amp;#x7ED3;&amp;#x6784;&amp;#x642D;&amp;#x5EFA;&amp;#x73AF;&amp;#x5883;&amp;#x5B89;&amp;#x88C5;NodeJS&amp;#x4E0E;Git&amp;#xFF0C;&amp;#x65B0;&amp;#x5EFA;&amp;#x76EE;&amp;#x5F55;&amp;#x7528;&amp;#x4E8E;&amp;#x5B58;&amp;#x653E;&amp;#x535A;&amp;#x5BA2;&amp;#xFF0C;&amp;#x5982;&amp;#x4E0B;&amp;#x">
-<meta property="og:locale" content="zh-cn">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/AddNewSSHKey.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/AddSSHDeployKey.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/TOCAutoOrder.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/ArticleTitleSeperateOrder.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/ViewCSSLabel.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/MDFocusCSS.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/ActionNotOwnedByUser.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/NewRepoSecret.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/CloneRepoError.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/TyporaPluginSupportFeature.png">
-<meta property="og:updated_time" content="2023-07-27T09:37:13.165Z">
+<meta property="og:updated_time" content="2023-07-27T11:17:19.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义Hexo博客显示">
 <meta name="twitter:description" content="Hexo&amp;#x7ED3;&amp;#x6784;&amp;#x642D;&amp;#x5EFA;&amp;#x73AF;&amp;#x5883;&amp;#x5B89;&amp;#x88C5;NodeJS&amp;#x4E0E;Git&amp;#xFF0C;&amp;#x65B0;&amp;#x5EFA;&amp;#x76EE;&amp;#x5F55;&amp;#x7528;&amp;#x4E8E;&amp;#x5B58;&amp;#x653E;&amp;#x535A;&amp;#x5BA2;&amp;#xFF0C;&amp;#x5982;&amp;#x4E0B;&amp;#x">
@@ -139,7 +140,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2023-07-22T22:15:17.000Z" itemprop="datePublished">7月 22 2023</time>
+                <time datetime="2023-07-22T22:15:17.000Z" itemprop="datePublished">Jul 22 2023</time>
             
         </span>
         
@@ -147,7 +148,7 @@
         <span class="column is-narrow">
             
             
-            17 分钟 lesen (Über 2506 Wörter)
+            18 minutes lesen (Über 2630 Wörter)
         </span>
         
     </div>
@@ -248,6 +249,11 @@
 <p>&#x6BCF;&#x7BC7;&#x6587;&#x7AE0;&#x90FD;&#x53EA;&#x6709;&#x4E00;&#x4E2A;article-inner&#x5143;&#x7D20;&#xFF0C;&#x6BCF;&#x89E3;&#x6790;&#x4E00;&#x4E2A;&#x8BE5;&#x5143;&#x7D20;&#x5219;&#x5C06;&#x5E8F;&#x53F7;&#x7F6E;0</p>
 <figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.article-inner</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-reset</span>: body h1 h2 h3 h4 h5 h6;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h1</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: body;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
+<h3 id="&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;"><a href="#&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;" class="headerlink" title="&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;"></a>&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;</h3><p>&#x4F7F;&#x7528;&#x53F3;&#x952E;&#x2013;&#x68C0;&#x67E5;&#x5143;&#x7D20;&#x6216;&#x8005;F12&#x53EF;&#x4EE5;&#x8C03;&#x8BD5;&#x7F51;&#x9875;&#xFF0C;&#x53EF;&#x4EE5;&#x9009;&#x4E2D;&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x7684;HTML&#xFF0C;&#x9875;&#x9762;&#x5C06;&#x4F1A;&#x663E;&#x793A;&#x51FA;&#x5176;CSS&#x6807;&#x7B7E;&#xFF0C;&#x4FBF;&#x4E8E;&#x5728;CSS&#x4E2D;&#x5339;&#x914D;&#x6807;&#x7B7E;&#xFF1A;</p>
+<p>&#x4EE5;&#x4E0B;&#x56FE;&#x4E3A;&#x4F8B;&#xFF0C;&#x9F20;&#x6807;&#x5728;&#x5143;&#x7D20;&#x7A97;&#x53E3;&#x9009;&#x4E2D;&#x6807;&#x9898;&#x65F6;&#xFF0C;&#x9875;&#x9762;&#x4E2D;&#x663E;&#x793A;&#x4E86;&#x5BF9;&#x5E94;&#x7684;CSS&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x6807;&#x7B7E;&#x8FDB;&#x884C;&#x9009;&#x62E9;&#xFF1A;</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">h1</span><span class="hljs-selector-class">.article-title</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">content</span>: none</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p><img src="./../resources/images/&#x81EA;&#x5B9A;&#x4E49;Hexo&#x535A;&#x5BA2;&#x663E;&#x793A;/ViewCSSLabel.png" alt="View CSS Label"></p>
 <h2 id="&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;ReadMore"><a href="#&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;ReadMore" class="headerlink" title="&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;ReadMore"></a>&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;ReadMore</h2><p>&#x4E0D;&#x6DFB;&#x52A0;<code>&lt;!-- more --&gt;</code>&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x663E;&#x793A;&#x5168;&#x6587;&#x6539;&#x4E3A;&#x663E;&#x793A;<code>Read More</code>&#x94FE;&#x63A5;&#xFF0C;&#x6587;&#x7AE0;&#x663E;&#x793A;&#x5F88;&#x4E71;</p>
 <p>&#x4FEE;&#x6539;<code>layout/common/article.ejs</code>&#xFF0C;&#x627E;&#x5230;<code>post.excerpt</code>&#xFF0C;&#x4FEE;&#x6539;&#x5BF9;&#x5E94;&#x90E8;&#x5206;&#x5982;&#x4E0B;&#xFF1A;</p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;article-entry is-size-6-mobile&quot;</span> itemprop=<span class="hljs-string">&quot;articleBody&quot;</span>&gt;</span><br><span class="line">    &lt;% <span class="hljs-keyword">if</span> (post.excerpt &amp;&amp; index){ %&gt;</span><br><span class="line">        &lt;%- post.excerpt %&gt;</span><br><span class="line">        &lt;p <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;article-more-link&quot;</span>&gt;</span><br><span class="line">            &lt;a href=<span class="hljs-string">&quot;&lt;%- url_for(post.path) %&gt;#more&quot;</span>&gt;&lt;%= __(<span class="hljs-string">&apos;article.read_more&apos;</span>) %&gt;&lt;<span class="hljs-regexp">/a&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;/</span>p&gt;</span><br><span class="line">    &lt;% } <span class="hljs-keyword">else</span> { %&gt;</span><br><span class="line">        &lt;!-- &#x4EE5;&#x4E0B;&#x4E3A;&#x539F;&#x503C; --&gt;</span><br><span class="line">        &lt;!-- &lt;%- post.content %&gt; --&gt;</span><br><span class="line">        &lt;!-- &#x4EE5;&#x4E0B;&#x4E3A;&#x4FEE;&#x6539;&#x7ED3;&#x679C; --&gt;</span><br><span class="line">        &lt;% <span class="hljs-keyword">if</span> (index) { %&gt;</span><br><span class="line">            &lt;p <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;article-more-link&quot;</span>&gt;</span><br><span class="line">              &lt;a href=<span class="hljs-string">&quot;&lt;%- url_for(post.path) %&gt;#more&quot;</span>&gt;&lt;%= __(<span class="hljs-string">&apos;article.read_more&apos;</span>) %&gt;&lt;<span class="hljs-regexp">/a&gt;</span></span><br><span class="line"><span class="hljs-regexp">            &lt;/</span>p&gt;</span><br><span class="line">          &lt;% } <span class="hljs-keyword">else</span> { %&gt;</span><br><span class="line">            &lt;%- post.content %&gt;</span><br><span class="line">          &lt;% } %&gt;</span><br><span class="line">    &lt;% } %&gt;</span><br><span class="line">    &lt;<span class="hljs-regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
@@ -360,11 +366,23 @@
 <div class="comments">
     <h3 class="title is-4">Kommentare</h3>
     
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://lonelywaiting.github.io/自定义Hexo博客显示/';
+        this.page.identifier = '自定义Hexo博客显示/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'lonelywaiting' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 <div id="disqus_thread">
-    
-    <div class="notification is-danger">
-        You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.
-    </div>
     
     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
@@ -424,7 +442,7 @@
     window.FontAwesomeConfig = {
         searchPseudoElements: true
     }
-    moment.locale("zh-CN");
+    moment.locale("default");
 </script>
 
 

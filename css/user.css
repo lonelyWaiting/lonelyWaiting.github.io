@@ -29,7 +29,7 @@ h6 {
     counter-reset: h6;
 }
 
-.article-inner {
+h1.article-title {
     counter-reset: body h1 h2 h3 h4 h5 h6;
 }
 h1:before {
@@ -37,7 +37,7 @@ h1:before {
     content: counter(body) ". ";
 }
 /*h1元素的class为article-title，则不添加序号*/
-.article-title h1:before {
+h1.article-title:before {
     content: none;
 }
 /*h1元素的class为article-header，则不添加序号*/
