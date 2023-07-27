@@ -32,39 +32,47 @@ h6 {
 h1.article-title {
     counter-reset: body h1 h2 h3 h4 h5 h6;
 }
-h1:before {
+h1:before ,
+.article .article-entry h1:hover:before {
     counter-increment: body;
     content: counter(body) ". ";
+    position: unset;
 }
+h2:before ,
+.article .article-entry h2:hover:before {
+    counter-increment: h1;
+    content: counter(body) "." counter(h1) ". ";
+    position: unset;
+}
+h3:before ,
+.article .article-entry h3:hover:before {
+    counter-increment: h2;
+    content: counter(body) "." counter(h1)"." counter(h2) ". ";
+    position: unset;
+}
+h4:before ,
+.article .article-entry h4:hover:before {
+    counter-increment: h3;
+    content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3) ". ";
+    position: unset;
+}
+h5:before ,
+.article .article-entry h5:hover:before {
+    counter-increment: h4;
+    content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3)"." counter(h4) ". ";
+    position: unset;
+}
+h6:before ,
+.article .article-entry h6:hover:before {
+    counter-increment: h5;
+    content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3)"." counter(h4)"." counter(h5) ". ";
+    position: unset;
+}
+
 /*h1元素的class为article-title，则不添加序号*/
 h1.article-title:before {
     content: none;
 }
-/*h1元素的class为article-header，则不添加序号*/
-.article-header h1:before {
+h1.article-title:hover:before {
     content: none;
-}
-
-h2:before {
-    counter-increment: h1;
-    content: counter(body) "." counter(h1) ". ";
-}
-h3:before {
-    counter-increment: h2;
-    content: counter(body) "." counter(h1)"." counter(h2) ". ";
-}
-.article-toc h3:before {
-    content: none;
-}
-h4:before {
-    counter-increment: h3;
-    content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3) ". ";
-}
-h5:before {
-    counter-increment: h4;
-    content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3)"." counter(h4) ". ";
-}
-h6:before {
-    counter-increment: h5;
-    content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3)"." counter(h4)"." counter(h5) ". ";
 }
