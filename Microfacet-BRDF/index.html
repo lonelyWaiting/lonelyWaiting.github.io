@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>Microfacet Theory - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5FAE;&amp;#x9762;&amp;#x5143;&amp;#x7406;&amp;#x8BBA;">1&nbsp;&nbsp;<b>&amp;amp;#x5FAE;&amp;amp;#x9762;&amp;amp;#x5143;&amp;amp;#x7406;&amp;amp;#x8BBA;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6CD5;&amp;#x7EBF;&amp;#x5206;&amp;#x5E03;&amp;#x9879;">1.1&nbsp;&nbsp;&amp;amp;#x6CD5;&amp;amp;#x7EBF;&amp;amp;#x5206;&amp;amp;#x5E03;&amp;amp;#x9879;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#GGX">1.1.1&nbsp;&nbsp;GGX</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x51E0;&amp;#x4F55;&amp;#x8870;&amp;#x51CF;&amp;#x9879;">1.2&nbsp;&nbsp;&amp;amp;#x51E0;&amp;amp;#x4F55;&amp;amp;#x8870;&amp;amp;#x51CF;&amp;amp;#x9879;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Smith">1.2.1&nbsp;&nbsp;Smith</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x83F2;&amp;#x6D85;&amp;#x5C14;&amp;#x9879;">1.3&nbsp;&nbsp;&amp;amp;#x83F2;&amp;amp;#x6D85;&amp;amp;#x5C14;&amp;amp;#x9879;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Shclick">1.3.1&nbsp;&nbsp;Shclick</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">2&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Microfacet Theory
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2018-09-09T17:15:05.000Z" itemprop="datePublished">9月 9 2018</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            7 分钟 lesen (Über 1001 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;"><a href="#&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;" class="headerlink" title="&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;"></a>&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;</h1><p>&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;&#x8BA4;&#x4E3A;&#x7C97;&#x7CD9;&#x8868;&#x9762;&#x662F;&#x7531;&#x7EC6;&#x5C0F;&#x7684;&#x5FAE;&#x9762;&#x7EC4;&#x6210;&#x7684;,&#x6BCF;&#x4E2A;&#x5FAE;&#x9762;&#x5143;&#x90FD;&#x6EE1;&#x8DB3;&#x5B8C;&#x7F8E;&#x955C;&#x9762;&#x53CD;&#x5C04;<a id="more"></a></p>
+<p>$$\omega_h = \omega_i \hat{+} \omega_o$$</p>
+<p>$$d\Phi_h = L_i(\omega_i)d\omega_i dA^{\perp}(\omega_h) = L_i(\omega_i)d\omega_i cos\theta_h dA(\omega_h)$$</p>
+<p>$$dA(\omega_h) = D(\omega_h)d\omega_h dA$$</p>
+<ul>
+<li>$D(\omega_h)$:&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;,&#x63CF;&#x8FF0;&#x5FAE;&#x9762;&#x5143;&#x7684;&#x6CD5;&#x7EBF;&#x4E3A;$\omega_h$&#x7684;&#x6BD4;&#x4F8B;,&#x53EA;&#x6709;&#x6CD5;&#x7EBF;&#x4E3A;$\omega_h$&#x7684;&#x624D;&#x80FD;&#x88AB;&#x770B;&#x89C1;</li>
+</ul>
+<p>$$\Rightarrow d\Phi_h = L_i(\omega_i)d\omega_i cos\theta_h D(\omega_h)d\omega_h dA$$</p>
+<p>&#x5047;&#x8BBE;&#x6BCF;&#x4E2A;&#x5FAE;&#x9762;&#x5143;&#x90FD;&#x5404;&#x81EA;&#x6309;&#x7167;<code>Fresnel&apos;s Law</code>&#x53CD;&#x5C04;&#x5149;&#x7EBF;</p>
+<p>$$\Rightarrow d\Phi_o = F_r(\omega_o)d\Phi_h$$</p>
+<p>$$\because L(\omega_o) = \frac{d\Phi_o}{d\omega_o cos\theta_o dA}$$</p>
+<p>$$\therefore L(\omega_o) = \frac{F_r(\omega_o)L_i(\omega_i)d\omega_i cos\theta_h D(\omega_h) d\omega_h dA}{d\omega_o cos\theta_o dA}\tag{1}$$</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x8BA1;&#x7B97;$\frac{d\omega_h}{d\omega_i}$,&#x8003;&#x8651;&#x57FA;&#x4E8E;$\omega_o$&#x7684;&#x7403;&#x5750;&#x6807;&#x7CFB;,&#x5982;&#x4E0B;&#x56FE;:<br><img src="/resources/images/Microfacet Theory/spherical_coordinate_system_oriented_wo.png" alt="&#x57FA;&#x4E8E;$\omega_o$&#x7684;&#x7403;&#x5750;&#x6807;&#x7CFB;,&#x6765;&#x6E90;PBRT"></p>
+<p>$$\frac{d\omega_h}{d\omega_i} = \frac{sin\theta_h d\theta_h d\phi_h}{sin\theta_i d\theta_i d\phi_i}$$</p>
+<p>$$\because \theta_i = 2\theta_h$$</p>
+<p>$$\therefore \frac{d\omega_h}{d\omega_i} = \frac{sin\theta_h d\theta_h d\phi_h}{sin(2\theta_h)2d\theta_h d\phi_h} = \frac{sin\theta_h}{4sin\theta_h cos\theta_h} = \frac{1}{4cos\theta_h}$$</p>
+<p>$$\Rightarrow \frac{d\omega_h}{d\omega_i} = \frac{1}{4cos\theta_h} = \frac{1}{4\omega_i \cdot \omega_h} = \frac{1}{4\omega_o \cdot \omega_h}$$<br>$$\Rightarrow \frac{d\omega_h}{d\omega_o} = \frac{1}{4cos\theta_h} = \frac{1}{4\omega_i \cdot \omega_h} = \frac{1}{4\omega_o \cdot \omega_h}$$</p>
+<p>&#x4EE3;&#x5165;(1)&#x5F0F;:<br>$$\Rightarrow L(\omega_o) = \frac{F_r(\omega_o)L_i(\omega_i)D(\omega_h)d\omega_i}{4cos\theta_o}$$</p>
+<p>$$\because L(\omega_o) = L(\omega_i) f_r(p,\omega_i, \omega_o)cos\theta_i d\omega_i$$</p>
+<p>$$\therefore f_r(p,\omega_i,\omega_o) = \frac{L(\omega_o)}{L(\omega_i) cos\theta_i d\omega_i} = \frac{F_r(\omega_o)D(\omega_h)}{4cos\theta_i cos\theta_o} = \frac{F_r(\omega_o)D(\omega_h)}{4(n\cdot l)(n \cdot v)}$$</p>
+<p>&#x518D;&#x4E58;&#x4E0A;&#x4E00;&#x4E2A;&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;G,&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5FAE;&#x9762;&#x5143;&#x88AB;&#x906E;&#x6321;&#x6216;&#x8005;&#x5904;&#x4E8E;&#x9634;&#x5F71;&#x4E2D;&#x7684;&#x6BD4;&#x4F8B;</p>
+<p>$$\Rightarrow f_r(p,\omega_i,\omega_o) = \frac{F_r(\omega_o)D(\omega_h)G(\omega_i,\omega_o)}{4cos\theta_o cos\theta_i}$$</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x8BB2;&#x4E0B;<code>D,F,G</code>&#x7684;&#x5E38;&#x7528;&#x5B9E;&#x73B0;&#x65B9;&#x6848;</p>
+<h2 id="&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;"><a href="#&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;" class="headerlink" title="&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;"></a>&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;</h2><h3 id="GGX"><a href="#GGX" class="headerlink" title="GGX"></a>GGX</h3><p>$$D(h) = \frac{\alpha^2}{\pi((n\cdot h)^2(\alpha^2 - 1) + 1)^2}$$<br>$$\alpha = roughness^2$$</p>
+<ul>
+<li>roughness: &#x7C97;&#x7CD9;&#x5EA6;</li>
+</ul>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">D</span><span class="hljs-params">(<span class="hljs-keyword">float</span> alpha, <span class="hljs-keyword">float</span> NdotH)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">float</span> alphaSqr = sqr(alpha);</span><br><span class="line">    <span class="hljs-keyword">float</span> denominator = sqr(NdotH) * (alphaSqr - <span class="hljs-number">1.0f</span>) + <span class="hljs-number">1.0f</span>;</span><br><span class="line">    <span class="hljs-keyword">float</span> D = alphaSqr / (PI * sqr(denominator));</span><br><span class="line">    <span class="hljs-keyword">return</span> D;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;"><a href="#&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;" class="headerlink" title="&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;"></a>&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;</h2><h3 id="Smith"><a href="#Smith" class="headerlink" title="Smith"></a>Smith</h3><p><code>Smith</code>&#x51FD;&#x6570;&#x5BF9;G&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x8FD1;&#x4F3C;,&#x5373;&#x5047;&#x8BBE;&#x5165;&#x5C04;&#x906E;&#x6321;&#x4E0E;&#x51FA;&#x5C04;&#x906E;&#x6321;&#x662F;&#x4E0D;&#x76F8;&#x5173;&#x7684;,&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x88AB;&#x5206;&#x79BB;&#x5F00;&#x6765;</p>
+<p>$$G(l,v,h) = G_1(n,l)G_1(n,v)$$<br>$$G_1(n,v) = \frac{n\cdot v}{(n\cdot v)(1 - k) + k}$$<br>$$k = \frac{(Roughness + 1)^2}{8}$$</p>
+<p>&#x5B9E;&#x73B0;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">K</span><span class="hljs-params">(<span class="hljs-keyword">float</span> _Roughness)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">float</span> modifiedRoughness = _Roughness + <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> sqr(modifiedRoughness) / <span class="hljs-number">8</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">G1</span><span class="hljs-params">(<span class="hljs-keyword">float</span> k, <span class="hljs-keyword">float</span> NdotV)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> NdotV / (NdotV * (<span class="hljs-number">1</span> - k) + k);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">G_Smith</span><span class="hljs-params">(<span class="hljs-keyword">float</span> _Roughness, <span class="hljs-keyword">float</span> NdotL, <span class="hljs-keyword">float</span> NdotV)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">float</span> k   = K(_Roughness);</span><br><span class="line">    <span class="hljs-keyword">float</span> G1L = G1(k, NdotL);</span><br><span class="line">    <span class="hljs-keyword">float</span> G1V = G1(k, NdotV);</span><br><span class="line">    <span class="hljs-keyword">float</span> G = G1L * G1V;</span><br><span class="line">    <span class="hljs-keyword">return</span> G;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="&#x83F2;&#x6D85;&#x5C14;&#x9879;"><a href="#&#x83F2;&#x6D85;&#x5C14;&#x9879;" class="headerlink" title="&#x83F2;&#x6D85;&#x5C14;&#x9879;"></a>&#x83F2;&#x6D85;&#x5C14;&#x9879;</h2><h3 id="Shclick"><a href="#Shclick" class="headerlink" title="Shclick"></a>Shclick</h3><p>&#x539F;&#x59CB;&#x7684;&#x83F2;&#x6D85;&#x5C14;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#x6BD4;&#x8F83;&#x590D;&#x6742;,&#x4E00;&#x822C;&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x65B9;&#x7A0B;&#x8FDB;&#x884C;&#x8FD1;&#x4F3C;:</p>
+<p>$$F_{schlick}(F_0,l,h) = F_0 + (1 - F_0)(1-(l\cdot h))^5$$</p>
+<ul>
+<li>$F_0$: &#x5165;&#x5C04;&#x5149;&#x5782;&#x76F4;&#x4E8E;&#x8868;&#x9762;&#x65F6;&#x7684;&#x83F2;&#x6D85;&#x5C14;&#x53CD;&#x5C04;&#x7387;&#x503C;,&#x4E5F;&#x79F0;&#x4E4B;&#x4E3A;&#x955C;&#x9762;&#x989C;&#x8272;</li>
+</ul>
+<p>$$F(0) = (\frac{\eta_i - \eta_o}{\eta_i + \eta_o})^2$$</p>
+<p>&#x4EE5;&#x4E0B;&#x4E3A;&#x5E38;&#x89C1;&#x6750;&#x8D28;&#x7684;<code>F(0)</code>&#x503C;</p>
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>F(0) (Linear)</th>
+<th>F(0) (sRGB)</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Water</td>
+<td>0.02,0.02,0.02</td>
+<td>0.15,0.15,0.15</td>
+<td><style>xx{background-color:rgb(38.25,38.25,38.25);}</style><xx>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</xx></td>
+</tr>
+<tr>
+<td>Plastic / Glass (Low)</td>
+<td>0.03,0.03,0.03</td>
+<td>0.21,0.21,0.21</td>
+<td><style>yy{background-color:rgb(53.55,53.55,53.55);}</style><yy>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</yy></td>
+</tr>
+<tr>
+<td>Plastic High</td>
+<td>0.05,0.05,0.05</td>
+<td>0.24,0.24,0.24</td>
+<td><style>zz{background-color:rgb(61.2,61.2,61.2);}</style><zz>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</zz></td>
+</tr>
+<tr>
+<td>Glass (High) / Ruby</td>
+<td>0.08,0.08,0.08</td>
+<td>0.31,0.31,0.31</td>
+<td><style>qq{background-color:rgb(79.05,79.05,79.05);}</style><qq>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</qq></td>
+</tr>
+<tr>
+<td>Diamond</td>
+<td>0.17,0.17,0.17</td>
+<td>0.45,0.45,0.45</td>
+<td><style>ww{background-color:rgb(114.75,114.75,114.75);}</style><ww>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</ww></td>
+</tr>
+<tr>
+<td>Iron</td>
+<td>0.56,0.57,0.58</td>
+<td>0.77,0.78,0.78</td>
+<td><style>tt{background-color:rgb(196.35,198.9,198.9);}</style><tt>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</tt></td>
+</tr>
+<tr>
+<td>Copper</td>
+<td>0.95,0.64,0.54</td>
+<td>0.98,0.82,0.76</td>
+<td><style>hh{background-color:rgb(249.9,209.1,193.8);}</style><hh>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</hh></td>
+</tr>
+<tr>
+<td>Gold</td>
+<td>1.00,0.71,0.29</td>
+<td>1.00,0.86,0.57</td>
+<td><style>jj{background-color:rgb(255,219.3,145.35);}</style><jj>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</jj></td>
+</tr>
+<tr>
+<td>Aluminum</td>
+<td>0.91,0.92,0.92</td>
+<td>0.96,0.96,0.97</td>
+<td><style>kk{background-color:rgb(244.8,244.8,247.35);}</style><kk>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</kk></td>
+</tr>
+<tr>
+<td>Silver</td>
+<td>0.95,0.93,0.88</td>
+<td>0.98,0.97,0.95</td>
+<td><style>ll{background-color:rgb(249.9,247.35,242.25);}</style><ll>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</ll></td>
+</tr>
+</tbody>
+</table>
+<p>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">SchlickFresnel</span><span class="hljs-params">(float4 SpecColor, <span class="hljs-keyword">float</span> lightDir, float3 halfVector)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">return</span> SpecColor + (<span class="hljs-number">1</span> - SpecColor) * <span class="hljs-built_in">pow</span>(<span class="hljs-number">1</span> - dot(lightDir, halfVector), <span class="hljs-number">5</span>);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="http://renderwonk.com/publications/s2010-shading-course/hoffman/s2010_physically_based_shading_hoffman_a.pdf" target="_blank" rel="noopener">Physically-Based Shading Models inFilm and Game Production</a></li>
+</ul>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Rendering/">#Rendering</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Disney-BRDF/">Disney BRDF</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/unity-surface-shader/">unity surface shader</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

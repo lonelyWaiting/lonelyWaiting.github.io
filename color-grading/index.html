@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>color grading - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x7B80;&amp;#x4ECB;">1&nbsp;&nbsp;<b>&amp;amp;#x7B80;&amp;amp;#x4ECB;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x9002;&amp;#x7528;&amp;#x573A;&amp;#x5408;">2&nbsp;&nbsp;<b>&amp;amp;#x9002;&amp;amp;#x7528;&amp;amp;#x573A;&amp;amp;#x5408;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x7B97;&amp;#x6CD5;&amp;#x63CF;&amp;#x8FF0;">3&nbsp;&nbsp;<b>&amp;amp;#x7B97;&amp;amp;#x6CD5;&amp;amp;#x63CF;&amp;amp;#x8FF0;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8D44;&amp;#x6E90;&amp;#x8981;&amp;#x6C42;">4&nbsp;&nbsp;<b>&amp;amp;#x8D44;&amp;amp;#x6E90;&amp;amp;#x8981;&amp;amp;#x6C42;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8D44;&amp;#x6E90;&amp;#x5236;&amp;#x4F5C;">5&nbsp;&nbsp;<b>&amp;amp;#x8D44;&amp;amp;#x6E90;&amp;amp;#x5236;&amp;amp;#x4F5C;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x539F;&amp;#x59CB;&amp;#x8272;&amp;#x9636;">5.1&nbsp;&nbsp;&amp;amp;#x539F;&amp;amp;#x59CB;&amp;amp;#x8272;&amp;amp;#x9636;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8C03;&amp;#x8282;&amp;#x56FE;&amp;#x50CF;">5.2&nbsp;&nbsp;&amp;amp;#x8C03;&amp;amp;#x8282;&amp;amp;#x56FE;&amp;amp;#x50CF;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#LUT&amp;#x751F;&amp;#x6210;">5.3&nbsp;&nbsp;LUT&amp;amp;#x751F;&amp;amp;#x6210;</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6CE8;&amp;#x610F;&amp;#x4E8B;&amp;#x9879;">6&nbsp;&nbsp;<b>&amp;amp;#x6CE8;&amp;amp;#x610F;&amp;amp;#x4E8B;&amp;amp;#x9879;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5DE5;&amp;#x5177;">7&nbsp;&nbsp;<b>&amp;amp;#x5DE5;&amp;amp;#x5177;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#More-Info">8&nbsp;&nbsp;<b>More Info</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            color grading
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2017-11-18T22:35:50.000Z" itemprop="datePublished">11月 18 2017</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            8 分钟 lesen (Über 1128 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h1><p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x989C;&#x8272;&#x67E5;&#x627E;&#x8868;,&#x4EE5;&#x989C;&#x8272;&#x503C;&#x4F5C;&#x4E3A;3D&#x7EB9;&#x7406;&#x7684;&#x7EB9;&#x7406;&#x5750;&#x6807;,&#x5229;&#x7528;&#x63D2;&#x503C;&#x4E0E;&#x8272;&#x9636;&#x5B9E;&#x73B0;&#x5168;&#x8272;&#x6620;&#x5C04;<a id="more"></a></p>
+<p>&#x76F8;&#x6BD4;HSV&#x8C03;&#x8272;&#x7B49;&#x5177;&#x6709;&#x66F4;&#x5F3A;&#x7684;&#x8868;&#x73B0;&#x529B;,&#x53EF;&#x7531;&#x7F8E;&#x672F;&#x8FDB;&#x884C;&#x8272;&#x5F69;,&#x5BF9;&#x6BD4;&#x5EA6;,&#x4EAE;&#x6697;&#x7B49;&#x7B49;&#x65B9;&#x9762;&#x7684;&#x63A7;&#x5236;</p>
+<h1 id="&#x9002;&#x7528;&#x573A;&#x5408;"><a href="#&#x9002;&#x7528;&#x573A;&#x5408;" class="headerlink" title="&#x9002;&#x7528;&#x573A;&#x5408;"></a>&#x9002;&#x7528;&#x573A;&#x5408;</h1><ol>
+<li>&#x7528;&#x4E8E;&#x505A;&#x540E;&#x5904;&#x7406;,&#x6539;&#x53D8;&#x573A;&#x666F;&#x7684;&#x98CE;&#x683C;</li>
+<li>&#x6362;&#x80A4;&#x7B49;</li>
+</ol>
+<h1 id="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;"><a href="#&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;" class="headerlink" title="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;"></a>&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;</h1><p>&#x4EE5;&#x50CF;&#x7D20;&#x503C;&#x4F5C;&#x4E3A;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x91C7;&#x6837;3D&#x7EB9;&#x7406;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x989C;&#x8272;&#x503C;</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Texture2D 	origTexture : register(t0);</span><br><span class="line">SamplerState	origSampler : register(s0);</span><br><span class="line"></span><br><span class="line">Texture3D 	lutTexture : register(t1);</span><br><span class="line">SamplerState 	lutSampler : register(s1);</span><br><span class="line"></span><br><span class="line">float4 ps_main(PixelIn input) : SV_TARGET</span><br><span class="line">{</span><br><span class="line">	float4 color = origTexture.Sample(origSampler, input.texcoord);</span><br><span class="line">	color.rgb = lutTexture.Sample(lutSampler, input.texcoord).rgb;</span><br><span class="line"></span><br><span class="line">	return color;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="&#x8D44;&#x6E90;&#x8981;&#x6C42;"><a href="#&#x8D44;&#x6E90;&#x8981;&#x6C42;" class="headerlink" title="&#x8D44;&#x6E90;&#x8981;&#x6C42;"></a>&#x8D44;&#x6E90;&#x8981;&#x6C42;</h1><ul>
+<li>3D&#x7EB9;&#x7406;:&#x4E0B;&#x9762;&#x5C06;&#x6B64;3D&#x7EB9;&#x7406;&#x79F0;&#x4E4B;&#x4E3A;LUT.</li>
+</ul>
+<p>&#x5F53;&#x4EE5;<code>R8G8B8A8</code>&#x6765;&#x5B58;&#x50A8;LUT&#x7684;&#x8BDD;,$256\times 256\times 256$&#x7684;&#x67E5;&#x627E;&#x8868;&#x5927;&#x5C0F;&#x4E3A;64M.</p>
+<p>&#x56E0;&#x6B64;,&#x901A;&#x5E38;&#x662F;&#x5C06;&#x5176;&#x5212;&#x5206;&#x4E3A;32&#x9636;,&#x4E5F;&#x5C31;&#x662F;&#x5C3A;&#x5BF8;&#x4E3A;$32\times 32\times 32$.&#x5927;&#x5C0F;&#x4E3A;128k,&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x7CBE;&#x5EA6;&#x8DB3;&#x591F;,&#x5185;&#x5B58;&#x5360;&#x7528;&#x4E5F;&#x4E0D;&#x5927;</p>
+<h1 id="&#x8D44;&#x6E90;&#x5236;&#x4F5C;"><a href="#&#x8D44;&#x6E90;&#x5236;&#x4F5C;" class="headerlink" title="&#x8D44;&#x6E90;&#x5236;&#x4F5C;"></a>&#x8D44;&#x6E90;&#x5236;&#x4F5C;</h1><h2 id="&#x539F;&#x59CB;&#x8272;&#x9636;"><a href="#&#x539F;&#x59CB;&#x8272;&#x9636;" class="headerlink" title="&#x539F;&#x59CB;&#x8272;&#x9636;"></a>&#x539F;&#x59CB;&#x8272;&#x9636;</h2><p>&#x9996;&#x5148;&#x5236;&#x4F5C;&#x4E00;&#x5F20;&#x539F;&#x59CB;&#x8272;&#x9636;&#x56FE;,&#x4E0B;&#x56FE;&#x4E3A;256*128&#x7684;&#x539F;&#x59CB;&#x8272;&#x9636;&#x56FE;,&#x5305;&#x542B;32&#x9636;&#x7684;&#x6240;&#x6709;&#x989C;&#x8272;&#x503C;</p>
+<p><img src="/resources/images/color_grading/color_grading.bmp" alt="color Grading"></p>
+<p>&#x751F;&#x6210;&#x7B97;&#x6CD5;&#x5982;&#x4E0B;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">generate_pixels</span><span class="hljs-params">(color* pixels, <span class="hljs-keyword">const</span> bitmap_info&amp; info, <span class="hljs-keyword">int</span> size, <span class="hljs-keyword">int</span> downscale_shift)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">	<span class="hljs-keyword">int</span> blue_stride = info.width / size;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> row = <span class="hljs-number">0</span>; row &lt; info.height; row++)</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">int</span> g = row % size;</span><br><span class="line"></span><br><span class="line">		<span class="hljs-keyword">int</span> offset = (<span class="hljs-keyword">int</span>)(row / size) * blue_stride;</span><br><span class="line"></span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> col = <span class="hljs-number">0</span>; col &lt; info.width; col++)</span><br><span class="line">		{</span><br><span class="line">			<span class="hljs-keyword">int</span> r = col % size;</span><br><span class="line"></span><br><span class="line">			<span class="hljs-keyword">int</span> b = offset + col / size;</span><br><span class="line"></span><br><span class="line">			<span class="hljs-keyword">auto</span>&amp; c = pixels[row * info.width + col];</span><br><span class="line"></span><br><span class="line">			c.r = r &lt;&lt; downscale_shift;</span><br><span class="line">			c.g = g &lt;&lt; downscale_shift;</span><br><span class="line">			c.b = b &lt;&lt; downscale_shift;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="&#x8C03;&#x8282;&#x56FE;&#x50CF;"><a href="#&#x8C03;&#x8282;&#x56FE;&#x50CF;" class="headerlink" title="&#x8C03;&#x8282;&#x56FE;&#x50CF;"></a>&#x8C03;&#x8282;&#x56FE;&#x50CF;</h2><p>&#x5047;&#x8BBE;&#x539F;&#x56FE;&#x4E3A;A,&#x5E0C;&#x671B;&#x5C06;&#x5176;&#x53D8;&#x6362;&#x4E3A;B.&#x9996;&#x5148;&#x5C06;&#x539F;&#x59CB;&#x8272;&#x9636;&#x56FE;&#x7F6E;&#x4E8E;&#x56FE;&#x50CF;&#x53F3;&#x4E0B;&#x89D2;,&#x53E6;&#x5B58;&#x4E3A;<code>src.bmp</code></p>
+<p><img src="/resources/images/color_grading/src.bmp" alt="&#x5C06;&#x8272;&#x9636;&#x7F6E;&#x4E8E;&#x539F;&#x56FE;&#x53F3;&#x4E0B;&#x89D2;"></p>
+<p>&#x7136;&#x540E;&#x5F00;&#x59CB;P&#x56FE;,&#x76F4;&#x5230;&#x6EE1;&#x610F;&#x4E3A;&#x6B62;,&#x9488;&#x5BF9;&#x56FE;&#x50CF;&#x7684;&#x4E2A;&#x522B;&#x533A;&#x57DF;P&#x56FE;&#x65E0;&#x610F;&#x4E49;,&#x9700;&#x8981;&#x5E94;&#x7528;&#x5230;&#x5168;&#x56FE;.&#x5982;&#x4E0B;:</p>
+<p><img src="/resources/images/color_grading/dst.bmp" alt="P&#x56FE;&#x81F3;&#x671F;&#x671B;&#x6548;&#x679C;"></p>
+<p>&#x5C06;P&#x597D;&#x7684;&#x56FE;&#x50CF;&#x53E6;&#x5B58;&#x4E3A;<code>dst.bmp</code></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x901A;&#x8FC7;&#x4E24;&#x5F20;&#x56FE;&#x50CF;&#x53F3;&#x4E0B;&#x89D2;&#x7684;&#x8272;&#x9636;&#x56FE;&#x6765;&#x63D0;&#x53D6;LUT.</p>
+<h2 id="LUT&#x751F;&#x6210;"><a href="#LUT&#x751F;&#x6210;" class="headerlink" title="LUT&#x751F;&#x6210;"></a>LUT&#x751F;&#x6210;</h2><ul>
+<li>&#x4ECE;<code>src.bmp</code>&#x548C;<code>dst.bmp</code>&#x63D0;&#x53D6;&#x53F3;&#x4E0B;&#x89D2;&#x8272;&#x9636;&#x533A;&#x57DF;&#x7684;&#x50CF;&#x7D20;&#x503C;</li>
+<li>&#x4EE5;<code>src.bmp</code>&#x7684;&#x989C;&#x8272;&#x503C;&#x8BA1;&#x7B97;LUT&#x7684;&#x7D22;&#x5F15;,<code>dst.bmp</code>&#x5BF9;&#x5E94;&#x5904;&#x7684;&#x989C;&#x8272;&#x503C;&#x4F5C;&#x4E3A;LUT&#x7684;&#x503C;</li>
+<li>&#x586B;&#x5145;3D&#x7EB9;&#x7406;</li>
+</ul>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">	size 		: &#x8272;&#x9636;&#x503C;</span></span><br><span class="line"><span class="hljs-comment">	row/col_offset	: &#x53F3;&#x4E0B;&#x89D2;&#x8272;&#x9636;&#x533A;&#x57DF;&#x50CF;&#x7D20;&#x504F;&#x79FB;</span></span><br><span class="line"><span class="hljs-comment">	downscale_shift : &#x5C06;256&#x4E2A;&#x8272;&#x503C;&#x8F6C;&#x6362;&#x5230;&#x6307;&#x5B9A;&#x8272;&#x9636;,&#x5982;32&#x9636;,&#x5219;&#x53F3;&#x79FB;3&#x4F4D; </span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">accColor</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> r = <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> g = <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> b = <span class="hljs-number">0</span>;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">color</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> r = <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> g = <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> b = <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> a = <span class="hljs-number">255</span>;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">lut_set</span><span class="hljs-params">(<span class="hljs-keyword">const</span> color&amp; src_color, <span class="hljs-keyword">const</span> color&amp; dst_color, <span class="hljs-keyword">int</span> size, accColor* lut, <span class="hljs-keyword">int</span>* acc_count, <span class="hljs-keyword">int</span> downscale_shift)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">	<span class="hljs-keyword">int</span> index = (src_color.b &gt;&gt; downscale_shift) * size * size + (src_color.g &gt;&gt; downscale_shift) * size + (src_color.r &gt;&gt; downscale_shift);</span><br><span class="line"></span><br><span class="line">	accColor&amp; pixel = lut[index];</span><br><span class="line">	pixel.r += dst_color.r;</span><br><span class="line">	pixel.g += dst_color.g;</span><br><span class="line">	pixel.b += dst_color.b;</span><br><span class="line">	acc_count[index]++;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">average_lut</span><span class="hljs-params">(<span class="hljs-keyword">const</span> accColor* acc_pixels, color* lut_pixels, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>* acc_count, <span class="hljs-keyword">int</span> total_size)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">	<span class="hljs-keyword">bool</span> all_valid = <span class="hljs-literal">true</span>;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; total_size; i++)</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">if</span> (acc_count[i] &gt; <span class="hljs-number">0</span>)</span><br><span class="line">		{</span><br><span class="line">			lut_pixels[i].r = acc_pixels[i].r / acc_count[i];</span><br><span class="line">			lut_pixels[i].g = acc_pixels[i].g / acc_count[i];</span><br><span class="line">			lut_pixels[i].b = acc_pixels[i].b / acc_count[i];</span><br><span class="line">		}</span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">		{</span><br><span class="line">			all_valid = <span class="hljs-literal">false</span>;</span><br><span class="line">			<span class="hljs-keyword">break</span>;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">return</span> all_valid;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">lut_generate</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* src_filename, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* dst_filename, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* lut_filename, <span class="hljs-keyword">int</span> size)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">int</span> total_size = size * size * size;</span><br><span class="line">	accColor* acc_pixels  = <span class="hljs-keyword">new</span> accColor[total_size];</span><br><span class="line">	<span class="hljs-keyword">int</span>* acc_count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[total_size];</span><br><span class="line">	<span class="hljs-built_in">memset</span>(acc_count, <span class="hljs-number">0</span>, total_size * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>));</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> irow = row_offset; irow &lt; src_info.height; irow++)</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> icol = col_offset; icol &lt; src_info.width; icol++)</span><br><span class="line">		{</span><br><span class="line">			<span class="hljs-keyword">const</span> color&amp; src_color = src_pixels[irow* src_info.width + icol];</span><br><span class="line"></span><br><span class="line">			<span class="hljs-keyword">const</span> color&amp; dst_color = dst_pixels[irow* src_info.width + icol];</span><br><span class="line"></span><br><span class="line">			lut_set(src_color, dst_color, size, acc_pixels, acc_count, right_shift);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">	color* lut_pixels = <span class="hljs-keyword">new</span> color[total_size];</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">if</span> (!average_lut(acc_pixels, lut_pixels, acc_count, total_size))	<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line"></span><br><span class="line">	write_dds(lut_filename, lut_pixels, size);</span><br><span class="line">	</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p><code>src</code>&#x7528;&#x4E8E;&#x8BA1;&#x7B97;3&#x7EF4;&#x6570;&#x7EC4;&#x7684;&#x7D22;&#x5F15;&#x503C;,<code>dst</code>&#x63D0;&#x4F9B;3&#x7EF4;&#x6570;&#x7EC4;&#x7684;&#x6570;&#x636E;</p>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x6DFB;&#x52A0;<code>accColor</code>&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x662F;&#x56E0;&#x4E3A;&#x5F53;&#x539F;&#x59CB;&#x8272;&#x9636;&#x56FE;&#x989C;&#x8272;&#x6570;&#x8D85;&#x51FA;$size^3$&#x65F6;,&#x4F1A;&#x6709;&#x591A;&#x4E2A;&#x989C;&#x8272;&#x6620;&#x5C04;&#x5230;3&#x7EF4;&#x6570;&#x7EC4;&#x7684;&#x540C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;,&#x6B64;&#x65F6;&#x9700;&#x8981;&#x5148;&#x7D2F;&#x52A0;&#x518D;&#x6C42;&#x5E73;&#x5747;</p>
+<p>&#x5F53;&#x7136;,&#x5982;&#x679C;&#x4F7F;&#x7528;&#x524D;&#x9762;&#x7ED9;&#x51FA;&#x7684;&#x8272;&#x9636;&#x56FE;&#x6216;&#x8005;&#x6309;&#x7167;&#x63D0;&#x4F9B;&#x7684;&#x7B97;&#x6CD5;&#x751F;&#x6210;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x6B64;&#x60C5;&#x51B5;</p>
+<h1 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><a href="#&#x6CE8;&#x610F;&#x4E8B;&#x9879;" class="headerlink" title="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"></a>&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h1><ul>
+<li><p>&#x751F;&#x6210;&#x67E5;&#x627E;&#x8868;&#x7EB9;&#x7406;&#x65F6;,&#x8F93;&#x5165;&#x6E90;&#x5FC5;&#x987B;&#x662F;&#x672A;&#x538B;&#x7F29;&#x7684;,&#x4FDD;&#x8BC1;$32\times 32 \times 32$&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x90FD;&#x80FD;&#x586B;&#x5145;&#x503C;</p>
+</li>
+<li><p>3D&#x67E5;&#x627E;&#x7EB9;&#x7406;&#x4E0D;&#x9700;&#x8981;&#x751F;&#x6210;MipMap</p>
+</li>
+<li><p>&#x91C7;&#x7528;&#x53CC;&#x7EBF;&#x6027;&#x91C7;&#x6837;,&#x5373;<code>D3D11_Filter_MIN_MAG_LINEAR_MIP_POINT</code></p>
+</li>
+<li><p>&#x5BFB;&#x5740;&#x6A21;&#x5F0F;:<code>D3D11_TEXTURE_ADDRESS_BORDER</code>,BorderColor:<code>(0.0f,0.0f,0.0f,0.0f)</code></p>
+</li>
+</ul>
+<h1 id="&#x5DE5;&#x5177;"><a href="#&#x5DE5;&#x5177;" class="headerlink" title="&#x5DE5;&#x5177;"></a>&#x5DE5;&#x5177;</h1><p><a href="https://github.com/BentleyBlanks/Misc/tree/master/Misc/tools/color%20grading" target="_blank" rel="noopener">tool source code</a></p>
+<p>&#x6B64;&#x5DE5;&#x5177;&#x4EC5;&#x652F;&#x6301;24&#x4F4D;&#x672A;&#x538B;&#x7F29;&#x7684;&#x7248;&#x672C;&#x7684;BMP.</p>
+<p><img src="/resources/images/color_grading/bmp_save_option.png" alt="photoshop save option"></p>
+<h1 id="More-Info"><a href="#More-Info" class="headerlink" title="More Info"></a>More Info</h1><p><a href="https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/ColorGrading/" target="_blank" rel="noopener">UE4 Color Grading</a></p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/rendering/">#rendering</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/character-wrinkle/">character wrinkle</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/hexo-qiniu-config/">hexo qiniu config</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

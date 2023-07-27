@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>hexo qiniu config - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x914D;&amp;#x7F6E;">1&nbsp;&nbsp;<b>&amp;amp;#x914D;&amp;amp;#x7F6E;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4E03;&amp;#x725B;&amp;#x7A7A;&amp;#x95F4;&amp;#x8BBE;&amp;#x7F6E;">1.1&nbsp;&nbsp;&amp;amp;#x4E03;&amp;amp;#x725B;&amp;amp;#x7A7A;&amp;amp;#x95F4;&amp;amp;#x8BBE;&amp;amp;#x7F6E;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x914D;&amp;#x7F6E;qiniu">1.2&nbsp;&nbsp;&amp;amp;#x914D;&amp;amp;#x7F6E;qiniu</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#hexo-qiniu-sync">1.2.1&nbsp;&nbsp;hexo-qiniu-sync</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x914D;&amp;#x7F6E;&amp;#x8BF4;&amp;#x660E;">1.2.2&nbsp;&nbsp;&amp;amp;#x914D;&amp;amp;#x7F6E;&amp;amp;#x8BF4;&amp;amp;#x660E;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#hexo-asset-image">1.3&nbsp;&nbsp;hexo-asset-image</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5B89;&amp;#x88C5;">1.3.1&nbsp;&nbsp;&amp;amp;#x5B89;&amp;amp;#x88C5;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#hexo-asset-image&amp;#x662F;&amp;#x4EC0;&amp;#x4E48;">1.3.2&nbsp;&nbsp;hexo-asset-image&amp;amp;#x662F;&amp;amp;#x4EC0;&amp;amp;#x4E48;?</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4E3A;&amp;#x4EC0;&amp;#x4E48;&amp;#x6539;">1.3.3&nbsp;&nbsp;&amp;amp;#x4E3A;&amp;amp;#x4EC0;&amp;amp;#x4E48;&amp;amp;#x6539;?</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6539;&amp;#x6210;&amp;#x4EC0;&amp;#x4E48;&amp;#x6837;&amp;#xFF1F;">1.3.4&nbsp;&nbsp;&amp;amp;#x6539;&amp;amp;#x6210;&amp;amp;#x4EC0;&amp;amp;#x4E48;&amp;amp;#x6837;&amp;amp;#xFF1F;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x600E;&amp;#x4E48;&amp;#x6539;&amp;#xFF1F;">1.3.5&nbsp;&nbsp;&amp;amp;#x600E;&amp;amp;#x4E48;&amp;amp;#x6539;&amp;amp;#xFF1F;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4FEE;&amp;#x6539;&amp;#x7ED3;&amp;#x679C;">1.3.6&nbsp;&nbsp;&amp;amp;#x4FEE;&amp;amp;#x6539;&amp;amp;#x7ED3;&amp;amp;#x679C;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x540C;&amp;#x6B65;&amp;#x56FE;&amp;#x7247;">1.3.7&nbsp;&nbsp;&amp;amp;#x540C;&amp;amp;#x6B65;&amp;amp;#x56FE;&amp;amp;#x7247;</a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            hexo qiniu config
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2017-11-18T18:00:20.000Z" itemprop="datePublished">11月 18 2017</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            9 分钟 lesen (Über 1403 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x4E03;&#x725B;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x7BA1;&#x7406;&#x56FE;&#x7247;,&#x52A0;&#x901F;&#x8BBF;&#x95EE;,&#x6807;&#x51C6;&#x7528;&#x6237;&#x6709;10G&#x7684;&#x514D;&#x8D39;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;,&#x8D85;&#x51FA;&#x6536;&#x8D39;</p>
+<p>Github&#x6BD5;&#x7ADF;&#x7A7A;&#x95F4;&#x6709;&#x9650;,&#x800C;&#x4E14;&#x56FD;&#x5185;Github&#x8BBF;&#x95EE;&#x6162;,&#x6240;&#x4EE5;&#x9009;&#x7528;&#x4E86;&#x4E03;&#x725B;&#x4F5C;&#x4E3A;&#x56FE;&#x5E8A;<a id="more"></a></p>
+<h1 id="&#x914D;&#x7F6E;"><a href="#&#x914D;&#x7F6E;" class="headerlink" title="&#x914D;&#x7F6E;"></a>&#x914D;&#x7F6E;</h1><h2 id="&#x4E03;&#x725B;&#x7A7A;&#x95F4;&#x8BBE;&#x7F6E;"><a href="#&#x4E03;&#x725B;&#x7A7A;&#x95F4;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x4E03;&#x725B;&#x7A7A;&#x95F4;&#x8BBE;&#x7F6E;"></a>&#x4E03;&#x725B;&#x7A7A;&#x95F4;&#x8BBE;&#x7F6E;</h2><p>&#x9996;&#x5148;&#x6CE8;&#x518C;<a href="https://www.qiniu.com/" target="_blank" rel="noopener">&#x4E03;&#x725B;</a>,&#x5B9E;&#x540D;&#x540E;&#x6709;10G&#x7684;&#x514D;&#x8D39;&#x7A7A;&#x95F4;,&#x4E0D;&#x5B9E;&#x540D;&#x4E5F;&#x80FD;&#x7528;,&#x6709;1G&#x7684;&#x514D;&#x8D39;&#x7A7A;&#x95F4;</p>
+<p>&#x6CE8;&#x518C;&#x5B8C;&#x4E4B;&#x540E;,&#x5230;&#x8FD9;&#x4E2A;&#x754C;&#x9762;&#x521B;&#x5EFA;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;</p>
+<p><img src="/resources/images/Qiniu/qiniu_create.png" alt="Qiniu Create"></p>
+<p>&#x586B;&#x5199;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x4FE1;&#x606F;</p>
+<p><img src="/resources/images/Qiniu/qiniu_bucket_create.png" alt="Qiniu bucket Create"></p>
+<ol>
+<li>&#x4E0D;&#x540C;&#x7684;&#x5730;&#x533A;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x8D85;&#x51FA;&#x514D;&#x8D39;&#x8303;&#x56F4;&#x6536;&#x8D39;&#x4E0D;&#x540C;,&#x4EC5;&#x6B64;&#x800C;&#x5DF2;,&#x81EA;&#x884C;&#x6289;&#x62E9;</li>
+<li>&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x540D;&#x5B57;&#x968F;&#x4FBF;&#x586B;,&#x53EA;&#x662F;&#x65B9;&#x4FBF;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;</li>
+</ol>
+<h2 id="&#x914D;&#x7F6E;qiniu"><a href="#&#x914D;&#x7F6E;qiniu" class="headerlink" title="&#x914D;&#x7F6E;qiniu"></a>&#x914D;&#x7F6E;qiniu</h2><h3 id="hexo-qiniu-sync"><a href="#hexo-qiniu-sync" class="headerlink" title="hexo-qiniu-sync"></a>hexo-qiniu-sync</h3><p>&#x5B89;&#x88C5;&#x4E03;&#x725B;&#x540C;&#x6B65;&#x63D2;&#x4EF6;,&#x907F;&#x514D;&#x624B;&#x52A8;&#x4E0A;&#x4F20;&#x56FE;&#x7247;&#x81F3;&#x4E91;&#x7A7A;&#x95F4;</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-qiniu-sync --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="&#x914D;&#x7F6E;&#x8BF4;&#x660E;"><a href="#&#x914D;&#x7F6E;&#x8BF4;&#x660E;" class="headerlink" title="&#x914D;&#x7F6E;&#x8BF4;&#x660E;"></a>&#x914D;&#x7F6E;&#x8BF4;&#x660E;</h3><figure class="highlight yml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#&#x4E03;&#x725B;&#x4E91;&#x5B58;&#x50A8;&#x8BBE;&#x7F6E;</span></span><br><span class="line"><span class="hljs-comment">##offline       &#x662F;&#x5426;&#x79BB;&#x7EBF;. &#x79BB;&#x7EBF;&#x72B6;&#x6001;&#x5C06;&#x4F7F;&#x7528;&#x672C;&#x5730;&#x5730;&#x5740;&#x6E32;&#x67D3;</span></span><br><span class="line"><span class="hljs-comment">##sync          &#x662F;&#x5426;&#x540C;&#x6B65;</span></span><br><span class="line"><span class="hljs-comment">##bucket        &#x7A7A;&#x95F4;&#x540D;&#x79F0;.</span></span><br><span class="line"><span class="hljs-comment">##access_key    &#x4E0A;&#x4F20;&#x5BC6;&#x94A5;AccessKey</span></span><br><span class="line"><span class="hljs-comment">##secret_key    &#x4E0A;&#x4F20;&#x5BC6;&#x94A5;SecretKey</span></span><br><span class="line"><span class="hljs-comment">##secret_file   &#x79D8;&#x94A5;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x4E0A;&#x8FF0;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x5230;&#x6587;&#x4EF6;&#x5185;&#xFF0C;&#x9632;&#x6B62;&#x6CC4;&#x9732;&#xFF0C;json&#x683C;&#x5F0F;&#x3002;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x5747;&#x53EF;</span></span><br><span class="line"><span class="hljs-comment">##dirPrefix     &#x4E0A;&#x4F20;&#x7684;&#x8D44;&#x6E90;&#x5B50;&#x76EE;&#x5F55;&#x524D;&#x7F00;.&#x5982;&#x8BBE;&#x7F6E;&#xFF0C;&#x9700;&#x4E0E;urlPrefix&#x540C;&#x6B65; </span></span><br><span class="line"><span class="hljs-comment">##urlPrefix     &#x5916;&#x94FE;&#x524D;&#x7F00;.</span></span><br><span class="line"><span class="hljs-comment">##up_host      &#x4E0A;&#x4F20;&#x670D;&#x52A1;&#x5668;&#x8DEF;&#x5F84;,&#x5982;&#x9009;&#x62E9;&#x534E;&#x5317;&#x533A;&#x57DF;&#x7684;&#x8BDD;&#x914D;&#x7F6E;&#x4E3A;http://up-z1.qiniu.com</span></span><br><span class="line"><span class="hljs-comment">##local_dir     &#x672C;&#x5730;&#x76EE;&#x5F55;.</span></span><br><span class="line"><span class="hljs-comment">##update_exist  &#x662F;&#x5426;&#x66F4;&#x65B0;&#x5DF2;&#x7ECF;&#x4E0A;&#x4F20;&#x8FC7;&#x7684;&#x6587;&#x4EF6;(&#x4EC5;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x4E0D;&#x540C;&#x6216;&#x5728;&#x4E0A;&#x6B21;&#x4E0A;&#x4F20;&#x540E;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x7684;&#x624D;&#x4F1A;&#x91CD;&#x65B0;&#x4E0A;&#x4F20;)</span></span><br><span class="line"><span class="hljs-comment">##image/js/css  &#x5B50;&#x53C2;&#x6570;folder&#x4E3A;&#x4E0D;&#x540C;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x79CD;&#x7C7B;&#x7684;&#x76EE;&#x5F55;&#x540D;&#x79F0;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x9700;&#x8981;&#x6539;&#x52A8;</span></span><br><span class="line"><span class="hljs-comment">##image.extend  &#x8FD9;&#x662F;&#x4E2A;&#x7279;&#x6B8A;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x751F;&#x6210;&#x7F29;&#x7565;&#x56FE;&#x6216;&#x52A0;&#x6C34;&#x5370;&#x7B49;&#x64CD;&#x4F5C;&#x3002;&#x5177;&#x4F53;&#x8BF7;&#x53C2;&#x8003;http://developer.qiniu.com/docs/v6/api/reference/fop/image/ </span></span><br><span class="line"><span class="hljs-comment">##              &#x53EF;&#x4F7F;&#x7528;&#x57FA;&#x672C;&#x56FE;&#x7247;&#x5904;&#x7406;&#x3001;&#x9AD8;&#x7EA7;&#x56FE;&#x7247;&#x5904;&#x7406;&#x3001;&#x56FE;&#x7247;&#x6C34;&#x5370;&#x5904;&#x7406;&#x8FD9;3&#x4E2A;&#x63A5;&#x53E3;&#x3002;&#x4F8B;&#x5982; ?imageView2/2/w/500 &#x5373;&#x751F;&#x6210;&#x5BBD;&#x5EA6;&#x6700;&#x591A;500px&#x7684;&#x7F29;&#x7565;&#x56FE;</span></span><br><span class="line"><span class="hljs-attr">qiniu:</span></span><br><span class="line">  <span class="hljs-attr">offline:</span> <span class="hljs-literal">false</span></span><br><span class="line">  <span class="hljs-attr">sync:</span> <span class="hljs-literal">true</span></span><br><span class="line">  <span class="hljs-attr">bucket:</span> <span class="hljs-string">blog</span></span><br><span class="line">  <span class="hljs-comment"># secret_file: sec/qn.json or C:</span></span><br><span class="line">  <span class="hljs-attr">access_key:</span> <span class="hljs-string">&lt;your</span> <span class="hljs-string">access</span> <span class="hljs-string">key&gt;</span></span><br><span class="line">  <span class="hljs-attr">secret_key:</span> <span class="hljs-string">&lt;your</span> <span class="hljs-string">secret</span> <span class="hljs-string">key&gt;</span></span><br><span class="line">  <span class="hljs-attr">dirPrefix:</span> <span class="hljs-string">resources</span></span><br><span class="line">  <span class="hljs-attr">urlPrefix:</span> <span class="hljs-string">http://ozkp9xvc9.bkt.clouddn.com/resources</span></span><br><span class="line">  <span class="hljs-attr">up_host:</span> <span class="hljs-string">http(s)://upload-z2.qiniup.com</span></span><br><span class="line">  <span class="hljs-attr">local_dir:</span> <span class="hljs-string">source/resources</span></span><br><span class="line">  <span class="hljs-attr">update_exist:</span> <span class="hljs-literal">true</span></span><br><span class="line">  <span class="hljs-attr">image:</span> </span><br><span class="line">    <span class="hljs-attr">folder:</span> <span class="hljs-string">images</span></span><br><span class="line">    <span class="hljs-attr">extend:</span> </span><br><span class="line">  <span class="hljs-attr">js:</span></span><br><span class="line">    <span class="hljs-attr">folder:</span> <span class="hljs-string">js</span></span><br><span class="line">  <span class="hljs-attr">css:</span></span><br><span class="line">    <span class="hljs-attr">folder:</span> <span class="hljs-string">css</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>bucket: &#x521B;&#x5EFA;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x65F6;&#x586B;&#x5199;&#x7684;&#x540D;&#x5B57;</p>
+</li>
+<li><p>access_key,secret_key: &#x4E0E;&#x4E03;&#x725B;&#x4E91;&#x901A;&#x8BAF;&#x7684;&#x5BC6;&#x94A5;,&#x53C2;&#x8003;<a href="https://portal.qiniu.com/user/key" target="_blank" rel="noopener">access key and secret key</a></p>
+</li>
+</ul>
+<p><img src="/resources/images/Qiniu/qiniu_ak_sk.png" alt="access key and secret key"></p>
+<ul>
+<li><p>dirPrefix: &#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x865A;&#x62DF;&#x76EE;&#x5F55;,&#x5982;&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x4E2D;,&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x5728;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x53EB;&#x505A;<code>resources</code>&#x7684;&#x6587;&#x4EF6;&#x5939;</p>
+</li>
+<li><p>urlPrefix: &#x5916;&#x94FE;&#x524D;&#x7F00;,&#x56FE;&#x7247;&#x5728;&#x4E03;&#x725B;&#x4E91;&#x4E0A;&#x5730;&#x5740;&#x524D;&#x7F00;</p>
+</li>
+</ul>
+<p><img src="/resources/images/Qiniu/qiniu_url_prefix.png" alt="Qiniu url Prefix"></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">urlPrefix = domain_address + <span class="hljs-string">&apos;/&apos;</span> + dirPrefix</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>up_host: &#x4E0A;&#x4F20;&#x670D;&#x52A1;&#x5668;&#x8DEF;&#x5F84;,&#x53C2;&#x8003;<a href="https://developer.qiniu.com/kodo/manual/1671/region-endpoint" target="_blank" rel="noopener">Qiniu upload host</a></li>
+</ul>
+<p><img src="/resources/images/Qiniu/qiniu_region_endpoint.png" alt="Qiniu Region Endpoint"></p>
+<ul>
+<li>local_dir: &#x672C;&#x5730;&#x5B58;&#x653E;&#x56FE;&#x7247;&#x7684;&#x6587;&#x4EF6;&#x5939;,&#x5982;&#x4E0A;&#x8FF0;&#x914D;&#x7F6E;&#x4E2D;&#x4E3A;<code>source\resources</code></li>
+</ul>
+<h2 id="hexo-asset-image"><a href="#hexo-asset-image" class="headerlink" title="hexo-asset-image"></a>hexo-asset-image</h2><h3 id="&#x5B89;&#x88C5;"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="hexo-asset-image&#x662F;&#x4EC0;&#x4E48;"><a href="#hexo-asset-image&#x662F;&#x4EC0;&#x4E48;" class="headerlink" title="hexo-asset-image&#x662F;&#x4EC0;&#x4E48;?"></a>hexo-asset-image&#x662F;&#x4EC0;&#x4E48;?</h3><p><code>hexo-asset-image</code>&#x7528;&#x4E8E;&#x7B80;&#x5316;&#x56FE;&#x7247;&#x5F15;&#x7528;,&#x9700;&#x8981;&#x5F00;&#x542F;<code>post_asset_folder</code></p>
+<p>&#x6267;&#x884C;<code>hexo new [layout] &lt;title&gt;</code>&#x540E;&#x5C06;&#x5728;<code>&lt;title&gt;.md</code>&#x540C;&#x7EA7;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;<code>&lt;title&gt;</code>&#x76EE;&#x5F55;</p>
+<p>&#x56FE;&#x7247;&#x653E;&#x5728;&#x8BE5;&#x76EE;&#x5F55;&#x603B;,<code>markdown</code>&#x4E2D;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4E3A;<code>![](demo.png)</code>,&#x5373;&#x53EF;&#x5F15;&#x7528;<code>&lt;title&gt;</code>&#x76EE;&#x5F55;&#x4E0B;&#x7684;<code>demo.png</code></p>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x6539;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x6539;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x6539;?"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x6539;?</h3><p>&#x4E4B;&#x6240;&#x4EE5;&#x4FEE;&#x6539;<code>hexo-asset-image</code>&#x662F;&#x56E0;&#x4E3A;<code>hexo-qiniu-sync</code>&#x8981;&#x6C42;&#x56FE;&#x7247;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x6539;&#x4E3A;&#x5982;&#x4E0B;</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{% qnimg imageFile attr1:value1 attr2:value2 &apos;attr3:value31 value32 value3n&apos; [extend:?imageView2/2/w/600 | normal:yes] %}</span><br><span class="line">{% qnjs jsFile attr1:value1 attr2:value2 &apos;attr3:value31 value32 value3n&apos; %}</span><br><span class="line">{% qncss cssFile attr1:value1 attr2:value2 &apos;attr3:value31 value32 value3n&apos; %}</span><br></pre></td></tr></table></figure>
+
+<p>&#x800C;&#x6807;&#x51C6;&#x7684;<code>markdown</code>&#x8BED;&#x6CD5;&#x4E3A;:</p>
+<figure class="highlight markdown hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="hljs-string">caption</span>](<span class="hljs-link">image path</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="&#x6539;&#x6210;&#x4EC0;&#x4E48;&#x6837;&#xFF1F;"><a href="#&#x6539;&#x6210;&#x4EC0;&#x4E48;&#x6837;&#xFF1F;" class="headerlink" title="&#x6539;&#x6210;&#x4EC0;&#x4E48;&#x6837;&#xFF1F;"></a>&#x6539;&#x6210;&#x4EC0;&#x4E48;&#x6837;&#xFF1F;</h3><p>&#x6211;&#x5E0C;&#x671B;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x7684;<code>markdown</code>&#x8BED;&#x6CD5;&#x6765;&#x5199;&#x6587;&#x7AE0;,&#x6700;&#x7EC8;html&#x4E2D;<code>img</code>&#x7684;<code>src</code>&#x8DEF;&#x5F84;&#x4E3A;&#x4E03;&#x725B;&#x4E91;&#x4E2D;&#x7684;&#x56FE;&#x7247;&#x5916;&#x94FE;</p>
+<h3 id="&#x600E;&#x4E48;&#x6539;&#xFF1F;"><a href="#&#x600E;&#x4E48;&#x6539;&#xFF1F;" class="headerlink" title="&#x600E;&#x4E48;&#x6539;&#xFF1F;"></a>&#x600E;&#x4E48;&#x6539;&#xFF1F;</h3><p>&#x5047;&#x8BBE;,&#x5728;<code>source\resources\images\</code>&#x4E0B;&#x5B58;&#x653E;&#x4E00;&#x5F20;&#x56FE;&#x7247;<code>demo.png</code></p>
+<p>&#x6309;&#x7167;&#x4E4B;&#x524D;&#x7684;&#x914D;&#x7F6E;,&#x8BE5;&#x56FE;&#x7247;&#x7684;&#x5916;&#x94FE;&#x5730;&#x5740;&#x4E3A;<code>config.qiniu.urlPrefix/images/demo.png</code></p>
+<p>&#x6807;&#x51C6;<code>markdown</code>&#x5F15;&#x7528;&#x8BE5;&#x56FE;&#x7247;&#x7684;&#x5199;&#x6CD5;&#x4E3A;<code>![](/resources/images/demo.png)</code></p>
+<p>&#x7531;&#x4E8E;<code>config.qiniu.urlPrefix</code>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x4E3A;<code>resources</code></p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;&#x5272;&#x8DEF;&#x5F84;,&#x5224;&#x65AD;&#x8DEF;&#x5F84;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x4E0E;<code>config.qiniu.urlPrefix</code>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x662F;&#x5426;&#x76F8;&#x540C;,&#x8FDB;&#x884C;&#x62FC;&#x63A5;</p>
+<h3 id="&#x4FEE;&#x6539;&#x7ED3;&#x679C;"><a href="#&#x4FEE;&#x6539;&#x7ED3;&#x679C;" class="headerlink" title="&#x4FEE;&#x6539;&#x7ED3;&#x679C;"></a>&#x4FEE;&#x6539;&#x7ED3;&#x679C;</h3><p><code>node_modules\hexo-asset-image\index.js</code>:</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&apos;use strict&apos;</span>;</span><br><span class="line"><span class="hljs-keyword">var</span> cheerio = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;cheerio&apos;</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPosition</span>(<span class="hljs-params">str, m, i</span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> str.split(m, i).join(m).length;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">hexo.extend.filter.register(<span class="hljs-string">&apos;after_post_render&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> config = hexo.config;</span><br><span class="line">  <span class="hljs-keyword">var</span> link = config.qiniu.urlPrefix; <span class="hljs-comment">// local actual image folder</span></span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">var</span> toprocess = [<span class="hljs-string">&apos;excerpt&apos;</span>, <span class="hljs-string">&apos;more&apos;</span>, <span class="hljs-string">&apos;content&apos;</span>];</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; toprocess.length; i++)</span><br><span class="line">  {</span><br><span class="line">    <span class="hljs-keyword">var</span> key = toprocess[i];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">var</span> $ = cheerio.load(data[key], {</span><br><span class="line">      ignoreWhitespace: <span class="hljs-literal">false</span>,</span><br><span class="line">      xmlMode: <span class="hljs-literal">false</span>,</span><br><span class="line">      lowerCaseTags: <span class="hljs-literal">false</span>,</span><br><span class="line">      decodeEntities: <span class="hljs-literal">false</span></span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    $(<span class="hljs-string">&apos;img&apos;</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span></span><br><span class="line"><span class="hljs-function">    </span>{</span><br><span class="line">      <span class="hljs-comment">// For windows style path, we replace &apos;\&apos; to &apos;/&apos;.</span></span><br><span class="line">      <span class="hljs-keyword">var</span> src = $(<span class="hljs-keyword">this</span>).attr(<span class="hljs-string">&apos;src&apos;</span>).replace(<span class="hljs-string">&apos;\\&apos;</span>, <span class="hljs-string">&apos;/&apos;</span>);</span><br><span class="line">      <span class="hljs-comment">// if the regular expression is satisfied, it is actual url instead of local path.</span></span><br><span class="line">      <span class="hljs-keyword">if</span>(!<span class="hljs-regexp">/http[s]*.*|\/\/.*/</span>.test(src))</span><br><span class="line">      {</span><br><span class="line">        <span class="hljs-comment">// For &quot;about&quot; page, the first part of &quot;src&quot; can&apos;t be removed.</span></span><br><span class="line">        <span class="hljs-comment">// In addition, to support multi-level local directory.</span></span><br><span class="line">        <span class="hljs-keyword">var</span> linkArray = link.split(<span class="hljs-string">&apos;/&apos;</span>).filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">elem</span>)</span>{</span><br><span class="line">          <span class="hljs-keyword">return</span> elem != <span class="hljs-string">&apos;&apos;</span>;</span><br><span class="line">        });</span><br><span class="line">        <span class="hljs-keyword">var</span> srcArray = src.split(<span class="hljs-string">&apos;/&apos;</span>).filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">elem</span>)</span>{</span><br><span class="line">          <span class="hljs-keyword">return</span> elem != <span class="hljs-string">&apos;&apos;</span>;</span><br><span class="line">        });</span><br><span class="line">        <span class="hljs-keyword">if</span>(linkArray[linkArray.length - <span class="hljs-number">1</span>] == srcArray[<span class="hljs-number">0</span>])</span><br><span class="line">        {</span><br><span class="line">          srcArray.shift();</span><br><span class="line">          src = srcArray.join(<span class="hljs-string">&apos;/&apos;</span>);</span><br><span class="line">          $(<span class="hljs-keyword">this</span>).attr(<span class="hljs-string">&apos;src&apos;</span>, link + <span class="hljs-string">&apos;/&apos;</span> + src);</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    });</span><br><span class="line">    data[key] = $.html();</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></table></figure>
+
+<p>&#x7531;&#x4E8E;&#x6211;&#x53EA;&#x662F;&#x501F;&#x7528;&#x4E86;<code>hexo-asset-image</code>&#x7684;&#x8DEF;&#x5F84;&#x62FC;&#x63A5;,&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x5F00;&#x542F;<code>post-asset-folder</code></p>
+<h3 id="&#x540C;&#x6B65;&#x56FE;&#x7247;"><a href="#&#x540C;&#x6B65;&#x56FE;&#x7247;" class="headerlink" title="&#x540C;&#x6B65;&#x56FE;&#x7247;"></a>&#x540C;&#x6B65;&#x56FE;&#x7247;</h3><ol>
+<li>&#x672C;&#x5730;&#x8C03;&#x7528;&#x547D;&#x4EE4;<code>server</code></li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>&#x672C;&#x5730;&#x8C03;&#x7528;&#x547D;&#x4EE4;<code>sync</code>&#x6216;<code>sync2</code></li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo sync</span><br><span class="line">hexo s</span><br><span class="line">hexo sync2</span><br><span class="line">hexo s2</span><br></pre></td></tr></table></figure>
+
+<p>&#x4E0A;&#x8FF0;&#x56DB;&#x6761;&#x547D;&#x4EE4;&#x4EFB;&#x610F;&#x4E00;&#x6761;&#x7686;&#x53EF;,&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x89E3;&#x91CA;&#x53C2;&#x89C1;&#x5F15;&#x7528;</p>
+<p>More Info:</p>
+<ul>
+<li><a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="noopener">hexo-qiniu-sync</a></li>
+<li><a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">hexo-asset-image</a></li>
+<li><a href="http://error408.com/2016/08/02/Hexo%E4%B8%83%E7%89%9B%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">Hexo&#x4E03;&#x725B;&#x56FE;&#x5E8A;&#x4F7F;&#x7528;</a></li>
+<li><a href="https://yuchen-lea.github.io/2016-01-21-use-qiniu-store-file-for-hexo/" target="_blank" rel="noopener">&#x4F7F;&#x7528;&#x4E03;&#x725B;&#x4E3A;Hexo&#x5B58;&#x50A8;&#x56FE;&#x7247;&#x7B49;&#x8D44;&#x6E90;</a></li>
+</ul>
+
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/color-grading/">color grading</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/use-hexo-deploy-github-page/">use hexo deploy github page</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

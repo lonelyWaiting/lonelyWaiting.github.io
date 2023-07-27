@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>Color and Radiometry - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53EF;&amp;#x89C1;&amp;#x5149;">1&nbsp;&nbsp;<b>&amp;amp;#x53EF;&amp;amp;#x89C1;&amp;amp;#x5149;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5149;&amp;#x8C31;&amp;#x8868;&amp;#x793A;">2&nbsp;&nbsp;<b>&amp;amp;#x5149;&amp;amp;#x8C31;&amp;amp;#x8868;&amp;amp;#x793A;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#SampleSpectrum">2.1&nbsp;&nbsp;SampleSpectrum</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#RGBSpectrum">2.2&nbsp;&nbsp;RGBSpectrum</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#LinearSpace-RGB-to-sRGB">2.3&nbsp;&nbsp;LinearSpace RGB to sRGB</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">3&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Color and Radiometry
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2023-07-27T06:15:49.980Z" itemprop="datePublished">7月 27 2023</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            18 分钟 lesen (Über 2684 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="&#x53EF;&#x89C1;&#x5149;"><a href="#&#x53EF;&#x89C1;&#x5149;" class="headerlink" title="&#x53EF;&#x89C1;&#x5149;"></a>&#x53EF;&#x89C1;&#x5149;</h1><p>&#x4EBA;&#x773C;&#x7684;&#x53EF;&#x89C1;&#x5149;&#x6CE2;&#x8C31;&#x8303;&#x56F4;&#x7EA6;&#x4E3A;370nm~730nm</p>
+<p>&#x84DD;&#x5149;&#xFF1A;400nm,&#x7EFF;&#x5149;&#xFF1A;550nm,&#x7EA2;&#x5149;&#xFF1A;650nm<br><a id="more"></a></p>
+<h1 id="&#x5149;&#x8C31;&#x8868;&#x793A;"><a href="#&#x5149;&#x8C31;&#x8868;&#x793A;" class="headerlink" title="&#x5149;&#x8C31;&#x8868;&#x793A;"></a>&#x5149;&#x8C31;&#x8868;&#x793A;</h1><p>SPD(spectral power distribution): &#x5149;&#x8C31;&#x529F;&#x7387;&#x5206;&#x5E03;</p>
+<p>SPD&#x662F;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x6CE2;&#x957F;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x505A;&#x6CD5;&#x662F;&#x627E;&#x5230;&#x4E00;&#x7EC4;&#x57FA;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x5C06;&#x65E0;&#x9650;&#x7EF4;&#x5EA6;&#x7684;SPD&#x6620;&#x5C04;&#x5230;&#x4F4E;&#x7EAC;&#x5EA6;&#x7A7A;&#x95F4;&#x8868;&#x793A;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">int</span> nSamples&gt;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CoefficientSpecturm</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">	&lt;CoefficientSpecturm <span class="hljs-keyword">public</span> method&gt;</span><br><span class="line"><span class="hljs-keyword">protected</span>:</span><br><span class="line">	&lt;CoefficientSpecturm <span class="hljs-keyword">protected</span> data&gt;</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;CoefficientSpecturm <span class="hljs-keyword">protected</span> data&gt; =</span><br><span class="line">	<span class="hljs-keyword">float</span> c[nSamples];</span><br></pre></td></tr></table></figure>
+
+<p>&#x63A5;&#x4E0B;&#x6765;&#x4ECB;&#x7ECD;&#x4E24;&#x79CD;&#x5E38;&#x7528;&#x7684;&#x8868;&#x793A;&#x65B9;&#x6CD5;</p>
+<h2 id="SampleSpectrum"><a href="#SampleSpectrum" class="headerlink" title="SampleSpectrum"></a>SampleSpectrum</h2><p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x5C06;&#x5149;&#x8C31;&#x91CD;&#x65B0;&#x5747;&#x5300;&#x91C7;&#x6837;&#x6765;&#x8FDB;&#x884C;&#x62DF;&#x5408;</p>
+<p>&#x8003;&#x8651;&#x6CE2;&#x957F;&#x4E3A;400nm~700nm&#x7684;&#x53EF;&#x89C1;&#x5149;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x533A;&#x95F4;&#x5206;&#x4E3A;N&#x6BB5;&#xFF0C;&#x4EE5;30&#x6BB5;&#x4E3A;&#x4F8B;&#xFF0C;&#x901A;&#x5E38;&#x8DB3;&#x4EE5;&#x62DF;&#x5408;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x5149;&#x8C31;&#x6570;&#x636E;<br><img src="/resources/images/Color-And-Radiometry/spectrum.png" alt="sample construct"></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectrum Utility Declarations&gt; =</span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> sampledLambdaStart = <span class="hljs-number">370</span>;</span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> sampledLambdaEnd   = <span class="hljs-number">700</span>;</span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> nSpectralSamples   = <span class="hljs-number">30</span>;</span><br><span class="line"></span><br><span class="line">&lt;Spectrum Declarations&gt; =</span><br><span class="line">	class SampledSpectrum : <span class="hljs-keyword">public</span> CoefficientSpectrum&lt;nSpectralSamples&gt;</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">public</span>:</span><br><span class="line">			&lt;SampledSpectrum <span class="hljs-keyword">public</span> Methods&gt;</span><br><span class="line">		<span class="hljs-keyword">private</span>:</span><br><span class="line">			&lt;SampledSpectrum Private Data&gt;</span><br><span class="line">	};</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x4ECE;&#x4E00;&#x7EC4;&#x5149;&#x8C31;&#x6570;&#x636E;&#x6765;&#x6784;&#x9020;&#x5149;&#x8C31;&#x8868;&#x793A;?</strong></p>
+<p>&#x5047;&#x8BBE;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x7EC4;&#x5149;&#x8C31;&#x6570;&#x636E;$(\lambda_i,v_i)$&#xFF0C;&#x8868;&#x793A;&#x7B2C;$i$&#x4E2A;&#x91C7;&#x6837;&#x70B9;&#x7684;&#x6CE2;&#x957F;&#x4E3A;$\lambda_i$&#xFF0C;&#x503C;&#x4E3A;$v_i$,&#x8FD9;&#x4E9B;&#x91C7;&#x6837;&#x70B9;&#x5F80;&#x5F80;&#x5206;&#x5E03;&#x4E0D;&#x5747;&#x5300;</p>
+<p>&#x5BF9;&#x4E8E;&#x7ED9;&#x5B9A;&#x7684;&#x4E00;&#x7EC4;&#x5149;&#x8C31;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x6784;&#x9020;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x6298;&#x7EBF;&#x56FE;</p>
+<p>&#x7136;&#x540E;&#x5C06;&#x6B64;&#x6298;&#x7EBF;&#x56FE;&#x5212;&#x5206;&#x4E3A;30&#x4E2A;&#x533A;&#x57DF;&#xFF0C;&#x5982;&#x4E0A;&#x56FE;&#xFF1A;[400,410) , [410,420)&#x2026;.[690,700)</p>
+<p>&#x8BA1;&#x7B97;&#x6BCF;&#x4E2A;&#x533A;&#x57DF;&#x8986;&#x76D6;&#x7684;&#x9762;&#x79EF;&#x548C;&#xFF0C;&#x6C42;&#x5176;&#x5E73;&#x5747;&#x503C;&#xFF0C;&#x5F97;&#x5230;&#x65B0;&#x7684;&#x91C7;&#x6837;&#x503C;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">static</span> SampledSpectrum <span class="hljs-title">FromSampled</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span>* lambda , <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span>* v , <span class="hljs-keyword">int</span> n)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">	&lt;Sort samples <span class="hljs-keyword">if</span> unordered, use sorted <span class="hljs-keyword">for</span> returned spectrum&gt;</span><br><span class="line">	</span><br><span class="line">	SampledSpectrum r;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nSpectralSamples; i++)</span><br><span class="line">	{</span><br><span class="line">		&lt;Compute average value of given SPD over ith sample<span class="hljs-number">&apos;</span>s range&gt;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Compute average value of given SPD over ith sample<span class="hljs-number">&apos;</span>s range&gt;=</span><br><span class="line">	<span class="hljs-comment">// compute ith sample&apos;s range</span></span><br><span class="line">	<span class="hljs-keyword">float</span> lambda0 = Lerp(<span class="hljs-keyword">float</span>(i) / <span class="hljs-keyword">float</span>(nSpectralSamples) , sampledLambdaStart , sampledLambdaEnd);</span><br><span class="line">	<span class="hljs-keyword">float</span> lambda1 = Lerp(<span class="hljs-keyword">float</span>(i+<span class="hljs-number">1</span>) / <span class="hljs-keyword">float</span>(nSpectralSamples) , sampledLambdaStart , sampledLambdaEnd);</span><br><span class="line">	r.c[i] = AverageSpectrumSamples(lambda, v, n, lambda0, lambda1);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectrum Method Definitions&gt; = </span><br><span class="line">	<span class="hljs-keyword">float</span> AverageSpectrumSamples(<span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span>* lambda , <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span>* vals , <span class="hljs-keyword">int</span> n , </span><br><span class="line">								 <span class="hljs-keyword">float</span> lambdaStart , <span class="hljs-keyword">float</span> lambdaEnd)</span><br><span class="line">	{</span><br><span class="line">		&lt;handles <span class="hljs-keyword">case</span> with out-of bounds range <span class="hljs-keyword">or</span> single sample only&gt;</span><br><span class="line">		<span class="hljs-keyword">float</span> sum = <span class="hljs-number">0.0f</span>;</span><br><span class="line">		&lt;Add contribute of constant segments before/after samples&gt;</span><br><span class="line">		&lt;Advance to first relevant wavelength , segment&gt;</span><br><span class="line">		&lt;Loop over wavelength sample segments <span class="hljs-keyword">and</span> add contributes&gt;</span><br><span class="line">		<span class="hljs-keyword">return</span> sum / (lambdaEnd - lanbdaStart);</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<p>&#x5904;&#x7406;&#x8FB9;&#x754C;&#x6761;&#x4EF6;&#xFF1A;&#x6570;&#x636E;&#x7684;&#x6CE2;&#x957F;&#x8303;&#x56F4;&#x5168;&#x90E8;&#x5904;&#x4E8E;&#x533A;&#x95F4;&#x4E4B;&#x5916;&#xFF0C;&#x6216;&#x8005;&#x539F;&#x59CB;&#x6570;&#x636E;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x91C7;&#x6837;&#x70B9;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;handles <span class="hljs-keyword">case</span> with out-of bounds range <span class="hljs-keyword">or</span> single sample only&gt; =</span><br><span class="line">	<span class="hljs-keyword">if</span>(lambdaEnd &lt;= lambda[<span class="hljs-number">0</span>]) <span class="hljs-keyword">return</span> lambda[<span class="hljs-number">0</span>];</span><br><span class="line">	<span class="hljs-keyword">if</span>(lambdaStart &gt;= lambda[n - <span class="hljs-number">1</span>]) <span class="hljs-keyword">return</span> lambda[n - <span class="hljs-number">1</span>];</span><br><span class="line">	<span class="hljs-keyword">if</span>(n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> lambda[<span class="hljs-number">0</span>];</span><br></pre></td></tr></table></figure>
+
+<p>&#x5BF9;&#x4E8E;&#x5904;&#x4E8E;&#x6570;&#x636E;&#x4E4B;&#x5916;&#x7684;&#x533A;&#x57DF;&#xFF0C;&#x5C06;&#x5176;&#x503C;&#x89C6;&#x4E3A;&#x5E38;&#x91CF;,&#x5373;&#x533A;&#x57DF;&#x4E3A;&#x65B9;&#x5F62;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Add contribute of constant segments before/after samples&gt; =</span><br><span class="line">	<span class="hljs-keyword">if</span>(lambdaStart &lt; lambda[<span class="hljs-number">0</span>])  </span><br><span class="line">		sum += vals[<span class="hljs-number">0</span>] * (lambda[<span class="hljs-number">0</span>] - lambdaStart);</span><br><span class="line">	<span class="hljs-keyword">if</span>(lambdaEnd &gt; lambda[n - <span class="hljs-number">1</span>]) </span><br><span class="line">		sum += vals[n - <span class="hljs-number">1</span>] * (lambdaEnd - lambda[n - <span class="hljs-number">1</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>&#x627E;&#x5230;&#x533A;&#x95F4;&#x8D77;&#x59CB;&#x6CE2;&#x957F;&#x6240;&#x5728;&#x7684;&#x6570;&#x636E;&#x6BB5;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Advance to first relevant wavelength , segment&gt; =</span><br><span class="line">	<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">while</span>(lambdaStart &gt; lambeda[i+<span class="hljs-number">1</span>]) ++i;</span><br></pre></td></tr></table></figure>
+
+<p>&#x8BA1;&#x7B97;&#x533A;&#x57DF;&#x8986;&#x76D6;&#x7684;&#x68AF;&#x5F62;&#x9762;&#x79EF;&#x548C;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;Loop over wavelength sample segments <span class="hljs-keyword">and</span> add contributes&gt;</span><br><span class="line">	<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> INTERP(w,i)\</span></span><br><span class="line">		Lerp(((w) - lambda[(i)]) / (lambda[(i) + <span class="hljs-number">1</span>] - lambda[(i)]) , vals[(i)] , vals[(i) + <span class="hljs-number">1</span>])</span><br><span class="line">	<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SEG_AVG(wl0,wl1,i) (0.5f * (INTERP(wl0,i) + INTERP(wl1,i)))</span></span><br><span class="line">	<span class="hljs-keyword">for</span>(; i+<span class="hljs-number">1</span> &lt; n &amp;&amp; lambdaEnd &gt;= lambda[i]; i++)</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">float</span> segStart = max(lambdaStart , lambda[i]);</span><br><span class="line">		<span class="hljs-keyword">float</span> segEnd   = min(lambdaEnd , lambda[i+<span class="hljs-number">1</span>]);</span><br><span class="line">		sum += SEG_AVG(segStart,segEnd,i) * (segEnd - segStart);</span><br><span class="line">	}</span><br><span class="line">	<span class="hljs-meta">#<span class="hljs-meta-keyword">undef</span> INTERP</span></span><br><span class="line">	<span class="hljs-meta">#<span class="hljs-meta-keyword">undef</span> SEG_AVG</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x7ECF;&#x8FC7;&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#xFF0C;&#x5C06;&#x5149;&#x8C31;&#x6570;&#x636E;&#x62DF;&#x5408;&#x4E3A;&#x7EBF;&#x6027;&#x5206;&#x6BB5;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x800C;&#xFF0C;&#x6700;&#x7EC8;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x5149;&#x8C31;&#x8F6C;&#x5316;&#x4E3A;RGB&#x624D;&#x80FD;&#x5728;&#x663E;&#x793A;&#x5668;&#x4E0A;&#x663E;&#x793A;&#x51FA;&#x6765;</p>
+<p>&#x4E09;&#x8272;&#x523A;&#x6FC0;&#x7406;&#x8BBA;&#x8BA4;&#x4E3A;&#x6240;&#x6709;&#x4EBA;&#x773C;&#x53EF;&#x89C6;&#x7684;SPD&#x90FD;&#x53EF;&#x4EE5;&#x7CBE;&#x786E;&#x7684;&#x4F7F;&#x7528;&#x4E09;&#x4E2A;&#x503C;$(x_\lambda,y_\lambda,z_\lambda)$&#x8868;&#x793A;,&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>$$x_\lambda = \frac{1}{\int Y(\lambda)d\lambda}\int_\lambda S(\lambda)X(\lambda)d\lambda$$</p>
+<p>$$y_\lambda = \frac{1}{\int Y(\lambda)d\lambda}\int_\lambda S(\lambda)Y(\lambda)d\lambda$$</p>
+<p>$$z_\lambda = \frac{1}{\int Y(\lambda)d\lambda}\int_\lambda S(\lambda)Z(\lambda)d\lambda$$</p>
+<p>$X(\lambda),Y(\lambda),Z(\lambda)$&#x4E3A;&#x5149;&#x8C31;&#x5339;&#x914D;&#x66F2;&#x7EBF;,&#x662F;&#x7531;&#x56FD;&#x9645;&#x7167;&#x660E;&#x59D4;&#x5458;&#x4F1A;&#x7ECF;&#x8FC7;&#x4E00;&#x7CFB;&#x5217;&#x5B9E;&#x9A8C;&#x5236;&#x5B9A;&#x7684;.</p>
+<p>&#x8FD9;&#x4E09;&#x6761;&#x66F2;&#x7EBF;&#x88AB;&#x8BA4;&#x4E3A;&#x4E0E;&#x4EBA;&#x7C7B;&#x89C6;&#x7F51;&#x819C;&#x7684;&#x4E09;&#x79CD;&#x611F;&#x8272;&#x89C6;&#x690E;&#x4F53;&#x7EC6;&#x80DE;&#x54CD;&#x5E94;&#x7C7B;&#x4F3C;<br><img src="/resources/images/Color-And-Radiometry/spectral_matching_curves.png" alt="spectral matching curves"></p>
+<p>&#x4E24;&#x4E2A;&#x7531;&#x591A;&#x79CD;&#x4E0D;&#x540C;&#x6CE2;&#x957F;&#x7684;&#x5149;&#x6DF7;&#x5408;&#x800C;&#x6210;&#x7684;&#x5149;&#x6E90;&#x53EF;&#x4EE5;&#x8868;&#x73B0;&#x51FA;&#x540C;&#x6837;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x8FD9;&#x53EB;&#x505A;&#x201C;&#x5F02;&#x8C31;&#x540C;&#x8272;&#x201D;(metamerism)</p>
+<p>&#x5C3D;&#x7BA1;&#x5BF9;&#x4E8E;&#x4EBA;&#x7C7B;&#x89C2;&#x5BDF;&#x8005;&#x800C;&#x8A00;&#xFF0C;XYZ&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x7684;&#x8868;&#x793A;SPD&#xFF0C;&#x7136;&#x800C;&#x5BF9;&#x4E8E;&#x5149;&#x8C31;&#x8BA1;&#x7B97;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x597D;&#x7684;&#x65B9;&#x6848;</p>
+<p>XYZ&#x7684;&#x4E58;&#x79EF;&#x4E0E;SPD&#x7684;&#x4E58;&#x79EF;&#x518D;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x7684;XYZ&#x76F8;&#x5DEE;&#x5F88;&#x5927;</p>
+<p>&#x5728;SampledSpectrum&#x4E2D;&#xFF0C;SPD&#x5C06;&#x4F1A;&#x88AB;&#x53D8;&#x6362;&#x91CD;&#x91C7;&#x6837;&#x8FDB;&#x884C;&#x964D;&#x7EF4;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5149;&#x8C31;&#x5339;&#x914D;&#x66F2;&#x7EBF;&#x4E5F;&#x9700;&#x8981;&#x5728;&#x91CD;&#x91C7;&#x6837;&#x5230;&#x76F8;&#x540C;&#x7EF4;&#x5EA6;&#x624D;&#x80FD;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectral Data Declarations&gt; =</span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> nCIESamples = <span class="hljs-number">471</span>;</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> CIE_X[nCIESamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> CIE_Y[nCIESamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> CIE_Z[nCIESamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> CIE_lambda[nCIESamples];</span><br></pre></td></tr></table></figure>
+
+<p>CIE_lambda&#x4E2D;&#x8BB0;&#x5F55;&#x7684;&#x662F;&#x6BCF;&#x4E2A;&#x91C7;&#x6837;&#x70B9;&#x7684;&#x6CE2;&#x957F;&#xFF0C;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;1nm&#x4E3A;&#x6B65;&#x957F;&#xFF0C;CIE_X,Y,Z&#x8BB0;&#x5F55;&#x4ECE;360nm~830nm&#x7684;&#x5149;&#x8C31;&#x5339;&#x914D;&#x66F2;&#x7EBF;&#x91C7;&#x6837;&#x70B9;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampledSpectrum Private Data&gt; =</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum X , Y , Z;</span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span> yInt;</span><br></pre></td></tr></table></figure>
+
+<p>&#x7531;&#x4E8E;&#x5149;&#x8C31;&#x5339;&#x914D;&#x66F2;&#x7EBF;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528;static&#x53D8;&#x91CF;</p>
+<p>XYZ&#x5339;&#x914D;&#x66F2;&#x7EBF;&#x8BA1;&#x7B97;&#x653E;&#x5728;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x5F53;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;&#x8FDB;&#x884C;&#x8C03;&#x7528;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampledSpectrum Public Methods&gt; += </span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> Init()</span><br><span class="line">	{</span><br><span class="line">		&lt;Compute XYZ matching functions <span class="hljs-keyword">for</span> SampledSpectrum&gt;</span><br><span class="line">		&lt;Compute RGB to spectrum functions <span class="hljs-keyword">for</span> SampledSpectrum&gt;</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;Compute XYZ matching functions <span class="hljs-keyword">for</span> SampledSpectrum&gt; =</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nSpectralSamples; i++)</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">float</span> wl0 = Lerp(<span class="hljs-keyword">float</span>(i) / <span class="hljs-keyword">float</span>(nSpectrualSamples) , sampledLambdaStart , sampledLambdaEnd);</span><br><span class="line">		<span class="hljs-keyword">float</span> wl1 = Lerp(<span class="hljs-keyword">float</span>(i+<span class="hljs-number">1</span>) / <span class="hljs-keyword">float</span>(nSpectrualSamples) , sampledLambdaStart , sampledLambdaEnd);</span><br><span class="line">		X.c[i] = AverageSpectrumSamples(CIE_lambda, CIE_X, nCIESamples, wl0, wl1);</span><br><span class="line">		Y.c[i] = AverageSpectrumSamples(CIE_lambda, CIE_Y, nCIESamples, wl0, wl1);</span><br><span class="line">		Z.c[i] = AverageSpectrumSamples(CIE_lambda, CIE_Z, nCIESamples, wl0, wl1);</span><br><span class="line">		yInt += Y.c[i];</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;&#x4E86;XYZ&#x5339;&#x914D;&#x66F2;&#x7EBF;&#x7684;&#x91CD;&#x91C7;&#x6837;&#x6570;&#x636E;&#xFF0C;&#x516C;&#x5F0F;&#x53EF;&#x4EE5;&#x8F6C;&#x5316;&#x4E3A;&#x7528;&#x9ECE;&#x66FC;&#x548C;&#x8868;&#x793A;:</p>
+<p>$$x_\lambda \approx \frac{1} {\int Y(\lambda)d\lambda} \sum_i X_i c_i$$</p>
+<p>$$y_\lambda \approx \frac{1} {\int Y(\lambda)d\lambda} \sum_i Y_i c_i$$</p>
+<p>$$z_\lambda \approx \frac{1} {\int Y(\lambda)d\lambda} \sum_i Z_i c_i$$</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampledSpectrum Public Methods&gt; +=</span><br><span class="line">	<span class="hljs-keyword">void</span> ToXYZ(<span class="hljs-keyword">float</span> xyz[<span class="hljs-number">3</span>]) <span class="hljs-keyword">const</span></span><br><span class="line">	{</span><br><span class="line">		xyz[<span class="hljs-number">0</span>] = xyz[<span class="hljs-number">1</span>] = xyz[<span class="hljs-number">2</span>] = <span class="hljs-number">0.0f</span>;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nSpectralSamples; i++)</span><br><span class="line">		{</span><br><span class="line">			xyz[<span class="hljs-number">0</span>] += X.c[i] * c[i];</span><br><span class="line">			xyz[<span class="hljs-number">1</span>] += Y.c[i] * c[i];</span><br><span class="line">			xyz[<span class="hljs-number">2</span>] += Z.c[i] * c[i];</span><br><span class="line">		}</span><br><span class="line">		</span><br><span class="line">		xyz[<span class="hljs-number">9</span>] /= yInt;</span><br><span class="line">		xyz[<span class="hljs-number">1</span>] /= yInt;</span><br><span class="line">		xyz[<span class="hljs-number">2</span>] /= yInt;</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<p>XYZ&#x4E2D;&#x7684;y&#x4E0E;&#x4EAE;&#x5EA6;&#x5BC6;&#x5207;&#x76F8;&#x5173;.</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampledSpectrum <span class="hljs-keyword">public</span> Methods&gt; += </span><br><span class="line">	<span class="hljs-keyword">float</span> y() <span class="hljs-keyword">const</span></span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">float</span> yy = <span class="hljs-number">0.0f</span>;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nSpectralSamples; i++)</span><br><span class="line">		{</span><br><span class="line">			yy += Y.c[i] * c[i];</span><br><span class="line">		}</span><br><span class="line">		<span class="hljs-keyword">return</span> yy / yInt;</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5C06;SPD&#x8F6C;&#x6362;&#x4E3A;&#x4E86;XYZ,&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x5C06;XYZ&#x8F6C;&#x5316;&#x4E3A;RGB&#x7528;&#x4E8E;&#x663E;&#x793A;&#x5462;&#xFF1F;</strong></p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x5C06;RGB&#x663E;&#x793A;&#x5728;&#x663E;&#x793A;&#x5668;&#x4E0A;&#x65F6;&#xFF0C;&#x771F;&#x5B9E;&#x663E;&#x793A;&#x7684;&#x5149;&#x8C31;&#x4E3B;&#x8981;&#x7531;&#x4E09;&#x8272;&#x5149;&#x8C31;&#x54CD;&#x5E94;&#x66F2;&#x7EBF;&#x7684;&#x52A0;&#x6743;&#x548C;&#x786E;&#x5B9A;.&#xFF0C;&#x7531;&#x53D1;&#x5149;&#x6750;&#x6599;&#x51B3;&#x5B9A;</p>
+<p>LED,LCD,&#x4EE5;&#x53CA;&#x7B49;&#x79BB;&#x5B50;&#x4F53;&#x7684;&#x4E09;&#x8272;&#x5149;&#x8C31;&#x54CD;&#x5E94;&#x66F2;&#x7EBF;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x76F8;&#x540C;&#x7684;SPD,&#x5728;&#x8FD9;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x663E;&#x793A;&#x51FA;&#x6765;&#x7684;RGB&#x662F;&#x4E0D;&#x540C;&#x7684;.<br><img src="/resources/images/Color-And-Radiometry/spectral_response_curves.png" alt="spectral response curves"></p>
+<p>&#x5728;LCD,LED&#x663E;&#x793A;RGB(0.6,0.3,0.2)&#x7684;&#x5149;&#x8C31;&#x5206;&#x522B;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;<br><img src="/resources/images/Color-And-Radiometry/SPDs_from_Displaying_Same_RGB.png" alt="SPD from display same rgb"></p>
+<p>&#x53EF;&#x89C1;SPD&#x76F8;&#x5DEE;&#x5F88;&#x5927;.&#x56E0;&#x6B64;&#xFF0C;RGB&#x4F5C;&#x4E3A;&#x989C;&#x8272;&#x53EA;&#x5728;&#x77E5;&#x9053;&#x663E;&#x793A;&#x5668;&#x5C5E;&#x6027;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x662F;&#x6709;&#x610F;&#x4E49;&#x7684;.</p>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;SPD&#x7684;$x_{\lambda},y_\lambda,z_\lambda$</p>
+<p>&#x5728;&#x7ED9;&#x5B9A;&#x663E;&#x793A;&#x5668;&#x7684;&#x60C5;&#x51B5;&#x4E0B;,&#x4E5F;&#x5C31;&#x662F;&#x7ED9;&#x5B9A;&#x4E09;&#x8272;&#x5149;&#x8C31;&#x54CD;&#x5E94;&#x66F2;&#x7EBF;$$R(\lambda),G(\lambda),B(\lambda)$$</p>
+<p>RGB&#x6309;&#x7167;&#x5982;&#x4E0B;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#x6240;&#x5F97;&#xFF1A;</p>
+<p>$$<br>\begin{align}<br>r = \int R(\lambda)S(\lambda)d\lambda &amp;= \int R(\lambda)(x_\lambda X(\lambda) + y_\lambda Y(\lambda) + z_\lambda Z(\lambda))d\lambda \notag\\<br>                                      &amp;=x_\lambda \int R(\lambda)X(\lambda)d\lambda + y_\lambda \int R(\lambda)Y(\lambda)d\lambda + z_\lambda \int R(\lambda) Z(\lambda)d\lambda\notag<br>\end{align}<br>$$</p>
+<p>$$<br>\begin{bmatrix}<br>    r \\<br>    g \\<br>    b<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>    \int R(\lambda)X(\lambda)d\lambda  &amp; \int R(\lambda)Y(\lambda)d\lambda &amp; \int R(\lambda)Z(\lambda)d\lambda\\<br>    \int G(\lambda)X(\lambda)d\lambda  &amp; \int G(\lambda)Y(\lambda)d\lambda &amp; \int G(\lambda)Z(\lambda)d\lambda \\<br>    \int B(\lambda)X(\lambda)d\lambda  &amp; \int B(\lambda)Y(\lambda)d\lambda &amp; \int B(\lambda)Z(\lambda)d\lambda<br>\end{bmatrix}<br>\begin{bmatrix}<br>    x_\lambda \\<br>    y_\lambda \\<br>    z_\lambda<br>\end{bmatrix}<br>$$</p>
+<p>&#x5BF9;&#x4E8E;&#x9AD8;&#x6E05;&#x7535;&#x89C6;&#x800C;&#x8A00;&#xFF1A;<br>$$<br>\begin{bmatrix}<br>    r \\<br>    g \\<br>    b<br>\end{bmatrix}<br> =<br>\begin{bmatrix}<br>    3.240479  &amp; -1.537150 &amp; -0.498535\\<br>    -0.969256  &amp; 1.875991 &amp; 0.041556 \\<br>    0.055648  &amp; -0.204043 &amp; 1.057311<br>\end{bmatrix}<br>\begin{bmatrix}<br>    x_\lambda \\<br>    y_\lambda \\<br>    z_\lambda<br>\end{bmatrix}<br>$$</p>
+<p><strong>&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x7684;RGB&#x662F;&#x5728;linear space,&#x9700;&#x8981;Gamma&#x77EB;&#x6B63;&#x624D;&#x80FD;&#x53D8;&#x6362;&#x5230;sRGB&#x7A7A;&#x95F4;</strong></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectrum Utility Declarations&gt; +=</span><br><span class="line">	<span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> XYZToRGB(<span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> xyz[<span class="hljs-number">3</span>] , <span class="hljs-keyword">float</span> rgb[<span class="hljs-number">3</span>])</span><br><span class="line">	{</span><br><span class="line">		rgb[<span class="hljs-number">0</span>] = <span class="hljs-number">3.240479</span> * xyz[<span class="hljs-number">0</span>] - <span class="hljs-number">1.537150</span> * xyz[<span class="hljs-number">1</span>] - <span class="hljs-number">0.498535</span> * xyz[<span class="hljs-number">2</span>];</span><br><span class="line">		rgb[<span class="hljs-number">1</span>] =<span class="hljs-number">-0.969256</span> * xyz[<span class="hljs-number">0</span>] + <span class="hljs-number">1.875991</span> * xyz[<span class="hljs-number">1</span>] + <span class="hljs-number">0.041556</span> * xyz[<span class="hljs-number">2</span>];</span><br><span class="line">		rgb[<span class="hljs-number">2</span>] = <span class="hljs-number">0.055648</span> * xyz[<span class="hljs-number">0</span>] - <span class="hljs-number">0.204043</span> * xyz[<span class="hljs-number">1</span>] + <span class="hljs-number">1.057311</span> * xyz[<span class="hljs-number">2</span>];</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<p>&#x9006;&#x77E9;&#x9635;&#x53EF;&#x4EE5;&#x5C06;RGB&#x8F6C;&#x4E3A;XYZ</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectrum Utility Declarations&gt; +=</span><br><span class="line">	<span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> RGBToXYZ(<span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> rgb[<span class="hljs-number">3</span>], <span class="hljs-keyword">float</span> xyz[<span class="hljs-number">3</span>])</span><br><span class="line">	{</span><br><span class="line">		xyz[<span class="hljs-number">0</span>] = <span class="hljs-number">0.412453</span> * rgb[<span class="hljs-number">0</span>] + <span class="hljs-number">0.357580</span> * rgb[<span class="hljs-number">1</span>] + <span class="hljs-number">0.180423</span> * rgb[<span class="hljs-number">2</span>];</span><br><span class="line">		xyz[<span class="hljs-number">1</span>] = <span class="hljs-number">0.212671</span> * rgb[<span class="hljs-number">0</span>] + <span class="hljs-number">0.715160</span> * rgb[<span class="hljs-number">1</span>] + <span class="hljs-number">0.072169</span> * rgb[<span class="hljs-number">2</span>];</span><br><span class="line">		xyz[<span class="hljs-number">2</span>] = <span class="hljs-number">0.019334</span> * rgb[<span class="hljs-number">0</span>] + <span class="hljs-number">0.119193</span> * rgb[<span class="hljs-number">1</span>] + <span class="hljs-number">0.950227</span> * rgb[<span class="hljs-number">2</span>];</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<p>&#x56E0;&#x6B64;&#x5C06;SPD&#x8F6C;&#x4E3A;RGB:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampledSpectrum Public Methods&gt; +=</span><br><span class="line">	<span class="hljs-keyword">void</span> ToRGB(flaot rgb[<span class="hljs-number">3</span>]) <span class="hljs-keyword">const</span></span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">float</span> xyz[<span class="hljs-number">3</span>];</span><br><span class="line">		ToXYZ(xyz);</span><br><span class="line">		XYZToRGB(xyz,rgb);</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<p>&#x4ECB;&#x7ECD;&#x5B8C;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528;SPD&#x8BA1;&#x7B97;RGB&#xFF0C;&#x90A3;&#x4E48;<strong>&#x5982;&#x4F55;&#x901A;&#x8FC7;RGB&#x5F97;&#x5230;SPD?</strong></p>
+<p>&#x901A;&#x8FC7;&#x6D4B;&#x91CF;&#x5F97;&#x5230;&#x4EE5;&#x4E0B;&#x6570;&#x636E;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectrual Data Declaration&gt; +=</span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> nRGB2SpectSamples = <span class="hljs-number">32</span>;</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGB2SpectLambda[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBRefl2SpectWhite[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBRefl2SpectCyan[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBRefl2SpectMagenta[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBRefl2SpectYellow[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBRefl2SpectRed[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBRefl2SpecGreen[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBRefl2SpectBlue[nRGB2SpectSamples];</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBIllum2SpectWhite[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBIllum2SpectCyan[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBIllum2SpectMagenta[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBIllum2SpectYellow[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBIllum2SpectRed[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBIllum2SpectGreen[nRGB2SpectSamples];</span><br><span class="line">	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> RGBIllum2SpectBlue[nRGB2SpectSamples];</span><br></pre></td></tr></table></figure>
+
+<p>&#x5982;&#x679C;RGB&#x989C;&#x8272;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5149;&#x6E90;&#x7684;&#x53D1;&#x5C04;&#x5149;&#xFF0C;&#x90A3;&#x4E48;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x8868;&#x793A;&#x53D1;&#x5C04;&#x6E90;&#x7684;&#x5149;&#x8C31;&#x80FD;&#x91CF;&#x5206;&#x5E03;&#x7684;&#x8F6C;&#x6362;&#x8868;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;.</p>
+<p>RGBillum2Spect*&#x4F7F;&#x7528;&#x7684;&#x662F;D65&#x5149;&#x8C31;&#x80FD;&#x91CF;&#x5206;&#x5E03;&#xFF0C;&#x4E3A;CIE&#x7528;&#x4E8E;&#x8868;&#x793A;&#x6B63;&#x5348;&#x65E5;&#x5149;&#x7684;&#x6807;&#x51C6;.</p>
+<p>&#x7528;&#x4E8E;&#x8BA1;&#x7B97;&#x65B9;&#x4FBF;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;RGBRefl2Spect*,RGBillum2Spect*&#x5206;&#x5E03;&#xFF0C;&#x5728;&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;&#x91CD;&#x91C7;&#x6837;&#x4E3A;SampledSpectrum</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;SampledSpectrum Private Data&gt;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbRelf2SpectWhite;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbRelf2SpectCyan;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbRelf2SpectMagenta;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbRelf2SpectYellow;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbRelf2SpectRed;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbRelf2SpectGreen;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbRelf2SpectBlue;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbIllum2SpectWhite;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbIllum2SpectCyan;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbIllum2SpectMagenta;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbIllum2SpectYellow;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbIllum2SpectRed;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbIllum2SpectGreen;</span><br><span class="line">	<span class="hljs-keyword">static</span> SampledSpectrum rgbIllum2SpectBlue;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;Compute RGB to spectrum functions <span class="hljs-keyword">for</span> SampledSpectrum&gt; =</span><br><span class="line">	<span class="hljs-keyword">float</span> wl0 = Lerp(<span class="hljs-keyword">float</span>(i) / <span class="hljs-keyword">float</span>(nSpectralSamples),sampledLambdaStart, sampledLambdaEnd);</span><br><span class="line">    <span class="hljs-keyword">float</span> wl1 = Lerp(<span class="hljs-keyword">float</span>(i+<span class="hljs-number">1</span>) / <span class="hljs-keyword">float</span>(nSpectralSamples),sampledLambdaStart, sampledLambdaEnd);</span><br><span class="line">    rgbRefl2SpectWhite.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBRefl2SpectWhite,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbRefl2SpectCyan.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBRefl2SpectCyan,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbRefl2SpectMagenta.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBRefl2SpectMagenta,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbRefl2SpectYellow.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBRefl2SpectYellow,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbRefl2SpectRed.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBRefl2SpectRed,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbRefl2SpectGreen.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBRefl2SpectGreen,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbRefl2SpectBlue.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBRefl2SpectBlue,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line"></span><br><span class="line">    rgbIllum2SpectWhite.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBIllum2SpectWhite,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbIllum2SpectCyan.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBIllum2SpectCyan,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbIllum2SpectMagenta.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBIllum2SpectMagenta,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbIllum2SpectYellow.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBIllum2SpectYellow,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbIllum2SpectRed.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBIllum2SpectRed,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbIllum2SpectGreen.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBIllum2SpectGreen,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br><span class="line">    rgbIllum2SpectBlue.c[i] = AverageSpectrumSamples(RGB2SpectLambda, RGBIllum2SpectBlue,</span><br><span class="line">        nRGB2SpectSamples, wl0, wl1);</span><br></pre></td></tr></table></figure>
+
+<p>RGB&#x8F6C;Spectrum</p>
+<p>$$if \quad r &lt; g &lt; b$$</p>
+<p>$$(r,g,b) = (r,r,r)+(0,g-r,g-r)+(0,0,b-g)=r(1,1,1)+(g-r)(0,1,1)+(b-g)(0,0,1)$$</p>
+<p>$$if \quad r &lt; b &lt; g$$</p>
+<p>$$(r,g,b)=(r,r,r)+(0,b-r,b-r)+(0,g-b,0)=r(1,1,1)+(b-r)(0,1,1)+(g-b)(0,1,0)$$</p>
+<p>&#x2026;</p>
+<p>(1,1,1):White</p>
+<p>(0,1,1):Cyan</p>
+<p>(0,0,1):Blue</p>
+<p>(0,1,0):Green</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectrum Utility Declaration&gt; +=</span><br><span class="line">	<span class="hljs-keyword">enum</span> SpectrumType {SPECTRUM_REFLECTANCE, SPECTRUM_ILLUMINANT};</span><br><span class="line"></span><br><span class="line">&lt;Spectrum Method Definitions&gt; +=</span><br><span class="line">	SampledSpectrum SampledSpectrum::FromRGB(<span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> rgb[<span class="hljs-number">3</span>] , SpectrumType type)</span><br><span class="line">	{</span><br><span class="line">		SampledSpectrum r;</span><br><span class="line">		<span class="hljs-keyword">if</span>(type == SPECTRUM_REFLECTANCE)</span><br><span class="line">		{</span><br><span class="line">			&lt;Convert reflectance spectrum to RGB&gt;</span><br><span class="line">		}</span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">		{</span><br><span class="line">			&lt;Convert illuminant spectrum to RGB&gt;</span><br><span class="line">		}</span><br><span class="line">		<span class="hljs-keyword">return</span> r.Clamp();</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">&lt;Convert reflectance spectrum to RGB&gt; =</span><br><span class="line">	<span class="hljs-keyword">if</span>(rgb[<span class="hljs-number">0</span>] &lt;= rgb[<span class="hljs-number">1</span>] &amp;&amp; rgb[<span class="hljs-number">0</span>] &lt;= rgb[<span class="hljs-number">2</span>])</span><br><span class="line">	{</span><br><span class="line">		&lt;Compute reflectance SampledSpectrum with rgb[<span class="hljs-number">0</span>] as minimum&gt;</span><br><span class="line">	}</span><br><span class="line">	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(rgb[<span class="hljs-number">1</span>] &lt;= rgb[<span class="hljs-number">0</span>] &amp;&amp; rgb[<span class="hljs-number">1</span>] &lt;= rgb[<span class="hljs-number">2</span>])</span><br><span class="line">	{</span><br><span class="line">		&lt;Compute reflectance SampledSpectrum with rgb[<span class="hljs-number">1</span>] as minimum&gt;</span><br><span class="line">	}</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	{</span><br><span class="line">		&lt;Compute reflectance SampledSpectrum with rgb[<span class="hljs-number">2</span>] as minimum&gt;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">&lt;Compute reflectance SampledSpectrum with rgb[<span class="hljs-number">0</span>] as minimum&gt; =</span><br><span class="line">	r += rgb[<span class="hljs-number">0</span>] * rgbRefl2SpectWhite;</span><br><span class="line">	<span class="hljs-keyword">if</span>(rgb[<span class="hljs-number">1</span>] &lt;= rgb[<span class="hljs-number">2</span>])</span><br><span class="line">	{</span><br><span class="line">		r += (rgb[<span class="hljs-number">1</span>] - rgb[<span class="hljs-number">0</span>]) * rgbRefl2SpectCyan;</span><br><span class="line">		r += (rgb[<span class="hljs-number">2</span>] - rgb[<span class="hljs-number">1</span>]) * rgbRefl2SpectBlue;</span><br><span class="line">	}</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	{</span><br><span class="line">		r += (rgb[<span class="hljs-number">2</span>] - rgb[<span class="hljs-number">0</span>]) * rgbRefl2SpectCyan;</span><br><span class="line">		r += (rgb[<span class="hljs-number">1</span>] - rgb[<span class="hljs-number">2</span>]) * rgbRefl2SpectGreen;</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<h2 id="RGBSpectrum"><a href="#RGBSpectrum" class="headerlink" title="RGBSpectrum"></a>RGBSpectrum</h2><p>RGBSpectrum&#x4F7F;&#x7528;R,G,B&#x5206;&#x91CF;&#x7684;&#x52A0;&#x6743;&#x548C;&#x6765;&#x8868;&#x793A;SPDs</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectrum Declarations&gt; +=</span><br><span class="line">	class RGBSpectrum : <span class="hljs-keyword">public</span> CofficientSpectrum&lt;<span class="hljs-number">3</span>&gt;</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">public</span>:</span><br><span class="line">			&lt;RGBSpectrum Public Methods&gt;</span><br><span class="line">	};</span><br></pre></td></tr></table></figure>
+
+<p>FromRGB&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C31;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5B58;&#x50A8;&#x7684;&#x5C31;&#x662F;rgb</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;RGBSpectrum Public Methods&gt; +=</span><br><span class="line">	<span class="hljs-keyword">static</span> RGBSpectrum FromRGB(<span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> rgb[<span class="hljs-number">3</span>], SpectrumType type = SPECTRUM_REFLECTION)</span><br><span class="line">	{</span><br><span class="line">		RGBSpectrum s;</span><br><span class="line">		s.c[<span class="hljs-number">0</span>] = rgb[<span class="hljs-number">9</span>];</span><br><span class="line">		s.c[<span class="hljs-number">1</span>] = rgb[<span class="hljs-number">1</span>];</span><br><span class="line">		s.c[<span class="hljs-number">2</span>] = rgb[<span class="hljs-number">2</span>];</span><br><span class="line">		<span class="hljs-keyword">return</span> s;</span><br><span class="line">	}</span><br><span class="line">&lt;RGBSpectrum Public Methods&gt; +=</span><br><span class="line">	<span class="hljs-keyword">void</span> TOrgb(<span class="hljs-keyword">float</span>* rgb) <span class="hljs-keyword">const</span></span><br><span class="line">	{</span><br><span class="line">		rgb[<span class="hljs-number">0</span>] = c[<span class="hljs-number">0</span>];</span><br><span class="line">		rgb[<span class="hljs-number">1</span>] = c[<span class="hljs-number">1</span>];</span><br><span class="line">		rgb[<span class="hljs-number">2</span>] = c[<span class="hljs-number">2</span>];</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<p>&#x6839;&#x636E;SPD&#x8BA1;&#x7B97;RGB,&#x901A;&#x8FC7;&#x5149;&#x8C31;&#x5339;&#x914D;&#x51FD;&#x6570;&#x8BA1;&#x7B97;XYZ,&#x7136;&#x540E;XYZ&#x8F6C;&#x4E3A;RGB</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;RGBSpectrum Public Methods&gt; +=</span><br><span class="line">	<span class="hljs-keyword">static</span> RGBSpectrum FromSampled(<span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span>* lambda, <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span>* v, <span class="hljs-keyword">int</span> n)</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">float</span> xyz[<span class="hljs-number">3</span>] = {<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>};</span><br><span class="line">		<span class="hljs-keyword">float</span> yint = <span class="hljs-number">0.0f</span>;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nCIESamples; i++)</span><br><span class="line">		{</span><br><span class="line">			yint += CIE_Y[i];</span><br><span class="line">			<span class="hljs-keyword">float</span> val = InterpolateSpectrumSamples(lambda, v, n, CIE_lambda[i]);</span><br><span class="line">			xyz[<span class="hljs-number">0</span>] += val * CIE_X[i];</span><br><span class="line">			xyz[<span class="hljs-number">1</span>] += val * CIE_Y[i];</span><br><span class="line">			xyz[<span class="hljs-number">2</span>] += val * CIE_Z[i];</span><br><span class="line">		}</span><br><span class="line">		</span><br><span class="line">		xyz[<span class="hljs-number">0</span>] /= yint;</span><br><span class="line">		xyz[<span class="hljs-number">1</span>] /= yint;</span><br><span class="line">		xyz[<span class="hljs-number">2</span>] /= yint;</span><br><span class="line"></span><br><span class="line">		<span class="hljs-keyword">return</span> FromXYZ(xyz);</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">&lt;Spectrum Method Definitions&gt; +=</span><br><span class="line">	<span class="hljs-keyword">float</span> InterpolateSpectrumSamples(<span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span>* lambda, <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span>* vals, <span class="hljs-keyword">int</span> n, <span class="hljs-keyword">float</span> l)</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">if</span>(l &lt;= lambda[<span class="hljs-number">0</span>]) <span class="hljs-keyword">return</span> vals[<span class="hljs-number">0</span>];</span><br><span class="line">		<span class="hljs-keyword">if</span>(l &gt;= lambda[n<span class="hljs-number">-1</span>]) <span class="hljs-keyword">return</span> vals[n<span class="hljs-number">-1</span>];</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i &lt; n<span class="hljs-number">-1</span>; i++)</span><br><span class="line">		{</span><br><span class="line">			<span class="hljs-keyword">if</span>(l &gt;= lambda[i] &amp;&amp; l &lt;= lambda[i+<span class="hljs-number">1</span>])</span><br><span class="line">			{</span><br><span class="line">				<span class="hljs-keyword">float</span> t = (l - lambda[i]) / (lambda[i+<span class="hljs-number">1</span>] - lambda[i]);</span><br><span class="line">				<span class="hljs-keyword">return</span> Lerp(t , vals[i] , vals[i+<span class="hljs-number">1</span>]);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+
+<h2 id="LinearSpace-RGB-to-sRGB"><a href="#LinearSpace-RGB-to-sRGB" class="headerlink" title="LinearSpace RGB to sRGB"></a>LinearSpace RGB to sRGB</h2><p>$$<br>\begin{equation}<br>C_{srgb}=<br>\begin{cases}<br>12.92C_{linear} &amp; C_{linear} \leq 0.0031308 \notag\\[2ex]<br>(1+\alpha)C_{linear}^{\frac{1}{2.4}} - \alpha &amp; C_{linear} &gt; 0.0031308<br>\end{cases}<br> \end{equation}<br>$$</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/SRGB" target="_blank" rel="noopener">sRGB</a></li>
+<li><a href="http://www.pbrt.org/" target="_blank" rel="noopener">PBRT</a></li>
+</ul>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Rendering/">#Rendering</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/SubsurfaceScatter/"></a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/Radiometry/">Radiometry</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>directx 11 create device and swap chain - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Create-Device-with-adapter">1&nbsp;&nbsp;<b>Create Device with adapter</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#DXGI-SWAP-CHAIN-DESC-SwapEffect">2&nbsp;&nbsp;<b>DXGI_SWAP_CHAIN_DESC SwapEffect</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">3&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            directx 11 create device and swap chain
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2018-04-18T21:27:10.000Z" itemprop="datePublished">4月 18 2018</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/directx11/">directx11</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分钟 lesen (Über 290 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="Create-Device-with-adapter"><a href="#Create-Device-with-adapter" class="headerlink" title="Create Device with adapter"></a>Create Device with adapter</h1><p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/api/d3d11/nf-d3d11-d3d11createdeviceandswapchain" target="_blank" rel="noopener">D3D11CreateDeviceAndSwapChain</a><br>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5982;&#x679C;&#x4F20;NULL,&#x5219;&#x4EE5;&#x9ED8;&#x8BA4;Adapter&#x521B;&#x5EFA;<br>&#x5982;&#x679C;&#x53C2;&#x6570;&#x4E0D;&#x4E3A;NULL,<code>DriverType</code>&#x5FC5;&#x987B;&#x4E3A;<code>D3D_DRIVER_TYPE_UNKNOWN</code><br><a id="more"></a></p>
+<h1 id="DXGI-SWAP-CHAIN-DESC-SwapEffect"><a href="#DXGI-SWAP-CHAIN-DESC-SwapEffect" class="headerlink" title="DXGI_SWAP_CHAIN_DESC SwapEffect"></a>DXGI_SWAP_CHAIN_DESC SwapEffect</h1><p>DXGI&#x652F;&#x6301;&#x4E24;&#x79CD;&#x6A21;&#x5F0F;:</p>
+<ul>
+<li>BitBlt: DXGI_SWAP_EFFECT_DISCARD,DXGI_SWAP_EFFECT_SEQUENTIAL</li>
+<li>Flip: DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL,DXGI_SWAP_EFFECT_FLIP_DISCARD</li>
+</ul>
+<p>Flip&#x4E0D;&#x652F;&#x6301;MultiSampling</p>
+<p>DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL:&#x4ECE;Win8&#x5F00;&#x59CB;&#x652F;&#x6301;<br>DXGI_SWAP_EFFECT_FLIP_DISCARD:&#x4ECE;Win10&#x5F00;&#x59CB;&#x652F;&#x6301;</p>
+<p>Flip&#x6BD4;BitBlt&#x6548;&#x7387;&#x66F4;&#x9AD8;,&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x9700;&#x8981;GDI&#x4E0E;DirectX&#x6DF7;&#x5408;&#x663E;&#x793A;&#x7684;&#x7A0B;&#x5E8F;&#x6765;&#x8BF4;&#xFF0C;BitBlt&#x662F;&#x552F;&#x4E00;&#x7684;&#x9009;&#x62E9;</p>
+<p>&#x5F53;SwapChain&#x4F7F;&#x7528;DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL&#x521B;&#x5EFA;,&#x4E00;&#x6B21;&#x6210;&#x529F;&#x7684;Present&#x5C06;&#x4F1A;&#x628A;BackBuffer0&#x4ECE;&#x7BA1;&#x7EBF;&#x89E3;&#x7ED1;,&#x56E0;&#x6B64;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;RenderTarget</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/api/dxgi1_2/nf-dxgi1_2-idxgiswapchain1-present1" target="_blank" rel="noopener">For flip presentation model swap chains that you create with the DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL value set, a successful presentation results in an unbind of back buffer 0 from the graphics pipeline</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/direct3ddxgi/dxgi-flip-model" target="_blank" rel="noopener">DXGI Flip Mode</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/windows/desktop/api/d3d11/nf-d3d11-d3d11createdeviceandswapchain" target="_blank" rel="noopener">If you set the pAdapter parameter to a non-NULL value, you must also set the DriverType parameter to the D3D_DRIVER_TYPE_UNKNOWN value</a></p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/directx11/">#directx11</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/">unity _WorldSpaceLightDir in forwardBase lightMode</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/cpp-template-check-if-type-is-class/">c++模板检测类型是否为Class</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

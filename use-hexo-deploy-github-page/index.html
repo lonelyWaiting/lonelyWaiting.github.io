@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>use hexo deploy github page - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Create-Github-Page">1&nbsp;&nbsp;<b>Create Github Page</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Setup-Hexo">2&nbsp;&nbsp;<b>Setup Hexo</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#install-Node-js">2.1&nbsp;&nbsp;install Node.js</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#install-Git">2.2&nbsp;&nbsp;install Git</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#install-hexo-command-line-interface">2.3&nbsp;&nbsp;install hexo command line interface</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#init-hexo">2.4&nbsp;&nbsp;init hexo</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#install-git-deploy-tool">2.5&nbsp;&nbsp;install git deploy tool</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#config-deploy">2.6&nbsp;&nbsp;config deploy</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#generate-and-deploy-hexo">2.7&nbsp;&nbsp;generate and deploy hexo</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Manage-Hexo">3&nbsp;&nbsp;<b>Manage Hexo</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Hexo-Plugin">4&nbsp;&nbsp;<b>Hexo Plugin</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Latex">4.1&nbsp;&nbsp;Latex</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Disqus">4.2&nbsp;&nbsp;Disqus</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Disqus-Config">4.2.1&nbsp;&nbsp;Disqus Config</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Apply-Disqus">4.2.2&nbsp;&nbsp;Apply Disqus</a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            use hexo deploy github page
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2017-11-16T23:14:24.000Z" itemprop="datePublished">11月 16 2017</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            6 分钟 lesen (Über 872 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h2 id="Create-Github-Page"><a href="#Create-Github-Page" class="headerlink" title="Create Github Page"></a>Create Github Page</h2><p>Create a new repo named <code>&lt;username&gt;.github.io</code>,<code>&lt;username&gt;</code> is your username on Github</p>
+<p>Create a new branch named <code>source</code><br><a id="more"></a></p>
+<h2 id="Setup-Hexo"><a href="#Setup-Hexo" class="headerlink" title="Setup Hexo"></a>Setup Hexo</h2><h3 id="install-Node-js"><a href="#install-Node-js" class="headerlink" title="install Node.js"></a>install Node.js</h3><p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a></p>
+<h3 id="install-Git"><a href="#install-Git" class="headerlink" title="install Git"></a>install Git</h3><p><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a></p>
+<h3 id="install-hexo-command-line-interface"><a href="#install-hexo-command-line-interface" class="headerlink" title="install hexo command line interface"></a>install hexo command line interface</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h3 id="init-hexo"><a href="#init-hexo" class="headerlink" title="init hexo"></a>init hexo</h3><p>init hexo in the target <code>&lt;folder&gt;</code>,such as <code>E\blog</code></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="hljs-built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+<p>After running the command, a directory named <code>node_modules</code> will be added under the blog root folder.</p>
+<h3 id="install-git-deploy-tool"><a href="#install-git-deploy-tool" class="headerlink" title="install git deploy tool"></a>install git deploy tool</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="config-deploy"><a href="#config-deploy" class="headerlink" title="config deploy"></a>config deploy</h3><p>modify site&#x2019;s setting in <code>_config.yml</code></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">	<span class="hljs-built_in">type</span>: git</span><br><span class="line">	repo: git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git</span><br><span class="line">	branch: master</span><br></pre></td></tr></table></figure>
+
+<h3 id="generate-and-deploy-hexo"><a href="#generate-and-deploy-hexo" class="headerlink" title="generate and deploy hexo"></a>generate and deploy hexo</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate -d</span><br></pre></td></tr></table></figure>
+
+<h2 id="Manage-Hexo"><a href="#Manage-Hexo" class="headerlink" title="Manage Hexo"></a>Manage Hexo</h2><p>deploy tool will sync <code>.deploy_git</code> to master branch while run deploy command</p>
+<p>but our blog source file does not version control.</p>
+<p>so, we should upload our blog source file to <code>source</code> branch.</p>
+<h2 id="Hexo-Plugin"><a href="#Hexo-Plugin" class="headerlink" title="Hexo Plugin"></a>Hexo Plugin</h2><h3 id="Latex"><a href="#Latex" class="headerlink" title="Latex"></a>Latex</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
+
+<p>latex still can&#x2019;t work after install hexo-math</p>
+<p>After installing the plug-in I did not find the hexo-math folder.</p>
+<p>then i install <a href="https://github.com/phoenixcw/hexo-renderer-mathjax" target="_blank" rel="noopener">hexo-renderer-mathjax</a>,don&#x2019;t add <code>hexo-renderer-mathjax</code> to <code>plugins</code> of <code>_config.yml</code></p>
+<p>now i found <code>hexo-math</code> folder under <code>node_modules</code> directory.but still can&#x2019;t work.</p>
+<p>open <code>node_modules\hexo-math\lib\option.js</code></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> DEFAULT_OPTS = exports.DEFAULT_OPTS = {</span><br><span class="line">  engine: <span class="hljs-string">&apos;mathjax&apos;</span>,</span><br><span class="line">  mathjax: {</span><br><span class="line">    src: <span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js&quot;</span>,</span><br><span class="line">    config: {</span><br><span class="line">      tex2jax: {</span><br><span class="line">        inlineMath: [[<span class="hljs-string">&apos;$&apos;</span>, <span class="hljs-string">&apos;$&apos;</span>], [<span class="hljs-string">&quot;\\(&quot;</span>, <span class="hljs-string">&quot;\\)&quot;</span>]],</span><br><span class="line">        skipTags: [<span class="hljs-string">&apos;script&apos;</span>, <span class="hljs-string">&apos;noscript&apos;</span>, <span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;textarea&apos;</span>, <span class="hljs-string">&apos;pre&apos;</span>, <span class="hljs-string">&apos;code&apos;</span>],</span><br><span class="line">        processEscapes: <span class="hljs-literal">true</span></span><br><span class="line">      },</span><br><span class="line">      TeX: {</span><br><span class="line">        equationNumbers: {</span><br><span class="line">          autoNumber: <span class="hljs-string">&quot;AMS&quot;</span></span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  katex: {</span><br><span class="line">    css: <span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css&quot;</span>,</span><br><span class="line">    js: <span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js&quot;</span>,</span><br><span class="line">    config: {</span><br><span class="line">      throwOnError: <span class="hljs-literal">false</span>,</span><br><span class="line">      errorColor: <span class="hljs-string">&quot;#cc0000&quot;</span></span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+
+<p>but The official website is described below</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> DEFAULT_OPTS = {</span><br><span class="line">  engine: <span class="hljs-string">&apos;mathjax&apos;</span>,</span><br><span class="line">  mathjax: {</span><br><span class="line">    src: <span class="hljs-string">&quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span>,</span><br><span class="line">    config: {</span><br><span class="line">      tex2jax: {</span><br><span class="line">        inlineMath: [ [<span class="hljs-string">&apos;$&apos;</span>,<span class="hljs-string">&apos;$&apos;</span>], [<span class="hljs-string">&quot;\\(&quot;</span>,<span class="hljs-string">&quot;\\)&quot;</span>] ],</span><br><span class="line">        skipTags: [<span class="hljs-string">&apos;script&apos;</span>, <span class="hljs-string">&apos;noscript&apos;</span>, <span class="hljs-string">&apos;style&apos;</span>, <span class="hljs-string">&apos;textarea&apos;</span>, <span class="hljs-string">&apos;pre&apos;</span>, <span class="hljs-string">&apos;code&apos;</span>],</span><br><span class="line">        processEscapes: <span class="hljs-literal">true</span></span><br><span class="line">      },</span><br><span class="line">      TeX: {</span><br><span class="line">        equationNumbers: {</span><br><span class="line">          autoNumber: <span class="hljs-string">&quot;AMS&quot;</span></span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  katex: {</span><br><span class="line">    css: <span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css&quot;</span>,</span><br><span class="line">    js: <span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js&quot;</span>,</span><br><span class="line">    config: {</span><br><span class="line">      throwOnError: <span class="hljs-literal">false</span>,</span><br><span class="line">      errorColor: <span class="hljs-string">&quot;#cc0000&quot;</span></span><br><span class="line">    }</span><br><span class="line">  }  </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>now it work after modify.</p>
+<p>but still not perfect,<code>hexo-math</code> can&#x2019;t will parse multi <code>_</code> tag as Italic.</p>
+<p>such as:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$F_{r} = \frac{r_{\|}^{2} + r_{\bot}^{2}}{2}$</span><br></pre></td></tr></table></figure>
+
+<p>Modify the regular expression in file <code>node_modules/marked/lib/marked.js</code></p>
+<p>source:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Inline-Level Grammar</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> inline = {</span><br><span class="line">  <span class="hljs-built_in">escape</span>: <span class="hljs-regexp">/^\\([\\`*{}\[\]()#+\-.!_&gt;])/</span>,</span><br><span class="line">  autolink: <span class="hljs-regexp">/^&lt;([^ &gt;]+(@|:\/)[^ &gt;]+)&gt;/</span>,</span><br><span class="line">  url: noop,</span><br><span class="line">  tag: <span class="hljs-regexp">/^&lt;!--[\s\S]*?--&gt;|^&lt;\/?\w+(?:&quot;[^&quot;]*&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&gt;])*?&gt;/</span>,</span><br><span class="line">  link: <span class="hljs-regexp">/^!?\[(inside)\]\(href\)/</span>,</span><br><span class="line">  reflink: <span class="hljs-regexp">/^!?\[(inside)\]\s*\[([^\]]*)\]/</span>,</span><br><span class="line">  nolink: <span class="hljs-regexp">/^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/</span>,</span><br><span class="line">  strong: <span class="hljs-regexp">/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/</span>,</span><br><span class="line">  em: <span class="hljs-regexp">/^\b_((?:[^_]|__)+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br><span class="line">  code: <span class="hljs-regexp">/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/</span>,</span><br><span class="line">  br: <span class="hljs-regexp">/^ {2,}\n(?!\s*$)/</span>,</span><br><span class="line">  del: noop,</span><br><span class="line">  text: <span class="hljs-regexp">/^[\s\S]+?(?=[\\&lt;!\[_*`]| {2,}\n|$)/</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Pedantic Inline Grammar</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"></span><br><span class="line">inline.pedantic = merge({}, inline.normal, {</span><br><span class="line">  strong: <span class="hljs-regexp">/^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/</span>,</span><br><span class="line">  em: <span class="hljs-regexp">/^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/</span></span><br><span class="line">});</span><br></pre></td></tr></table></figure>
+
+<p>target:</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Inline-Level Grammar</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> inline = {</span><br><span class="line">  <span class="hljs-built_in">escape</span>: <span class="hljs-regexp">/^\\([\\`*{}\[\]()#+\-.!_&gt;])/</span>,</span><br><span class="line">  autolink: <span class="hljs-regexp">/^&lt;([^ &gt;]+(@|:\/)[^ &gt;]+)&gt;/</span>,</span><br><span class="line">  url: noop,</span><br><span class="line">  tag: <span class="hljs-regexp">/^&lt;!--[\s\S]*?--&gt;|^&lt;\/?\w+(?:&quot;[^&quot;]*&quot;|&apos;[^&apos;]*&apos;|[^&apos;&quot;&gt;])*?&gt;/</span>,</span><br><span class="line">  link: <span class="hljs-regexp">/^!?\[(inside)\]\(href\)/</span>,</span><br><span class="line">  reflink: <span class="hljs-regexp">/^!?\[(inside)\]\s*\[([^\]]*)\]/</span>,</span><br><span class="line">  nolink: <span class="hljs-regexp">/^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/</span>,</span><br><span class="line">  strong: <span class="hljs-regexp">/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/</span>,</span><br><span class="line">  em: <span class="hljs-regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br><span class="line">  code: <span class="hljs-regexp">/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/</span>,</span><br><span class="line">  br: <span class="hljs-regexp">/^ {2,}\n(?!\s*$)/</span>,</span><br><span class="line">  del: noop,</span><br><span class="line">  text: <span class="hljs-regexp">/^[\s\S]+?(?=[\\&lt;!\[_*`]| {2,}\n|$)/</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Pedantic Inline Grammar</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"></span><br><span class="line">inline.pedantic = merge({}, inline.normal, {</span><br><span class="line">  strong: <span class="hljs-regexp">/^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/</span>,</span><br><span class="line">  em: <span class="hljs-regexp">/^\*(?=\S)([\s\S]*?\S)\*(?!\*)/</span></span><br><span class="line">});</span><br></pre></td></tr></table></figure>
+
+<h3 id="Disqus"><a href="#Disqus" class="headerlink" title="Disqus"></a>Disqus</h3><p><a href="https://disqus.com/" target="_blank" rel="noopener">Disqus</a></p>
+<h4 id="Disqus-Config"><a href="#Disqus-Config" class="headerlink" title="Disqus Config"></a>Disqus Config</h4><p>click <code>GET STARTED</code>, select <code>I want to install Disqus on my site</code></p>
+<p>First Step:</p>
+<p><img src="/resources/images/Disqus_Create_New_Site.png" alt="Create a new Site"></p>
+<p>Second Step:</p>
+<p><img src="/resources/images/Disqus_Choose_A_Platform.png" alt="Choose a platform"></p>
+<p>my Platform is hexo , so i select <code>install manually with universal code</code></p>
+<p>Next Disqus will show the Universal Code install instructions page</p>
+<p>Third Step:</p>
+<p><img src="/resources/images/Disqus_Config.png" alt="Configure Disqus"></p>
+<p>Website URL is <code>http://&lt;username&gt;.github.io/</code></p>
+<h4 id="Apply-Disqus"><a href="#Apply-Disqus" class="headerlink" title="Apply Disqus"></a>Apply Disqus</h4><p>Open File <code>layout/_partial/article.ejs</code> under theme folder</p>
+<p>Add this snippet to the end of the file</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;</span><br><span class="line">&lt;section id=&quot;comments&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;disqus_thread&quot;&gt;</span><br><span class="line">    &lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;//disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br><span class="line">&lt;% } %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Open File <code>layout/_partical/after-footer.ejs</code> under theme folder</p>
+<p>Add this snippet to the file</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (config.disqus_shortname){ %&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var disqus_shortname = &apos;&lt;%= config.disqus_shortname %&gt;&apos;;</span><br><span class="line">  &lt;% if (page.permalink){ %&gt;</span><br><span class="line">  var disqus_url = &apos;&lt;%= page.permalink %&gt;&apos;;</span><br><span class="line">  &lt;% } %&gt;</span><br><span class="line">  (function(){</span><br><span class="line">    var dsq = document.createElement(&apos;script&apos;);</span><br><span class="line">    dsq.type = &apos;text/javascript&apos;;</span><br><span class="line">    dsq.async = true;</span><br><span class="line">    dsq.src = &apos;//&apos; + disqus_shortname + &apos;.disqus.com/&lt;% if (page.comments) { %&gt;embed.js&lt;% } else { %&gt;count.js&lt;% } %&gt;&apos;;</span><br><span class="line">    (document.getElementsByTagName(&apos;head&apos;)[0] || document.getElementsByTagName(&apos;body&apos;)[0]).appendChild(dsq);</span><br><span class="line">  })();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;% } %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>modify site&#x2019;s <code>_config.yml</code></p>
+<figure class="highlight yml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">disqus_shortname:</span> <span class="hljs-string">&lt;shortname&gt;</span> <span class="hljs-comment"># refer to Website Name in the first step</span></span><br></pre></td></tr></table></figure>
+
+<p>More Info: </p>
+<ul>
+<li><a href="https://pages.github.com/" target="_blank" rel="noopener">Create Github Page</a></li>
+<li><a href="https://hexo.io/docs/index.html" target="_blank" rel="noopener">Setup Hexo</a></li>
+<li><a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></li>
+<li><a href="https://github.com/hexojs/hexo-math/issues/26" target="_blank" rel="noopener">How to config it to make it work</a></li>
+<li><a href="https://github.com/hexojs/hexo-math/issues/40" target="_blank" rel="noopener">&#x4E3A;&#x4EC0;&#x4E48;&#x8FD9;&#x4E2A;&#x516C;&#x5F0F;&#x6CA1;&#x6CD5;&#x89E3;&#x6790;</a></li>
+<li><a href="http://kubicode.me/2016/03/16/Hexo/Fix-Hexo-Bug-In-Mathjax/" target="_blank" rel="noopener">&#x4FEE;&#x590D;Hexo&#x5199;Mathjax&#x516C;&#x5F0F;&#x591A;&#x4E2A;&#x4E0B;&#x6807;&#x5931;&#x6548;&#x7684;&#x95EE;&#x9898;</a></li>
+</ul>
+<p>Plugin:</p>
+<ul>
+<li><a href="https://github.com/hexojs/hexo-math" target="_blank" rel="noopener">hexo math</a></li>
+<li><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deploy-git</a></li>
+<li><a href="https://github.com/phoenixcw/hexo-renderer-mathjax" target="_blank" rel="noopener">hexo-renderer-mathjax</a></li>
+</ul>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/hexo/">#hexo</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/github/">#github</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/hexo-qiniu-config/">hexo qiniu config</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/VPS-SSH-Git-Config/">VPS SSH Git Config</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

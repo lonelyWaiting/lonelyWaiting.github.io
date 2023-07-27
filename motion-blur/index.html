@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>motion blur - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x7B97;&amp;#x6CD5;&amp;#x63CF;&amp;#x8FF0;">1&nbsp;&nbsp;<b>&amp;amp;#x7B97;&amp;amp;#x6CD5;&amp;amp;#x63CF;&amp;amp;#x8FF0;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6DF1;&amp;#x5EA6;&amp;#x56FE;&amp;#x63D0;&amp;#x53D6;&amp;#x7269;&amp;#x4F53;&amp;#x4F4D;&amp;#x7F6E;">2&nbsp;&nbsp;<b>&amp;amp;#x6DF1;&amp;amp;#x5EA6;&amp;amp;#x56FE;&amp;amp;#x63D0;&amp;amp;#x53D6;&amp;amp;#x7269;&amp;amp;#x4F53;&amp;amp;#x4F4D;&amp;amp;#x7F6E;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5B9E;&amp;#x73B0;emotion-blur">3&nbsp;&nbsp;<b>&amp;amp;#x5B9E;&amp;amp;#x73B0;emotion blur</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x52A8;&amp;#x6001;&amp;#x7269;&amp;#x4F53;">4&nbsp;&nbsp;<b>&amp;amp;#x52A8;&amp;amp;#x6001;&amp;amp;#x7269;&amp;amp;#x4F53;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5C4F;&amp;#x853D;&amp;#x7269;&amp;#x4F53;">5&nbsp;&nbsp;<b>&amp;amp;#x5C4F;&amp;amp;#x853D;&amp;amp;#x7269;&amp;amp;#x4F53;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">6&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            motion blur
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2018-01-09T00:06:34.000Z" itemprop="datePublished">1月 9 2018</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 分钟 lesen (Über 430 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>motion blur&#x7528;&#x4E8E;&#x8868;&#x73B0;&#x901F;&#x5EA6;&#x611F;.&#x4E00;&#x79CD;&#x5F88;&#x5E38;&#x7528;&#x7684;&#x540E;&#x5904;&#x7406;&#x6280;&#x672F;<a id="more"></a></p>
+<h1 id="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;"><a href="#&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;" class="headerlink" title="&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;"></a>&#x7B97;&#x6CD5;&#x63CF;&#x8FF0;</h1><ul>
+<li>&#x6839;&#x636E;&#x6DF1;&#x5EA6;&#x56FE;&#x8BA1;&#x7B97;&#x51FA;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x7684;&#x4E16;&#x754C;&#x7A7A;&#x95F4;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x7528;&#x524D;&#x4E00;&#x5E27;&#x7684;view-project&#x77E9;&#x9635;&#x8FDB;&#x884C;&#x53D8;&#x6362;,&#x5F97;&#x5230;&#x65B0;&#x7684;&#x89C6;&#x53E3;&#x4F4D;&#x7F6E;</li>
+<li>&#x6839;&#x636E;&#x5F53;&#x524D;&#x5E27;&#x4E0E;&#x4E0A;&#x4E00;&#x5E27;&#x7684;&#x89C6;&#x53E3;&#x4F4D;&#x7F6E;&#xFF0C;&#x751F;&#x6210;&#x9010;&#x50CF;&#x7D20;&#x7684;&#x901F;&#x5EA6;&#x503C;</li>
+<li>&#x6CBF;&#x7740;&#x901F;&#x5EA6;&#x65B9;&#x5411;&#x8FDB;&#x884C;&#x591A;&#x91CD;&#x91C7;&#x6837;,&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x5E73;&#x5747;</li>
+</ul>
+<h1 id="&#x6DF1;&#x5EA6;&#x56FE;&#x63D0;&#x53D6;&#x7269;&#x4F53;&#x4F4D;&#x7F6E;"><a href="#&#x6DF1;&#x5EA6;&#x56FE;&#x63D0;&#x53D6;&#x7269;&#x4F53;&#x4F4D;&#x7F6E;" class="headerlink" title="&#x6DF1;&#x5EA6;&#x56FE;&#x63D0;&#x53D6;&#x7269;&#x4F53;&#x4F4D;&#x7F6E;"></a>&#x6DF1;&#x5EA6;&#x56FE;&#x63D0;&#x53D6;&#x7269;&#x4F53;&#x4F4D;&#x7F6E;</h1><p>viewport position: $H = (\frac{x}{w}, \frac{y}{w}, \frac{z}{w} , 1)$</p>
+<p>world-view-project matrix: M</p>
+<p>$H \times M^{-1} = (\frac{X}{W}, \frac{Y}{W}, \frac{Z}{W}, W) = D$</p>
+<p>world position: $WorldPos = \frac{D}{D.w}$</p>
+<p>&#x63D0;&#x53D6;&#x4E16;&#x754C;&#x7A7A;&#x95F4;&#x4F4D;&#x7F6E;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">float2 zOverW = tex2D(depthTexture, texCoord);</span><br><span class="line">float4 H = float4(texCoord.x * <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, (<span class="hljs-number">1</span> - texCoord.y) * <span class="hljs-number">2</span> - <span class="hljs-number">1</span> , zOverw , <span class="hljs-number">1</span>);</span><br><span class="line">float4 D = mul(H, g_ViewProjectionInverseMatrix);</span><br><span class="line">float4 worldPos = D / D.w;</span><br></pre></td></tr></table></figure>
+
+<p>&#x9010;&#x50CF;&#x7D20;&#x8BA1;&#x7B97;&#x901F;&#x5EA6;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">float4 currentPos = H;</span><br><span class="line">float4 previousPos = mul(worldPos, g_previousViewProjectionMatrix);</span><br><span class="line">previousPos /= previousPos.w;</span><br><span class="line">float2 velocity = (currentPos - previousPos) / <span class="hljs-number">2.0f</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="&#x5B9E;&#x73B0;emotion-blur"><a href="#&#x5B9E;&#x73B0;emotion-blur" class="headerlink" title="&#x5B9E;&#x73B0;emotion blur"></a>&#x5B9E;&#x73B0;emotion blur</h1><p>&#x6CBF;&#x7740;&#x901F;&#x5EA6;&#x65B9;&#x5411;&#x8FDB;&#x884C;&#x591A;&#x91CD;&#x91C7;&#x6837;,&#x5E76;&#x6700;&#x7EC8;&#x8FDB;&#x884C;&#x5E73;&#x5747;,&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x50CF;&#x7D20;&#x503C;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">float4 color = tex2D(sceneSampler, texCoord);</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; g_numSamples; ++i, texCoord += velocity)</span><br><span class="line">{</span><br><span class="line">    float4 currentColor = tex2D(sceneSampler, texCoord);</span><br><span class="line">    color += currentColor;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">float4 finalColor = color / g_numSamples;</span><br></pre></td></tr></table></figure>
+
+<h1 id="&#x52A8;&#x6001;&#x7269;&#x4F53;"><a href="#&#x52A8;&#x6001;&#x7269;&#x4F53;" class="headerlink" title="&#x52A8;&#x6001;&#x7269;&#x4F53;"></a>&#x52A8;&#x6001;&#x7269;&#x4F53;</h1><p>&#x4E0A;&#x9762;&#x7684;&#x7B97;&#x6CD5;&#x8003;&#x8651;&#x7684;&#x662F;&#x76F8;&#x673A;&#x7684;&#x8FD0;&#x52A8;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x4E8E;&#x9759;&#x6001;&#x7269;&#x4F53;&#x8868;&#x73B0;&#x7684;&#x5F88;&#x597D;</p>
+<p>&#x5BF9;&#x4E8E;&#x52A8;&#x6001;&#x7269;&#x4F53;,&#x9700;&#x8981;&#x8BB0;&#x5F55;&#x7269;&#x4F53;&#x5728;&#x573A;&#x666F;&#x4E2D;&#x7684;&#x901F;&#x5EA6;,&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x751F;&#x6210;&#x4E00;&#x5F20;&#x901F;&#x5EA6;&#x56FE;</p>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5F53;&#x524D;&#x5E27;&#x4E0E;&#x4E0B;&#x4E00;&#x5E27;&#x7684;view-projection&#x77E9;&#x9635;&#x53D8;&#x6362;&#x7269;&#x4F53;,&#x8BA1;&#x7B97;viewport&#x7684;&#x4F4D;&#x7F6E;&#x5DEE;&#x5F02;</p>
+<h1 id="&#x5C4F;&#x853D;&#x7269;&#x4F53;"><a href="#&#x5C4F;&#x853D;&#x7269;&#x4F53;" class="headerlink" title="&#x5C4F;&#x853D;&#x7269;&#x4F53;"></a>&#x5C4F;&#x853D;&#x7269;&#x4F53;</h1><p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x5C4F;&#x853D;&#x6389;&#x573A;&#x666F;&#x4E2D;&#x7684;&#x67D0;&#x4E9B;&#x7269;&#x4F53;,&#x4EE5;&#x4F7F;motion blur&#x4E0D;&#x5BF9;&#x5176;&#x8D77;&#x4F5C;&#x7528;</p>
+<p>&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x6E32;&#x67D3;&#x4E00;&#x5F20;mask&#x7EB9;&#x7406;&#x6216;&#x8005;&#x6E32;&#x67D3;&#x5230;&#x989C;&#x8272;&#x56FE;&#x7684;alpha&#x901A;&#x9053;</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch27.html" target="_blank" rel="noopener">GPU Gems 3 Emotion Blur</a></p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Rendering/">#Rendering</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/python-3-UnicodeDecodeError-when-pip-install-package/">python 3 UnicodeDecodeError when pip install package</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/D3D-Event-Query/">D3D Event Query</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

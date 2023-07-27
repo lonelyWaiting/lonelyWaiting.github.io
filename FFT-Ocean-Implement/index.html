@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>FFT Ocean Implement - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x7406;&amp;#x8BBA;">1&nbsp;&nbsp;<b>&amp;amp;#x7406;&amp;amp;#x8BBA;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6839;&amp;#x636E;Phillips-spectrum&amp;#x751F;&amp;#x6210;&amp;#x6CE2;&amp;#x8C31;">1.1&nbsp;&nbsp;&amp;amp;#x6839;&amp;amp;#x636E;Phillips spectrum&amp;amp;#x751F;&amp;amp;#x6210;&amp;amp;#x6CE2;&amp;amp;#x8C31;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8BA1;&amp;#x7B97;&amp;#x9891;&amp;#x57DF;&amp;#x6CE2;&amp;#x5F62;&amp;#x632F;&amp;#x5E45;">1.2&nbsp;&nbsp;&amp;amp;#x8BA1;&amp;amp;#x7B97;&amp;amp;#x9891;&amp;amp;#x57DF;&amp;amp;#x6CE2;&amp;amp;#x5F62;&amp;amp;#x632F;&amp;amp;#x5E45;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6839;&amp;#x636E;&amp;#x8272;&amp;#x6563;&amp;#x5173;&amp;#x7CFB;-&amp;#x8BA1;&amp;#x7B97;&amp;#x65F6;&amp;#x95F4;t&amp;#x5904;&amp;#x7684;&amp;#x9891;&amp;#x57DF;&amp;#x632F;&amp;#x5E45;">1.3&nbsp;&nbsp;&amp;amp;#x6839;&amp;amp;#x636E;&amp;amp;#x8272;&amp;amp;#x6563;&amp;amp;#x5173;&amp;amp;#x7CFB;,&amp;amp;#x8BA1;&amp;amp;#x7B97;&amp;amp;#x65F6;&amp;amp;#x95F4;t&amp;amp;#x5904;&amp;amp;#x7684;&amp;amp;#x9891;&amp;amp;#x57DF;&amp;amp;#x632F;&amp;amp;#x5E45;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4F7F;&amp;#x7528;IFFT&amp;#x53D8;&amp;#x6362;&amp;#x5230;&amp;#x65F6;&amp;#x57DF;">1.4&nbsp;&nbsp;&amp;amp;#x4F7F;&amp;amp;#x7528;IFFT&amp;amp;#x53D8;&amp;amp;#x6362;&amp;amp;#x5230;&amp;amp;#x65F6;&amp;amp;#x57DF;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x751F;&amp;#x6210;DisplacementMap">1.5&nbsp;&nbsp;&amp;amp;#x751F;&amp;amp;#x6210;DisplacementMap</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6CD5;&amp;#x7EBF;&amp;#x8BA1;&amp;#x7B97;">1.6&nbsp;&nbsp;&amp;amp;#x6CD5;&amp;amp;#x7EBF;&amp;amp;#x8BA1;&amp;amp;#x7B97;</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5B9E;&amp;#x73B0;">2&nbsp;&nbsp;<b>&amp;amp;#x5B9E;&amp;amp;#x73B0;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Phillips">2.1&nbsp;&nbsp;Phillips</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8BA1;&amp;#x7B97;-tilde-h-0-vec-k">2.2&nbsp;&nbsp;&amp;amp;#x8BA1;&amp;amp;#x7B97;$\tilde{h}_0(\vec{k})$</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8BA1;&amp;#x7B97;-h-vec-k-t-D-x-t-D-z-t">2.3&nbsp;&nbsp;&amp;amp;#x8BA1;&amp;amp;#x7B97;$h(\vec{k},t),D(x,t),D(z,t)$</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Radix-2-IFFT-GPU">2.4&nbsp;&nbsp;Radix-2 IFFT GPU</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6548;&amp;#x679C;">3&nbsp;&nbsp;<b>&amp;amp;#x6548;&amp;amp;#x679C;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5F15;&amp;#x7528;">4&nbsp;&nbsp;<b>&amp;amp;#x5F15;&amp;amp;#x7528;</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            FFT Ocean Implement
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2018-09-16T03:46:55.000Z" itemprop="datePublished">9月 16 2018</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            17 分钟 lesen (Über 2515 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><img src="https://s2.ax1x.com/2019/04/20/ECD1k6.png" alt="The Diagram of Update Displacement Map,&#x6765;&#x6E90;:Nvidia DirectX 11 Sample OceanCS"><br><a id="more"></a></p>
+<h1 id="&#x7406;&#x8BBA;"><a href="#&#x7406;&#x8BBA;" class="headerlink" title="&#x7406;&#x8BBA;"></a>&#x7406;&#x8BBA;</h1><h2 id="&#x6839;&#x636E;Phillips-spectrum&#x751F;&#x6210;&#x6CE2;&#x8C31;"><a href="#&#x6839;&#x636E;Phillips-spectrum&#x751F;&#x6210;&#x6CE2;&#x8C31;" class="headerlink" title="&#x6839;&#x636E;Phillips spectrum&#x751F;&#x6210;&#x6CE2;&#x8C31;"></a>&#x6839;&#x636E;Phillips spectrum&#x751F;&#x6210;&#x6CE2;&#x8C31;</h2><p>$$P_h(\vec{k}) = A\frac{exp(\frac{-1}{kL})^2}{k^4} |\vec{k}\cdot \vec{\omega}|^2\tag{1}$$<br>$$L = \frac{V^2}{g}$$</p>
+<ul>
+<li>V: &#x98CE;&#x901F;</li>
+<li>g: &#x91CD;&#x529B;&#x5E38;&#x91CF;</li>
+<li>$\vec{\omega}$: &#x98CE;&#x5411;</li>
+<li>A: &#x6570;&#x503C;&#x5E38;&#x91CF;</li>
+</ul>
+<p>&#x516C;&#x5F0F;&#x4E2D;$|\vec{k}\cdot \vec{\omega}|^2$&#x9879;&#x7528;&#x4E8E;&#x62B5;&#x6D88;&#x4E0E;&#x98CE;&#x5411;&#x5782;&#x76F4;&#x7684;&#x6CE2;</p>
+<p>&#x8BE5;&#x6A21;&#x578B;&#x76F8;&#x5BF9;&#x7B80;&#x5355;,&#x4F46;&#x5728;&#x9AD8;<a href="https://zh.wikipedia.org/wiki/%E6%B3%A2%E6%95%B8" target="_blank" rel="noopener">&#x6CE2;&#x6570;$|k|$</a>&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6536;&#x655B;&#x6027;&#x6BD4;&#x8F83;&#x5DEE;,&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#x4E58;&#x4E0A;&#x4E00;&#x4E2A;&#x56E0;&#x5B50;:<br>$$exp(-k^2\ell^2)$$<br>$\ell$&#x4E3A;&#x6CE2;&#x957F;,&#x4E14;$\ell \ll L$,&#x7528;&#x4E8E;&#x6291;&#x5236;&#x6CE2;&#x957F;&#x5C0F;&#x4E8E;$\ell$&#x7684;&#x6CE2;</p>
+<h2 id="&#x8BA1;&#x7B97;&#x9891;&#x57DF;&#x6CE2;&#x5F62;&#x632F;&#x5E45;"><a href="#&#x8BA1;&#x7B97;&#x9891;&#x57DF;&#x6CE2;&#x5F62;&#x632F;&#x5E45;" class="headerlink" title="&#x8BA1;&#x7B97;&#x9891;&#x57DF;&#x6CE2;&#x5F62;&#x632F;&#x5E45;"></a>&#x8BA1;&#x7B97;&#x9891;&#x57DF;&#x6CE2;&#x5F62;&#x632F;&#x5E45;</h2><p>$$\tilde{h}_0(\vec{k}) = \frac{1}{\sqrt{2}}(\xi_r + i\xi_i)\sqrt{P_h(\vec{k})}\tag{2}$$</p>
+<ul>
+<li>$\xi_r$,$\xi_i$&#x4E3A;&#x72EC;&#x7ACB;&#x65E0;&#x5173;&#x7684;&#x9AD8;&#x65AF;&#x968F;&#x673A;&#x6570;,&#x4E14;&#x5206;&#x5E03;&#x6EE1;&#x8DB3;&#x671F;&#x671B;&#x4E3A;0,&#x6807;&#x51C6;&#x5DEE;&#x4E3A;1</li>
+</ul>
+<h2 id="&#x6839;&#x636E;&#x8272;&#x6563;&#x5173;&#x7CFB;-&#x8BA1;&#x7B97;&#x65F6;&#x95F4;t&#x5904;&#x7684;&#x9891;&#x57DF;&#x632F;&#x5E45;"><a href="#&#x6839;&#x636E;&#x8272;&#x6563;&#x5173;&#x7CFB;-&#x8BA1;&#x7B97;&#x65F6;&#x95F4;t&#x5904;&#x7684;&#x9891;&#x57DF;&#x632F;&#x5E45;" class="headerlink" title="&#x6839;&#x636E;&#x8272;&#x6563;&#x5173;&#x7CFB;,&#x8BA1;&#x7B97;&#x65F6;&#x95F4;t&#x5904;&#x7684;&#x9891;&#x57DF;&#x632F;&#x5E45;"></a>&#x6839;&#x636E;&#x8272;&#x6563;&#x5173;&#x7CFB;,&#x8BA1;&#x7B97;&#x65F6;&#x95F4;<code>t</code>&#x5904;&#x7684;&#x9891;&#x57DF;&#x632F;&#x5E45;</h2><p>$$&#x8272;&#x6563;&#x5173;&#x7CFB;:\quad \omega(k) = \sqrt{gk}\tag{3}$$<br>$$\tilde{h}(\vec{k},t) = \tilde{h}_0(k)exp(i\omega(k)t) + \tilde{h}_0^*(-\vec{k})exp(-i\omega(k)t)\tag{4}$$</p>
+<ul>
+<li>$\tilde{h}_0(-\vec{k})^*$:&#x4E0E;$\tilde{h}_0(-\vec{k})$&#x5171;&#x8F6D;,&#x6CE8;&#x610F;&#x4E0D;&#x662F;$\tilde{h}_0(\vec{k})$</li>
+</ul>
+<p>&#x8BE5;&#x5F62;&#x5F0F;&#x6EE1;&#x8DB3;:$\tilde{h}^*(\vec{k},t) = \tilde{h}(-\vec{k},t)$</p>
+<h2 id="&#x4F7F;&#x7528;IFFT&#x53D8;&#x6362;&#x5230;&#x65F6;&#x57DF;"><a href="#&#x4F7F;&#x7528;IFFT&#x53D8;&#x6362;&#x5230;&#x65F6;&#x57DF;" class="headerlink" title="&#x4F7F;&#x7528;IFFT&#x53D8;&#x6362;&#x5230;&#x65F6;&#x57DF;"></a>&#x4F7F;&#x7528;IFFT&#x53D8;&#x6362;&#x5230;&#x65F6;&#x57DF;</h2><p>$$h(\vec{x},t) = \sum_{\vec{k}} \tilde{h}(\vec{k},t)exp(i\vec{k}\cdot \vec{x}) \tag{5}$$</p>
+<p>$$\vec{k} = (k_x,k_z),\quad k_x = \frac{2\pi n}{L_x},\quad k_z = \frac{2\pi m}{L_z}$$</p>
+<p>$$\frac{-N}{2} \leq n &lt; \frac{N}{2},\quad \frac{-M}{2} \leq m &lt; \frac{M}{2}$$</p>
+<p>FFT&#x5904;&#x7406;&#x5728;&#x79BB;&#x6563;&#x70B9;$\vec{x} = (\frac{n L_x}{N}, \frac{m L_z}{M})$&#x5904;&#x751F;&#x6210;&#x9AD8;&#x5EA6;&#x57DF;</p>
+<p>&#x56E0;&#x4E3A;&#x6CE2;&#x6D6A;&#x5728;&#x8D8A;&#x9760;&#x8FD1;&#x6CE2;&#x5C16;&#x5904;&#x8D8A;&#x5BC6;&#x96C6;,&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#x6C34;&#x5E73;&#x504F;&#x79FB;:<br>$$D(\vec{x},t) = \sum_{\vec{k}} -i\frac{\vec{k}}{k}\tilde{h}(\vec{k},t)exp(i\vec{k}\cdot \vec{x})\tag{6}$$</p>
+<p>&#x4EE4;:<br>$$D(\vec{k},t) = -i\frac{\vec{k}}{k}\tilde{h}(\vec{k},t) = D(x,t) + iD(z,t)\tag{7}$$</p>
+<p>$$\Rightarrow D(x,t) = -i k_x \tilde{h}(\vec{k},t)\tag{8}$$<br>$$\Rightarrow D(z,t) = -k_z \tilde{h}(\vec{k},t)\tag{9}$$<br>$$\Rightarrow D(\vec{x},t) = \sum_{\vec{k}} D(\vec{k},t)exp(i\vec{k}\cdot \vec{x})\tag{10} = \sum_{\vec{k}} D(x,t)exp(i\vec{k}\cdot \vec{x}) + i\sum_{\vec{k}} D(z,t)exp(i\vec{k}\cdot \vec{x})$$</p>
+<p>&#x6B64;&#x65F6;&#x7F51;&#x683C;&#x70B9;&#x7684;&#x771F;&#x6B63;&#x7684;&#x4F4D;&#x7F6E;&#x4E3A;:$\vec{x} + \lambda D(\vec{x},t)$</p>
+<p>&#x53EF;&#x89C1;&#x5F0F;(5)&#x4E0E;&#x5F0F;(10)&#x90FD;&#x662F;IFFT&#x53D8;&#x6362;&#x5F62;&#x5F0F;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5C06;&#x5F0F;(5)&#x8FDB;&#x884C;&#x5206;&#x89E3;:</p>
+<p>$$h(\vec{x},t) = \sum_{\vec{k}} \tilde{h}(\vec{k},t)exp(i\vec{k}\cdot \vec{x})$$<br>$$\Rightarrow h(x,z,t) = \sum_{n=-\frac{N}{2}}^{\frac{N}{2} - 1} \sum_{m=-\frac{M}{2}}^{\frac{M}{2} - 1} \tilde{h}(n,m,t)exp(i(\frac{2\pi n}{L_x},\frac{2\pi m}{L_z}) \cdot (x,z))$$<br>$$\Rightarrow h(x,z,t) = \sum_{n=-\frac{N}{2}}^{\frac{N}{2} - 1} \sum_{m=-\frac{M}{2}}^{\frac{M}{2} - 1} \tilde{h}(n,m,t)exp(i\frac{2\pi nx}{L_x})exp(i\frac{2\pi mz}{L_z})$$<br>$$\Rightarrow h(x,z,t) = \sum_{n=0}^{N-1} \sum_{m=0}^{M -1} \tilde{h}(n-\frac{N}{2},m-\frac{M}{2},t)exp(i\frac{2\pi (n - \frac{N}{2})x}{L_x})exp(i\frac{2\pi (m - \frac{M}{2})z}{L_z})$$<br>$$\Rightarrow h(x,z,t) = \sum_{n=0}^{N-1} \sum_{m=0}^{M -1} \tilde{h}(n-\frac{N}{2},m-\frac{M}{2},t)exp(i\frac{2\pi nx}{L_x})exp(-i\frac{\pi Nx}{L_x})exp(i\frac{2\pi mz}{L_z})exp(-i\frac{\pi M z}{L_z})$$<br>$$\Rightarrow h(x,z,t) = exp(-i\frac{\pi Nx}{L_x}) exp(-i\frac{\pi M z}{L_z}) \sum_{n=0}^{N-1} \sum_{m=0}^{M -1} \tilde{h}(n-\frac{N}{2},m-\frac{M}{2},t)exp(i\frac{2\pi nx}{L_x})exp(i\frac{2\pi mz}{L_z})$$</p>
+<p>&#x4EE4;:<br>$$h&#x2019;(x,z,t) = \sum_{n=0}^{N-1} \sum_{m=0}^{M -1} \tilde{h}(n-\frac{N}{2},m-\frac{M}{2},t)exp(i\frac{2\pi nx}{L_x})exp(i\frac{2\pi mz}{L_z})$$</p>
+<p>$$\Rightarrow h(x,z,t) = exp(-i\frac{\pi Nx}{L_x}) exp(-i\frac{\pi M z}{L_z}) h&#x2019;(x,z,t)$$</p>
+<p>&#x5F53;$N = L_x, M= L_z$&#x65F6;:<br>$$\Rightarrow h(x,z,t) = exp(-i\pi x) exp(-i\pi z) h&#x2019;(x,z,t)$$</p>
+<p>$$\because e^{ix} = cos x + i sin x$$</p>
+<p>$$\therefore h(x,z,t) = (-1)^{x+z}h&#x2019;(x,z,t)$$</p>
+<p>$h&#x2019;(x,z,t)$&#x4E3A;&#x4E8C;&#x7EF4;FFT,&#x5373;&#x9010;&#x884C;&#x505A;&#x4E00;&#x7EF4;IFFT&#x518D;&#x9010;&#x5217;&#x505A;&#x4E00;&#x7EF4;IFFT,FFT&#x8BA1;&#x7B97;&#x53EF;&#x53C2;&#x8003;<a href="https://zh.wikipedia.org/wiki/%E5%BA%93%E5%88%A9%EF%BC%8D%E5%9B%BE%E5%9F%BA%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">&#x5E93;&#x5229;-&#x56FE;&#x57FA;&#x5FEB;&#x901F;&#x5085;&#x7ACB;&#x53F6;&#x53D8;&#x6362;&#x7B97;&#x6CD5;</a></p>
+<h2 id="&#x751F;&#x6210;DisplacementMap"><a href="#&#x751F;&#x6210;DisplacementMap" class="headerlink" title="&#x751F;&#x6210;DisplacementMap"></a>&#x751F;&#x6210;DisplacementMap</h2><p>&#x5728;&#x8BA1;&#x7B97;&#x5B8C;<code>h&apos;(x,z,t)</code>&#x540E;&#x8FD8;&#x9700;&#x8981;&#x4E58;&#x4E0A;$(-1)^{x+z}$&#x624D;&#x662F;$h(x,z,t)$,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;$h(x,z,t)$&#x4EE5;&#x53CA;$D(\vec{x},t)$&#x5B58;&#x5230;&#x8D34;&#x56FE;&#x4E2D;<br>&#x79F0;&#x4E4B;&#x4E3A;<code>DisplacementMap</code></p>
+<h2 id="&#x6CD5;&#x7EBF;&#x8BA1;&#x7B97;"><a href="#&#x6CD5;&#x7EBF;&#x8BA1;&#x7B97;" class="headerlink" title="&#x6CD5;&#x7EBF;&#x8BA1;&#x7B97;"></a>&#x6CD5;&#x7EBF;&#x8BA1;&#x7B97;</h2><p>&#x6CD5;&#x7EBF;&#x901A;&#x8FC7;&#x6709;&#x9650;&#x5DEE;&#x5206;&#x5373;&#x53EF;,$h(\vec{x},t)$&#x5B58;&#x5728;<code>DisplacementMap</code>&#x4E2D;</p>
+<p>&#x8BBE;&#x7F51;&#x683C;&#x5B9E;&#x9645;&#x5927;&#x5C0F;&#x4E3A;$(L_x,L_z)$,<code>DisplacementMap</code>&#x5206;&#x8FA8;&#x7387;&#x4E3A;(N,M),&#x5219;&#x5728;(x,z)&#x5904;:<br>$$T_x = (\frac{2L_x}{N}, h(x + 1, z, t) - h(x - 1, z, t), 0)$$<br>$$T_z = (0, h(x, z + 1, t) - h(x, z - 1, t), \frac{2L_z}{M})$$</p>
+<p>$$<br>\begin{align}<br>Normal  &amp;= T_z \times T_x \notag\\<br>        &amp;=  \begin{bmatrix}<br>            i &amp; j &amp; k \\<br>            0 &amp; h(x, z + 1, t) - h(x, z - 1, t) &amp; \frac{2L_z}{M} \\<br>            \frac{2L_x}{N} &amp; h(x + 1, z, t) - h(x - 1, z, t) &amp; 0<br>            \end{bmatrix} \notag\\<br>        &amp;= (\frac{-2L_z(h(x + 1, z, t) - h(x - 1, z, t))}{M}, \frac{4L_x L_z}{NM}, \frac{-2L_x (h(x, z + 1, t) - h(x, z - 1, t))}{N})\notag<br>\end{align}<br>$$</p>
+<h1 id="&#x5B9E;&#x73B0;"><a href="#&#x5B9E;&#x73B0;" class="headerlink" title="&#x5B9E;&#x73B0;"></a>&#x5B9E;&#x73B0;</h1><h2 id="Phillips"><a href="#Phillips" class="headerlink" title="Phillips"></a>Phillips</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">Phillips</span><span class="hljs-params">(Vector2 K, Vector2 windDir, <span class="hljs-keyword">float</span> windSpeed, <span class="hljs-keyword">float</span> amplitude, <span class="hljs-keyword">float</span> dir_depend)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">float</span> L = windSpeed * windSpeed / GRAV_ACCEL;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">float</span> l = L / <span class="hljs-number">1000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">float</span> Ksqr = K.x * K.x + K.y * K.y;</span><br><span class="line">    <span class="hljs-keyword">float</span> Kcos = K.x * windDir.x + K.y * windDir.y;</span><br><span class="line">    <span class="hljs-keyword">float</span> phillips = amplitude * Mathf.Exp(<span class="hljs-number">-1.0f</span> / (Ksqr * L * L)) / (Ksqr * Ksqr * Ksqr) * (Kcos * Kcos);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// &#x4E0E;&#x98CE;&#x5411;&#x5927;&#x4E8E;90&#x5EA6;&#x7684;&#x6CE2;,&#x51CF;&#x5F31;</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (Kcos &lt; <span class="hljs-number">0.0f</span>) phillips *= dir_depend;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> phillips * Mathf.Exp(-Ksqr * l * l);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="&#x8BA1;&#x7B97;-tilde-h-0-vec-k"><a href="#&#x8BA1;&#x7B97;-tilde-h-0-vec-k" class="headerlink" title="&#x8BA1;&#x7B97;$\tilde{h}_0(\vec{k})$"></a>&#x8BA1;&#x7B97;$\tilde{h}_0(\vec{k})$</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">Gauss</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">float</span> u1 = Random.Range(<span class="hljs-number">0.0f</span>, <span class="hljs-number">1.0f</span>);</span><br><span class="line">    <span class="hljs-keyword">float</span> u2 = Random.Range(<span class="hljs-number">0.0f</span>, <span class="hljs-number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (u1 &lt; <span class="hljs-number">1e-6</span>f) u1 = <span class="hljs-number">1e-6</span>f;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> Mathf.Sqrt(<span class="hljs-number">-2</span> * Mathf.Log(u1)) * Mathf.Cos(<span class="hljs-number">2</span> * Mathf.PI * u2);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ComputeH0</span><span class="hljs-params">(OceanParameter parameter, ref Vector2[] h0, ref <span class="hljs-keyword">float</span>[] omega)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    Vector2 windDir = parameter.wind_dir.normalized;</span><br><span class="line"></span><br><span class="line">    Vector2 K = Vector2.zero;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; parameter.displaceMap_dimension; i++)</span><br><span class="line">    {</span><br><span class="line">        K.y = (-parameter.displaceMap_dimension / <span class="hljs-number">2.0f</span> + i) * (<span class="hljs-number">2</span> * Mathf.PI / parameter.patch_size);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; parameter.displaceMap_dimension; j++)</span><br><span class="line">        {</span><br><span class="line">            K.x = (-parameter.displaceMap_dimension / <span class="hljs-number">2.0f</span> + j) * (<span class="hljs-number">2</span> * Mathf.PI / parameter.patch_size);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">float</span> phillips = (K.x == <span class="hljs-number">0</span> &amp;&amp; K.y == <span class="hljs-number">0</span>) ? <span class="hljs-number">0</span> : Mathf.Sqrt(Phillips(K, windDir, parameter.wind_speed, parameter.wave_amplitude * <span class="hljs-number">1e-7</span>f, parameter.wind_dependency));</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">int</span> index = i * parameter.displaceMap_dimension + j;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">float</span> Gauss_x = Gauss() , Gauss_y = Gauss();</span><br><span class="line">            h0[index].x = phillips * Gauss_x * HALF_SQRT_2;</span><br><span class="line">            h0[index].y = phillips * Gauss_y * HALF_SQRT_2;</span><br><span class="line"></span><br><span class="line">            omega[index] = Mathf.Sqrt(GRAV_ACCEL * Mathf.Sqrt(K.x * K.x + K.y * K.y));</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="&#x8BA1;&#x7B97;-h-vec-k-t-D-x-t-D-z-t"><a href="#&#x8BA1;&#x7B97;-h-vec-k-t-D-x-t-D-z-t" class="headerlink" title="&#x8BA1;&#x7B97;$h(\vec{k},t),D(x,t),D(z,t)$"></a>&#x8BA1;&#x7B97;$h(\vec{k},t),D(x,t),D(z,t)$</h2><p>&#x4E0E;&#x65F6;&#x95F4;&#x76F8;&#x5173;,&#x9700;&#x8981;&#x6BCF;&#x5E27;&#x8BA1;&#x7B97;,&#x8FD9;&#x91CC;&#x5C06;&#x5176;&#x653E;&#x5230;<code>ComputeShader</code>&#x4E2D;&#x53BB;&#x7B97;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> kernel UpdateSpecturmCS</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BLOCK_SIZE 16</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BLOCK_SIZE 16</span></span><br><span class="line"></span><br><span class="line">StructuredBuffer&lt;float2&gt;    H0;</span><br><span class="line">StructuredBuffer&lt;<span class="hljs-keyword">float</span>&gt;     Omega;</span><br><span class="line">RWStructuredBuffer&lt;float2&gt;  HK;</span><br><span class="line">RWStructuredBuffer&lt;float2&gt;  Dx;</span><br><span class="line">RWStructuredBuffer&lt;float2&gt;  Dy;</span><br><span class="line"></span><br><span class="line">uint  Dimension;</span><br><span class="line"><span class="hljs-keyword">float</span> curTime;</span><br><span class="line"></span><br><span class="line">[numthreads(BLOCK_SIZE, BLOCK_SIZE, <span class="hljs-number">1</span>)]</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">UpdateSpecturmCS</span><span class="hljs-params">(uint3 id : SV_DispatchThreadID)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    uint in_Index = id.y * Dimension + id.x;</span><br><span class="line">    <span class="hljs-comment">// &#x5171;&#x8F6D;</span></span><br><span class="line">    uint in_mIndex = (Dimension - id.y) * Dimension + (Dimension - id.x);</span><br><span class="line">    uint out_index = id.y * Dimension + id.x;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// H(0) -&gt; H(k)</span></span><br><span class="line">    float2 H0_k  = H0[in_Index];</span><br><span class="line">    float2 H0_mk = H0[in_mIndex];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">float</span> _sin = <span class="hljs-built_in">sin</span>(Omega[in_Index] * curTime);</span><br><span class="line">    <span class="hljs-keyword">float</span> _cos = <span class="hljs-built_in">cos</span>(Omega[in_Index] * curTime);</span><br><span class="line"></span><br><span class="line">    float2 ht;</span><br><span class="line">    ht.x = (H0_k.x + H0_mk.x) * _cos - (H0_k.y + H0_mk.y) * _sin;</span><br><span class="line">    ht.y = (H0_k.x - H0_mk.x) * _sin + (H0_k.y + H0_mk.y) * _cos;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Dx,Dy</span></span><br><span class="line">    <span class="hljs-keyword">float</span> kx = id.x - Dimension * <span class="hljs-number">0.5f</span>;</span><br><span class="line">    <span class="hljs-keyword">float</span> ky = id.y - Dimension * <span class="hljs-number">0.5f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">float</span> sqr_k = kx * kx + ky * ky;</span><br><span class="line">    <span class="hljs-keyword">float</span> rsqr_k = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (sqr_k &gt; <span class="hljs-number">1e-12</span>f) rsqr_k = <span class="hljs-number">1.0f</span> / <span class="hljs-built_in">sqrt</span>(sqr_k);</span><br><span class="line"></span><br><span class="line">    kx *= rsqr_k;</span><br><span class="line">    ky *= rsqr_k;</span><br><span class="line"></span><br><span class="line">    float2 dt_x = float2(ht.y * kx, -ht.x * kx);</span><br><span class="line">    float2 dt_y = float2(ht.y * ky, -ht.x * ky);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span>(id.x &lt; Dimension &amp;&amp; id.y &lt; Dimension)</span><br><span class="line">    {</span><br><span class="line">        HK[out_index] = ht;</span><br><span class="line">        Dx[out_index] = dt_x;</span><br><span class="line">        Dy[out_index] = dt_y;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="Radix-2-IFFT-GPU"><a href="#Radix-2-IFFT-GPU" class="headerlink" title="Radix-2 IFFT GPU"></a>Radix-2 IFFT GPU</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> kernel Radix2CS</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> kernel transpose</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> kernel copyBuffer</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> kernel RowBitReverse</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> THREAD_NUM 128</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> PI 3.14159274</span></span><br><span class="line"></span><br><span class="line">uint thread_count;</span><br><span class="line">uint istride;</span><br><span class="line">uint bit_count;</span><br><span class="line">uint N;</span><br><span class="line"></span><br><span class="line">StructuredBuffer&lt;<span class="hljs-keyword">int</span>&gt;       bit_reverse;</span><br><span class="line">StructuredBuffer&lt;float2&gt;    input;</span><br><span class="line">RWStructuredBuffer&lt;float2&gt;  output;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">bitReserve</span><span class="hljs-params">(uint src, uint bit_num)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">int</span> dst = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (uint i = <span class="hljs-number">0</span>; i &lt; bit_num; i++)</span><br><span class="line">    {</span><br><span class="line">        dst = (dst &lt;&lt; <span class="hljs-number">1</span>) + (src &amp; <span class="hljs-number">1</span>);</span><br><span class="line">        src = src &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="hljs-keyword">return</span> dst;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">[numthreads(THREAD_NUM, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)]</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Radix2CS</span><span class="hljs-params">(uint3 thread_id : SV_DispatchThreadID)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span> (thread_id.x &gt;= thread_count)</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    uint mod  = thread_id.x &amp; (istride - <span class="hljs-number">1</span>);</span><br><span class="line">    uint addr = ((thread_id.x - mod) &lt;&lt; <span class="hljs-number">1</span>) + mod;</span><br><span class="line"></span><br><span class="line">    float2 t = input[addr];</span><br><span class="line">    float2 u = input[addr + istride];</span><br><span class="line"></span><br><span class="line">    uint w = (addr - mod) / (istride &lt;&lt; <span class="hljs-number">1</span>);</span><br><span class="line">    w = bitReserve(w, bit_count);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">float</span> buttfly_cos = <span class="hljs-built_in">cos</span>(<span class="hljs-number">2</span> * PI * w / (<span class="hljs-number">2</span> &lt;&lt; bit_count));</span><br><span class="line">    <span class="hljs-keyword">float</span> buttfly_sin = <span class="hljs-built_in">sin</span>(<span class="hljs-number">2</span> * PI * w / (<span class="hljs-number">2</span> &lt;&lt; bit_count));</span><br><span class="line"></span><br><span class="line">    output[addr]           = float2(t.x + u.x * buttfly_cos - u.y * buttfly_sin, t.y + u.x * buttfly_sin + u.y * buttfly_cos);</span><br><span class="line">    output[addr + istride] = float2(t.x - u.x * buttfly_cos + u.y * buttfly_sin, t.y - u.x * buttfly_sin - u.y * buttfly_cos);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">[numthreads(THREAD_NUM, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)]</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">transpose</span><span class="hljs-params">(uint3 thread_id : SV_DispatchThreadID)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span>(thread_id.x &gt;= thread_count)</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> row = thread_id.x / N;</span><br><span class="line">    <span class="hljs-keyword">int</span> col = thread_id.x &amp; (N - <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">    output[col * N + row] = input[thread_id.x];</span><br><span class="line"></span><br><span class="line">    row = (thread_id.x + istride) / N;</span><br><span class="line">    col = (thread_id.x + istride) &amp; (N - <span class="hljs-number">1</span>);</span><br><span class="line">    output[col * N + row] = input[thread_id.x + istride];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">[numthreads(THREAD_NUM,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)]</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">copyBuffer</span><span class="hljs-params">(uint3 thread_id : SV_DispatchThreadID)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span>(thread_id.x &gt;= thread_count)</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    output[thread_id.x] = input[thread_id.x];</span><br><span class="line">    output[thread_id.x + istride] = input[thread_id.x + istride];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">[numthreads(THREAD_NUM,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)]</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RowBitReverse</span><span class="hljs-params">(uint3 thread_id : SV_DispatchThreadID)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span> (thread_id.x &gt;= thread_count)</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> row = thread_id.x / N;</span><br><span class="line">    <span class="hljs-keyword">int</span> col = thread_id.x &amp; (N - <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">    output[bit_reverse[row] * N + col] = input[thread_id.x];</span><br><span class="line"></span><br><span class="line">    row = (thread_id.x + istride) / N;</span><br><span class="line">    col = (thread_id.x + istride) &amp; (N - <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">    output[bit_reverse[row] * N + col] = input[thread_id.x + istride];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p><code>Radix2CS</code>&#x7528;&#x4E8E;&#x8BA1;&#x7B97;Radix-2 IFFT,<code>transpose</code>&#x7528;&#x4E8E;&#x5B9E;&#x73B0;&#x884C;&#x5217;&#x8F6C;&#x7F6E;,<code>RowBitReverse</code>&#x5B9E;&#x73B0;&#x9010;&#x884C;&#x6BD4;&#x7279;&#x53CD;&#x8F6C;&#x6392;&#x5217;</p>
+<p>&#x4EE5;&#x4E0B;<code>Radix-2 FFT</code>&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;,&#x5148;&#x9010;&#x5217;IFFT,&#x4F4D;&#x53CD;&#x8F6C;,&#x9010;&#x884C;IFFT(&#x8F6C;&#x7F6E;,&#x9010;&#x5217;IFFT,&#x4F4D;&#x53CD;&#x8F6C;,&#x8F6C;&#x7F6E;)</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">EvaluteFFT</span><span class="hljs-params">(ComputeBuffer srcBuffer, ref ComputeBuffer dstBuffer)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-keyword">if</span> (mTempBuffer == null || mBitReverseBuffer == null || dstBuffer == null || mRadix2FFT == null) <span class="hljs-keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    ComputeBuffer[] swapBuffer = <span class="hljs-keyword">new</span> ComputeBuffer[<span class="hljs-number">2</span>];</span><br><span class="line">    swapBuffer[<span class="hljs-number">0</span>] = dstBuffer;</span><br><span class="line">    swapBuffer[<span class="hljs-number">1</span>] = mTempBuffer;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> interation = (<span class="hljs-keyword">int</span>)(Mathf.Log(mSize) / Mathf.Log(<span class="hljs-number">2</span>));</span><br><span class="line">    <span class="hljs-keyword">int</span> thread_count = mSize * mSize / <span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> thread_group = thread_count / OceanConst.RADIX2FFT_THREAD_NUM;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; interation; i++)</span><br><span class="line">    {</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;thread_count&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;istride&quot;</span>, thread_count / (<span class="hljs-number">1</span> &lt;&lt; i));</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;bit_count&quot;</span>, i);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;N&quot;</span>, mSize);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">0</span>, <span class="hljs-string">&quot;input&quot;</span>, i == <span class="hljs-number">0</span> ? srcBuffer : swapBuffer[<span class="hljs-number">0</span>]);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">0</span>, <span class="hljs-string">&quot;output&quot;</span>, swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">        mRadix2FFT.Dispatch(<span class="hljs-number">0</span>, thread_group, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        SwapBuffer(ref swapBuffer[<span class="hljs-number">0</span>], ref swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// bit reverse</span></span><br><span class="line">    {</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;thread_count&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;istride&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;N&quot;</span>, mSize);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;bit_reverse&quot;</span>, mBitReverseBuffer);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;input&quot;</span>, swapBuffer[<span class="hljs-number">0</span>]);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;output&quot;</span>, swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">        mRadix2FFT.Dispatch(<span class="hljs-number">3</span>, thread_group, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        SwapBuffer(ref swapBuffer[<span class="hljs-number">0</span>], ref swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// transpose</span></span><br><span class="line">    {</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;thread_count&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;N&quot;</span>, mSize);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;input&quot;</span>, swapBuffer[<span class="hljs-number">0</span>]);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;output&quot;</span>, swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">        mRadix2FFT.Dispatch(<span class="hljs-number">1</span>, thread_group, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        SwapBuffer(ref swapBuffer[<span class="hljs-number">0</span>], ref swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; interation; i++)</span><br><span class="line">    {</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;thread_count&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;istride&quot;</span>, thread_count / (<span class="hljs-number">1</span> &lt;&lt; i));</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;bit_count&quot;</span>, i);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;N&quot;</span>, mSize);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">0</span>, <span class="hljs-string">&quot;input&quot;</span>, swapBuffer[<span class="hljs-number">0</span>]);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">0</span>, <span class="hljs-string">&quot;output&quot;</span>, swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">        mRadix2FFT.Dispatch(<span class="hljs-number">0</span>, thread_group, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        SwapBuffer(ref swapBuffer[<span class="hljs-number">0</span>], ref swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// bit reverse</span></span><br><span class="line">    {</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;thread_count&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;istride&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;N&quot;</span>, mSize);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;bit_reverse&quot;</span>, mBitReverseBuffer);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;input&quot;</span>, swapBuffer[<span class="hljs-number">0</span>]);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;output&quot;</span>, swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">        mRadix2FFT.Dispatch(<span class="hljs-number">3</span>, thread_group, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        SwapBuffer(ref swapBuffer[<span class="hljs-number">0</span>], ref swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// transpose</span></span><br><span class="line">    {</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;thread_count&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;N&quot;</span>, mSize);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;input&quot;</span>, swapBuffer[<span class="hljs-number">0</span>]);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;output&quot;</span>, swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">        mRadix2FFT.Dispatch(<span class="hljs-number">1</span>, thread_group, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        SwapBuffer(ref swapBuffer[<span class="hljs-number">0</span>], ref swapBuffer[<span class="hljs-number">1</span>]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (dstBuffer != swapBuffer[<span class="hljs-number">0</span>])</span><br><span class="line">    {</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;thread_count&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetInt(<span class="hljs-string">&quot;istride&quot;</span>, thread_count);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;input&quot;</span>, swapBuffer[<span class="hljs-number">0</span>]);</span><br><span class="line">        mRadix2FFT.SetBuffer(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;output&quot;</span>, dstBuffer);</span><br><span class="line">        mRadix2FFT.Dispatch(<span class="hljs-number">2</span>, thread_group, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="&#x6548;&#x679C;"><a href="#&#x6548;&#x679C;" class="headerlink" title="&#x6548;&#x679C;"></a>&#x6548;&#x679C;</h1><p><img src="https://s2.ax1x.com/2019/04/20/ECDQTx.png" alt="Result"></p>
+<p><a href="https://github.com/lonelyWaiting/Ocean" target="_blank" rel="noopener">&#x4EE3;&#x7801;&#x4E0B;&#x8F7D;</a></p>
+<h1 id="&#x5F15;&#x7528;"><a href="#&#x5F15;&#x7528;" class="headerlink" title="&#x5F15;&#x7528;"></a>&#x5F15;&#x7528;</h1><ul>
+<li><a href="https://people.cs.clemson.edu/~jtessen/papers_files/coursenotes2004.pdf" target="_blank" rel="noopener">Simulating Ocean Water</a></li>
+<li><a href="https://www.keithlantz.net/2011/10/ocean-simulation-part-one-using-the-discrete-fourier-transform/" target="_blank" rel="noopener">Ocean Simulation Part One</a></li>
+<li><a href="https://www.keithlantz.net/2011/11/ocean-simulation-part-two-using-the-fast-fourier-transform/" target="_blank" rel="noopener">Ocean Simulation Part Two</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%89%B2%E6%95%A3%E5%85%B3%E7%B3%BB" target="_blank" rel="noopener">&#x8272;&#x6563;&#x5173;&#x7CFB;</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%BA%93%E5%88%A9%EF%BC%8D%E5%9B%BE%E5%9F%BA%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">&#x5E93;&#x5229;-&#x56FE;&#x57FA;&#x5FEB;&#x901F;&#x5085;&#x7ACB;&#x53F6;&#x53D8;&#x6362;&#x7B97;&#x6CD5;</a></li>
+<li><a href="https://developer.nvidia.com/dx11-samples" target="_blank" rel="noopener">Nvidia DirectX 11 Sample</a></li>
+</ul>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Rendering/">#Rendering</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/IBL/">IBL</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/why-Not-PI-in-BRDF-implement/">why Not PI in BRDF implement</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

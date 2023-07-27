@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>unity surface shader - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Flow">1&nbsp;&nbsp;<b>Flow</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Code-Structure">2&nbsp;&nbsp;<b>Code Structure</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#BlinnPhong-Surface-Analysis">3&nbsp;&nbsp;<b>BlinnPhong Surface Analysis</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#LightingBlinnPhong">3.1&nbsp;&nbsp;LightingBlinnPhong</a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            unity surface shader
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2018-09-09T00:25:40.000Z" itemprop="datePublished">9月 9 2018</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Unity/">Unity</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 分钟 lesen (Über 504 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h1><p><img src="/resources/images/unity_surface_shader/surface_shader_flow.png" alt="surface shader flow"><a id="more"></a></p>
+<h1 id="Code-Structure"><a href="#Code-Structure" class="headerlink" title="Code Structure"></a>Code Structure</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">&quot;xxx&quot;</span></span><br><span class="line">{</span><br><span class="line">    Properties</span><br><span class="line">    {</span><br><span class="line">        ...</span><br><span class="line">    }</span><br><span class="line">    SubShader</span><br><span class="line">    {</span><br><span class="line">        Tags {...}</span><br><span class="line">        LOD ...</span><br><span class="line"></span><br><span class="line">        CGPROGRAM</span><br><span class="line">        <span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> surface <span class="hljs-meta-string">&lt;Surface Function&gt; &lt;LightingModel&gt; [options]</span></span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-class"><span class="hljs-keyword">struct</span> &lt;Input Struct&gt;</span></span><br><span class="line"><span class="hljs-class">        {</span></span><br><span class="line">            ...</span><br><span class="line">        };</span><br><span class="line"></span><br><span class="line">        UNITY_INSTANCING_BUFFER_START(Props)</span><br><span class="line">        UNITY_INSTANCING_BUFFER_END(Props)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">void</span> &lt;surface function name&gt;(&lt;Input Struct&gt; IN, inout &lt;SurfaceOutput&gt; o)</span><br><span class="line">        {</span><br><span class="line">            ...</span><br><span class="line">        }</span><br><span class="line">        ENDCG</span><br><span class="line">    }</span><br><span class="line">    FallBack <span class="hljs-string">&quot;Diffuse&quot;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p><code>#pragma surface &lt;Surface Function&gt; &lt;LightingModel&gt; [options]</code>&#x4E2D;&#x6307;&#x5B9A;&#x4E86;<code>surface</code>&#x51FD;&#x6570;&#x540D;&#x4EE5;&#x53CA;&#x5149;&#x7167;&#x6A21;&#x578B;<br>&#x5149;&#x7167;&#x6A21;&#x578B;&#x5C01;&#x88C5;&#x597D;&#x4E86;&#x9876;&#x70B9;&#x7740;&#x8272;&#x5668;&#x4EE5;&#x53CA;&#x50CF;&#x7D20;&#x7740;&#x8272;&#x5668;,<code>surface</code>&#x51FD;&#x6570;&#x586B;&#x5145;<code>&lt;SurfaceOutput&gt;</code>&#x7ED3;&#x6784;,&#x7136;&#x540E;&#x7528;&#x4E8E;&#x5149;&#x7167;&#x8BA1;&#x7B97;</p>
+<p>&#x7531;&#x4E8E;&#x5BF9;&#x4E8E;&#x786E;&#x5B9A;&#x7684;&#x5149;&#x7167;&#x6A21;&#x578B;&#x800C;&#x8A00;,&#x6240;&#x9700;&#x7684;&#x6570;&#x636E;&#x4EE5;&#x53CA;&#x8BA1;&#x7B97;&#x6D41;&#x7A0B;&#x90FD;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C01;&#x88C5;&#x8D77;&#x6765;<br>&#x7136;&#x540E;&#x5C06;<code>SurfaceOutput</code>&#x7684;&#x586B;&#x5145;&#x4EA4;&#x7ED9;&#x5F00;&#x53D1;&#x8005;&#x6765;&#x505A;</p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x9876;&#x70B9;&#x7740;&#x8272;&#x5668;,&#x5982;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> surface surf Lambert vertex:vert</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x6307;&#x5B9A;&#x51FD;&#x6570;<code>vert</code>&#x4E3A;&#x9876;&#x70B9;&#x7740;&#x8272;&#x5668;,<code>surf</code>&#x4E3A;<code>surface</code>&#x51FD;&#x6570;,&#x5149;&#x7167;&#x6A21;&#x578B;&#x4E3A;<code>Lambert</code></p>
+<h1 id="BlinnPhong-Surface-Analysis"><a href="#BlinnPhong-Surface-Analysis" class="headerlink" title="BlinnPhong Surface Analysis"></a>BlinnPhong Surface Analysis</h1><p>&#x793A;&#x4F8B;&#x5B9E;&#x73B0;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">&quot;Custom/SurfaceShaderBlinnPhong&quot;</span> </span><br><span class="line">{</span><br><span class="line">    Properties </span><br><span class="line">    {</span><br><span class="line">        _Color (<span class="hljs-string">&quot;Color&quot;</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">        _MainTex (<span class="hljs-string">&quot;Albedo (RGB)&quot;</span>, <span class="hljs-number">2</span>D) = <span class="hljs-string">&quot;white&quot;</span> {}</span><br><span class="line">        _SpecColor (<span class="hljs-string">&quot;Specular Material Color&quot;</span>, Color) = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span><br><span class="line">        _Shininess (<span class="hljs-string">&quot;Shininess&quot;</span>, Range (<span class="hljs-number">0.03</span>, <span class="hljs-number">1</span>)) = <span class="hljs-number">0.078125</span></span><br><span class="line">    }</span><br><span class="line">    SubShader </span><br><span class="line">    {</span><br><span class="line">        Tags { <span class="hljs-string">&quot;RenderType&quot;</span>=<span class="hljs-string">&quot;Opaque&quot;</span> }</span><br><span class="line">        LOD <span class="hljs-number">200</span></span><br><span class="line"></span><br><span class="line">        CGPROGRAM</span><br><span class="line">        #pragma surface surf BlinnPhong fullforwardshadows</span><br><span class="line">        #pragma target <span class="hljs-number">3.0</span></span><br><span class="line"></span><br><span class="line">        sampler2D _MainTex;</span><br><span class="line">        <span class="hljs-keyword">float</span> _Shininess;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Input</span> </span></span><br><span class="line"><span class="hljs-class">        {</span></span><br><span class="line">            float2 uv_MainTex;</span><br><span class="line">        };</span><br><span class="line">        </span><br><span class="line">        UNITY_INSTANCING_BUFFER_START(Props)</span><br><span class="line">            <span class="hljs-comment">// put more per-instance properties here</span></span><br><span class="line">        UNITY_INSTANCING_BUFFER_END(Props)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">surf</span> <span class="hljs-params">(Input IN, inout SurfaceOutput o)</span> </span></span><br><span class="line"><span class="hljs-function">        </span>{</span><br><span class="line">            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;</span><br><span class="line">            o.Albedo = c.rgb;</span><br><span class="line">            o.Specular = _Shininess;</span><br><span class="line">            o.Gloss = c.a;</span><br><span class="line">            o.Alpha = <span class="hljs-number">1.0f</span>;</span><br><span class="line">        }</span><br><span class="line">        ENDCG</span><br><span class="line">    }</span><br><span class="line">    FallBack <span class="hljs-string">&quot;Diffuse&quot;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p><code>BlinnPhong</code>&#x5149;&#x7167;&#x6A21;&#x578B;&#x7684;&#x5B9E;&#x73B0;&#x53EF;&#x4EE5;&#x5728;<code>Lighting.cginc</code>&#x4E2D;&#x627E;&#x5230;,&#x5176;&#x4E2D;&#x5B9E;&#x73B0;&#x4E86;&#x56DB;&#x4E2A;&#x51FD;&#x6570;:</p>
+<ul>
+<li>LightingBlinnPhong</li>
+<li>LightingBlinnPhong_Deferred</li>
+<li>LightingBlinnPhong_GI</li>
+<li>LightingBlinnPhong_PrePass</li>
+</ul>
+<h2 id="LightingBlinnPhong"><a href="#LightingBlinnPhong" class="headerlink" title="LightingBlinnPhong"></a>LightingBlinnPhong</h2><p><code>LightingBlinnPhong</code>&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> fixed4 <span class="hljs-title">UnityBlinnPhongLight</span> <span class="hljs-params">(SurfaceOutput s, half3 viewDir, UnityLight light)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    half3 h = normalize (light.dir + viewDir);</span><br><span class="line"></span><br><span class="line">    fixed diff = max (<span class="hljs-number">0</span>, dot (s.Normal, light.dir));</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">float</span> nh = max (<span class="hljs-number">0</span>, dot (s.Normal, h));</span><br><span class="line">    <span class="hljs-keyword">float</span> spec = <span class="hljs-built_in">pow</span> (nh, s.Specular*<span class="hljs-number">128.0</span>) * s.Gloss;</span><br><span class="line"></span><br><span class="line">    fixed4 c;</span><br><span class="line">    c.rgb = s.Albedo * light.color * diff + light.color * _SpecColor.rgb * spec;</span><br><span class="line">    c.a = s.Alpha;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> c;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> fixed4 <span class="hljs-title">LightingBlinnPhong</span> <span class="hljs-params">(SurfaceOutput s, half3 viewDir, UnityGI gi)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    fixed4 c;</span><br><span class="line">    c = UnityBlinnPhongLight (s, viewDir, gi.light);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> UNITY_LIGHT_FUNCTION_APPLY_INDIRECT</span></span><br><span class="line">        c.rgb += s.Albedo * gi.indirect.diffuse;</span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> c;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>&#x5176;&#x4E2D;<code>SurfaceOutput</code>&#x7684;&#x5B9A;&#x4E49;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;<code>Lighting.cginc</code>&#x4E2D;&#x627E;&#x5230;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">SurfaceOutput</span> </span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line">    fixed3 Albedo;</span><br><span class="line">    fixed3 Normal;</span><br><span class="line">    fixed3 Emission;</span><br><span class="line">    half Specular;</span><br><span class="line">    fixed Gloss;</span><br><span class="line">    fixed Alpha;</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+
+<p><code>UnityGI</code>&#x4E0E;<code>UnityLight</code>&#x7684;&#x5B9A;&#x4E49;&#x5728;<code>UnityLightingCommon.cginc</code>&#x4E2D;&#x627E;&#x5230;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">UnityLight</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line">    half3 color;</span><br><span class="line">    half3 dir;</span><br><span class="line">    half  ndotl; <span class="hljs-comment">// Deprecated: Ndotl is now calculated on the fly and is no longer stored. Do not used it.</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">UnityIndirect</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line">    half3 diffuse;</span><br><span class="line">    half3 specular;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">UnityGI</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line">    UnityLight light;</span><br><span class="line">    UnityIndirect indirect;</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Microfacet-BRDF/">Microfacet Theory</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/unity-WorldSpaceLightDir-in-forwardBase-lightMode/">unity _WorldSpaceLightDir in forwardBase lightMode</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

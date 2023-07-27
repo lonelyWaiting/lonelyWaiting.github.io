@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>compute refract direction - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Snell&amp;#x2019;s-Law">1&nbsp;&nbsp;<b>Snell&amp;amp;#x2019;s Law</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            compute refract direction
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2017-12-15T00:20:15.000Z" itemprop="datePublished">12月 15 2017</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分钟 lesen (Über 230 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><img src="/resources/images/refraction_direction/Refraction.png" alt="refraction direction"><br><a id="more"></a></p>
+<h1 id="Snell&#x2019;s-Law"><a href="#Snell&#x2019;s-Law" class="headerlink" title="Snell&#x2019;s Law"></a>Snell&#x2019;s Law</h1><p>$$<br>\begin{align}<br>\eta{_1} \sin(\theta_1) &amp;\quad = \eta{_2}\sin(\theta{_2}) &amp; n &amp;\quad = (0,1) \notag \\[2ex]<br>L\qquad &amp;\quad = (-\sin(\theta_1) , \cos(\theta_1)) &amp; T &amp;\quad = (\sin(\theta_2) , -\cos(\theta_2))\notag<br>\end{align}<br>$$</p>
+<p>&#x8BBE;:<br>$$\overrightarrow{T} = x \times \overrightarrow{L} + y \times \overrightarrow{n}$$</p>
+<p>$$<br>\begin{align}<br>\Rightarrow<br>&amp; \begin{cases}<br>&amp;\sin(\theta_2) &amp;= &amp;\quad -\sin(\theta_1) \times x + 0 \times y \notag \\[2ex]<br>&amp;-\cos(\theta_2) &amp;= &amp;\quad \cos(\theta_1) \times x + 1 \times y \notag<br>\end{cases} \\[2ex]<br>\Rightarrow<br>&amp; \begin{cases}<br>x &amp;= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \notag \\[2ex]<br>y &amp;= \cos(\theta_1) * \frac{\sin(\theta_2)}{\sin(\theta_1)} - \cos(\theta_2) \notag<br>\end{cases}<br>\end{align}<br>$$</p>
+<p>$$<br>\begin{align}<br>\Rightarrow<br>\overrightarrow{T} &amp;= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \times \overrightarrow{L} + (\cos(\theta_1) \times \frac{\sin(\theta_2)}{\sin(\theta_1)} - \cos(\theta_2)) \times \overrightarrow{n} \notag \\[2ex]<br>\because \cos(\theta_2) &amp;= \sqrt{1 - \sin^2(\theta_2)} \notag \\<br>&amp;= \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - \cos^2(\theta_1))} \notag \\<br>&amp;= \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}\notag<br>\end{align}<br>$$</p>
+<p>$$<br>\begin{align}<br>\Rightarrow \overrightarrow{T} &amp;= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \times \overrightarrow{L} + (\cos(\theta_1) \times \frac{\sin(\theta_2)}{\sin(\theta_1)} - \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}) \times \overrightarrow{n}\notag \\[2ex]<br>&amp;= -\frac{\eta_1}{\eta_2} \times \overrightarrow{L} + \overrightarrow{n}(\frac{\eta_1}{\eta_2}(\overrightarrow{L} \cdot \overrightarrow{n}) - \sqrt{1 - \frac{\eta_1^2}{\eta_2^2}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)})\notag<br>\end{align}<br>$$</p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Math/">#Math</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/D3D-Event-Query/">D3D Event Query</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/software-recommend/">software recommend</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

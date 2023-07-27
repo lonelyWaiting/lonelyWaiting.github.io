@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>IBL - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Reflectance-equation">1&nbsp;&nbsp;<b>Reflectance equation</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Diffuse-Irradiance">2&nbsp;&nbsp;<b>Diffuse Irradiance</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8499;&amp;#x7279;&amp;#x5361;&amp;#x6D1B;&amp;#x65B9;&amp;#x6CD5;">2.1&nbsp;&nbsp;&amp;amp;#x8499;&amp;amp;#x7279;&amp;amp;#x5361;&amp;amp;#x6D1B;&amp;amp;#x65B9;&amp;amp;#x6CD5;</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Specular-IBL">3&nbsp;&nbsp;<b>Specular IBL</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Pre-Filtered-Environment-Map">3.1&nbsp;&nbsp;Pre-Filtered Environment Map</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Precompute-BRDF-LUT">3.2&nbsp;&nbsp;Precompute BRDF LUT</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">4&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            IBL
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2018-10-17T09:51:10.000Z" itemprop="datePublished">10月 17 2018</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Rendering/">Rendering</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            14 分钟 lesen (Über 2035 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="Reflectance-equation"><a href="#Reflectance-equation" class="headerlink" title="Reflectance equation"></a>Reflectance equation</h1><p>&#x8FD9;&#x91CC;&#x91C7;&#x7528;&#x7684;&#x53CD;&#x5C04;&#x6A21;&#x578B;&#x5982;&#x4E0B;:<br>$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)(n \cdot \omega_i) d\omega_i$$<br><a id="more"></a></p>
+<p>$$\Rightarrow L_o(p,\omega_i) = \int_\Omega k_d \frac{c}{\pi}L_i(p,\omega_i)n\cdot \omega_i d\omega_i + \int_\Omega k_s \frac{DFG}{4(\omega_i \cdot n)(\omega_o \cdot n)}L_i(p,\omega_i)(n \cdot \omega_i) d\omega_i$$</p>
+<h1 id="Diffuse-Irradiance"><a href="#Diffuse-Irradiance" class="headerlink" title="Diffuse Irradiance"></a>Diffuse Irradiance</h1><p>&#x63A5;&#x4E0B;&#x6765;&#x5148;&#x770B;diffuse&#x9879;:<br>$$L_o = \int_\Omega k_d\frac{c}{\pi}L_i(p,\omega_i) (n \cdot \omega_i ) d\omega_i$$<br>$$\Rightarrow L_o = k_d\frac{c}{\pi}\int_\Omega L_i(p,\omega_i) (n\cdot \omega_i) d\omega_i$$<br>$$\Rightarrow L_o = k_d \frac{c}{\pi}\int_{\phi = 0}^{2\pi} \int_{\theta = 0}^{\frac{\pi}{2}}L_i(p,\phi_i,\theta_i)\cos(\theta)\sin(\theta)d\phi d\theta \tag{1}$$</p>
+<h2 id="&#x8499;&#x7279;&#x5361;&#x6D1B;&#x65B9;&#x6CD5;"><a href="#&#x8499;&#x7279;&#x5361;&#x6D1B;&#x65B9;&#x6CD5;" class="headerlink" title="&#x8499;&#x7279;&#x5361;&#x6D1B;&#x65B9;&#x6CD5;"></a>&#x8499;&#x7279;&#x5361;&#x6D1B;&#x65B9;&#x6CD5;</h2><p>$$\because E[\frac{f(x)}{p(x)}] = \int f(x)dx$$</p>
+<p>&#x8BBE;$\frac{f(x_1)}{p(x_1)},\frac{f(x_2)}{p(x_2)},&#x2026;,\frac{f(x_n)}{p(x_n)}$&#x4E3A;&#x72EC;&#x7ACB;&#x540C;&#x5206;&#x5E03;&#x7684;&#x968F;&#x673A;&#x53D8;&#x91CF;,&#x56E0;&#x6B64;&#x6784;&#x9020;&#x4F30;&#x8BA1;&#x91CF;&#x5982;&#x4E0B;:<br>$$\sigma = \frac{1}{N}\sum_{i=0}^{N} \frac{f(x_i)}{p(x_i)}$$<br>&#x6839;&#x636E;<a href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B" target="_blank" rel="noopener">&#x5927;&#x6570;&#x5B9A;&#x5F8B;</a>&#x5F97;&#x77E5;,&#x6837;&#x672C;&#x5747;&#x503C;&#x5C06;&#x4F1A;&#x6536;&#x655B;&#x4E8E;&#x671F;&#x671B;&#x503C;,&#x56E0;&#x6B64;&#x5F53;N&#x589E;&#x5927;,&#x4F30;&#x8BA1;&#x91CF;&#x5C06;&#x4F1A;&#x9010;&#x6E10;&#x903C;&#x8FD1;&#x4E8E;&#x671F;&#x671B;$\int f(x)dx$</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x8BC1;&#x660E;&#x4E0B;<a href="https://zh.wikipedia.org/wiki/%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E5%81%8F%E5%B7%AE" target="_blank" rel="noopener">&#x65E0;&#x504F;&#x6027;</a>:<br>$$E[\sigma] = E[\frac{1}{N}\sum_{i=0}^{N} \frac{f(x_i)}{p(x_i)}]$$<br>$$\Rightarrow E[\sigma] = \frac{1}{N}E[\sum_{i = 0}^{N}\frac{f(x_i)}{p(x_i)}]$$<br>$$\Rightarrow E[\sigma] = \frac{1}{N}\sum_{i = 0}^{N}E[\frac{f(x_i)}{p(x_i)}]$$<br>$$\Rightarrow E[\sigma] = \frac{1}{N}NE[\frac{f(x)}{p(x)}] = \int f(x)dx$$</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x4F7F;&#x7528;&#x8499;&#x7279;&#x5361;&#x6D1B;&#x65B9;&#x6CD5;&#x6765;&#x5206;&#x89E3;&#x65B9;&#x7A0B;(1),&#x4F7F;&#x7528;&#x5747;&#x5300;&#x5206;&#x5E03;$p(\phi) = \frac{1}{2\pi},p(\theta) = \frac{1}{(\frac{\pi}{2})} = \frac{2}{\pi}$</p>
+<p>&#x6784;&#x9020;&#x4F30;&#x8BA1;&#x91CF;&#x5982;&#x4E0B;:<br>$$L_o = k_d \frac{c}{\pi}\frac{1}{n_1}\frac{1}{n_2}\sum_{i = 1}^{n_1}\sum_{j = 1}^{n_2}\frac{L_i(p,\phi_i,\theta_j)cos(\theta_j)sin(\theta_j)}{p(\phi)\cdot p(\theta)}d\phi d\theta$$<br>$$\Rightarrow L_o = k_d\frac{c}{\pi}\frac{1}{n_1 n_2} 2\pi \frac{\pi}{2}\sum_{i = 1}^{n_1}\sum_{j = 1}^{n_2}L_i(p,\phi_i,\theta_j)cos(\theta_j)\sin(\theta_j)d\phi d\theta$$<br>$$\Rightarrow L_o = k_d c\frac{\pi}{n_1 n_2}\sum_{i = 1}^{n_1}\sum_{j = 1}^{n_2}L_i(p,\phi_i,\theta_j)cos(\theta_j)\sin(\theta_j)d\phi d\theta$$</p>
+<p>&#x5B9E;&#x73B0;&#x5C31;&#x663E;&#x5F97;&#x5F88;&#x7B80;&#x5355;&#x4E86;,IBL&#x4E2D;&#x8D34;&#x56FE;&#x7684;&#x6BCF;&#x4E2A;texel&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x5149;&#x6E90;,&#x5373;&#x63D0;&#x4F9B;&#x4E86;$L_i$&#x7684;&#x6570;&#x636E;,&#x4EE3;&#x7801;&#x5982;&#x4E0B;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span>   phiSampleCount = <span class="hljs-number">100</span>;</span><br><span class="line"><span class="hljs-keyword">int</span>   thetaSampleCount = <span class="hljs-number">100</span>;</span><br><span class="line"><span class="hljs-keyword">float</span> phiDelta   = SMath::TWO_PI / phiSampleCount;</span><br><span class="line"><span class="hljs-keyword">float</span> thetaDelta = SMath::PI_DIV_2 / thetaSampleCount;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> omp parallel for schedule(dynamic)</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; width; i++)</span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; height; j++)</span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">float</span> phi   = SMath::TWO_PI * i / (<span class="hljs-keyword">float</span>)(width <span class="hljs-number">-1</span>);</span><br><span class="line">        <span class="hljs-keyword">float</span> theta = SMath::PI * j / (<span class="hljs-keyword">float</span>)(height - <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        SVector3f up = SVector3f(SMath::SinRad(theta) * SMath::CosRad(phi), SMath::CosRad(theta), SMath::SinRad(theta) * SMath::SinRad(phi));</span><br><span class="line">        SVector3f front = up.z &lt; <span class="hljs-number">0.999f</span> ? SVector3f(<span class="hljs-number">0.0f</span>, <span class="hljs-number">0.0f</span>, <span class="hljs-number">1.0f</span>) : SVector3f(<span class="hljs-number">0.0f</span>, <span class="hljs-number">-1.0f</span>, <span class="hljs-number">0.0f</span>);</span><br><span class="line">        SVector3f right = SVector3f::Normalize(SVector3f::cross(up, front));</span><br><span class="line">        front = SVector3f::Normalize(SVector3f::cross(right, up));</span><br><span class="line"></span><br><span class="line">        SVector3f irradiance = SVector3f::Zero();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">float</span> localPhi = <span class="hljs-number">0.0f</span>; localPhi &lt; SMath::TWO_PI; localPhi += phiDelta)</span><br><span class="line">        {</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">float</span> localTheta = <span class="hljs-number">0.0f</span>; localTheta &lt; SMath::PI_DIV_2; localTheta += thetaDelta)</span><br><span class="line">            {</span><br><span class="line">                SVector3f localDir = SVector3f(SMath::SinRad(localTheta) * SMath::CosRad(localPhi), SMath::CosRad(localTheta), SMath::SinRad(localTheta) * SMath::SinRad(localPhi));</span><br><span class="line">                SVector3f dir = right * localDir.x + up * localDir.y + front * localDir.z;</span><br><span class="line">                dir.Normalize();</span><br><span class="line"></span><br><span class="line">                SVector2f uv = CartesianToSpherical(dir);</span><br><span class="line">                irradiance += image.GetPixel(<span class="hljs-keyword">int</span>(uv.x * (width - <span class="hljs-number">1</span>)), <span class="hljs-keyword">int</span>(uv.y * (height - <span class="hljs-number">1</span>))).xyz() * SMath::CosRad(localTheta) * SMath::SinRad(localTheta);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        irradiance = SMath::PI * irradiance / (<span class="hljs-keyword">float</span>)(phiSampleCount * thetaSampleCount);</span><br><span class="line"></span><br><span class="line">        sIrradianceMap-&gt;SetPixel(i, j, irradiance);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>&#x4EE5;&#x5982;&#x4E0B;&#x73AF;&#x5883;&#x8D34;&#x56FE;&#x4E3A;&#x4F8B;:<br><img src="/resources/images/IBL/IBL_Source.png" alt="Environment map"></p>
+<p>Irradiance Map&#x5982;&#x4E0B;:<br><img src="/resources/images/IBL/IBL_Irradiance.png" alt="Irradiance Map"></p>
+<h1 id="Specular-IBL"><a href="#Specular-IBL" class="headerlink" title="Specular IBL"></a>Specular IBL</h1><p>&#x5BF9;Specular&#x9879;&#x5E94;&#x7528;&#x8499;&#x7279;&#x5361;&#x6D1B;&#x79EF;&#x5206;:<br>$$\int_\Omega L_i(p,\omega_i)f(p,\omega_i,\omega_o)(n \cdot \omega_i) d\omega_i \approx \frac{1}{N}\sum_{k = 1}^N\frac{L_i(p,\omega_{i})f(p,\omega_{i},\omega_{o})(n\cdot \omega_{i})}{pdf}$$</p>
+<p>UE4&#x4E2D;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4E86;&#x4E00;&#x4E2A;&#x8FD1;&#x4F3C;,&#x5212;&#x5206;&#x6210;&#x4E86;&#x4E24;&#x4E2A;&#x7D2F;&#x52A0;&#x7684;&#x4E58;&#x79EF;:<br>$$\frac{1}{N}\sum_{k = 1}^N\frac{L_i(p,\omega_{i})f(p,\omega_{i},\omega_{o})(n\cdot \omega_{i})}{pdf} \approx \Big(\frac{1}{N}\sum_{k = 1}^N L_i(p,\omega_{i}\Big )\Big (\frac{1}{N}\sum_{k = 1}^{N}\frac{f(p,\omega_{i}, \omega_{o})(n \cdot \omega_{i})}{pdf}\Big )$$</p>
+<h2 id="Pre-Filtered-Environment-Map"><a href="#Pre-Filtered-Environment-Map" class="headerlink" title="Pre-Filtered Environment Map"></a>Pre-Filtered Environment Map</h2><p>&#x5BF9;&#x4E8E;&#x7B2C;&#x4E00;&#x4E2A;&#x7D2F;&#x52A0;,&#x5E38;&#x7528;&#x7684;&#x65B9;&#x6848;&#x662F;&#x4F7F;&#x7528;GGX&#x7684;&#x91CD;&#x8981;&#x6027;&#x91C7;&#x6837;&#x5BF9;&#x73AF;&#x5883;&#x8D34;&#x56FE;&#x8FDB;&#x884C;&#x5377;&#x79EF;&#x8BA1;&#x7B97;<br>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x7C97;&#x7CD9;&#x5EA6;&#x503C;&#x8FDB;&#x884C;&#x9884;&#x8BA1;&#x7B97;,&#x5E76;&#x5C06;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5728;mipmap&#x4E2D;<br>&#x7531;&#x4E8E;&#x4F7F;&#x7528;&#x4E86;&#x5FAE;&#x8868;&#x9762;&#x6A21;&#x578B;,&#x5206;&#x5E03;&#x7684;&#x5F62;&#x72B6;&#x5C06;&#x4F1A;&#x53D7;&#x5230;&#x89C6;&#x89D2;&#x7684;&#x5F71;&#x54CD;,&#x56E0;&#x6B64;,&#x8FD9;&#x91CC;&#x5047;&#x5B9A;&#x4E3A;&#x5404;&#x5411;&#x540C;&#x6027;,&#x5373;$N = V = R$<br>&#x4F46;&#x8FD9;&#x4E5F;&#x610F;&#x5473;&#x7740;&#x6211;&#x4EEC;&#x4ECE;&#x4E0E;&#x6CD5;&#x7EBF;&#x5782;&#x76F4;&#x7684;&#x65B9;&#x5411;&#x53BB;&#x770B;&#x8868;&#x9762;,&#x65E0;&#x6CD5;&#x5F97;&#x5230;&#x5F3A;&#x70C8;&#x7684;&#x53CD;&#x5C04;,&#x9488;&#x5BF9;&#x8FD9;&#x4E00;&#x70B9;,&#x4F7F;&#x7528;$\cos(\omega_i)$&#x8FDB;&#x884C;&#x52A0;&#x6743;&#x89E3;&#x51B3;</p>
+<p>&#x5B9E;&#x73B0;&#x5982;&#x4E0B;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> miplevel = <span class="hljs-number">0</span>; miplevel &lt; mipNum; miplevel++)</span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">float</span> roughness = (<span class="hljs-keyword">float</span>)miplevel / (<span class="hljs-keyword">float</span>)(mipNum - <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> cur_width  = width &gt;&gt; miplevel;</span><br><span class="line">    <span class="hljs-keyword">int</span> cur_height = height &gt;&gt; miplevel;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> omp parallel for schedule(dynamic)</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; cur_width; i++)</span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; cur_height; j++)</span><br><span class="line">        {</span><br><span class="line">            <span class="hljs-keyword">float</span> phi   = (<span class="hljs-keyword">float</span>)i / (<span class="hljs-keyword">float</span>)(cur_width - <span class="hljs-number">1</span>) * SMath::TWO_PI;</span><br><span class="line">            <span class="hljs-keyword">float</span> theta = (<span class="hljs-keyword">float</span>)j / (<span class="hljs-keyword">float</span>)(cur_height - <span class="hljs-number">1</span>) * SMath::PI;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-function">SVector3f <span class="hljs-title">N</span><span class="hljs-params">(SMath::SinRad(theta) * SMath::CosRad(phi), SMath::CosRad(theta), SMath::SinRad(theta) * SMath::SinRad(phi))</span></span>;</span><br><span class="line">            N.Normalize();</span><br><span class="line">            SVector3f V = N;</span><br><span class="line"></span><br><span class="line">            SVector3f prefilterdColor = SVector3f::Zero();</span><br><span class="line">            <span class="hljs-keyword">float</span> sumWeight = <span class="hljs-number">0.0f</span>;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// &#x4F7F;&#x7528;GGX Importance Sampling&#x9009;&#x62E9;&#x91C7;&#x6837;&#x70B9;</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> isample = <span class="hljs-number">0</span>; isample &lt; sampleNum; isample++)</span><br><span class="line">            {</span><br><span class="line">                SVector2f Xi = Hammersley(isample, sampleNum);</span><br><span class="line">                SVector3f H = ImportanceSampleGGX(Xi, roughness, N);</span><br><span class="line"></span><br><span class="line">                SVector3f L = SVector3f::Normalize(H * <span class="hljs-number">2.0f</span> * dot(V, H) - V);</span><br><span class="line"></span><br><span class="line">                <span class="hljs-keyword">float</span> NdotL = dot(N, L);</span><br><span class="line">                <span class="hljs-keyword">if</span> (NdotL &gt; <span class="hljs-number">0.0f</span>)</span><br><span class="line">                {</span><br><span class="line">                    SVector2f sphericalCoordinate = CartesianToSpherical(L);</span><br><span class="line">                    <span class="hljs-function">SVector2f <span class="hljs-title">uv</span><span class="hljs-params">(sphericalCoordinate.x * (width - <span class="hljs-number">1</span>), sphericalCoordinate.y * (height - <span class="hljs-number">1</span>))</span></span>;</span><br><span class="line"></span><br><span class="line">                    prefilterdColor += image.GetPixel((<span class="hljs-keyword">int</span>)uv.x, (<span class="hljs-keyword">int</span>)uv.y).xyz() * NdotL;</span><br><span class="line">                    sumWeight += NdotL;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            prefilterdColor /= sumWeight;</span><br><span class="line">            sPrefilterMap-&gt;SetPixel(i, j, prefilterdColor, miplevel);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x5982;&#x4E0B;:<br><img src="/resources/images/IBL/IBL_Prefilter.png" alt="IBL Pre-Filtered Environment Map"></p>
+<h2 id="Precompute-BRDF-LUT"><a href="#Precompute-BRDF-LUT" class="headerlink" title="Precompute BRDF LUT"></a>Precompute BRDF LUT</h2><p>&#x63A5;&#x7740;&#x5206;&#x89E3;&#x7B2C;&#x4E8C;&#x4E2A;&#x7D2F;&#x52A0;&#x9879;:<br>$$\frac{1}{N}\sum_{k = 1}^{N}\frac{f(p,\omega_{i}, \omega_{o})(n \cdot \omega_{i})}{pdf} = \frac{1}{N}\sum_{k = 1}^{N}\frac{f(p,\omega_{i}, \omega_{o})(n \cdot \omega_{i}) \times F(\omega_{o},\omega_h)}{pdf \times F(\omega_{o},\omega_h)}$$</p>
+<p>$$\because F(\omega_o, \omega_h) = F_0 + (1 - F_0)(1 - \omega_o \cdot \omega_h)^5$$</p>
+<p>$$\Rightarrow \frac{1}{N}\sum_{k = 1}^{N}\frac{f(p,\omega_{i}, \omega_{o})(n \cdot \omega_{i}) \times (F_0 (1 - (1 - \omega_{o} \cdot \omega_h)^5) + (1 - \omega_{o} \cdot \omega_h)^5)}{pdf \times F(\omega_{o},\omega_h)}$$</p>
+<p>$$\Rightarrow \frac{F_0}{N}\sum_{k = 1}^{N} \frac{f(p,\omega_{i}, \omega_{o})(n\cdot \omega_{i}) \times (1 - (1 - \omega_{o} \cdot \omega_h)^5)}{pdf \times F(\omega_{o}, \omega_h)} + \\<br>\frac{1}{N}\sum_{k = 1}^{N}\frac{f(p,\omega_{i},\omega_{o}) (n\cdot \omega_{i}) \times (1 - \omega_{o} \cdot \omega_h)^5}{pdf \times F(\omega_{o},\omega_h)} \tag{2}$$</p>
+<p>&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5FAE;&#x8868;&#x9762;&#x6A21;&#x578B;:<br>$$f(p,\omega_i,\omega_o) = \frac{D(\omega_h)F(\omega_o,\omega_h)G(\omega_i,\omega_o)}{4(\omega_i \cdot n)(\omega_o \cdot n)}$$</p>
+<p>GGX&#x91CD;&#x8981;&#x6027;&#x91C7;&#x6837;&#x7684;PDF&#x4E3A;:<br>$$pdf = \frac{D(\omega_h)(\omega_h \cdot n)}{4 (\omega_o \cdot \omega_h)}$$</p>
+<p>&#x56E0;&#x6B64;:<br>$$\frac{f(p,\omega_i,\omega_o)(\omega_i \cdot n)}{pdf \times F(\omega_o,\omega_h)} = \frac{D(\omega_h)F(\omega_o,\omega_h)G(\omega_i,\omega_o)(\omega_i \cdot n)}{4(\omega_i \cdot n)(\omega_o \cdot n)} \times \frac{4 (\omega_o \cdot \omega_h)}{D(\omega_h)(\omega_h \cdot n) F(\omega_o,\omega_h)}$$<br>$$\Rightarrow = \frac{G(\omega_i,\omega_o)(\omega_o \cdot \omega_h)}{(\omega_o \cdot n)(\omega_h \cdot n)}$$</p>
+<p>&#x4EE3;&#x5165;(2)&#x5F0F;&#x53EF;&#x5F97;:<br>$$\frac{F_0}{N}\sum_{k = 1}^N \frac{G(\omega_i,\omega_o)(\omega_o \cdot \omega_h)(1 - (1 - \omega_o \cdot n)^5)}{(\omega_o \cdot n)(\omega_h \cdot n)} + \frac{1}{N}\sum_{k = 1}{N}\frac{G(\omega_i,\omega_o)(\omega_o \cdot \omega_h) (1 - \omega_o \cdot h)^5}{(\omega_o \cdot n)(\omega_h \cdot n)}$$</p>
+<p>&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x4EE5;roughness&#x4E0E;$(\omega_o \cdot n)$&#x4F5C;&#x4E3A;&#x53D8;&#x91CF;&#x6765;&#x9884;&#x8BA1;&#x7B97;&#x4E0A;&#x8FF0;&#x65B9;&#x7A0B;,&#x4EE5;roughness,$(\omega_o \cdot n)$&#x4E3A;&#x884C;&#x5217;&#x5F97;&#x5230;&#x9884;&#x8BA1;&#x7B97;&#x7684;BRDF&#x67E5;&#x627E;&#x8868;<br>&#x4EE3;&#x7801;&#x5982;&#x4E0B;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function">SVector2f <span class="hljs-title">IntegrateBRDF</span><span class="hljs-params">(<span class="hljs-keyword">float</span> roughness, <span class="hljs-keyword">float</span> NdotV)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    SVector2f V;</span><br><span class="line">    V.x = <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">1.0f</span> - NdotV * NdotV);</span><br><span class="line">    V.y = NdotV;</span><br><span class="line">    V.z = <span class="hljs-number">0.0f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">float</span> A = <span class="hljs-number">0</span>, B = <span class="hljs-number">0</span>;</span><br><span class="line">    SVector3f N = Svector3f(<span class="hljs-number">0.0f</span>,<span class="hljs-number">1.0f</span>,<span class="hljs-number">0.0f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> numSamples = <span class="hljs-number">1024</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numSamples; i++)</span><br><span class="line">    {</span><br><span class="line">        SVector2f Xi = Hammersley(i, numSamples);</span><br><span class="line">        SVector3f H = ImportanceSampleGGX(Xi, roughness, N);</span><br><span class="line">        SVector3f L = SVector3f::Normalize(<span class="hljs-number">2</span> * dot(V,H) * H - V);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">float</span> NdotL = SMath::clamp(L.y, <span class="hljs-number">0.0f</span>, <span class="hljs-number">1.0f</span>);</span><br><span class="line">        <span class="hljs-keyword">float</span> NdotH = SMath::clamp(H.y, <span class="hljs-number">0.0f</span>, <span class="hljs-number">1.0f</span>);</span><br><span class="line">        <span class="hljs-keyword">float</span> VdotH = SMath::clamp(dot(V,H), <span class="hljs-number">0.0f</span>, <span class="hljs-number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span>(NdotL &gt; <span class="hljs-number">0.0f</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="hljs-keyword">float</span> G = G_Smith(roughness, NdotV, NdotL);</span><br><span class="line">            <span class="hljs-keyword">float</span> G_Vis = G * VdotH / (NdotH * NdotV);</span><br><span class="line">            <span class="hljs-keyword">float</span> Fc = <span class="hljs-built_in">pow</span>(<span class="hljs-number">1</span> - VdotH, <span class="hljs-number">5</span>);</span><br><span class="line">            A += (<span class="hljs-number">1</span> - Fc) * G_Vis;</span><br><span class="line">            B += Fc * G_Vis;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> SVector2f(A / numSamples, B / numSamples);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; height; j++)</span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; width; i++)    </span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">float</span> NdotV = i / (<span class="hljs-keyword">float</span>)(width - <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">float</span> roughness = j / (<span class="hljs-keyword">float</span>)(height - <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">        SVector2f brdf = IntegrateBRDF(roughness, NdotV);</span><br><span class="line"></span><br><span class="line">        sBRDFLutMap-&gt;SetPixel(i, height - <span class="hljs-number">1</span> -j , brdf.x, brdf.y, <span class="hljs-number">0.0f</span>, <span class="hljs-number">1.0f</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>&#x9884;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x5982;&#x4E0B;:<br><img src="/resources/images/IBL/IBL_BRDF_LUT.png" alt="IBL BRDF Lut"></p>
+<p>&#x6700;&#x7EC8;Specular IBL&#x8BA1;&#x7B97;&#x5982;&#x4E0B;:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">float3 irradiance = IrradianceMap.Sample(samplerIrradiace, CartesianToSpherical(N)).rgb;</span><br><span class="line">float3 diffuse    = irradiance * albedo;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> MAX_REFLECTION_LOD = <span class="hljs-number">10.0</span>;</span><br><span class="line">float3 prefilteredColor = prefilterMap.SampleLevel(samplerPrefilter, CartesianToSpherical(R), roughness * MAX_REFLECTION_LOD).rgb;</span><br><span class="line">float2 envBRDF  = BRDFLutMap.Sample(samplerBRDFLut, float2(NdotV, roughness)).rg;</span><br><span class="line">float3 specularIBL = prefilteredColor * (F * envBRDF.x + envBRDF.y);</span><br><span class="line"></span><br><span class="line">float3 ambient = (kd * diffuse + specular) * AO;</span><br></pre></td></tr></table></figure>
+
+<p>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x53EF;&#x53C2;&#x8003;<strong><a href="https://github.com/lonelyWaiting/SandEngine" target="_blank" rel="noopener">&#x8FD9;&#x91CC;</a></strong>,&#x6548;&#x679C;&#x5982;&#x4E0B;:<br><img src="/resources/images/IBL/IBL_1.png" alt="IBL Result"></p>
+<p><img src="/resources/images/IBL/IBL_2.png" alt="IBL Result"></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><p><a href="https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf" target="_blank" rel="noopener">Real Shading in Unreal Engine 4</a></p>
+</li>
+<li><p><a href="https://learnopengl.com/PBR/IBL/Diffuse-irradiance" target="_blank" rel="noopener">Diffuse Irradiance</a></p>
+</li>
+<li><p><a href="https://learnopengl.com/PBR/IBL/Specular-IBL" target="_blank" rel="noopener">Specular IBL</a></p>
+</li>
+</ul>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Rendering/">#Rendering</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/unreal-setup-bat-speed/">unreal setup.bat speed</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/FFT-Ocean-Implement/">FFT Ocean Implement</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

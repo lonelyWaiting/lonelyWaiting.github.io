@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item is-active" href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8054;&amp;#x7CFB;&amp;#x65B9;&amp;#x5F0F;">1&nbsp;&nbsp;<b>&amp;amp;#x8054;&amp;amp;#x7CFB;&amp;amp;#x65B9;&amp;amp;#x5F0F;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4E2A;&amp;#x4EBA;&amp;#x4FE1;&amp;#x606F;">2&nbsp;&nbsp;<b>&amp;amp;#x4E2A;&amp;amp;#x4EBA;&amp;amp;#x4FE1;&amp;amp;#x606F;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5DE5;&amp;#x4F5C;&amp;#x7ECF;&amp;#x5386;">3&nbsp;&nbsp;<b>&amp;amp;#x5DE5;&amp;amp;#x4F5C;&amp;amp;#x7ECF;&amp;amp;#x5386;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4E0A;&amp;#x6D77;&amp;#x70DB;&amp;#x9F99;-2016&amp;#x5E74;1&amp;#x6708;-2018&amp;#x5E74;10&amp;#x6708;">3.1&nbsp;&nbsp;&amp;amp;#x4E0A;&amp;amp;#x6D77;&amp;amp;#x70DB;&amp;amp;#x9F99;(2016&amp;amp;#x5E74;1&amp;amp;#x6708;-2018&amp;amp;#x5E74;10&amp;amp;#x6708;)</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53E4;&amp;#x5251;&amp;#x5947;&amp;#x8C2D;&amp;#x7F51;&amp;#x7EDC;&amp;#x7248;">3.1.1&nbsp;&nbsp;&amp;amp;#x53E4;&amp;amp;#x5251;&amp;amp;#x5947;&amp;amp;#x8C2D;&amp;amp;#x7F51;&amp;amp;#x7EDC;&amp;amp;#x7248;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x7C73;&amp;#x54C8;&amp;#x6E38;-2018&amp;#x5E74;11&amp;#x6708;-2020&amp;#x5E74;9&amp;#x6708;">3.2&nbsp;&nbsp;&amp;amp;#x7C73;&amp;amp;#x54C8;&amp;amp;#x6E38;(2018&amp;amp;#x5E74;11&amp;amp;#x6708;-2020&amp;amp;#x5E74;9&amp;amp;#x6708;)</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#ProjectX">3.2.1&nbsp;&nbsp;ProjectX</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x661F;&amp;#x7A79;&amp;#x94C1;&amp;#x9053;">3.2.2&nbsp;&nbsp;&amp;amp;#x661F;&amp;amp;#x7A79;&amp;amp;#x94C1;&amp;amp;#x9053;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8389;&amp;#x8389;&amp;#x4E1D;-2020&amp;#x5E74;9&amp;#x6708;-&amp;#x81F3;&amp;#x4ECA;">3.3&nbsp;&nbsp;&amp;amp;#x8389;&amp;amp;#x8389;&amp;amp;#x4E1D;(2020&amp;amp;#x5E74;9&amp;amp;#x6708;-&amp;amp;#x81F3;&amp;amp;#x4ECA;)</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6280;&amp;#x80FD;&amp;#x6E05;&amp;#x5355;">4&nbsp;&nbsp;<b>&amp;amp;#x6280;&amp;amp;#x80FD;&amp;amp;#x6E05;&amp;amp;#x5355;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x81EA;&amp;#x6211;&amp;#x8BC4;&amp;#x4EF7;">5&nbsp;&nbsp;<b>&amp;amp;#x81EA;&amp;amp;#x6211;&amp;amp;#x8BC4;&amp;amp;#x4EF7;</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2023-07-27T06:15:49.980Z" itemprop="datePublished">7月 27 2023</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            2 分钟 lesen (Über 371 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="&#x8054;&#x7CFB;&#x65B9;&#x5F0F;"><a href="#&#x8054;&#x7CFB;&#x65B9;&#x5F0F;" class="headerlink" title="&#x8054;&#x7CFB;&#x65B9;&#x5F0F;"></a>&#x8054;&#x7CFB;&#x65B9;&#x5F0F;</h1><ul>
+<li>&#x624B;&#x673A;: </li>
+<li>Email: <a href="mailto:lonelywaitinggm@gmail.com" target="_blank" rel="noopener">lonelywaitinggm@gmail.com</a></li>
+<li>&#x5FAE;&#x4FE1;: </li>
+</ul>
+<h1 id="&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;"><a href="#&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;" class="headerlink" title="&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;"></a>&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;</h1><ul>
+<li>&#x5218;&#x817E;/&#x7537;/1995/09</li>
+<li>&#x672C;&#x79D1;/&#x6C5F;&#x5357;&#x5927;&#x5B66;/&#x6570;&#x5B57;&#x5A92;&#x4F53;&#x6280;&#x672F;&#x7CFB;/2012-2016</li>
+<li>&#x5DE5;&#x4F5C;&#x5E74;&#x9650;: 2016~&#x81F3;&#x4ECA;</li>
+</ul>
+<h1 id="&#x5DE5;&#x4F5C;&#x7ECF;&#x5386;"><a href="#&#x5DE5;&#x4F5C;&#x7ECF;&#x5386;" class="headerlink" title="&#x5DE5;&#x4F5C;&#x7ECF;&#x5386;"></a>&#x5DE5;&#x4F5C;&#x7ECF;&#x5386;</h1><h2 id="&#x4E0A;&#x6D77;&#x70DB;&#x9F99;-2016&#x5E74;1&#x6708;-2018&#x5E74;10&#x6708;"><a href="#&#x4E0A;&#x6D77;&#x70DB;&#x9F99;-2016&#x5E74;1&#x6708;-2018&#x5E74;10&#x6708;" class="headerlink" title="&#x4E0A;&#x6D77;&#x70DB;&#x9F99;(2016&#x5E74;1&#x6708;-2018&#x5E74;10&#x6708;)"></a>&#x4E0A;&#x6D77;&#x70DB;&#x9F99;(2016&#x5E74;1&#x6708;-2018&#x5E74;10&#x6708;)</h2><h3 id="&#x53E4;&#x5251;&#x5947;&#x8C2D;&#x7F51;&#x7EDC;&#x7248;"><a href="#&#x53E4;&#x5251;&#x5947;&#x8C2D;&#x7F51;&#x7EDC;&#x7248;" class="headerlink" title="&#x53E4;&#x5251;&#x5947;&#x8C2D;&#x7F51;&#x7EDC;&#x7248;"></a>&#x53E4;&#x5251;&#x5947;&#x8C2D;&#x7F51;&#x7EDC;&#x7248;</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">&#x6A21;&#x5757;</th>
+<th style="text-align:left">&#x804C;&#x8D23;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x5730;&#x5F62;</td>
+<td style="text-align:left">&#x7EF4;&#x62A4;&#x5E76;&#x5B9E;&#x73B0;&#x65B0;&#x529F;&#x80FD;,&#x5982;LOD,&#x8DEF;&#x9762;&#x5DE5;&#x5177;,&#x5730;&#x5F62;&#x7F29;&#x51CF;,&#x9AD8;&#x5EA6;&#x56FE;&#x76F8;&#x5173;&#x7F16;&#x8F91;&#x7B49;&#x7B49;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x89D2;&#x8272;&#x81EA;&#x5B9A;&#x4E49;</td>
+<td style="text-align:left">&#x634F;&#x8138;,&#x5316;&#x5986;,&#x6362;&#x88C5;,&#x6362;&#x80A4;&#x7B49;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x89D2;&#x8272;&#x8868;&#x60C5;&#x7CFB;&#x7EDF;</td>
+<td style="text-align:left">&#x5236;&#x4F5C;&#x5DE5;&#x5177;&#x94FE;&#x5F00;&#x53D1;,&#x5BFC;&#x5165;&#x5BFC;&#x51FA;,&#x7F16;&#x8F91;&#x5668;,Runtime,&#x53E3;&#x578B;&#x5206;&#x6790;&#x751F;&#x6210;&#x7B49;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x89D2;&#x8272;&#x52A8;&#x753B;</td>
+<td style="text-align:left">&#x7EF4;&#x62A4;,&#x4F18;&#x5316;&#x4EE5;&#x53CA;&#x65B0;&#x529F;&#x80FD;&#x5B9E;&#x73B0;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x7C73;&#x54C8;&#x6E38;-2018&#x5E74;11&#x6708;-2020&#x5E74;9&#x6708;"><a href="#&#x7C73;&#x54C8;&#x6E38;-2018&#x5E74;11&#x6708;-2020&#x5E74;9&#x6708;" class="headerlink" title="&#x7C73;&#x54C8;&#x6E38;(2018&#x5E74;11&#x6708;-2020&#x5E74;9&#x6708;)"></a>&#x7C73;&#x54C8;&#x6E38;(2018&#x5E74;11&#x6708;-2020&#x5E74;9&#x6708;)</h2><h3 id="ProjectX"><a href="#ProjectX" class="headerlink" title="ProjectX"></a><code>ProjectX</code></h3><table>
+<thead>
+<tr>
+<th style="text-align:center">&#x6A21;&#x5757;</th>
+<th style="text-align:left">&#x804C;&#x8D23;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x661F;&#x7403;&#x8FC7;&#x7A0B;&#x5F0F;&#x751F;&#x6210;</td>
+<td style="text-align:left">&#x4F7F;&#x7528;&#x566A;&#x58F0;&#x7CFB;&#x7EDF;&#x5B9E;&#x73B0;&#x661F;&#x7403;&#x5916;&#x89C2;&#x8FC7;&#x7A0B;&#x5F0F;&#x751F;&#x6210;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x661F;&#x7403;&#x5DE5;&#x5177;&#x94FE;&#x5F00;&#x53D1;</td>
+<td style="text-align:left">&#x5728;<code>UE4</code>&#x4E2D;&#x5B9E;&#x73B0;&#x4E00;&#x5957;&#x7F16;&#x8F91;&#x5668;&#x7528;&#x4E8E;&#x661F;&#x7403;&#x9884;&#x89C8;&#x4E0E;&#x7F16;&#x8F91;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x5E73;&#x9762;&#x5173;&#x5361;&#x4E0A;&#x7403;&#x7684;&#x6539;&#x9020;</td>
+<td style="text-align:left">&#x5206;&#x79BB;&#x5E73;&#x9762;&#x5173;&#x5361;&#x4E0E;&#x661F;&#x7403;&#xFF0C;&#x4F7F;&#x5176;&#x4E8C;&#x8005;&#x65E0;&#x7F1D;&#x8854;&#x63A5;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>GPU</code>&#x5F02;&#x6B65;&#x56DE;&#x8BFB;</td>
+<td style="text-align:left">&#x4F7F;&#x7528;<code>DX11</code>&#x7684;Query&#x5B9E;&#x73B0;&#x5730;&#x5F62;&#x9AD8;&#x5EA6;&#x7684;&#x56DE;&#x8BFB;&#x7ED9;&#x690D;&#x88AB;&#x7CFB;&#x7EDF;&#x4F7F;&#x7528;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x661F;&#x7A79;&#x94C1;&#x9053;"><a href="#&#x661F;&#x7A79;&#x94C1;&#x9053;" class="headerlink" title="&#x661F;&#x7A79;&#x94C1;&#x9053;"></a>&#x661F;&#x7A79;&#x94C1;&#x9053;</h3><blockquote>
+<p>Unity&#x5F15;&#x64CE;&#x5F00;&#x53D1;&#xFF0C;&#x8D1F;&#x8D23;&#x6E32;&#x67D3;&#x5F00;&#x53D1;&#xFF0C;&#x6027;&#x80FD;&#x4F18;&#x5316;</p>
+</blockquote>
+<h2 id="&#x8389;&#x8389;&#x4E1D;-2020&#x5E74;9&#x6708;-&#x81F3;&#x4ECA;"><a href="#&#x8389;&#x8389;&#x4E1D;-2020&#x5E74;9&#x6708;-&#x81F3;&#x4ECA;" class="headerlink" title="&#x8389;&#x8389;&#x4E1D;(2020&#x5E74;9&#x6708;-&#x81F3;&#x4ECA;)"></a>&#x8389;&#x8389;&#x4E1D;(2020&#x5E74;9&#x6708;-&#x81F3;&#x4ECA;)</h2><blockquote>
+<p>UE&#x5F15;&#x64CE;&#x5F00;&#x53D1;&#xFF0C;&#x8D1F;&#x8D23;&#x6E32;&#x67D3;&#x5F00;&#x53D1;&#xFF0C;&#x6027;&#x80FD;&#x4F18;&#x5316;&#xFF0C;&#x6253;&#x5305;&#x6784;&#x5EFA;&#xFF0C;&#x5E73;&#x53F0;&#x517C;&#x5BB9;&#x7B49;&#x5DE5;&#x4F5C;</p>
+</blockquote>
+<h1 id="&#x6280;&#x80FD;&#x6E05;&#x5355;"><a href="#&#x6280;&#x80FD;&#x6E05;&#x5355;" class="headerlink" title="&#x6280;&#x80FD;&#x6E05;&#x5355;"></a>&#x6280;&#x80FD;&#x6E05;&#x5355;</h1><ul>
+<li>C++&#xFF0C;Python</li>
+<li>UnrealEngine</li>
+<li>Git, P4</li>
+<li>Rendering</li>
+<li>Android/IOS</li>
+</ul>
+<h1 id="&#x81EA;&#x6211;&#x8BC4;&#x4EF7;"><a href="#&#x81EA;&#x6211;&#x8BC4;&#x4EF7;" class="headerlink" title="&#x81EA;&#x6211;&#x8BC4;&#x4EF7;"></a>&#x81EA;&#x6211;&#x8BC4;&#x4EF7;</h1><ul>
+<li>&#x70ED;&#x8877;&#x5E95;&#x5C42;&#x6280;&#x672F;</li>
+<li>&#x70ED;&#x7231;&#x5B66;&#x4E60;&#xFF0C;&#x559C;&#x6B22;&#x770B;&#x4E66;</li>
+<li>&#x9605;&#x8BFB;&#x82F1;&#x6587;&#x8BBA;&#x6587;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x95EE;&#x9898;&#xFF0C;&#x5E38;&#x770B;&#x5916;&#x6587;&#x4E66;&#x7C4D;</li>
+</ul>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

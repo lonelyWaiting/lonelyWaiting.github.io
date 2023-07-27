@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>perlin-noise - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x7B97;&amp;#x6CD5;&amp;#x8FC7;&amp;#x7A0B;">1&nbsp;&nbsp;<b>&amp;amp;#x7B97;&amp;amp;#x6CD5;&amp;amp;#x8FC7;&amp;amp;#x7A0B;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5B9E;&amp;#x73B0;">2&nbsp;&nbsp;<b>&amp;amp;#x5B9E;&amp;amp;#x73B0;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">3&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            perlin-noise
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2019-04-13T23:44:21.000Z" itemprop="datePublished">4月 13 2019</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            1 分钟 lesen (Über 214 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="&#x7B97;&#x6CD5;&#x8FC7;&#x7A0B;"><a href="#&#x7B97;&#x6CD5;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x7B97;&#x6CD5;&#x8FC7;&#x7A0B;"></a>&#x7B97;&#x6CD5;&#x8FC7;&#x7A0B;</h1><ul>
+<li><p>&#x8BBE;&#x7F6E;&#x6676;&#x683C;&#x70B9;,&#x5982;&#x4EE5;&#x6574;&#x6570;&#x4F4D;&#x7F6E;&#x4E3A;&#x6676;&#x683C;&#x70B9;</p>
+</li>
+<li><p>&#x4E3A;&#x6BCF;&#x4E2A;&#x6676;&#x683C;&#x70B9;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x68AF;&#x5EA6;&#x503C;</p>
+</li>
+<li><p>&#x8BA1;&#x7B97;&#x5F53;&#x524D;&#x91C7;&#x6837;&#x70B9;&#x4F4D;&#x4E8E;&#x54EA;&#x4E9B;&#x6676;&#x683C;&#x70B9;&#x5185;&#x90E8;</p>
+</li>
+<li><p>&#x8BA1;&#x7B97;&#x6676;&#x683C;&#x70B9;&#x5230;&#x91C7;&#x6837;&#x70B9;&#x7684;&#x5411;&#x91CF;,&#x5E76;&#x4E0E;&#x6676;&#x683C;&#x70B9;&#x7684;&#x68AF;&#x5EA6;&#x70B9;&#x4E58;</p>
+</li>
+<li><p>&#x5C06;&#x4E0E;&#x5404;&#x4E2A;&#x6676;&#x683C;&#x70B9;&#x7684;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x505A;&#x63D2;&#x503C;,&#x4E8C;&#x7EF4;&#x566A;&#x58F0;&#x5C31;&#x505A;&#x4E2A;&#x53CC;&#x7EBF;&#x6027;&#x63D2;&#x503C;</p>
+</li>
+</ul>
+<a id="more"></a>
+<h1 id="&#x5B9E;&#x73B0;"><a href="#&#x5B9E;&#x73B0;" class="headerlink" title="&#x5B9E;&#x73B0;"></a>&#x5B9E;&#x73B0;</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">perlin_noise</span><span class="hljs-params">(float2 pos)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    <span class="hljs-comment">// compute lattice point</span></span><br><span class="line">    int2 p00 = <span class="hljs-built_in">floor</span>(pos);</span><br><span class="line">    int2 p01 = p00 + int2(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);</span><br><span class="line">    int2 p10 = p00 + int2(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    int2 p11 = p00 + int2(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">    float2 lerp_factor = pos - p00;</span><br><span class="line"></span><br><span class="line">    float2 gradient00 = compute_gradient(p00);</span><br><span class="line">    float2 gradient01 = compute_gradient(p01);</span><br><span class="line">    float2 gradient10 = compute_gradient(p10);</span><br><span class="line">    float2 gradient11 = compute_gradient(p11);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">float</span> v00 = dot(pos - (float2)p00, gradient00);</span><br><span class="line">    <span class="hljs-keyword">float</span> v01 = dot(pos - (float2)p01, gradient01);</span><br><span class="line">    <span class="hljs-keyword">float</span> v10 = dot(pos - (float2)p10, gradient10);</span><br><span class="line">    <span class="hljs-keyword">float</span> v11 = dot(pos - (float2)p11, gradient11);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">float</span> v0 = lerp(v00, v01, lerp_factor.y);</span><br><span class="line">    <span class="hljs-keyword">float</span> v1 = lerp(v10, v11, lerp_factor.y);</span><br><span class="line">    <span class="hljs-keyword">float</span> v  = lerp(v0, v1, lerp_factor.x);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> v;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://en.wikipedia.org/wiki/Perlin_noise" target="_blank" rel="noopener">Perlin Noise</a></p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Noise/">#Noise</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Debug-Tools/">debug tool for game develop</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/custom-mesh-render-pass/">custom mesh render pass</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

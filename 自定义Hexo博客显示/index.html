@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>自定义Hexo博客显示 - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Hexo&amp;#x7ED3;&amp;#x6784;">1&nbsp;&nbsp;<b>Hexo&amp;amp;#x7ED3;&amp;amp;#x6784;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x529F;&amp;#x80FD;&amp;#x6269;&amp;#x5C55;">2&nbsp;&nbsp;<b>&amp;amp;#x529F;&amp;amp;#x80FD;&amp;amp;#x6269;&amp;amp;#x5C55;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4E03;&amp;#x725B;&amp;#x56FE;&amp;#x5E8A;&amp;#x94FE;&amp;#x63A5;&amp;#x683C;&amp;#x5F0F;">2.1&nbsp;&nbsp;&amp;amp;#x4E03;&amp;amp;#x725B;&amp;amp;#x56FE;&amp;amp;#x5E8A;&amp;amp;#x94FE;&amp;amp;#x63A5;&amp;amp;#x683C;&amp;amp;#x5F0F;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6807;&amp;#x9898;&amp;#x81EA;&amp;#x52A8;&amp;#x751F;&amp;#x6210;&amp;#x5E8F;&amp;#x53F7;">2.2&nbsp;&nbsp;&amp;amp;#x6807;&amp;amp;#x9898;&amp;amp;#x81EA;&amp;amp;#x52A8;&amp;amp;#x751F;&amp;amp;#x6210;&amp;amp;#x5E8F;&amp;amp;#x53F7;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6DFB;&amp;#x52A0;&amp;#x81EA;&amp;#x5B9A;&amp;#x4E49;CSS">2.2.1&nbsp;&nbsp;&amp;amp;#x6DFB;&amp;amp;#x52A0;&amp;amp;#x81EA;&amp;amp;#x5B9A;&amp;amp;#x4E49;CSS</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5B9A;&amp;#x4E49;&amp;#x6807;&amp;#x9898;&amp;#x5E8F;&amp;#x53F7;">2.2.2&nbsp;&nbsp;&amp;amp;#x5B9A;&amp;amp;#x4E49;&amp;amp;#x6807;&amp;amp;#x9898;&amp;amp;#x5E8F;&amp;amp;#x53F7;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6807;&amp;#x9898;&amp;#x524D;&amp;#x6DFB;&amp;#x52A0;&amp;#x5E8F;&amp;#x53F7;">2.2.3&nbsp;&nbsp;&amp;amp;#x6807;&amp;amp;#x9898;&amp;amp;#x524D;&amp;amp;#x6DFB;&amp;amp;#x52A0;&amp;amp;#x5E8F;&amp;amp;#x53F7;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x79FB;&amp;#x9664;&amp;#x6587;&amp;#x7AE0;&amp;#x6807;&amp;#x9898;&amp;#x7684;&amp;#x5E8F;&amp;#x53F7;">2.2.4&nbsp;&nbsp;&amp;amp;#x79FB;&amp;amp;#x9664;&amp;amp;#x6587;&amp;amp;#x7AE0;&amp;amp;#x6807;&amp;amp;#x9898;&amp;amp;#x7684;&amp;amp;#x5E8F;&amp;amp;#x53F7;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x79FB;&amp;#x9664;&amp;#x5927;&amp;#x7EB2;&amp;#x6807;&amp;#x9898;&amp;#x5E8F;&amp;#x53F7;">2.2.5&nbsp;&nbsp;&amp;amp;#x79FB;&amp;amp;#x9664;&amp;amp;#x5927;&amp;amp;#x7EB2;&amp;amp;#x6807;&amp;amp;#x9898;&amp;amp;#x5E8F;&amp;amp;#x53F7;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6BCF;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x5355;&amp;#x72EC;&amp;#x8BA1;&amp;#x7B97;&amp;#x5E8F;&amp;#x53F7;">2.2.6&nbsp;&nbsp;&amp;amp;#x6BCF;&amp;amp;#x7BC7;&amp;amp;#x6587;&amp;amp;#x7AE0;&amp;amp;#x5355;&amp;amp;#x72EC;&amp;amp;#x8BA1;&amp;amp;#x7B97;&amp;amp;#x5E8F;&amp;amp;#x53F7;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x9ED8;&amp;#x8BA4;&amp;#x6DFB;&amp;#x52A0;ReadMore">2.3&nbsp;&nbsp;&amp;amp;#x9ED8;&amp;amp;#x8BA4;&amp;amp;#x6DFB;&amp;amp;#x52A0;ReadMore</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x535A;&amp;#x5BA2;&amp;#x4E0E;&amp;#x7B14;&amp;#x8BB0;&amp;#x6574;&amp;#x5408;">3&nbsp;&nbsp;<b>&amp;amp;#x535A;&amp;amp;#x5BA2;&amp;amp;#x4E0E;&amp;amp;#x7B14;&amp;amp;#x8BB0;&amp;amp;#x6574;&amp;amp;#x5408;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Typora&amp;#x7ED3;&amp;#x6784;">3.1&nbsp;&nbsp;Typora&amp;amp;#x7ED3;&amp;amp;#x6784;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x81EA;&amp;#x52A8;&amp;#x5E8F;&amp;#x53F7;">3.2&nbsp;&nbsp;&amp;amp;#x81EA;&amp;amp;#x52A8;&amp;amp;#x5E8F;&amp;amp;#x53F7;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x91CD;&amp;#x8F7D;base-control-css&amp;#x7684;md-focus&amp;#x6807;&amp;#x7B7E;">3.3&nbsp;&nbsp;&amp;amp;#x91CD;&amp;amp;#x8F7D;base.control.css&amp;amp;#x7684;md-focus&amp;amp;#x6807;&amp;amp;#x7B7E;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x7248;&amp;#x672C;&amp;#x7BA1;&amp;#x7406;">3.4&nbsp;&nbsp;&amp;amp;#x7248;&amp;amp;#x672C;&amp;amp;#x7BA1;&amp;amp;#x7406;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Typora&amp;#x63D2;&amp;#x4EF6;">3.5&nbsp;&nbsp;Typora&amp;amp;#x63D2;&amp;amp;#x4EF6;</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53C2;&amp;#x8003;&amp;#x8D44;&amp;#x6599;">4&nbsp;&nbsp;<b>&amp;amp;#x53C2;&amp;amp;#x8003;&amp;amp;#x8D44;&amp;amp;#x6599;</b></a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            自定义Hexo博客显示
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2023-07-22T22:15:17.000Z" itemprop="datePublished">7月 22 2023</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            12 分钟 lesen (Über 1764 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="Hexo&#x7ED3;&#x6784;"><a href="#Hexo&#x7ED3;&#x6784;" class="headerlink" title="Hexo&#x7ED3;&#x6784;"></a>Hexo&#x7ED3;&#x6784;</h1><p>&#x5176;&#x6587;&#x4EF6;&#x5939;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<ul>
+<li>node_modules</li>
+<li>scaffolds</li>
+<li>source<ul>
+<li>_posts: &#x5B58;&#x653E;MD&#x6E90;&#x6587;&#x4EF6;</li>
+<li>about&#xFF1A;about&#x9875;&#x9762;</li>
+<li>categories&#xFF1A;&#x5206;&#x7C7B;&#x9875;&#x9762;</li>
+<li>resources&#xFF1A;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x53EF;&#x5B58;&#x653E;image&#xFF0C;css&#xFF0C;js&#x7B49;</li>
+<li>tags&#xFF1A;&#x6807;&#x7B7E;&#x9875;</li>
+<li>CNAME&#xFF1A;&#x57DF;&#x540D;</li>
+<li>favicon</li>
+</ul>
+</li>
+<li>themes<ul>
+<li>&#x4E3B;&#x9898;&#x540D;<ul>
+<li>languages</li>
+<li>layout&#xFF1A;&#x9875;&#x9762;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#xFF0C;&#x63A7;&#x5236;&#x5982;&#x4F55;&#x751F;&#x6210;&#x9875;&#x9762;&#xFF0C;&#x4F7F;&#x7528;EJS&#x7F16;&#x5199;</li>
+<li>scripts&#xFF1A;</li>
+<li>source&#xFF1A;&#x5B58;&#x653E;&#x4E3B;&#x9898;&#x4F7F;&#x7528;&#x7684;css&#xFF0C;js&#xFF0C;font&#x7B49;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="&#x529F;&#x80FD;&#x6269;&#x5C55;"><a href="#&#x529F;&#x80FD;&#x6269;&#x5C55;" class="headerlink" title="&#x529F;&#x80FD;&#x6269;&#x5C55;"></a>&#x529F;&#x80FD;&#x6269;&#x5C55;</h1><h2 id="&#x4E03;&#x725B;&#x56FE;&#x5E8A;&#x94FE;&#x63A5;&#x683C;&#x5F0F;"><a href="#&#x4E03;&#x725B;&#x56FE;&#x5E8A;&#x94FE;&#x63A5;&#x683C;&#x5F0F;" class="headerlink" title="&#x4E03;&#x725B;&#x56FE;&#x5E8A;&#x94FE;&#x63A5;&#x683C;&#x5F0F;"></a>&#x4E03;&#x725B;&#x56FE;&#x5E8A;&#x94FE;&#x63A5;&#x683C;&#x5F0F;</h2><h2 id="&#x6807;&#x9898;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x5E8F;&#x53F7;"><a href="#&#x6807;&#x9898;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x5E8F;&#x53F7;" class="headerlink" title="&#x6807;&#x9898;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x5E8F;&#x53F7;"></a>&#x6807;&#x9898;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x5E8F;&#x53F7;</h2><h3 id="&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;CSS"><a href="#&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;CSS" class="headerlink" title="&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;CSS"></a>&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;CSS</h3><p>&#x4F7F;&#x7528;CSS&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#xFF0C;&#x5C06;&#x81EA;&#x5B9A;&#x4E49;CSS&#x81F3;<code>themes/{&#x4E3B;&#x9898;}/source/css/custom/user.css</code></p>
+<p>&#x5728;<code>themes/{&#x4E3B;&#x9898;}/layout/_partial/header.ejs</code>&#x6DFB;&#x52A0;<code>CSS</code>&#x5F15;&#x7528;&#xFF1A;</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=<span class="hljs-string">&quot;/css/custom/user.css&quot;</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span> type=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>css</code>&#x7684;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF0C;&#x9996;&#x5148;&#x4E3A;<code>body</code>&#x4E0E;&#x6807;&#x9898;&#x6DFB;&#x52A0;&#x8BA1;&#x6570;&#x5668;&#xFF0C;&#x521D;&#x59CB;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A;0&#xFF1A;</p>
+<h3 id="&#x5B9A;&#x4E49;&#x6807;&#x9898;&#x5E8F;&#x53F7;"><a href="#&#x5B9A;&#x4E49;&#x6807;&#x9898;&#x5E8F;&#x53F7;" class="headerlink" title="&#x5B9A;&#x4E49;&#x6807;&#x9898;&#x5E8F;&#x53F7;"></a>&#x5B9A;&#x4E49;&#x6807;&#x9898;&#x5E8F;&#x53F7;</h3><ul>
+<li>counter-reset: &#x5B9A;&#x4E49;&#x8BA1;&#x6570;&#x5668;&#x5E76;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E3A;0</li>
+</ul>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-reset</span>: body;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">/* &#x4FEE;&#x6539;&#x6B63;&#x6587;&#x5B57;&#x4F53; */</span></span><br><span class="line">    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&quot;Vollkorn&quot;</span>, Palatino, Times;</span><br><span class="line">	<span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;</span><br><span class="line">	<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.4</span>;</span><br><span class="line">	<span class="hljs-attribute">text-align</span>: justify;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">/* &#x6B63;&#x6587;&#x6807;&#x9898;&#x81EA;&#x52A8;&#x5E8F;&#x53F7; */</span></span><br><span class="line"><span class="hljs-selector-tag">h1</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-reset</span>: h1;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h2</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-reset</span>: h2;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h3</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-reset</span>: h3;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h4</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-reset</span>: h4;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h5</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-reset</span>: h5;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h6</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-reset</span>: h6;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="&#x6807;&#x9898;&#x524D;&#x6DFB;&#x52A0;&#x5E8F;&#x53F7;"><a href="#&#x6807;&#x9898;&#x524D;&#x6DFB;&#x52A0;&#x5E8F;&#x53F7;" class="headerlink" title="&#x6807;&#x9898;&#x524D;&#x6DFB;&#x52A0;&#x5E8F;&#x53F7;"></a>&#x6807;&#x9898;&#x524D;&#x6DFB;&#x52A0;&#x5E8F;&#x53F7;</h3><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">h1</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: body;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h2</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: h1;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h1) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h3</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: h2;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h1)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h2) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h4</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: h3;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h1)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h2)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h3) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h5</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: h4;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h1)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h2)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h3)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h4) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h6</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: h5;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h1)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h2)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h3)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h4)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h5) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="&#x79FB;&#x9664;&#x6587;&#x7AE0;&#x6807;&#x9898;&#x7684;&#x5E8F;&#x53F7;"><a href="#&#x79FB;&#x9664;&#x6587;&#x7AE0;&#x6807;&#x9898;&#x7684;&#x5E8F;&#x53F7;" class="headerlink" title="&#x79FB;&#x9664;&#x6587;&#x7AE0;&#x6807;&#x9898;&#x7684;&#x5E8F;&#x53F7;"></a>&#x79FB;&#x9664;&#x6587;&#x7AE0;&#x6807;&#x9898;&#x7684;&#x5E8F;&#x53F7;</h3><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">h1</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: body;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">/*&#x5FC5;&#x987B;&#x4F4D;&#x4E8E;h1:before&#x4E4B;&#x540E;&#xFF0C;&#x9760;&#x540E;&#x7684;&#x89C4;&#x5219;&#x4F18;&#x5148;&#x7EA7;&#x66F4;&#x9AD8;*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*h1&#x5143;&#x7D20;&#x7684;class&#x4E3A;article-title&#xFF0C;&#x5219;&#x4E0D;&#x6DFB;&#x52A0;&#x5E8F;&#x53F7;*/</span></span><br><span class="line"><span class="hljs-selector-class">.article-title</span> <span class="hljs-selector-tag">h1</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">content</span>: none;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-comment">/*h1&#x5143;&#x7D20;&#x7684;class&#x4E3A;article-header&#xFF0C;&#x5219;&#x4E0D;&#x6DFB;&#x52A0;&#x5E8F;&#x53F7;*/</span></span><br><span class="line"><span class="hljs-selector-class">.article-header</span> <span class="hljs-selector-tag">h1</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">content</span>: none;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="&#x79FB;&#x9664;&#x5927;&#x7EB2;&#x6807;&#x9898;&#x5E8F;&#x53F7;"><a href="#&#x79FB;&#x9664;&#x5927;&#x7EB2;&#x6807;&#x9898;&#x5E8F;&#x53F7;" class="headerlink" title="&#x79FB;&#x9664;&#x5927;&#x7EB2;&#x6807;&#x9898;&#x5E8F;&#x53F7;"></a>&#x79FB;&#x9664;&#x5927;&#x7EB2;&#x6807;&#x9898;&#x5E8F;&#x53F7;</h3><p>&#x4E0B;&#x56FE;&#x4E3A;&#x4F8B;&#xFF0C;Contents&#x5C5E;&#x4E8E;&#x5927;&#x7EB2;&#x6807;&#x9898;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x5E8F;&#x53F7;&#xFF1A;</p>
+<p><img src="./../resources/images/&#x81EA;&#x5B9A;&#x4E49;Hexo&#x535A;&#x5BA2;&#x663E;&#x793A;/TOCAutoOrder.png" alt="Content Title Order"></p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">h3</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: h2;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h1)<span class="hljs-string">&quot;.&quot;</span> <span class="hljs-built_in">counter</span>(h2) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-class">.article-toc</span> <span class="hljs-selector-tag">h3</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">content</span>: none;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="&#x6BCF;&#x7BC7;&#x6587;&#x7AE0;&#x5355;&#x72EC;&#x8BA1;&#x7B97;&#x5E8F;&#x53F7;"><a href="#&#x6BCF;&#x7BC7;&#x6587;&#x7AE0;&#x5355;&#x72EC;&#x8BA1;&#x7B97;&#x5E8F;&#x53F7;" class="headerlink" title="&#x6BCF;&#x7BC7;&#x6587;&#x7AE0;&#x5355;&#x72EC;&#x8BA1;&#x7B97;&#x5E8F;&#x53F7;"></a>&#x6BCF;&#x7BC7;&#x6587;&#x7AE0;&#x5355;&#x72EC;&#x8BA1;&#x7B97;&#x5E8F;&#x53F7;</h3><p>&#x5BF9;&#x4E8E;&#x6587;&#x7AE0;&#x5217;&#x8868;&#x9875;&#x9762;&#xFF0C;&#x4F1A;&#x540C;&#x65F6;&#x5B58;&#x5728;&#x591A;&#x4E2A;&#x6807;&#x9898;&#xFF0C;&#x4F46;&#x671F;&#x671B;&#x7684;&#x662F;&#x6BCF;&#x7BC7;&#x6587;&#x7AE0;&#x5355;&#x72EC;&#x8BA1;&#x7B97;&#x5E8F;&#x53F7;&#xFF1A;</p>
+<p><img src="./../resources/images/&#x81EA;&#x5B9A;&#x4E49;Hexo&#x535A;&#x5BA2;&#x663E;&#x793A;/ArticleTitleSeperateOrder.png" alt="Article ReadMore Title Order"></p>
+<p>&#x6BCF;&#x7BC7;&#x6587;&#x7AE0;&#x90FD;&#x53EA;&#x6709;&#x4E00;&#x4E2A;article-inner&#x5143;&#x7D20;&#xFF0C;&#x6BCF;&#x89E3;&#x6790;&#x4E00;&#x4E2A;&#x8BE5;&#x5143;&#x7D20;&#x5219;&#x5C06;&#x5E8F;&#x53F7;&#x7F6E;0</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.article-inner</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-reset</span>: body h1 h2 h3 h4 h5 h6;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-tag">h1</span><span class="hljs-selector-pseudo">:before</span> {</span><br><span class="line">    <span class="hljs-attribute">counter-increment</span>: body;</span><br><span class="line">    <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counter</span>(body) <span class="hljs-string">&quot;. &quot;</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;ReadMore"><a href="#&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;ReadMore" class="headerlink" title="&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;ReadMore"></a>&#x9ED8;&#x8BA4;&#x6DFB;&#x52A0;ReadMore</h2><p>&#x4E0D;&#x6DFB;&#x52A0;<code>&lt;!-- more --&gt;</code>&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x663E;&#x793A;&#x5168;&#x6587;&#x6539;&#x4E3A;&#x663E;&#x793A;<code>Read More</code>&#x94FE;&#x63A5;&#xFF0C;&#x6587;&#x7AE0;&#x663E;&#x793A;&#x5F88;&#x4E71;</p>
+<p>&#x4FEE;&#x6539;<code>layout/_partial/article.ejs</code>&#xFF0C;&#x627E;&#x5230;<code>theme.excerpt_link</code>&#xFF0C;&#x4FEE;&#x6539;&#x5BF9;&#x5E94;&#x90E8;&#x5206;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;article-entry&quot;</span> itemprop=<span class="hljs-string">&quot;articleBody&quot;</span>&gt;</span><br><span class="line">  &lt;% <span class="hljs-keyword">if</span> (post.excerpt &amp;&amp; index){ %&gt;</span><br><span class="line">    &lt;%- post.excerpt %&gt;</span><br><span class="line">    &lt;% <span class="hljs-keyword">if</span> (theme.excerpt_link){ %&gt;</span><br><span class="line">      &lt;p <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;article-more-link&quot;</span>&gt;</span><br><span class="line">        &lt;a href=<span class="hljs-string">&quot;&lt;%- url_for(post.path) %&gt;#more&quot;</span>&gt;&lt;%= theme.excerpt_link %&gt;&lt;<span class="hljs-regexp">/a&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>p&gt;</span><br><span class="line">    &lt;% } %&gt;</span><br><span class="line">  &lt;% } <span class="hljs-keyword">else</span> { %&gt;</span><br><span class="line">    &lt;!-- &#x4EE5;&#x4E0B;&#x4E3A;&#x539F;&#x9879; --&gt;</span><br><span class="line">    &lt;!-- &lt;%- post.content %&gt; --&gt;</span><br><span class="line">    &lt;!-- &#x4EE5;&#x4E0B;&#x4E3A;&#x4FEE;&#x6539;&#x9879; --&gt;</span><br><span class="line">    &lt;% <span class="hljs-keyword">if</span> (index) { %&gt;</span><br><span class="line">      &lt;p <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;article-more-link&quot;</span>&gt;</span><br><span class="line">        &lt;a href=<span class="hljs-string">&quot;&lt;%- url_for(post.path) %&gt;#more&quot;</span>&gt;&lt;%= theme.excerpt_link %&gt;&lt;<span class="hljs-regexp">/a&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>p&gt;</span><br><span class="line">    &lt;% } <span class="hljs-keyword">else</span> { %&gt;</span><br><span class="line">      &lt;%- post.content %&gt;</span><br><span class="line">    &lt;% } %&gt;</span><br><span class="line">  &lt;% } %&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x53EF;&#x5728;<code>_config.yml</code>&#x4E2D;&#x914D;&#x7F6E;<code>excerpt_link</code>&#xFF0C;&#x4FEE;&#x6539;&#x94FE;&#x63A5;&#x663E;&#x793A;&#x6587;&#x5B57;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;<code>Read More</code></p>
+<h1 id="&#x535A;&#x5BA2;&#x4E0E;&#x7B14;&#x8BB0;&#x6574;&#x5408;"><a href="#&#x535A;&#x5BA2;&#x4E0E;&#x7B14;&#x8BB0;&#x6574;&#x5408;" class="headerlink" title="&#x535A;&#x5BA2;&#x4E0E;&#x7B14;&#x8BB0;&#x6574;&#x5408;"></a>&#x535A;&#x5BA2;&#x4E0E;&#x7B14;&#x8BB0;&#x6574;&#x5408;</h1><p>&#x4F7F;&#x7528;Typora&#x4F5C;&#x4E3A;Markdown&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x4E3A;&#x4E86;&#x4E0E;&#x6700;&#x7EC8;&#x7684;&#x663E;&#x793A;&#x4E0D;&#x5F62;&#x6210;&#x8FC7;&#x5927;&#x5DEE;&#x5F02;&#xFF0C;&#x540C;&#x6837;&#x5BF9;Typora&#x8FDB;&#x884C;&#x5B9A;&#x5236;</p>
+<h2 id="Typora&#x7ED3;&#x6784;"><a href="#Typora&#x7ED3;&#x6784;" class="headerlink" title="Typora&#x7ED3;&#x6784;"></a>Typora&#x7ED3;&#x6784;</h2><p>&#x5E03;&#x5C40;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p>&#x67E5;&#x770B;&#x5143;&#x7D20;&#x7684;CSS&#xFF0C;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x5C5E;&#x6027;&#xFF1A;</p>
+<h2 id="&#x81EA;&#x52A8;&#x5E8F;&#x53F7;"><a href="#&#x81EA;&#x52A8;&#x5E8F;&#x53F7;" class="headerlink" title="&#x81EA;&#x52A8;&#x5E8F;&#x53F7;"></a>&#x81EA;&#x52A8;&#x5E8F;&#x53F7;</h2><p>&#x4E0E;Hexo&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;Typora&#x7684;&#x6837;&#x5F0F;&#x8868;&#x6539;&#x9020;&#x53EA;&#x9700;&#x8981;&#x4E13;&#x6CE8;&#x4E8E;&#x6587;&#x7AE0;&#x672C;&#x8EAB;&#xFF0C;&#x4E0D;&#x6D89;&#x53CA;&#x663E;&#x793A;&#x591A;&#x4E2A;&#x6587;&#x7AE0;&#x7684;&#x6982;&#x89C8;&#x7B49;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x5728;Hexo&#x4E2D;&#x4F1A;&#x4F7F;&#x7528;&#x6587;&#x7AE0;&#x540D;&#x5728;&#x7F51;&#x9875;&#x4E2D;&#x4F5C;&#x4E3A;&#x6807;&#x9898;&#x8FDB;&#x884C;&#x663E;&#x793A;&#xFF0C;&#x7136;&#x800C;Typora&#x5374;&#x9ED8;&#x8BA4;&#x4E0D;&#x4F1A;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x91CC;&#x4E0D;&#x5BF9;&#x9996;&#x4E2A;h1&#x6807;&#x9898;&#x7279;&#x6B8A;&#x5904;&#x7406;</p>
+<h2 id="&#x91CD;&#x8F7D;base-control-css&#x7684;md-focus&#x6807;&#x7B7E;"><a href="#&#x91CD;&#x8F7D;base-control-css&#x7684;md-focus&#x6807;&#x7B7E;" class="headerlink" title="&#x91CD;&#x8F7D;base.control.css&#x7684;md-focus&#x6807;&#x7B7E;"></a>&#x91CD;&#x8F7D;base.control.css&#x7684;md-focus&#x6807;&#x7B7E;</h2><p>&#x7F16;&#x8F91;h3&#x53CA;&#x4EE5;&#x540E;&#x7684;&#x6807;&#x9898;&#x65F6;&#xFF0C;&#x4F1A;&#x51FA;&#x73B0;&#x5E8F;&#x53F7;&#x6D88;&#x5931;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x539F;&#x56E0;&#x4E3A;<code>base.control.css</code>&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x5305;&#x542B;md-focus&#x7684;&#x6807;&#x9898;&#x6837;&#x5F0F;&#x8868;&#xFF1A;</p>
+<p><img src="./../resources/images/&#x81EA;&#x5B9A;&#x4E49;Hexo&#x535A;&#x5BA2;&#x663E;&#x793A;/MDFocusCSS.png" alt="&#x5305;&#x542B;MDFocus&#x6807;&#x7B7E;&#x7684;&#x6807;&#x9898;&#x6837;&#x5F0F;&#x8868;"></p>
+<h2 id="&#x7248;&#x672C;&#x7BA1;&#x7406;"><a href="#&#x7248;&#x672C;&#x7BA1;&#x7406;" class="headerlink" title="&#x7248;&#x672C;&#x7BA1;&#x7406;"></a>&#x7248;&#x672C;&#x7BA1;&#x7406;</h2><p>&#x7531;&#x4E8E;&#x7B14;&#x8BB0;&#x5927;&#x591A;&#x6570;&#x5904;&#x4E8E;&#x672A;&#x5B8C;&#x6210;&#x72B6;&#x6001;&#xFF0C;&#x4E0D;&#x5E0C;&#x671B;&#x53D1;&#x5E03;&#x5230;&#x535A;&#x5BA2;&#x9875;&#x9762;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5C06;&#x5176;&#x5355;&#x72EC;&#x5B58;&#x653E;&#x4E8E;<code>Source/Notes/</code>&#x4E0B;&#xFF0C;&#x4E0E;<code>_posts</code>&#x76EE;&#x5F55;&#x540C;&#x7EA7;</p>
+<p>&#x8BE5;&#x8BBE;&#x5B9A;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7B14;&#x8BB0;&#x4E0E;&#x6700;&#x7EC8;&#x535A;&#x6587;&#x5F15;&#x7528;&#x7684;&#x56FE;&#x7247;&#x8DEF;&#x5F84;&#x4E00;&#x81F4;&#xFF0C;&#x5F53;&#x7B14;&#x8BB0;&#x5B8C;&#x6210;&#x540E;&#x9700;&#x8981;&#x53D1;&#x5E03;&#x65F6;&#xFF0C;&#x53EA;&#x9700;&#x5C06;&#x5176;&#x540C;&#x6B65;&#x81F3;<code>_posts</code>&#x5373;&#x53EF;&#xFF0C;&#x65E0;&#x9700;&#x8FC1;&#x79FB;&#x8D44;&#x6E90;</p>
+<ul>
+<li>&#x535A;&#x5BA2;&#x6839;&#x76EE;&#x5F55;<ul>
+<li>source<ul>
+<li>_posts</li>
+<li>about</li>
+<li>categories</li>
+<li>resources</li>
+<li>tags</li>
+<li>CNAME</li>
+<li>favicon</li>
+<li>Notes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&#x7531;&#x4E8E;&#x7B14;&#x8BB0;&#x5904;&#x4E8E;&#x672A;&#x5F00;&#x53D1;&#x5B8C;&#x6210;&#x72B6;&#x6001;&#xFF0C;&#x4E0D;&#x5E0C;&#x671B;&#x5BF9;&#x5916;&#x3002;&#x4F46;&#x7531;&#x4E8E;Github&#x4E0D;&#x652F;&#x6301;&#x516C;&#x5171;&#x4ED3;&#x5E93;&#x4E3A;&#x5206;&#x652F;&#x5355;&#x72EC;&#x8BBE;&#x7F6E;&#x53EF;&#x89C1;&#x6027;&#x6743;&#x9650;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x7279;&#x5B9A;&#x5206;&#x652F;&#x9690;&#x85CF;&#x4E0D;&#x5E0C;&#x671B;&#x5BF9;&#x5916;&#x7684;&#x5185;&#x5BB9;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x501F;&#x52A9;Github Actions&#x6765;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x90E8;&#x7F72;</p>
+<p>&#x7B14;&#x8BB0;+&#x535A;&#x5BA2;&#x7684;&#x6E90;&#x7801;&#x4F7F;&#x7528;&#x79C1;&#x6709;&#x4ED3;&#x5E93;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x6BCF;&#x5F53;&#x79C1;&#x6709;&#x4ED3;&#x5E93;&#x53D1;&#x751F;&#x63D0;&#x4EA4;&#x540E;&#xFF0C;&#x5229;&#x7528;Github Actions&#x81EA;&#x52A8;&#x6784;&#x5EFA;&#x5E76;&#x63A8;&#x9001;&#x81F3;Github Page&#x5BF9;&#x5E94;&#x7684;&#x516C;&#x5F00;&#x4ED3;&#x5E93;</p>
+<p>&#x9996;&#x5148;&#x5B9A;&#x4E49;&#x4E0B;&#x4ED3;&#x5E93;&#x7ED3;&#x6784;&#xFF0C;&#x76EE;&#x524D;&#x4F7F;&#x7528;&#x4E24;&#x4E2A;&#x4ED3;&#x5E93;&#xFF1A;</p>
+<ul>
+<li>blog-source&#xFF1A;&#x4FDD;&#x5B58;&#x535A;&#x5BA2;&#x7684;&#x6E90;&#x6587;&#x4EF6;</li>
+<li>lonelywaiting.github.io&#xFF1A;&#x6700;&#x7EC8;&#x7684;&#x53D1;&#x5E03;&#x4ED3;&#x5E93;</li>
+</ul>
+<p>&#x9996;&#x5148;&#x751F;&#x6210;SSH&#x5BC6;&#x94A5;&#xFF1A;&#x82E5;&#x5DF2;&#x751F;&#x6210;&#x8FC7;&#xFF0C;&#x5219;&#x53EF;&#x5FFD;&#x7565;&#x3002;&#x5728;.ssh&#x76EE;&#x5F55;&#x4E0B;&#x751F;&#x6210;<code>id_ed25519</code>&#x4E0E;<code>id_ed25519.pub</code></p>
+<figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>&#x7136;&#x540E;&#x914D;&#x7F6E;blog-source&#x4ED3;&#x5E93;&#xFF1A;</p>
+<ul>
+<li>&#x6253;&#x5F00;Settings/Actions/General&#xFF0C;&#x4FEE;&#x6539;Actions Permissions&#x4E3A;Allow all actions and reusable workflows&#x3002;&#x4FBF;&#x4E8E;&#x540E;&#x7EED;&#x590D;&#x7528;Action&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x73B0;&#x4EE5;&#x4E0B;&#x62A5;&#x9519;</li>
+</ul>
+<p><img src="./../resources/images/&#x81EA;&#x5B9A;&#x4E49;Hexo&#x535A;&#x5BA2;&#x663E;&#x793A;/ActionNotOwnedByUser.png" alt="Actions in this workflow must be owned by user"></p>
+<ul>
+<li><p>&#x6253;&#x5F00;Settings/Secrets and variables/Actions&#xFF0C;&#x70B9;&#x51FB;New repository secret&#xFF0C;&#x6DFB;&#x52A0;SSH&#x79C1;&#x94A5;&#xFF0C;&#x547D;&#x540D;&#x4E3A;SSH_DEPLOY_KEY</p>
+<p><img src="./../resources/images/&#x81EA;&#x5B9A;&#x4E49;Hexo&#x535A;&#x5BA2;&#x663E;&#x793A;/NewRepoSecret.png" alt="New Repository Secret"></p>
+</li>
+</ul>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x914D;&#x7F6E;&#x53D1;&#x5E03;&#x4ED3;&#x5E93;&#xFF1A;&#x6DFB;&#x52A0;Deploy Keys&#xFF0C;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x9009;&#x62E9;</p>
+<ul>
+<li>&#x4E00;&#xFF1A;&#x4ED3;&#x5E93;Settings/Security/Deploy keys/ Add deploy key&#xFF0C;&#x6DFB;&#x52A0;SSH&#x516C;&#x94A5;</li>
+<li>&#x4E8C;&#xFF1A;&#x7528;&#x6237;Settings/SSH And GPG keys/New SSH key&#xFF0C;&#x6DFB;&#x52A0;SSH&#x516C;&#x94A5;</li>
+</ul>
+<p>&#x7136;&#x540E;&#x5728;&#x53D1;&#x5E03;&#x4ED3;&#x5E93;&#x4E0B;&#x65B0;&#x5EFA;<code>.github/workflows/deployment.yml</code>&#x5E76;&#x4E0A;&#x4F20;&#xFF0C;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight yaml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attr">name:</span> <span class="hljs-string">Deployment</span></span><br><span class="line"><span class="hljs-attr">on:</span> <span class="hljs-string">push</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-attr">jobs:</span></span><br><span class="line">  <span class="hljs-attr">deployment:</span></span><br><span class="line">    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span></span><br><span class="line">    <span class="hljs-attr">name:</span> <span class="hljs-string">Deployment</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-attr">steps:</span></span><br><span class="line">      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Check</span> <span class="hljs-string">Out</span></span><br><span class="line">        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v3</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Clone</span> <span class="hljs-string">Repo</span></span><br><span class="line">        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v3</span></span><br><span class="line">        <span class="hljs-attr">with:</span></span><br><span class="line">          <span class="hljs-attr">repository:</span> <span class="hljs-string">&#x90E8;&#x7F72;&#x4ED3;&#x5E93;&#x5373;github.io&#x5BF9;&#x5E94;&#x7684;&#x4ED3;&#x5E93;</span></span><br><span class="line">          <span class="hljs-attr">path:</span> <span class="hljs-string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Setup</span> <span class="hljs-string">Node</span></span><br><span class="line">        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-node@v3</span></span><br><span class="line">        <span class="hljs-attr">with:</span></span><br><span class="line">          <span class="hljs-attr">node-version:</span> <span class="hljs-number">18</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Setup</span> <span class="hljs-string">Git</span></span><br><span class="line">        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span></span><br><span class="line">          <span class="hljs-string">git</span> <span class="hljs-string">config</span> <span class="hljs-string">--global</span> <span class="hljs-string">user.name</span> <span class="hljs-string">&#x7528;&#x6237;&#x540D;</span></span><br><span class="line">          <span class="hljs-string">git</span> <span class="hljs-string">config</span> <span class="hljs-string">--global</span> <span class="hljs-string">user.email</span> <span class="hljs-string">&#x90AE;&#x7BB1;</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Setup</span> <span class="hljs-string">SSH</span> <span class="hljs-string">Key</span></span><br><span class="line">        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span></span><br><span class="line">          <span class="hljs-string">mkdir</span> <span class="hljs-string">-p</span> <span class="hljs-string">~/.ssh</span></span><br><span class="line">          <span class="hljs-string">echo</span> <span class="hljs-string">&quot;$<span class="hljs-template-variable">{{ secrets.SSH_DEPLOY_KEY }}</span>&quot;</span> <span class="hljs-string">&gt;</span> <span class="hljs-string">~/.ssh/id_ed25519</span></span><br><span class="line">          <span class="hljs-string">chmod</span> <span class="hljs-number">600</span> <span class="hljs-string">~/.ssh/id_ed25519</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span></span><br><span class="line">        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span></span><br><span class="line">          <span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">--location=global</span> <span class="hljs-string">hexo-cli</span></span><br><span class="line">          <span class="hljs-string">npm</span> <span class="hljs-string">install</span></span><br><span class="line">          <span class="hljs-string">hexo</span> <span class="hljs-string">d</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x6CE8;&#x610F;&#x4E0A;&#x9762;&#x7684;<code>repository</code>&#x586B;&#x5199;&#x683C;&#x5F0F;&#x4E3A;&#xFF1A;<code>Username/RepositoryName</code></p>
+<p>&#x5982;:<code>lonelyWaiting/lonelyWaiting.github.io.git</code>&#xFF0C;&#x5982;&#x679C;&#x4ED3;&#x5E93;&#x540D;&#x914D;&#x7F6E;&#x9519;&#x8BEF;&#xFF0C;&#x4F1A;&#x51FA;&#x73B0;&#x7C7B;&#x4F3C;&#x62A5;&#x9519;&#xFF1A;</p>
+<p><img src="./../resources/images/&#x81EA;&#x5B9A;&#x4E49;Hexo&#x535A;&#x5BA2;&#x663E;&#x793A;/CloneRepoError.png" alt="CloneRepo Step Failed"></p>
+<h2 id="Typora&#x63D2;&#x4EF6;"><a href="#Typora&#x63D2;&#x4EF6;" class="headerlink" title="Typora&#x63D2;&#x4EF6;"></a>Typora&#x63D2;&#x4EF6;</h2><p>Typora&#x7684;HTML&#x6846;&#x67B6;&#x4F4D;&#x4E8E;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x7684;Windows.html&#xFF0C;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x8BE5;&#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x5176;&#x5F15;&#x7528;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x4E0B;&#x7684;Javascript&#x6587;&#x4EF6;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x529F;&#x80FD;</p>
+<p>Github&#x4E0A;&#x7684;<a href="https://github.com/obgnail/typora_plugin" target="_blank" rel="noopener">Typora&#x63D2;&#x4EF6;</a>&#x9879;&#x76EE;&#x4FBF;&#x662F;&#x4EE5;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x7684;&#xFF1A;</p>
+<p><img src="./../resources/images/&#x81EA;&#x5B9A;&#x4E49;Hexo&#x535A;&#x5BA2;&#x663E;&#x793A;/TyporaPluginSupportFeature.png" alt="Typora Plugin Support Feature"></p>
+<h1 id="&#x53C2;&#x8003;&#x8D44;&#x6599;"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</h1><p><a href="https://blog.zhanganzhi.com/zh-CN/2022/06/0800d76d306e/" target="_blank" rel="noopener">Github Actions&#x81EA;&#x52A8;&#x90E8;&#x7F72;Hexo&#x535A;&#x5BA2;</a><br><a href="https://github.com/obgnail/typora_plugin" target="_blank" rel="noopener">Typora&#x63D2;&#x4EF6;</a></p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Hexo-Blog/">#Hexo, Blog</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/shading-model/">shading model</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/Preintegrated-Skin/">preintegrated skin rendering</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

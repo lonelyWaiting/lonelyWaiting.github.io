@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>debug tool for game develop - lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/">Home</a>
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories">Categories</a>
+            
+            <a class="navbar-item " href="/tags">Tags</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Inhaltsverzeichnis">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#GPU">1&nbsp;&nbsp;<b>GPU</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Snapdragon-Profiler">1.1&nbsp;&nbsp;Snapdragon Profiler</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#GMEM-Load-GMEM-Store">1.1.1&nbsp;&nbsp;GMEM Load/GMEM Store</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Arm-Graphics-Tool">1.2&nbsp;&nbsp;Arm Graphics Tool</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Adreno-GPU">1.3&nbsp;&nbsp;Adreno GPU</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#PVRTune">1.4&nbsp;&nbsp;PVRTune</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Renderdoc">1.5&nbsp;&nbsp;Renderdoc</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#XCode-GPU-Frame-Capture">1.6&nbsp;&nbsp;XCode GPU Frame Capture</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#CPU">2&nbsp;&nbsp;<b>CPU</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Unreal-Insight">2.1&nbsp;&nbsp;Unreal Insight</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Memory-Tools">3&nbsp;&nbsp;<b>Memory Tools</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Adroid-Address-Sanitizer">3.1&nbsp;&nbsp;Adroid Address Sanitizer</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HWAddress-Sanitizer">3.2&nbsp;&nbsp;HWAddress Sanitizer</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Loli-Profiler">3.3&nbsp;&nbsp;Loli Profiler</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#UE4&amp;#x5185;&amp;#x7F6E;Memory&amp;#x5DE5;&amp;#x5177;">3.4&nbsp;&nbsp;UE4&amp;amp;#x5185;&amp;amp;#x7F6E;Memory&amp;amp;#x5DE5;&amp;amp;#x5177;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#MemoryReport">3.4.1&nbsp;&nbsp;MemoryReport</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#LLM">3.4.2&nbsp;&nbsp;LLM</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#StompMalloc">3.4.3&nbsp;&nbsp;StompMalloc</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#MmeoryProfile2">3.4.4&nbsp;&nbsp;MmeoryProfile2</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#XCode&amp;#x5185;&amp;#x7F6E;&amp;#x5DE5;&amp;#x5177;">3.5&nbsp;&nbsp;XCode&amp;amp;#x5185;&amp;amp;#x7F6E;&amp;amp;#x5DE5;&amp;amp;#x5177;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Address-Sanitizer">3.5.1&nbsp;&nbsp;Address Sanitizer</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Zombie-Object">3.5.2&nbsp;&nbsp;Zombie Object</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Malloc-History">3.5.3&nbsp;&nbsp;Malloc History</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Memory-Graph">3.5.4&nbsp;&nbsp;Memory Graph</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x80FD;&amp;#x8017;">4&nbsp;&nbsp;<b>&amp;amp;#x80FD;&amp;amp;#x8017;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Prefotto">4.1&nbsp;&nbsp;Prefotto</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#XCode">4.2&nbsp;&nbsp;XCode</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53CD;&amp;#x7F16;&amp;#x8BD1;">5&nbsp;&nbsp;<b>&amp;amp;#x53CD;&amp;amp;#x7F16;&amp;amp;#x8BD1;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#IDA">5.1&nbsp;&nbsp;IDA</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x771F;&amp;#x673A;&amp;#x8C03;&amp;#x8BD5;">5.1.1&nbsp;&nbsp;&amp;amp;#x771F;&amp;amp;#x673A;&amp;amp;#x8C03;&amp;amp;#x8BD5;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5E38;&amp;#x7528;&amp;#x5FEB;&amp;#x6377;&amp;#x952E;">5.1.2&nbsp;&nbsp;&amp;amp;#x5E38;&amp;amp;#x7528;&amp;amp;#x5FEB;&amp;amp;#x6377;&amp;amp;#x952E;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#x64dbg">5.2&nbsp;&nbsp;x64dbg</a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            debug tool for game develop
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2023-05-26T23:38:10.000Z" itemprop="datePublished">5月 26 2023</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Tool/">Tool</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            几秒 lesen (Über 97 Wörter)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <blockquote>
+<p>&#x672C;&#x6587;&#x5C06;&#x4ECB;&#x7ECD;&#x5404;&#x7C7B;&#x5F00;&#x53D1;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#x7684;&#x4E3B;&#x8981;&#x7528;&#x9014;&#x4EE5;&#x53CA;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h1><h2 id="Snapdragon-Profiler"><a href="#Snapdragon-Profiler" class="headerlink" title="Snapdragon Profiler"></a>Snapdragon Profiler</h2><h3 id="GMEM-Load-GMEM-Store"><a href="#GMEM-Load-GMEM-Store" class="headerlink" title="GMEM Load/GMEM Store"></a>GMEM Load/GMEM Store</h3><h2 id="Arm-Graphics-Tool"><a href="#Arm-Graphics-Tool" class="headerlink" title="Arm Graphics Tool"></a>Arm Graphics Tool</h2><h2 id="Adreno-GPU"><a href="#Adreno-GPU" class="headerlink" title="Adreno GPU"></a>Adreno GPU</h2><h2 id="PVRTune"><a href="#PVRTune" class="headerlink" title="PVRTune"></a>PVRTune</h2><h2 id="Renderdoc"><a href="#Renderdoc" class="headerlink" title="Renderdoc"></a>Renderdoc</h2><h2 id="XCode-GPU-Frame-Capture"><a href="#XCode-GPU-Frame-Capture" class="headerlink" title="XCode GPU Frame Capture"></a>XCode GPU Frame Capture</h2><h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><h2 id="Unreal-Insight"><a href="#Unreal-Insight" class="headerlink" title="Unreal Insight"></a>Unreal Insight</h2><h1 id="Memory-Tools"><a href="#Memory-Tools" class="headerlink" title="Memory Tools"></a>Memory Tools</h1><h2 id="Adroid-Address-Sanitizer"><a href="#Adroid-Address-Sanitizer" class="headerlink" title="Adroid Address Sanitizer"></a>Adroid Address Sanitizer</h2><h2 id="HWAddress-Sanitizer"><a href="#HWAddress-Sanitizer" class="headerlink" title="HWAddress Sanitizer"></a>HWAddress Sanitizer</h2><h2 id="Loli-Profiler"><a href="#Loli-Profiler" class="headerlink" title="Loli Profiler"></a>Loli Profiler</h2><h2 id="UE4&#x5185;&#x7F6E;Memory&#x5DE5;&#x5177;"><a href="#UE4&#x5185;&#x7F6E;Memory&#x5DE5;&#x5177;" class="headerlink" title="UE4&#x5185;&#x7F6E;Memory&#x5DE5;&#x5177;"></a>UE4&#x5185;&#x7F6E;Memory&#x5DE5;&#x5177;</h2><h3 id="MemoryReport"><a href="#MemoryReport" class="headerlink" title="MemoryReport"></a>MemoryReport</h3><h3 id="LLM"><a href="#LLM" class="headerlink" title="LLM"></a>LLM</h3><h3 id="StompMalloc"><a href="#StompMalloc" class="headerlink" title="StompMalloc"></a>StompMalloc</h3><h3 id="MmeoryProfile2"><a href="#MmeoryProfile2" class="headerlink" title="MmeoryProfile2"></a>MmeoryProfile2</h3><h2 id="XCode&#x5185;&#x7F6E;&#x5DE5;&#x5177;"><a href="#XCode&#x5185;&#x7F6E;&#x5DE5;&#x5177;" class="headerlink" title="XCode&#x5185;&#x7F6E;&#x5DE5;&#x5177;"></a>XCode&#x5185;&#x7F6E;&#x5DE5;&#x5177;</h2><h3 id="Address-Sanitizer"><a href="#Address-Sanitizer" class="headerlink" title="Address Sanitizer"></a>Address Sanitizer</h3><h3 id="Zombie-Object"><a href="#Zombie-Object" class="headerlink" title="Zombie Object"></a>Zombie Object</h3><h3 id="Malloc-History"><a href="#Malloc-History" class="headerlink" title="Malloc History"></a>Malloc History</h3><h3 id="Memory-Graph"><a href="#Memory-Graph" class="headerlink" title="Memory Graph"></a>Memory Graph</h3><h1 id="&#x80FD;&#x8017;"><a href="#&#x80FD;&#x8017;" class="headerlink" title="&#x80FD;&#x8017;"></a>&#x80FD;&#x8017;</h1><h2 id="Prefotto"><a href="#Prefotto" class="headerlink" title="Prefotto"></a>Prefotto</h2><h2 id="XCode"><a href="#XCode" class="headerlink" title="XCode"></a>XCode</h2><h1 id="&#x53CD;&#x7F16;&#x8BD1;"><a href="#&#x53CD;&#x7F16;&#x8BD1;" class="headerlink" title="&#x53CD;&#x7F16;&#x8BD1;"></a>&#x53CD;&#x7F16;&#x8BD1;</h1><h2 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h2><h3 id="&#x771F;&#x673A;&#x8C03;&#x8BD5;"><a href="#&#x771F;&#x673A;&#x8C03;&#x8BD5;" class="headerlink" title="&#x771F;&#x673A;&#x8C03;&#x8BD5;"></a>&#x771F;&#x673A;&#x8C03;&#x8BD5;</h3><h3 id="&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;"><a href="#&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;" class="headerlink" title="&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;"></a>&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;</h3><h2 id="x64dbg"><a href="#x64dbg" class="headerlink" title="x64dbg"></a>x64dbg</h2>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Debug-Tool/">#Debug, Tool</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Preintegrated-Skin/">preintegrated skin rendering</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/perlin-noise/">perlin-noise</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
