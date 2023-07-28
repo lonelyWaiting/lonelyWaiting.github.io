@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_BRDF_LUT.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_1.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_2.png">
-<meta property="og:updated_time" content="2023-07-27T16:04:38.530Z">
+<meta property="og:updated_time" content="2023-07-28T01:01:24.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IBL">
 <meta name="twitter:description" content="Reflectance equation&amp;#x8FD9;&amp;#x91CC;&amp;#x91C7;&amp;#x7528;&amp;#x7684;&amp;#x53CD;&amp;#x5C04;&amp;#x6A21;&amp;#x578B;&amp;#x5982;&amp;#x4E0B;:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\om">
@@ -110,11 +110,55 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
-            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Reflectance-equation">1&nbsp;&nbsp;<b>Reflectance equation</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Diffuse-Irradiance">2&nbsp;&nbsp;<b>Diffuse Irradiance</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8499;&amp;#x7279;&amp;#x5361;&amp;#x6D1B;&amp;#x65B9;&amp;#x6CD5;">2.1&nbsp;&nbsp;&amp;amp;#x8499;&amp;amp;#x7279;&amp;amp;#x5361;&amp;amp;#x6D1B;&amp;amp;#x65B9;&amp;amp;#x6CD5;</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Specular-IBL">3&nbsp;&nbsp;<b>Specular IBL</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Pre-Filtered-Environment-Map">3.1&nbsp;&nbsp;Pre-Filtered Environment Map</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Precompute-BRDF-LUT">3.2&nbsp;&nbsp;Precompute BRDF LUT</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">4&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+             -->
             
             <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
                 
@@ -151,7 +195,7 @@
         <span class="column is-narrow">
             
             
-            14 minutes 读完 (约 2035 字)
+            14 minutes read (About 2035 words)
         </span>
         
     </div>
@@ -215,6 +259,13 @@
     </div>
     
     
+        
+        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+            <h3>Contents</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reflectance-equation"><span class="toc-number">1.</span> <span class="toc-text">Reflectance equation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Diffuse-Irradiance"><span class="toc-number">2.</span> <span class="toc-text">Diffuse Irradiance</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#蒙特卡洛方法"><span class="toc-number">2.1.</span> <span class="toc-text">蒙特卡洛方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Specular-IBL"><span class="toc-number">3.</span> <span class="toc-text">Specular IBL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pre-Filtered-Environment-Map"><span class="toc-number">3.1.</span> <span class="toc-text">Pre-Filtered Environment Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Precompute-BRDF-LUT"><span class="toc-number">3.2.</span> <span class="toc-text">Precompute BRDF LUT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+        </div>
+    
+    
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
@@ -234,7 +285,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">评论</h3>
+    <h3 class="title is-4">Comments</h3>
     
 <script>
     var disqus_config = function () {
@@ -439,7 +490,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -451,11 +502,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

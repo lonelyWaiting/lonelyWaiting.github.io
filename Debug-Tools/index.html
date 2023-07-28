@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5C06;&amp;#x4ECB;&amp;#x7ECD;&amp;#x5404;&amp;#x7C7B;&amp;#x5F00;&amp;#x53D1;&amp;#x8C03;&amp;#x8BD5;&amp;#x5DE5;&amp;#x5177;&amp;#x7684;&amp;#x4E3B;&amp;#x8981;&amp;#x7528;&amp;#x9014;&amp;#x4EE5;&amp;#x53CA;&amp;#x4F7F;&amp;#x7528;&amp;#x65B9;&amp;#x5F0F;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2023-07-27T16:04:38.530Z">
+<meta property="og:updated_time" content="2023-07-28T01:01:24.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="debug tool for game develop">
 <meta name="twitter:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5C06;&amp;#x4ECB;&amp;#x7ECD;&amp;#x5404;&amp;#x7C7B;&amp;#x5F00;&amp;#x53D1;&amp;#x8C03;&amp;#x8BD5;&amp;#x5DE5;&amp;#x5177;&amp;#x7684;&amp;#x4E3B;&amp;#x8981;&amp;#x7528;&amp;#x9014;&amp;#x4EE5;&amp;#x53CA;&amp;#x4F7F;&amp;#x7528;&amp;#x65B9;&amp;#x5F0F;">
@@ -103,11 +103,157 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
-            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#GPU">1&nbsp;&nbsp;<b>GPU</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Snapdragon-Profiler">1.1&nbsp;&nbsp;Snapdragon Profiler</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#GMEM-Load-GMEM-Store">1.1.1&nbsp;&nbsp;GMEM Load/GMEM Store</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Arm-Graphics-Tool">1.2&nbsp;&nbsp;Arm Graphics Tool</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Adreno-GPU">1.3&nbsp;&nbsp;Adreno GPU</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#PVRTune">1.4&nbsp;&nbsp;PVRTune</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Renderdoc">1.5&nbsp;&nbsp;Renderdoc</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#XCode-GPU-Frame-Capture">1.6&nbsp;&nbsp;XCode GPU Frame Capture</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#CPU">2&nbsp;&nbsp;<b>CPU</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Unreal-Insight">2.1&nbsp;&nbsp;Unreal Insight</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Memory-Tools">3&nbsp;&nbsp;<b>Memory Tools</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Adroid-Address-Sanitizer">3.1&nbsp;&nbsp;Adroid Address Sanitizer</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HWAddress-Sanitizer">3.2&nbsp;&nbsp;HWAddress Sanitizer</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Loli-Profiler">3.3&nbsp;&nbsp;Loli Profiler</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#UE4&amp;#x5185;&amp;#x7F6E;Memory&amp;#x5DE5;&amp;#x5177;">3.4&nbsp;&nbsp;UE4&amp;amp;#x5185;&amp;amp;#x7F6E;Memory&amp;amp;#x5DE5;&amp;amp;#x5177;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#MemoryReport">3.4.1&nbsp;&nbsp;MemoryReport</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#LLM">3.4.2&nbsp;&nbsp;LLM</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#StompMalloc">3.4.3&nbsp;&nbsp;StompMalloc</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#MmeoryProfile2">3.4.4&nbsp;&nbsp;MmeoryProfile2</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#XCode&amp;#x5185;&amp;#x7F6E;&amp;#x5DE5;&amp;#x5177;">3.5&nbsp;&nbsp;XCode&amp;amp;#x5185;&amp;amp;#x7F6E;&amp;amp;#x5DE5;&amp;amp;#x5177;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Address-Sanitizer">3.5.1&nbsp;&nbsp;Address Sanitizer</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Zombie-Object">3.5.2&nbsp;&nbsp;Zombie Object</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Malloc-History">3.5.3&nbsp;&nbsp;Malloc History</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Memory-Graph">3.5.4&nbsp;&nbsp;Memory Graph</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x80FD;&amp;#x8017;">4&nbsp;&nbsp;<b>&amp;amp;#x80FD;&amp;amp;#x8017;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Prefotto">4.1&nbsp;&nbsp;Prefotto</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#XCode">4.2&nbsp;&nbsp;XCode</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53CD;&amp;#x7F16;&amp;#x8BD1;">5&nbsp;&nbsp;<b>&amp;amp;#x53CD;&amp;amp;#x7F16;&amp;amp;#x8BD1;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#IDA">5.1&nbsp;&nbsp;IDA</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x771F;&amp;#x673A;&amp;#x8C03;&amp;#x8BD5;">5.1.1&nbsp;&nbsp;&amp;amp;#x771F;&amp;amp;#x673A;&amp;amp;#x8C03;&amp;amp;#x8BD5;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5E38;&amp;#x7528;&amp;#x5FEB;&amp;#x6377;&amp;#x952E;">5.1.2&nbsp;&nbsp;&amp;amp;#x5E38;&amp;amp;#x7528;&amp;amp;#x5FEB;&amp;amp;#x6377;&amp;amp;#x952E;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#x64dbg">5.2&nbsp;&nbsp;x64dbg</a>
+                    
+                </div>
+            </div>
+             -->
             
             <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
                 
@@ -144,7 +290,7 @@
         <span class="column is-narrow">
             
             
-            a few seconds 读完 (约 97 字)
+            a few seconds read (About 97 words)
         </span>
         
     </div>
@@ -167,6 +313,13 @@
     </div>
     
     
+        
+        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+            <h3>Contents</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GPU"><span class="toc-number">1.</span> <span class="toc-text">GPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Snapdragon-Profiler"><span class="toc-number">1.1.</span> <span class="toc-text">Snapdragon Profiler</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GMEM-Load-GMEM-Store"><span class="toc-number">1.1.1.</span> <span class="toc-text">GMEM Load/GMEM Store</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arm-Graphics-Tool"><span class="toc-number">1.2.</span> <span class="toc-text">Arm Graphics Tool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adreno-GPU"><span class="toc-number">1.3.</span> <span class="toc-text">Adreno GPU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PVRTune"><span class="toc-number">1.4.</span> <span class="toc-text">PVRTune</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Renderdoc"><span class="toc-number">1.5.</span> <span class="toc-text">Renderdoc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XCode-GPU-Frame-Capture"><span class="toc-number">1.6.</span> <span class="toc-text">XCode GPU Frame Capture</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CPU"><span class="toc-number">2.</span> <span class="toc-text">CPU</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unreal-Insight"><span class="toc-number">2.1.</span> <span class="toc-text">Unreal Insight</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Memory-Tools"><span class="toc-number">3.</span> <span class="toc-text">Memory Tools</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Adroid-Address-Sanitizer"><span class="toc-number">3.1.</span> <span class="toc-text">Adroid Address Sanitizer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HWAddress-Sanitizer"><span class="toc-number">3.2.</span> <span class="toc-text">HWAddress Sanitizer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Loli-Profiler"><span class="toc-number">3.3.</span> <span class="toc-text">Loli Profiler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UE4内置Memory工具"><span class="toc-number">3.4.</span> <span class="toc-text">UE4内置Memory工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MemoryReport"><span class="toc-number">3.4.1.</span> <span class="toc-text">MemoryReport</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LLM"><span class="toc-number">3.4.2.</span> <span class="toc-text">LLM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StompMalloc"><span class="toc-number">3.4.3.</span> <span class="toc-text">StompMalloc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MmeoryProfile2"><span class="toc-number">3.4.4.</span> <span class="toc-text">MmeoryProfile2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XCode内置工具"><span class="toc-number">3.5.</span> <span class="toc-text">XCode内置工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Address-Sanitizer"><span class="toc-number">3.5.1.</span> <span class="toc-text">Address Sanitizer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Zombie-Object"><span class="toc-number">3.5.2.</span> <span class="toc-text">Zombie Object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Malloc-History"><span class="toc-number">3.5.3.</span> <span class="toc-text">Malloc History</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory-Graph"><span class="toc-number">3.5.4.</span> <span class="toc-text">Memory Graph</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#能耗"><span class="toc-number">4.</span> <span class="toc-text">能耗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Prefotto"><span class="toc-number">4.1.</span> <span class="toc-text">Prefotto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XCode"><span class="toc-number">4.2.</span> <span class="toc-text">XCode</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#反编译"><span class="toc-number">5.</span> <span class="toc-text">反编译</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IDA"><span class="toc-number">5.1.</span> <span class="toc-text">IDA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#真机调试"><span class="toc-number">5.1.1.</span> <span class="toc-text">真机调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用快捷键"><span class="toc-number">5.1.2.</span> <span class="toc-text">常用快捷键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x64dbg"><span class="toc-number">5.2.</span> <span class="toc-text">x64dbg</span></a></li></ol></li></ol>
+        </div>
+    
+    
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
@@ -186,7 +339,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">评论</h3>
+    <h3 class="title is-4">Comments</h3>
     
 <script>
     var disqus_config = function () {
@@ -391,7 +544,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -403,11 +556,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

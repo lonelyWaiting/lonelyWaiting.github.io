@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/radiance_define.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/solid_angle_define.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/radiance_invariance.png">
-<meta property="og:updated_time" content="2023-07-27T16:04:38.530Z">
+<meta property="og:updated_time" content="2023-07-28T01:01:24.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Radiometry">
 <meta name="twitter:description" content="&amp;#x5149;&amp;#x6A21;&amp;#x578B;&amp;#x56FE;&amp;#x5F62;&amp;#x5B66;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;&amp;#x6700;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x662F;&amp;#x51E0;&amp;#x4F55;&amp;#x5149;&amp;#x5B66;,&amp;#x8BE5;&amp;#x6A21;&amp;#x578B;&amp;#x4E2D;,&amp;#x7269;&amp;#x4F53;&amp;#x768">
@@ -108,11 +108,75 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
-            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5149;&amp;#x6A21;&amp;#x578B;">1&nbsp;&nbsp;<b>&amp;amp;#x5149;&amp;amp;#x6A21;&amp;amp;#x578B;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x5C04;&amp;#x5EA6;">2&nbsp;&nbsp;<b>&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x5EA6;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x901A;&amp;#x91CF;-Flux">2.1&nbsp;&nbsp;&amp;amp;#x901A;&amp;amp;#x91CF;(Flux)</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x7167;&amp;#x5EA6;-Irradiance">2.2&nbsp;&nbsp;&amp;amp;#x8F90;&amp;amp;#x7167;&amp;amp;#x5EA6;(Irradiance)</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x5C04;&amp;#x51FA;&amp;#x5C04;&amp;#x5EA6;-&amp;#x8F90;&amp;#x5C04;&amp;#x5EA6;Radiosity">2.3&nbsp;&nbsp;&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x51FA;&amp;amp;#x5C04;&amp;amp;#x5EA6;(&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x5EA6;Radiosity)</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x5C04;&amp;#x7387;">2.4&nbsp;&nbsp;&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x7387;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5404;&amp;#x4E2A;&amp;#x91CF;&amp;#x7684;&amp;#x5173;&amp;#x7CFB;">2.5&nbsp;&nbsp;&amp;amp;#x5404;&amp;amp;#x4E2A;&amp;amp;#x91CF;&amp;amp;#x7684;&amp;amp;#x5173;&amp;amp;#x7CFB;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8F90;&amp;#x5C04;&amp;#x7387;&amp;#x5C5E;&amp;#x6027;">2.6&nbsp;&nbsp;&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x7387;&amp;amp;#x5C5E;&amp;amp;#x6027;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6CBF;&amp;#x8DEF;&amp;#x5F84;&amp;#x53EF;&amp;#x4EA4;&amp;#x6362;-L-x-rightarrow-y-L-y-leftarrow-x">2.6.1&nbsp;&nbsp;&amp;amp;#x6CBF;&amp;amp;#x8DEF;&amp;amp;#x5F84;&amp;amp;#x53EF;&amp;amp;#x4EA4;&amp;amp;#x6362; $L(x \rightarrow y) = L(y \leftarrow x)$</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4F20;&amp;#x611F;&amp;#x5668;-&amp;#x4F8B;&amp;#x5982;&amp;#x76F8;&amp;#x673A;-&amp;#x4EBA;&amp;#x773C;-&amp;#x5BF9;&amp;#x8F90;&amp;#x5C04;&amp;#x654F;&amp;#x611F;">2.6.2&nbsp;&nbsp;&amp;amp;#x4F20;&amp;amp;#x611F;&amp;amp;#x5668;,&amp;amp;#x4F8B;&amp;amp;#x5982;&amp;amp;#x76F8;&amp;amp;#x673A;,&amp;amp;#x4EBA;&amp;amp;#x773C;,&amp;amp;#x5BF9;&amp;amp;#x8F90;&amp;amp;#x5C04;&amp;amp;#x654F;&amp;amp;#x611F;</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4F20;&amp;#x8F93;&amp;#x7406;&amp;#x8BBA;">3&nbsp;&nbsp;<b>&amp;amp;#x4F20;&amp;amp;#x8F93;&amp;amp;#x7406;&amp;amp;#x8BBA;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53D1;&amp;#x5C04;&amp;#x5149;">4&nbsp;&nbsp;<b>&amp;amp;#x53D1;&amp;amp;#x5C04;&amp;amp;#x5149;</b></a>
+                    
+                </div>
+            </div>
+             -->
             
             <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
                 
@@ -136,7 +200,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2023-07-27T16:04:38.530Z" itemprop="datePublished">Jul 27 2023</time>
+                <time datetime="2023-07-28T01:01:24.474Z" itemprop="datePublished">Jul 28 2023</time>
             
         </span>
         
@@ -144,7 +208,7 @@
         <span class="column is-narrow">
             
             
-            9 minutes 读完 (约 1326 字)
+            9 minutes read (About 1326 words)
         </span>
         
     </div>
@@ -221,6 +285,13 @@
     </div>
     
     
+        
+        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+            <h3>Contents</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#光模型"><span class="toc-number">1.</span> <span class="toc-text">光模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#辐射度"><span class="toc-number">2.</span> <span class="toc-text">辐射度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通量-Flux"><span class="toc-number">2.1.</span> <span class="toc-text">通量(Flux)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐照度-Irradiance"><span class="toc-number">2.2.</span> <span class="toc-text">辐照度(Irradiance)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射出射度-辐射度Radiosity"><span class="toc-number">2.3.</span> <span class="toc-text">辐射出射度(辐射度Radiosity)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率"><span class="toc-number">2.4.</span> <span class="toc-text">辐射率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各个量的关系"><span class="toc-number">2.5.</span> <span class="toc-text">各个量的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率属性"><span class="toc-number">2.6.</span> <span class="toc-text">辐射率属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x"><span class="toc-number">2.6.1.</span> <span class="toc-text">沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传感器-例如相机-人眼-对辐射敏感"><span class="toc-number">2.6.2.</span> <span class="toc-text">传感器,例如相机,人眼,对辐射敏感</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输理论"><span class="toc-number">3.</span> <span class="toc-text">传输理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发射光"><span class="toc-number">4.</span> <span class="toc-text">发射光</span></a></li></ol>
+        </div>
+    
+    
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
@@ -229,7 +300,7 @@
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/reflect-refraction/">reflect and refraction</a>
+            <a href="/自定义Hexo博客显示/">自定义Hexo博客显示</a>
             
         </span>
     </div>
@@ -240,7 +311,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">评论</h3>
+    <h3 class="title is-4">Comments</h3>
     
 <script>
     var disqus_config = function () {
@@ -445,7 +516,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -457,11 +528,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

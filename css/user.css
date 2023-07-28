@@ -79,3 +79,6 @@ h1.article-title:hover:before {
 .comments h3:before {
     content: none;
 }
+.toc-title h3:before {
+    content: none
+}

@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Create_New_Site.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Choose_A_Platform.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Config.png">
-<meta property="og:updated_time" content="2023-07-27T16:04:38.530Z">
+<meta property="og:updated_time" content="2023-07-28T01:01:24.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="use hexo deploy github page">
 <meta name="twitter:description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Create a new branch named source">
@@ -107,11 +107,87 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
-            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Create-Github-Page">1&nbsp;&nbsp;<b>Create Github Page</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Setup-Hexo">2&nbsp;&nbsp;<b>Setup Hexo</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#install-Node-js">2.1&nbsp;&nbsp;install Node.js</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#install-Git">2.2&nbsp;&nbsp;install Git</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#install-hexo-command-line-interface">2.3&nbsp;&nbsp;install hexo command line interface</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#init-hexo">2.4&nbsp;&nbsp;init hexo</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#install-git-deploy-tool">2.5&nbsp;&nbsp;install git deploy tool</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#config-deploy">2.6&nbsp;&nbsp;config deploy</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#generate-and-deploy-hexo">2.7&nbsp;&nbsp;generate and deploy hexo</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Manage-Hexo">3&nbsp;&nbsp;<b>Manage Hexo</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Hexo-Plugin">4&nbsp;&nbsp;<b>Hexo Plugin</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Latex">4.1&nbsp;&nbsp;Latex</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Disqus">4.2&nbsp;&nbsp;Disqus</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Disqus-Config">4.2.1&nbsp;&nbsp;Disqus Config</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Apply-Disqus">4.2.2&nbsp;&nbsp;Apply Disqus</a>
+                    
+                </div>
+            </div>
+             -->
             
             <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
                 
@@ -143,7 +219,7 @@
         <span class="column is-narrow">
             
             
-            6 minutes 读完 (约 872 字)
+            6 minutes read (About 872 words)
         </span>
         
     </div>
@@ -245,6 +321,13 @@
     </div>
     
     
+        
+        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+            <h3>Contents</h3>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Github-Page"><span class="toc-number">1.</span> <span class="toc-text">Create Github Page</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setup-Hexo"><span class="toc-number">2.</span> <span class="toc-text">Setup Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Node-js"><span class="toc-number">2.1.</span> <span class="toc-text">install Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Git"><span class="toc-number">2.2.</span> <span class="toc-text">install Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-hexo-command-line-interface"><span class="toc-number">2.3.</span> <span class="toc-text">install hexo command line interface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init-hexo"><span class="toc-number">2.4.</span> <span class="toc-text">init hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-git-deploy-tool"><span class="toc-number">2.5.</span> <span class="toc-text">install git deploy tool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#config-deploy"><span class="toc-number">2.6.</span> <span class="toc-text">config deploy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generate-and-deploy-hexo"><span class="toc-number">2.7.</span> <span class="toc-text">generate and deploy hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manage-Hexo"><span class="toc-number">3.</span> <span class="toc-text">Manage Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-Plugin"><span class="toc-number">4.</span> <span class="toc-text">Hexo Plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Latex"><span class="toc-number">4.1.</span> <span class="toc-text">Latex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disqus"><span class="toc-number">4.2.</span> <span class="toc-text">Disqus</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Disqus-Config"><span class="toc-number">4.2.1.</span> <span class="toc-text">Disqus Config</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Apply-Disqus"><span class="toc-number">4.2.2.</span> <span class="toc-text">Apply Disqus</span></a></li></ol></li></ol></li></ol>
+        </div>
+    
+    
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
@@ -264,7 +347,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">评论</h3>
+    <h3 class="title is-4">Comments</h3>
     
 <script>
     var disqus_config = function () {
@@ -469,7 +552,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -481,11 +564,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

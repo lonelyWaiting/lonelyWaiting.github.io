@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Preintegrated-Skin/SkinRenderModel.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Preintegrated-Skin/DiffusionProfileWeights.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Preintegrated-Skin/DiffusionProfileIntegrate.png">
-<meta property="og:updated_time" content="2023-07-27T16:04:38.530Z">
+<meta property="og:updated_time" content="2023-07-28T01:01:24.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="preintegrated skin rendering">
 <meta name="twitter:description" content="&amp;#x9884;&amp;#x79EF;&amp;#x5206;&amp;#x76AE;&amp;#x80A4;&amp;#x6E32;&amp;#x67D3;&amp;#x672C;&amp;#x6587;&amp;#x4E3B;&amp;#x8981;&amp;#x8BB0;&amp;#x5F55;&amp;#x9884;&amp;#x79EF;&amp;#x5206;&amp;#x76AE;&amp;#x80A4;&amp;#x6E32;&amp;#x67D3;&amp;#x7684;&amp;#x601D;&amp;#x8DEF;&amp;#x4EE5;&amp;#x53CA;">
@@ -107,11 +107,33 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
-            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x9884;&amp;#x79EF;&amp;#x5206;&amp;#x76AE;&amp;#x80A4;&amp;#x6E32;&amp;#x67D3;">1&nbsp;&nbsp;<b>&amp;amp;#x9884;&amp;amp;#x79EF;&amp;amp;#x5206;&amp;amp;#x76AE;&amp;amp;#x80A4;&amp;amp;#x6E32;&amp;amp;#x67D3;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x7B97;&amp;#x6CD5;&amp;#x601D;&amp;#x8DEF;">1.1&nbsp;&nbsp;&amp;amp;#x7B97;&amp;amp;#x6CD5;&amp;amp;#x601D;&amp;amp;#x8DEF;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5149;&amp;#x7167;&amp;#x6A21;&amp;#x578B;&amp;#x5C42;&amp;#x9762;">1.1.1&nbsp;&nbsp;&amp;amp;#x5149;&amp;amp;#x7167;&amp;amp;#x6A21;&amp;amp;#x578B;&amp;amp;#x5C42;&amp;amp;#x9762;</a>
+                    
+                </div>
+            </div>
+             -->
             
             <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
                 
@@ -148,7 +170,7 @@
         <span class="column is-narrow">
             
             
-            6 minutes 读完 (约 968 字)
+            6 minutes read (About 968 words)
         </span>
         
     </div>
@@ -207,6 +229,13 @@
     </div>
     
     
+        
+        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+            <h3>Contents</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#预积分皮肤渲染"><span class="toc-number">1.</span> <span class="toc-text">预积分皮肤渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法思路"><span class="toc-number">1.1.</span> <span class="toc-text">算法思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#光照模型层面"><span class="toc-number">1.1.1.</span> <span class="toc-text">光照模型层面</span></a></li></ol></li></ol></li></ol>
+        </div>
+    
+    
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
@@ -226,7 +255,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">评论</h3>
+    <h3 class="title is-4">Comments</h3>
     
 <script>
     var disqus_config = function () {
@@ -431,7 +460,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -443,11 +472,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

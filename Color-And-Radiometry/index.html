@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/spectral_matching_curves.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/spectral_response_curves.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/SPDs_from_Displaying_Same_RGB.png">
-<meta property="og:updated_time" content="2023-07-27T16:04:38.530Z">
+<meta property="og:updated_time" content="2023-07-28T01:01:24.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Color and Radiometry">
 <meta name="twitter:description" content="&amp;#x53EF;&amp;#x89C1;&amp;#x5149;&amp;#x4EBA;&amp;#x773C;&amp;#x7684;&amp;#x53EF;&amp;#x89C1;&amp;#x5149;&amp;#x6CE2;&amp;#x8C31;&amp;#x8303;&amp;#x56F4;&amp;#x7EA6;&amp;#x4E3A;370nm~730nm &amp;#x84DD;&amp;#x5149;&amp;#xFF1A;400nm,&amp;#x7EFF;&amp;#x5149;&amp;#xFF1A;550nm,&amp;#x7EA2;">
@@ -108,11 +108,49 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
-            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x53EF;&amp;#x89C1;&amp;#x5149;">1&nbsp;&nbsp;<b>&amp;amp;#x53EF;&amp;amp;#x89C1;&amp;amp;#x5149;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x5149;&amp;#x8C31;&amp;#x8868;&amp;#x793A;">2&nbsp;&nbsp;<b>&amp;amp;#x5149;&amp;amp;#x8C31;&amp;amp;#x8868;&amp;amp;#x793A;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#SampleSpectrum">2.1&nbsp;&nbsp;SampleSpectrum</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#RGBSpectrum">2.2&nbsp;&nbsp;RGBSpectrum</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#LinearSpace-RGB-to-sRGB">2.3&nbsp;&nbsp;LinearSpace RGB to sRGB</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">3&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+             -->
             
             <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
                 
@@ -136,7 +174,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2023-07-27T16:04:38.530Z" itemprop="datePublished">Jul 27 2023</time>
+                <time datetime="2023-07-28T01:01:24.474Z" itemprop="datePublished">Jul 28 2023</time>
             
         </span>
         
@@ -144,7 +182,7 @@
         <span class="column is-narrow">
             
             
-            18 minutes 读完 (约 2684 字)
+            18 minutes read (About 2684 words)
         </span>
         
     </div>
@@ -287,8 +325,17 @@
     </div>
     
     
+        
+        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+            <h3>Contents</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#可见光"><span class="toc-number">1.</span> <span class="toc-text">可见光</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#光谱表示"><span class="toc-number">2.</span> <span class="toc-text">光谱表示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SampleSpectrum"><span class="toc-number">2.1.</span> <span class="toc-text">SampleSpectrum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RGBSpectrum"><span class="toc-number">2.2.</span> <span class="toc-text">RGBSpectrum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LinearSpace-RGB-to-sRGB"><span class="toc-number">2.3.</span> <span class="toc-text">LinearSpace RGB to sRGB</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+        </div>
+    
+    
     <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/shading-model/">shading model</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
@@ -304,7 +351,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">评论</h3>
+    <h3 class="title is-4">Comments</h3>
     
 <script>
     var disqus_config = function () {
@@ -509,7 +556,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -521,11 +568,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

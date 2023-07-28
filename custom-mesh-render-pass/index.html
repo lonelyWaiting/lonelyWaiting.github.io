@@ -80,7 +80,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/20/ECcceH.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/20/ECcHmQ.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/20/ECciJP.png">
-<meta property="og:updated_time" content="2023-07-27T16:04:38.530Z">
+<meta property="og:updated_time" content="2023-07-28T01:01:24.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="custom mesh render pass">
 <meta name="twitter:description" content="&amp;#x57FA;&amp;#x7840;&amp;#x6982;&amp;#x5FF5; UPrimitiveComponent: &amp;#x53EF;&amp;#x7528;&amp;#x4E8E;&amp;#x6E32;&amp;#x67D3;&amp;#x6216;&amp;#x8005;&amp;#x7269;&amp;#x7406;&amp;#x4EA4;&amp;#x4E92;&amp;#x7684;&amp;#x57FA;&amp;#x7C7B;,&amp;#x6E38;&amp;#x620F;&amp;#x7EBF;&amp;#x7A0B;&amp;">
@@ -160,11 +160,105 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
-            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x57FA;&amp;#x7840;&amp;#x6982;&amp;#x5FF5;">1&nbsp;&nbsp;<b>&amp;amp;#x57FA;&amp;amp;#x7840;&amp;amp;#x6982;&amp;amp;#x5FF5;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#FMeshDrawCommand">2&nbsp;&nbsp;<b>FMeshDrawCommand</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#FMeshBatch">3&nbsp;&nbsp;<b>FMeshBatch</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#MeshProcessor">4&nbsp;&nbsp;<b>MeshProcessor</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#MeshDrawCommand&amp;#x5982;&amp;#x4F55;&amp;#x4EA7;&amp;#x751F;">5&nbsp;&nbsp;<b>MeshDrawCommand&amp;amp;#x5982;&amp;amp;#x4F55;&amp;amp;#x4EA7;&amp;amp;#x751F;?</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#MeshDrawCommand&amp;#x5982;&amp;#x4F55;&amp;#x4F7F;&amp;#x7528;">6&nbsp;&nbsp;<b>MeshDrawCommand&amp;amp;#x5982;&amp;amp;#x4F55;&amp;amp;#x4F7F;&amp;amp;#x7528;</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#custom-mesh-pass">7&nbsp;&nbsp;<b>custom mesh pass</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6DFB;&amp;#x52A0;Pass&amp;#x679A;&amp;#x4E3E;">7.1&nbsp;&nbsp;&amp;amp;#x6DFB;&amp;amp;#x52A0;Pass&amp;amp;#x679A;&amp;amp;#x4E3E;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x65B0;&amp;#x5EFA;&amp;#x6587;&amp;#x4EF6;">7.2&nbsp;&nbsp;&amp;amp;#x65B0;&amp;amp;#x5EFA;&amp;amp;#x6587;&amp;amp;#x4EF6;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6DFB;&amp;#x52A0;Shader">7.3&nbsp;&nbsp;&amp;amp;#x6DFB;&amp;amp;#x52A0;Shader</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4FEE;&amp;#x6539;MyTestPassRendering-h">7.4&nbsp;&nbsp;&amp;amp;#x4FEE;&amp;amp;#x6539;MyTestPassRendering.h</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6DFB;&amp;#x52A0;MeshPassProcessor">7.5&nbsp;&nbsp;&amp;amp;#x6DFB;&amp;amp;#x52A0;MeshPassProcessor</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6536;&amp;#x96C6;MeshDrawCommand">7.6&nbsp;&nbsp;&amp;amp;#x6536;&amp;amp;#x96C6;MeshDrawCommand</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x521B;&amp;#x5EFA;RenderTarget">7.7&nbsp;&nbsp;&amp;amp;#x521B;&amp;amp;#x5EFA;RenderTarget</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6E32;&amp;#x67D3;">7.8&nbsp;&nbsp;&amp;amp;#x6E32;&amp;amp;#x67D3;</a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Buffer-Visualization">8&nbsp;&nbsp;<b>Buffer Visualization</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">9&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+             -->
             
             <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
                 
@@ -196,7 +290,7 @@
         <span class="column is-narrow">
             
             
-            14 minutes 读完 (约 2056 字)
+            14 minutes read (About 2056 words)
         </span>
         
     </div>
@@ -351,6 +445,13 @@
     </div>
     
     
+        
+        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+            <h3>Contents</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础概念"><span class="toc-number">1.</span> <span class="toc-text">基础概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FMeshDrawCommand"><span class="toc-number">2.</span> <span class="toc-text">FMeshDrawCommand</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FMeshBatch"><span class="toc-number">3.</span> <span class="toc-text">FMeshBatch</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MeshProcessor"><span class="toc-number">4.</span> <span class="toc-text">MeshProcessor</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MeshDrawCommand如何产生"><span class="toc-number">5.</span> <span class="toc-text">MeshDrawCommand如何产生?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MeshDrawCommand如何使用"><span class="toc-number">6.</span> <span class="toc-text">MeshDrawCommand如何使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#custom-mesh-pass"><span class="toc-number">7.</span> <span class="toc-text">custom mesh pass</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加Pass枚举"><span class="toc-number">7.1.</span> <span class="toc-text">添加Pass枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建文件"><span class="toc-number">7.2.</span> <span class="toc-text">新建文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加Shader"><span class="toc-number">7.3.</span> <span class="toc-text">添加Shader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改MyTestPassRendering-h"><span class="toc-number">7.4.</span> <span class="toc-text">修改MyTestPassRendering.h</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加MeshPassProcessor"><span class="toc-number">7.5.</span> <span class="toc-text">添加MeshPassProcessor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#收集MeshDrawCommand"><span class="toc-number">7.6.</span> <span class="toc-text">收集MeshDrawCommand</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建RenderTarget"><span class="toc-number">7.7.</span> <span class="toc-text">创建RenderTarget</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染"><span class="toc-number">7.8.</span> <span class="toc-text">渲染</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Buffer-Visualization"><span class="toc-number">8.</span> <span class="toc-text">Buffer Visualization</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">9.</span> <span class="toc-text">Reference</span></a></li></ol>
+        </div>
+    
+    
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
@@ -370,7 +471,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">评论</h3>
+    <h3 class="title is-4">Comments</h3>
     
 <script>
     var disqus_config = function () {
@@ -575,7 +676,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -587,11 +688,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

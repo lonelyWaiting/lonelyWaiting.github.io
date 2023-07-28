@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/solid_angle.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/Phong.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/Blinn-Phong.png">
-<meta property="og:updated_time" content="2023-07-27T16:04:38.530Z">
+<meta property="og:updated_time" content="2023-07-28T01:01:24.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shading model">
 <meta name="twitter:description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$">
@@ -108,11 +108,37 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
-            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Lambert-Model">1&nbsp;&nbsp;<b>Lambert Model</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Phong-Model">2&nbsp;&nbsp;<b>Phong Model</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Blinn-Phong-Model">3&nbsp;&nbsp;<b>Blinn-Phong Model</b></a>
+                    
+                </div>
+            </div>
+             -->
             
             <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
                 
@@ -136,7 +162,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2023-07-27T16:04:38.530Z" itemprop="datePublished">Jul 27 2023</time>
+                <time datetime="2023-07-28T01:01:24.478Z" itemprop="datePublished">Jul 28 2023</time>
             
         </span>
         
@@ -149,7 +175,7 @@
         <span class="column is-narrow">
             
             
-            4 minutes 读完 (约 664 字)
+            4 minutes read (About 664 words)
         </span>
         
     </div>
@@ -219,6 +245,13 @@
     </div>
     
     
+        
+        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+            <h3>Contents</h3>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambert-Model"><span class="toc-number">1.</span> <span class="toc-text">Lambert Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phong-Model"><span class="toc-number">2.</span> <span class="toc-text">Phong Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blinn-Phong-Model"><span class="toc-number">3.</span> <span class="toc-text">Blinn-Phong Model</span></a></li></ol>
+        </div>
+    
+    
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
@@ -227,7 +260,7 @@
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/自定义Hexo博客显示/">自定义Hexo博客显示</a>
+            <a href="/Color-And-Radiometry/">Color and Radiometry</a>
             
         </span>
     </div>
@@ -238,7 +271,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">评论</h3>
+    <h3 class="title is-4">Comments</h3>
     
 <script>
     var disqus_config = function () {
@@ -443,7 +476,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -455,11 +488,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

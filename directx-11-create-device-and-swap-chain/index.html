@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain&amp;#x7B2C;&amp;#x4E00;&amp;#x4E2A;&amp;#x53C2;&amp;#x6570;&amp;#x5982;&amp;#x679C;&amp;#x4F20;NULL,&amp;#x5219;&amp;#x4EE5;&amp;#x9ED8;&amp;#x8BA4;Adapter&amp;#x521B;&amp;#x5EFA;&amp;#x5982;&amp;#x679C;&amp;#x53">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2023-07-27T16:04:38.530Z">
+<meta property="og:updated_time" content="2023-07-28T01:01:24.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="directx 11 create device and swap chain">
 <meta name="twitter:description" content="Create Device with adapterD3D11CreateDeviceAndSwapChain&amp;#x7B2C;&amp;#x4E00;&amp;#x4E2A;&amp;#x53C2;&amp;#x6570;&amp;#x5982;&amp;#x679C;&amp;#x4F20;NULL,&amp;#x5219;&amp;#x4EE5;&amp;#x9ED8;&amp;#x8BA4;Adapter&amp;#x521B;&amp;#x5EFA;&amp;#x5982;&amp;#x679C;&amp;#x53">
@@ -103,11 +103,37 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="搜索" href="javascript:;">
+            <a class="navbar-item search" title="Search" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
-            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Create-Device-with-adapter">1&nbsp;&nbsp;<b>Create Device with adapter</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#DXGI-SWAP-CHAIN-DESC-SwapEffect">2&nbsp;&nbsp;<b>DXGI_SWAP_CHAIN_DESC SwapEffect</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#Reference">3&nbsp;&nbsp;<b>Reference</b></a>
+                    
+                </div>
+            </div>
+             -->
             
             <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
                 
@@ -144,7 +170,7 @@
         <span class="column is-narrow">
             
             
-            2 minutes 读完 (约 290 字)
+            2 minutes read (About 290 words)
         </span>
         
     </div>
@@ -176,6 +202,13 @@
     </div>
     
     
+        
+        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+            <h3>Contents</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Create-Device-with-adapter"><span class="toc-number">1.</span> <span class="toc-text">Create Device with adapter</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DXGI-SWAP-CHAIN-DESC-SwapEffect"><span class="toc-number">2.</span> <span class="toc-text">DXGI_SWAP_CHAIN_DESC SwapEffect</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+        </div>
+    
+    
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
@@ -195,7 +228,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">评论</h3>
+    <h3 class="title is-4">Comments</h3>
     
 <script>
     var disqus_config = function () {
@@ -400,7 +433,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -412,11 +445,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
