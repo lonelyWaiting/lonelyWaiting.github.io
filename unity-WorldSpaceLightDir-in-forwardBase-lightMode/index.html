@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/black_duck.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/turnon_forwardbase_shader_disassembly.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/turnoff_forwardbase_shader_disassembly.png">
-<meta property="og:updated_time" content="2023-07-28T01:01:24.478Z">
+<meta property="og:updated_time" content="2023-07-28T03:48:28.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unity _WorldSpaceLightDir in forwardBase lightMode">
 <meta name="twitter:description" content="&amp;#x73B0;&amp;#x8C61;&amp;#x5C06;&amp;#x65B9;&amp;#x5411;&amp;#x5149;&amp;#x7684;&amp;#x65CB;&amp;#x8F6C;&amp;#x5168;&amp;#x90E8;&amp;#x8BBE;&amp;#x4E3A;0&amp;#xFF0C;&amp;#x6B64;&amp;#x65F6;&amp;#x65B9;&amp;#x5411;&amp;#x5149;&amp;#x671D;&amp;#x5411;+Z,&amp;#x56E0;&amp;#x6B64;&amp;#x65B9;&amp;#x5">
@@ -177,6 +177,11 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         
+            
+    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#现象"><span class="toc-text">现象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原因"><span class="toc-text">原因</span></a></li></ol>
+    </div>
+
             <h1 id="&#x73B0;&#x8C61;"><a href="#&#x73B0;&#x8C61;" class="headerlink" title="&#x73B0;&#x8C61;"></a>&#x73B0;&#x8C61;</h1><p>&#x5C06;&#x65B9;&#x5411;&#x5149;&#x7684;&#x65CB;&#x8F6C;&#x5168;&#x90E8;&#x8BBE;&#x4E3A;0&#xFF0C;&#x6B64;&#x65F6;&#x65B9;&#x5411;&#x5149;&#x671D;&#x5411;<code>+Z</code>,&#x56E0;&#x6B64;&#x65B9;&#x5411;&#x5149;&#x7684;&#x671D;&#x5411;&#x4E3A;<code>(0,0,1)</code><a id="more"></a><br><img src="/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/scene.png" alt="scene"></p>
 <p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;:</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">&quot;Custom/Test&quot;</span></span><br><span class="line">{</span><br><span class="line">	Properties</span><br><span class="line">	{</span><br><span class="line">	}</span><br><span class="line">	SubShader</span><br><span class="line">	{</span><br><span class="line">		Pass</span><br><span class="line">		{</span><br><span class="line">			CGPROGRAM</span><br><span class="line">			<span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> vertex vert</span></span><br><span class="line">			<span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> fragment frag</span></span><br><span class="line">			</span><br><span class="line">			<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;UnityCG.cginc&quot;</span></span></span><br><span class="line"></span><br><span class="line">			<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">appdata</span></span></span><br><span class="line"><span class="hljs-class">			{</span></span><br><span class="line">				float4 pos : POSITION;</span><br><span class="line">			};</span><br><span class="line"></span><br><span class="line">			<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">v2f</span></span></span><br><span class="line"><span class="hljs-class">			{</span></span><br><span class="line">				float4 pos      : SV_POSITION;</span><br><span class="line">				float3 worldPos    : TEXCOORD1;</span><br><span class="line">			};</span><br><span class="line"></span><br><span class="line">			<span class="hljs-function">v2f <span class="hljs-title">vert</span> <span class="hljs-params">(appdata v)</span></span></span><br><span class="line"><span class="hljs-function">			</span>{</span><br><span class="line">				v2f o;</span><br><span class="line">				o.pos         = UnityObjectToClipPos(v.pos);</span><br><span class="line">				o.worldPos    = mul(unity_ObjectToWorld, v.pos);</span><br><span class="line">				<span class="hljs-keyword">return</span> o;</span><br><span class="line">			}</span><br><span class="line">			</span><br><span class="line">			<span class="hljs-function">fixed4 <span class="hljs-title">frag</span> <span class="hljs-params">(v2f i)</span> : SV_Target</span></span><br><span class="line"><span class="hljs-function">			</span>{</span><br><span class="line">				<span class="hljs-keyword">return</span> float4(UnityWorldSpaceLightDir(i.worldPos), <span class="hljs-number">1.0f</span>);</span><br><span class="line">			}</span><br><span class="line">			ENDCG</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
@@ -190,7 +195,7 @@
 <p>&#x5173;&#x95ED;<code>ForwardBase</code>&#x540E;:<br><img src="/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/turnoff_forwardbase_shader_disassembly.png" alt="turnoff forwardbase shader disassembly"></p>
 <p>&#x53EF;&#x89C1;&#x5728;&#x8BBE;&#x7F6E;<code>LightMode</code>&#x4E3A;<code>ForwardBase</code>&#x65F6;,<code>CB</code>&#x4E2D;&#x4F20;&#x5165;&#x7684;&#x5149;&#x65B9;&#x5411;&#x53D1;&#x751F;&#x4E86;&#x53CD;&#x8F6C;<br>&#x7ECF;&#x8FC7;&#x6D4B;&#x8BD5;&#xFF0C;&#x5F53;<code>LightMode</code>&#x4E3A;<code>ForwardAdd</code>&#x65F6;,<code>CB</code>&#x4E2D;&#x4F20;&#x5165;&#x7684;&#x5149;&#x65B9;&#x5411;&#x4E5F;&#x88AB;&#x53CD;&#x8F6C;&#x4E86;</p>
 
-          
+        
     
     </div>
     
@@ -199,13 +204,6 @@
         <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
     
     </div>
-    
-    
-        
-        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-            <h3>Contents</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#现象"><span class="toc-number">1.</span> <span class="toc-text">现象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原因"><span class="toc-number">2.</span> <span class="toc-text">原因</span></a></li></ol>
-        </div>
     
     
     <div class="columns is-mobile is-multiline article-nav">

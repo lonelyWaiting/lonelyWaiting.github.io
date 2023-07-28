@@ -25,7 +25,7 @@
 <meta property="og:description" content="Flow">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/unity_surface_shader/surface_shader_flow.png">
-<meta property="og:updated_time" content="2023-07-28T01:01:24.478Z">
+<meta property="og:updated_time" content="2023-07-28T03:48:28.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unity surface shader">
 <meta name="twitter:description" content="Flow">
@@ -183,6 +183,11 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         
+            
+    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flow"><span class="toc-text">Flow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code-Structure"><span class="toc-text">Code Structure</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BlinnPhong-Surface-Analysis"><span class="toc-text">BlinnPhong Surface Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LightingBlinnPhong"><span class="toc-text">LightingBlinnPhong</span></a></li></ol></li></ol>
+    </div>
+
             <h1 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h1><p><img src="/resources/images/unity_surface_shader/surface_shader_flow.png" alt="surface shader flow"><a id="more"></a></p>
 <h1 id="Code-Structure"><a href="#Code-Structure" class="headerlink" title="Code Structure"></a>Code Structure</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Shader <span class="hljs-string">&quot;xxx&quot;</span></span><br><span class="line">{</span><br><span class="line">    Properties</span><br><span class="line">    {</span><br><span class="line">        ...</span><br><span class="line">    }</span><br><span class="line">    SubShader</span><br><span class="line">    {</span><br><span class="line">        Tags {...}</span><br><span class="line">        LOD ...</span><br><span class="line"></span><br><span class="line">        CGPROGRAM</span><br><span class="line">        <span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> surface <span class="hljs-meta-string">&lt;Surface Function&gt; &lt;LightingModel&gt; [options]</span></span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-class"><span class="hljs-keyword">struct</span> &lt;Input Struct&gt;</span></span><br><span class="line"><span class="hljs-class">        {</span></span><br><span class="line">            ...</span><br><span class="line">        };</span><br><span class="line"></span><br><span class="line">        UNITY_INSTANCING_BUFFER_START(Props)</span><br><span class="line">        UNITY_INSTANCING_BUFFER_END(Props)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">void</span> &lt;surface function name&gt;(&lt;Input Struct&gt; IN, inout &lt;SurfaceOutput&gt; o)</span><br><span class="line">        {</span><br><span class="line">            ...</span><br><span class="line">        }</span><br><span class="line">        ENDCG</span><br><span class="line">    }</span><br><span class="line">    FallBack <span class="hljs-string">&quot;Diffuse&quot;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
@@ -210,7 +215,7 @@
 
 <p><code>UnityGI</code>&#x4E0E;<code>UnityLight</code>&#x7684;&#x5B9A;&#x4E49;&#x5728;<code>UnityLightingCommon.cginc</code>&#x4E2D;&#x627E;&#x5230;:</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">UnityLight</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line">    half3 color;</span><br><span class="line">    half3 dir;</span><br><span class="line">    half  ndotl; <span class="hljs-comment">// Deprecated: Ndotl is now calculated on the fly and is no longer stored. Do not used it.</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">UnityIndirect</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line">    half3 diffuse;</span><br><span class="line">    half3 specular;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">UnityGI</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line">    UnityLight light;</span><br><span class="line">    UnityIndirect indirect;</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
-          
+        
     
     </div>
     
@@ -219,13 +224,6 @@
         <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Unity/">#Unity</a></span>
     
     </div>
-    
-    
-        
-        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-            <h3>Contents</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flow"><span class="toc-number">1.</span> <span class="toc-text">Flow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code-Structure"><span class="toc-number">2.</span> <span class="toc-text">Code Structure</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BlinnPhong-Surface-Analysis"><span class="toc-number">3.</span> <span class="toc-text">BlinnPhong Surface Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LightingBlinnPhong"><span class="toc-number">3.1.</span> <span class="toc-text">LightingBlinnPhong</span></a></li></ol></li></ol>
-        </div>
     
     
     <div class="columns is-mobile is-multiline article-nav">

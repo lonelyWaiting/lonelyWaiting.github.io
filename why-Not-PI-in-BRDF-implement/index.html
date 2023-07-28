@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="&amp;#x6848;&amp;#x4F8B;&amp;#x5206;&amp;#x6790;Lambert&amp;#x7684;BRDF&amp;#x4E3A;$\frac{c_{d}}{\pi}$,&amp;#x5728;Unity&amp;#x4E2D;,Lambert&amp;#x5149;&amp;#x7167;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E3A;:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2023-07-28T01:01:24.478Z">
+<meta property="og:updated_time" content="2023-07-28T03:48:28.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="why Not PI in BRDF implement">
 <meta name="twitter:description" content="&amp;#x6848;&amp;#x4F8B;&amp;#x5206;&amp;#x6790;Lambert&amp;#x7684;BRDF&amp;#x4E3A;$\frac{c_{d}}{\pi}$,&amp;#x5728;Unity&amp;#x4E2D;,Lambert&amp;#x5149;&amp;#x7167;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E3A;:">
@@ -179,6 +179,11 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         
+            
+    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#案例分析"><span class="toc-text">案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#精确光源"><span class="toc-text">精确光源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambert光照实现"><span class="toc-text">Lambert光照实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+    </div>
+
             <h1 id="&#x6848;&#x4F8B;&#x5206;&#x6790;"><a href="#&#x6848;&#x4F8B;&#x5206;&#x6790;" class="headerlink" title="&#x6848;&#x4F8B;&#x5206;&#x6790;"></a>&#x6848;&#x4F8B;&#x5206;&#x6790;</h1><p>Lambert&#x7684;BRDF&#x4E3A;$\frac{c_{d}}{\pi}$,&#x5728;Unity&#x4E2D;,Lambert&#x5149;&#x7167;&#x5B9E;&#x73B0;&#x4E3A;:<a id="more"></a></p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> fixed4 <span class="hljs-title">UnityLambertLight</span> <span class="hljs-params">(SurfaceOutput s, UnityLight light)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    fixed diff = max (<span class="hljs-number">0</span>, dot (s.Normal, light.dir));</span><br><span class="line"></span><br><span class="line">    fixed4 c;</span><br><span class="line">    c.rgb = s.Albedo * light.color * diff;</span><br><span class="line">    c.a = s.Alpha;</span><br><span class="line">    <span class="hljs-keyword">return</span> c;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> fixed4 <span class="hljs-title">LightingLambert</span> <span class="hljs-params">(SurfaceOutput s, UnityGI gi)</span></span></span><br><span class="line"><span class="hljs-function"></span>{</span><br><span class="line">    fixed4 c;</span><br><span class="line">    c = UnityLambertLight (s, gi.light);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> UNITY_LIGHT_FUNCTION_APPLY_INDIRECT</span></span><br><span class="line">        c.rgb += s.Albedo * gi.indirect.diffuse;</span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> c;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
@@ -203,7 +208,7 @@
 <li><a href="https://seblagarde.wordpress.com/2012/01/08/pi-or-not-to-pi-in-game-lighting-equation/" target="_blank" rel="noopener">PI or not to PI in game lighting equation</a></li>
 </ul>
 
-          
+        
     
     </div>
     
@@ -212,13 +217,6 @@
         <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Rendering/">#Rendering</a></span>
     
     </div>
-    
-    
-        
-        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-            <h3>Contents</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#案例分析"><span class="toc-number">1.</span> <span class="toc-text">案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#精确光源"><span class="toc-number">1.1.</span> <span class="toc-text">精确光源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambert光照实现"><span class="toc-number">1.2.</span> <span class="toc-text">Lambert光照实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">2.</span> <span class="toc-text">Reference</span></a></li></ol>
-        </div>
     
     
     <div class="columns is-mobile is-multiline article-nav">

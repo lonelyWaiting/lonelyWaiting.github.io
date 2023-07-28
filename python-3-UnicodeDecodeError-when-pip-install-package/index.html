@@ -25,7 +25,7 @@
 <meta property="og:description" content="Issue&amp;#x5B89;&amp;#x88C5;python&amp;#x5E93;&amp;#x65F6;&amp;#x62A5;&amp;#x9519;&amp;#xFF0C;UnicodeDecodeError">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png">
-<meta property="og:updated_time" content="2023-07-28T01:01:24.478Z">
+<meta property="og:updated_time" content="2023-07-28T03:48:28.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 3 UnicodeDecodeError when pip install package">
 <meta name="twitter:description" content="Issue&amp;#x5B89;&amp;#x88C5;python&amp;#x5E93;&amp;#x65F6;&amp;#x62A5;&amp;#x9519;&amp;#xFF0C;UnicodeDecodeError">
@@ -179,6 +179,11 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         
+            
+    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Issue"><span class="toc-text">Issue</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reason"><span class="toc-text">Reason</span></a></li></ol>
+    </div>
+
             <h1 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h1><p>&#x5B89;&#x88C5;python&#x5E93;&#x65F6;&#x62A5;&#x9519;&#xFF0C;UnicodeDecodeError<br><a id="more"></a><br><img src="/resources/images/python-install-package-unicodeerror/UnicodeDecodeError.png" alt="pip install package UnicodeDecodeError"></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>&#x6253;&#x5F00;<code>python36\lib\site-packages\pip\compat\__init__.py</code></p>
 <p>&#x4FEE;&#x6539;<code>console_to_str</code>&#x51FD;&#x6570;,&#x5C06;&#x7F16;&#x7801;&#x6539;&#x4E3A;<code>gbk</code></p>
@@ -189,7 +194,7 @@
 
 <h1 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h1><p>&#x6211;&#x7684;&#x8DEF;&#x5F84;&#x4E2D;&#x542B;&#x6709;&#x4E2D;&#x6587;,&#x89E3;&#x7801;&#x5931;&#x8D25;&#x540E;,<code>python</code>&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;<code>utf-8</code>,&#x7136;&#x800C;windows&#x4E2D;&#x6587;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;<code>gbk</code></p>
 
-          
+        
     
     </div>
     
@@ -198,13 +203,6 @@
         <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/python/">#python</a></span>
     
     </div>
-    
-    
-        
-        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-            <h3>Contents</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Issue"><span class="toc-number">1.</span> <span class="toc-text">Issue</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reason"><span class="toc-number">3.</span> <span class="toc-text">Reason</span></a></li></ol>
-        </div>
     
     
     <div class="columns is-mobile is-multiline article-nav">

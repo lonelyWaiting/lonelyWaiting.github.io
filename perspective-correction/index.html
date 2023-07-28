@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/perspective_correction/perspective_correction.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/perspective_correction/perspective_x_item.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/perspective_correction/perspective_y_item.png">
-<meta property="og:updated_time" content="2023-07-28T01:01:24.478Z">
+<meta property="og:updated_time" content="2023-07-28T03:48:28.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="perspective correction">
 <meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/perspective_correction/perspective_correction.png">
@@ -204,6 +204,11 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         
+            
+    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推导"><span class="toc-text">推导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#顶点属性插值"><span class="toc-text">顶点属性插值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#透视矩阵推导"><span class="toc-text">透视矩阵推导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#深度重建"><span class="toc-text">深度重建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#还原深度值"><span class="toc-text">还原深度值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CameraSpace重映射深度值为-0-1"><span class="toc-text">CameraSpace重映射深度值为[0,1]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Screen-Space-Ray-March"><span class="toc-text">Screen Space Ray March</span></a></li></ol>
+    </div>
+
             <p><img src="/resources/images/perspective_correction/perspective_correction.png" alt="perspective correction"><a id="more"></a></p>
 <h1 id="&#x9700;&#x6C42;"><a href="#&#x9700;&#x6C42;" class="headerlink" title="&#x9700;&#x6C42;"></a>&#x9700;&#x6C42;</h1><p>&#x5149;&#x6805;&#x5316;&#x65F6;,&#x4E09;&#x89D2;&#x5F62;&#x5185;&#x90E8;&#x7684;&#x9876;&#x70B9;&#x5C5E;&#x6027;&#x662F;&#x7531;&#x4E09;&#x4E2A;&#x9876;&#x70B9;&#x63D2;&#x503C;&#x800C;&#x6765;,&#x56E0;&#x6B64;&#x9700;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;:</p>
 <ul>
@@ -265,7 +270,7 @@
 <h2 id="CameraSpace&#x91CD;&#x6620;&#x5C04;&#x6DF1;&#x5EA6;&#x503C;&#x4E3A;-0-1"><a href="#CameraSpace&#x91CD;&#x6620;&#x5C04;&#x6DF1;&#x5EA6;&#x503C;&#x4E3A;-0-1" class="headerlink" title="CameraSpace&#x91CD;&#x6620;&#x5C04;&#x6DF1;&#x5EA6;&#x503C;&#x4E3A;[0,1]"></a>CameraSpace&#x91CD;&#x6620;&#x5C04;&#x6DF1;&#x5EA6;&#x503C;&#x4E3A;[0,1]</h2><p>&#x5C06;CameraSpace&#x539F;&#x70B9;&#x6620;&#x5C04;&#x81F3;0,&#x8FDC;&#x5E73;&#x9762;&#x6620;&#x5C04;&#x81F3;1<br>$$z_{cs} = \frac{z}{f} = \frac{n \times f}{f - Z_{buffer} \times (f - n)} \times \frac{1}{f}$$<br>$$\Rightarrow z_{cs} = \frac{n}{f - Z_{buffer} \times (f - n)}$$<br>$$\Rightarrow z_{cs} = \frac{1}{\frac{f}{n} + \frac{n - f}{n} \times Z_{buffer}}$$<br>$$\Rightarrow z_{cs} = \frac{1}{\frac{f}{n} + (1 - \frac{f}{n}) \times Z_{buffer}}$$</p>
 <h1 id="Screen-Space-Ray-March"><a href="#Screen-Space-Ray-March" class="headerlink" title="Screen Space Ray March"></a>Screen Space Ray March</h1><p>&#x5047;&#x8BBE;&#x5C4F;&#x5E55;&#x7A7A;&#x95F4;&#x5750;&#x6807;(x,y),&#x5219;&#x9F50;&#x6B21;&#x5750;&#x6807;&#x4E3A;($2\times x - 1$,2 \times y - 1$)</p>
 
-          
+        
     
     </div>
     
@@ -274,13 +279,6 @@
         <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Rendering/">#Rendering</a></span>
     
     </div>
-    
-    
-        
-        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-            <h3>Contents</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推导"><span class="toc-number">2.</span> <span class="toc-text">推导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#顶点属性插值"><span class="toc-number">3.</span> <span class="toc-text">顶点属性插值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#透视矩阵推导"><span class="toc-number">4.</span> <span class="toc-text">透视矩阵推导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#深度重建"><span class="toc-number">5.</span> <span class="toc-text">深度重建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#还原深度值"><span class="toc-number">5.1.</span> <span class="toc-text">还原深度值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CameraSpace重映射深度值为-0-1"><span class="toc-number">5.2.</span> <span class="toc-text">CameraSpace重映射深度值为[0,1]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Screen-Space-Ray-March"><span class="toc-number">6.</span> <span class="toc-text">Screen Space Ray March</span></a></li></ol>
-        </div>
     
     
     <div class="columns is-mobile is-multiline article-nav">

@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/radiance_define.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/solid_angle_define.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Radiometry/radiance_invariance.png">
-<meta property="og:updated_time" content="2023-07-28T01:01:24.474Z">
+<meta property="og:updated_time" content="2023-07-28T03:48:28.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Radiometry">
 <meta name="twitter:description" content="&amp;#x5149;&amp;#x6A21;&amp;#x578B;&amp;#x56FE;&amp;#x5F62;&amp;#x5B66;&amp;#x4E2D;&amp;#x4F7F;&amp;#x7528;&amp;#x6700;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x662F;&amp;#x51E0;&amp;#x4F55;&amp;#x5149;&amp;#x5B66;,&amp;#x8BE5;&amp;#x6A21;&amp;#x578B;&amp;#x4E2D;,&amp;#x7269;&amp;#x4F53;&amp;#x768">
@@ -200,7 +200,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2023-07-28T01:01:24.474Z" itemprop="datePublished">Jul 28 2023</time>
+                <time datetime="2023-07-28T03:48:28.782Z" itemprop="datePublished">Jul 28 2023</time>
             
         </span>
         
@@ -215,6 +215,11 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         
+            
+    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#光模型"><span class="toc-text">光模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#辐射度"><span class="toc-text">辐射度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通量-Flux"><span class="toc-text">通量(Flux)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐照度-Irradiance"><span class="toc-text">辐照度(Irradiance)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射出射度-辐射度Radiosity"><span class="toc-text">辐射出射度(辐射度Radiosity)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率"><span class="toc-text">辐射率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各个量的关系"><span class="toc-text">各个量的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率属性"><span class="toc-text">辐射率属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x"><span class="toc-text">沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传感器-例如相机-人眼-对辐射敏感"><span class="toc-text">传感器,例如相机,人眼,对辐射敏感</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输理论"><span class="toc-text">传输理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发射光"><span class="toc-text">发射光</span></a></li></ol>
+    </div>
+
             <h1 id="&#x5149;&#x6A21;&#x578B;"><a href="#&#x5149;&#x6A21;&#x578B;" class="headerlink" title="&#x5149;&#x6A21;&#x578B;"></a>&#x5149;&#x6A21;&#x578B;</h1><p>&#x56FE;&#x5F62;&#x5B66;&#x4E2D;&#x4F7F;&#x7528;&#x6700;&#x5E38;&#x7528;&#x7684;&#x662F;&#x51E0;&#x4F55;&#x5149;&#x5B66;,&#x8BE5;&#x6A21;&#x578B;&#x4E2D;,&#x7269;&#x4F53;&#x7684;&#x5C3A;&#x5BF8;&#x8FDC;&#x5927;&#x4E8E;&#x5149;&#x7684;&#x6CE2;&#x957F;<br><a id="more"></a><br>&#x51E0;&#x4F55;&#x5149;&#x5B66;&#x4E2D;,&#x884D;&#x5C04;,&#x5E72;&#x6D89;&#x4EE5;&#x53CA;&#x6781;&#x5316;&#x73B0;&#x8C61;&#x662F;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;&#x7684;.</p>
 <p>&#x51E0;&#x4F55;&#x5149;&#x5B66;&#x5047;&#x5B9A;&#x5149;&#x662F;&#x53D1;&#x5C04;,&#x53CD;&#x5C04;&#x4EE5;&#x53CA;&#x900F;&#x5C04;,&#x5E76;&#x5BF9;&#x4E8E;&#x5149;&#x7684;&#x884C;&#x4E3A;&#x505A;&#x51FA;&#x5982;&#x4E0B;&#x5047;&#x8BBE;:</p>
 <ul>
@@ -274,7 +279,7 @@
 <li>&#x9891;&#x8C31;&#x5206;&#x5E03;:&#x867D;&#x7136;&#x5149;&#x7684;&#x9891;&#x8C31;&#x5206;&#x5E03;&#x53EF;&#x4EE5;&#x7CBE;&#x786E;&#x6A21;&#x62DF;,&#x4F46;&#x51FA;&#x4E8E;&#x6548;&#x7387;&#x8003;&#x8651;&#x666E;&#x904D;&#x4F7F;&#x7528;RGB</li>
 </ul>
 
-          
+        
     
     </div>
     
@@ -285,22 +290,13 @@
     </div>
     
     
-        
-        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-            <h3>Contents</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#光模型"><span class="toc-number">1.</span> <span class="toc-text">光模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#辐射度"><span class="toc-number">2.</span> <span class="toc-text">辐射度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通量-Flux"><span class="toc-number">2.1.</span> <span class="toc-text">通量(Flux)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐照度-Irradiance"><span class="toc-number">2.2.</span> <span class="toc-text">辐照度(Irradiance)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射出射度-辐射度Radiosity"><span class="toc-number">2.3.</span> <span class="toc-text">辐射出射度(辐射度Radiosity)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率"><span class="toc-number">2.4.</span> <span class="toc-text">辐射率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各个量的关系"><span class="toc-number">2.5.</span> <span class="toc-text">各个量的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#辐射率属性"><span class="toc-number">2.6.</span> <span class="toc-text">辐射率属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#沿路径可交换-L-x-rightarrow-y-L-y-leftarrow-x"><span class="toc-number">2.6.1.</span> <span class="toc-text">沿路径可交换 $L(x \rightarrow y) = L(y \leftarrow x)$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传感器-例如相机-人眼-对辐射敏感"><span class="toc-number">2.6.2.</span> <span class="toc-text">传感器,例如相机,人眼,对辐射敏感</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输理论"><span class="toc-number">3.</span> <span class="toc-text">传输理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发射光"><span class="toc-number">4.</span> <span class="toc-text">发射光</span></a></li></ol>
-        </div>
-    
-    
     <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/Color-And-Radiometry/">Color and Radiometry</a>
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/自定义Hexo博客显示/">自定义Hexo博客显示</a>
+            <a href="/reflect-refraction/">reflect and refraction</a>
             
         </span>
     </div>

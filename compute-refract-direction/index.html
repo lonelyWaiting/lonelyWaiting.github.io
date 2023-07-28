@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/refraction_direction/Refraction.png">
-<meta property="og:updated_time" content="2023-07-28T01:01:24.474Z">
+<meta property="og:updated_time" content="2023-07-28T03:48:28.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="compute refract direction">
 <meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/refraction_direction/Refraction.png">
@@ -159,6 +159,11 @@
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         
+            
+    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Snell’s-Law"><span class="toc-text">Snell’s Law</span></a></li></ol>
+    </div>
+
             <p><img src="/resources/images/refraction_direction/Refraction.png" alt="refraction direction"><br><a id="more"></a></p>
 <h1 id="Snell&#x2019;s-Law"><a href="#Snell&#x2019;s-Law" class="headerlink" title="Snell&#x2019;s Law"></a>Snell&#x2019;s Law</h1><p>$$<br>\begin{align}<br>\eta{_1} \sin(\theta_1) &amp;\quad = \eta{_2}\sin(\theta{_2}) &amp; n &amp;\quad = (0,1) \notag \\[2ex]<br>L\qquad &amp;\quad = (-\sin(\theta_1) , \cos(\theta_1)) &amp; T &amp;\quad = (\sin(\theta_2) , -\cos(\theta_2))\notag<br>\end{align}<br>$$</p>
 <p>&#x8BBE;:<br>$$\overrightarrow{T} = x \times \overrightarrow{L} + y \times \overrightarrow{n}$$</p>
@@ -166,7 +171,7 @@
 <p>$$<br>\begin{align}<br>\Rightarrow<br>\overrightarrow{T} &amp;= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \times \overrightarrow{L} + (\cos(\theta_1) \times \frac{\sin(\theta_2)}{\sin(\theta_1)} - \cos(\theta_2)) \times \overrightarrow{n} \notag \\[2ex]<br>\because \cos(\theta_2) &amp;= \sqrt{1 - \sin^2(\theta_2)} \notag \\<br>&amp;= \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - \cos^2(\theta_1))} \notag \\<br>&amp;= \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}\notag<br>\end{align}<br>$$</p>
 <p>$$<br>\begin{align}<br>\Rightarrow \overrightarrow{T} &amp;= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \times \overrightarrow{L} + (\cos(\theta_1) \times \frac{\sin(\theta_2)}{\sin(\theta_1)} - \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}) \times \overrightarrow{n}\notag \\[2ex]<br>&amp;= -\frac{\eta_1}{\eta_2} \times \overrightarrow{L} + \overrightarrow{n}(\frac{\eta_1}{\eta_2}(\overrightarrow{L} \cdot \overrightarrow{n}) - \sqrt{1 - \frac{\eta_1^2}{\eta_2^2}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)})\notag<br>\end{align}<br>$$</p>
 
-          
+        
     
     </div>
     
@@ -175,13 +180,6 @@
         <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Math/">#Math</a></span>
     
     </div>
-    
-    
-        
-        <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-            <h3>Contents</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Snell’s-Law"><span class="toc-number">1.</span> <span class="toc-text">Snell’s Law</span></a></li></ol>
-        </div>
     
     
     <div class="columns is-mobile is-multiline article-nav">
