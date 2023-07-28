@@ -130,13 +130,13 @@ h1.article-title:hover:before {
 }
 .toc-item.toc-level-4:before {
     counter-increment: toc-level-3;
-    content: counter(toc-bod) ". " counter(toc-level-1) ". " counter(toc-level-2) ". " counter(toc-level-3) ". ";
+    content: counter(toc-body) ". " counter(toc-level-1) ". " counter(toc-level-2) ". " counter(toc-level-3) ". ";
 }
 .toc-item.toc-level-5:before {
     counter-increment: toc-level-4;
-    content: counter(toc-bod) ". " counter(toc-level-1) ". " counter(toc-level-2) ". " counter(toc-level-3) ". " counter(toc-level-4) ". ";
+    content: counter(toc-body) ". " counter(toc-level-1) ". " counter(toc-level-2) ". " counter(toc-level-3) ". " counter(toc-level-4) ". ";
 }
 .toc-item.toc-level-6:before {
     counter-increment: toc-level-5;
-    content: counter(toc-bod) ". " counter(toc-level-1) ". " counter(toc-level-2) ". " counter(toc-level-3) ". " counter(toc-level-4) ". " counter(toc-level-5) ". ";
+    content: counter(toc-body) ". " counter(toc-level-1) ". " counter(toc-level-2) ". " counter(toc-level-3) ". " counter(toc-level-4) ". " counter(toc-level-5) ". ";
 }
