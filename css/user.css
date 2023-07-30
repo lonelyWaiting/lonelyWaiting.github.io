@@ -85,13 +85,18 @@ h1.article-title:hover:before {
 
 /* TOC的标题序号 */
 .toc {
-    right: 3%;
-    top: 10%;
+    left: 0%;
+    top: 5%;
     position: fixed;
     margin: 5px;
     list-style: none;
     counter-reset: toc-body;
     background-color: #fafafa;
+
+    /* 宽度不够时采用截断的形式而非Wrap */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .toc-item.toc-level-1 {
     counter-reset: toc-level-1;

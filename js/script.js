@@ -79,4 +79,22 @@
             $(this).text(moment($(this).attr('datetime')).fromNow());
         });
     }
+
+    const sectionDiv = $('.section')[0];
+    const resizeObserver = new ResizeObserver(entries => {
+        for (let entry of entries) {
+            if (entry.target === sectionDiv) {
+                const contentDiv = $('.article.content.gallery');
+                const contentWidth = parseInt($(contentDiv).css('width'));
+                const leftPadding  = parseInt($(sectionDiv).css('padding-left'));
+
+                const tocPadding = 24;
+                var maxToWidth = (sectionDiv.offsetWidth - contentWidth) / 2 - leftPadding - tocPadding;
+                if (maxToWidth < 0) maxToWidth = 0;
+                
+                $('.toc').css('max-width', maxToWidth + 'px');
+            }
+        }
+    });
+    resizeObserver.observe(sectionDiv);
 })(jQuery);
