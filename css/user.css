@@ -96,7 +96,7 @@ h1.article-title:hover:before {
     /* 宽度不够时采用截断的形式而非Wrap */
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: auto;
 }
 .toc-item.toc-level-1 {
     counter-reset: toc-level-1;
