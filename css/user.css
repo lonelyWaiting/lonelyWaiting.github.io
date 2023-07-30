@@ -91,6 +91,7 @@ h1.article-title:hover:before {
     margin: 5px;
     list-style: none;
     counter-reset: toc-body;
+    background-color: #fafafa;
 }
 .toc-item.toc-level-1 {
     counter-reset: toc-level-1;
@@ -139,4 +140,60 @@ h1.article-title:hover:before {
 .toc-item.toc-level-6:before {
     counter-increment: toc-level-5;
     content: counter(toc-body) ". " counter(toc-level-1) ". " counter(toc-level-2) ". " counter(toc-level-3) ". " counter(toc-level-4) ". " counter(toc-level-5) ". ";
+}
+
+.fast-btn {
+    background-color: #fff;
+    color: rgb(33, 37, 41);
+    border-bottom-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgba(0, 0, 0, 0);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgba(0, 0, 0, 0);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px 0px;
+    box-sizing: border-box;
+    line-height: 24px;
+    position: fixed;
+    font-size: 16px;
+    font-weight: 400;
+    outline-color: rgb(33,37,41);
+    outline-style: none;
+    outline-width: 0px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    text-shadow: none;
+}
+
+.fast-btn:hover {
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.fast-btn:active {
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    background-color: rgb(0,0,0);
+    color: white;
 }
