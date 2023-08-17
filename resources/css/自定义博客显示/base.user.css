@@ -1,0 +1,220 @@
+body {
+    counter-reset: body;
+    
+    /* &#x4FEE;&#x6539;&#x6B63;&#x6587;&#x5B57;&#x4F53; */
+    font-family: &quot;Vollkorn&quot;, Palatino, Times;
+	color: #333;
+	line-height: 1.4;
+	text-align: justify;
+}
+
+/* &#x6B63;&#x6587;&#x6807;&#x9898;&#x81EA;&#x52A8;&#x5E8F;&#x53F7; */
+h1 {
+    counter-reset: h1;
+}
+
+h2 {
+    counter-reset: h2;
+}
+h3 {
+    counter-reset: h3;
+}
+h4 {
+    counter-reset: h4;
+}
+h5 {
+    counter-reset: h5;
+}
+h6 {
+    counter-reset: h6;
+}
+
+h1:before {
+    counter-increment: body;
+    content: counter(body) &quot;. &quot;;
+}
+h2:before {
+    counter-increment: h1;
+    content: counter(body) &quot;.&quot; counter(h1) &quot;. &quot;;
+}
+h3:before {
+    counter-increment: h2;
+    content: counter(body) &quot;.&quot; counter(h1)&quot;.&quot; counter(h2) &quot;. &quot;;
+}
+h4:before {
+    counter-increment: h3;
+    content: counter(body) &quot;.&quot; counter(h1)&quot;.&quot; counter(h2)&quot;.&quot; counter(h3) &quot;. &quot;;
+}
+h5:before {
+    counter-increment: h4;
+    content: counter(body) &quot;.&quot; counter(h1)&quot;.&quot; counter(h2)&quot;.&quot; counter(h3)&quot;.&quot; counter(h4) &quot;. &quot;;
+}
+h6:before {
+    counter-increment: h5;
+    content: counter(body) &quot;.&quot; counter(h1)&quot;.&quot; counter(h2)&quot;.&quot; counter(h3)&quot;.&quot; counter(h4)&quot;.&quot; counter(h5) &quot;. &quot;;
+}
+
+h3.md-focus:before {
+    counter-increment: h2;
+    content: counter(body) &quot;.&quot; counter(h1)&quot;.&quot; counter(h2) &quot;. &quot;;
+}
+h4.md-focus:before {
+    counter-increment: h3;
+    content: counter(body) &quot;.&quot; counter(h1)&quot;.&quot; counter(h2)&quot;.&quot; counter(h3) &quot;. &quot;;
+}
+h5.md-focus:before {
+    counter-increment: h4;
+    content: counter(body) &quot;.&quot; counter(h1)&quot;.&quot; counter(h2)&quot;.&quot; counter(h3)&quot;.&quot; counter(h4) &quot;. &quot;;
+}
+h6.md-focus:before  {
+    counter-increment: h5;
+    content: counter(body) &quot;.&quot; counter(h1)&quot;.&quot; counter(h2)&quot;.&quot; counter(h3)&quot;.&quot; counter(h4)&quot;.&quot; counter(h5) &quot;. &quot;;
+}
+
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+    color: #333;
+    border: unset;
+    border-radius: unset;
+    position: unset;
+    left: unset;
+    top: unset;
+    float: unset;
+    font-size: unset;
+    padding-left: unset;
+    padding-right: unset;
+    vertical-align: unset;
+    font-weight: unset;
+    line-height: unset;
+}
+
+.sidebar-content {
+    counter-reset: h1
+}
+ 
+.outline-h1 {
+    counter-reset: h2
+}
+ 
+.outline-h2 {
+    counter-reset: h3
+}
+ 
+.outline-h3 {
+    counter-reset: h4
+}
+ 
+.outline-h4 {
+    counter-reset: h5
+}
+ 
+.outline-h5 {
+    counter-reset: h6
+}
+
+.outline-h1&gt;.outline-item&gt;.outline-label:before {
+    counter-increment: h1;
+    content: counter(h1) &quot;. &quot;
+}
+ 
+.outline-h2&gt;.outline-item&gt;.outline-label:before {
+    counter-increment: h2;
+    content: counter(h1) &quot;.&quot; counter(h2) &quot;. &quot;
+}
+ 
+.outline-h3&gt;.outline-item&gt;.outline-label:before {
+    counter-increment: h3;
+    content: counter(h1) &quot;.&quot; counter(h2) &quot;.&quot; counter(h3) &quot;. &quot;
+}
+ 
+.outline-h4&gt;.outline-item&gt;.outline-label:before {
+    counter-increment: h4;
+    content: counter(h1) &quot;.&quot; counter(h2) &quot;.&quot; counter(h3) &quot;.&quot; counter(h4) &quot;. &quot;
+}
+ 
+.outline-h5&gt;.outline-item&gt;.outline-label:before {
+    counter-increment: h5;
+    content: counter(h1) &quot;.&quot; counter(h2) &quot;.&quot; counter(h3) &quot;.&quot; counter(h4) &quot;.&quot; counter(h5) &quot;. &quot;
+}
+ 
+.outline-h6&gt;.outline-item&gt;.outline-label:before {
+    counter-increment: h6;
+    content: counter(h1) &quot;.&quot; counter(h2) &quot;.&quot; counter(h3) &quot;.&quot; counter(h4) &quot;.&quot; counter(h5) &quot;.&quot; counter(h6) &quot;. &quot;
+}
+
+/* TOC &#x81EA;&#x52A8;&#x5E8F;&#x53F7; */
+.md-toc-inner {
+    text-decoration: none;
+}
+.md-toc-content {
+    counter-reset: h1toc
+}
+.md-toc-h1 {
+    margin-left: 0;
+    counter-reset: h2toc
+}
+.md-toc-h2 {
+    margin-left: 1rem;
+    counter-reset: h3toc
+}
+.md-toc-h3 {
+    margin-left: 2rem;
+    counter-reset: h4toc
+}
+.md-toc-h4 {
+    margin-left: 3rem;
+    counter-reset: h5toc
+}
+.md-toc-h5 {
+    margin-left: 4rem;
+    counter-reset: h6toc
+}
+.md-toc-h6 {
+    margin-left: 5rem;
+}
+
+.md-toc-h1:before {
+    counter-increment: h1toc;
+    content: counter(h1toc) &quot; &quot;
+}
+.md-toc-h2:before {
+    counter-increment: h2toc;
+    content: counter(h1toc) &quot;. &quot; counter(h2toc) &quot;. &quot;
+}
+.md-toc-h3:before {
+    counter-increment: h3toc;
+    content: counter(h1toc) &quot;. &quot; counter(h2toc) &quot;. &quot; counter(h3toc) &quot;. &quot;
+}
+.md-toc-h4:before {
+    counter-increment: h4toc;
+    content: counter(h1toc) &quot;. &quot; counter(h2toc) &quot;. &quot; counter(h3toc) &quot;. &quot; counter(h4toc) &quot;. &quot;
+}
+.md-toc-h5:before {
+    counter-increment: h5toc;
+    content: counter(h1toc) &quot;. &quot; counter(h2toc) &quot;. &quot; counter(h3toc) &quot;. &quot; counter(h4toc) &quot;. &quot; counter(h5toc) &quot;. &quot;
+}
+.md-toc-h6:before {
+    counter-increment: h6toc;
+    content: counter(h1toc) &quot;. &quot; counter(h2toc) &quot;. &quot; counter(h3toc) &quot;. &quot; counter(h4toc) &quot;. &quot; counter(h5toc) &quot;. &quot; counter(h6toc) &quot;. &quot;
+}
+
+.md-toc-h1 .md-toc-inner {
+    margin-left: 0;
+}
+.md-toc-h2 .md-toc-inner {
+    margin-left: 0;
+}
+.md-toc-h3 .md-toc-inner {
+    margin-left: 0;
+}
+.md-toc-h4 .md-toc-inner {
+    margin-left: 0;
+}
+.md-toc-h5 .md-toc-inner {
+    margin-left: 0;
+}
+.md-toc-h6 .md-toc-inner {
+    margin-left: 0;
+}
