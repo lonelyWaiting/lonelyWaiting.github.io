@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+    <meta name="description" content="HISM&amp;#x89E3;&amp;#x6790;&amp;#x4E0E;&amp;#x4F18;&amp;#x5316;HISM&amp;#x751F;&amp;#x6210;HISM&amp;#x539F;&amp;#x7406;HISM&amp;#x5168;&amp;#x540D;&amp;#x4E3A;Hierarchical Instanced Static Mesh&amp;#xFF0C;&amp;#x901A;&amp;#x8FC7;&amp;#x6309;LOD&amp;#x7EC4;&amp;#x7EC7;&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lonelyWaiting">
+<meta property="og:url" content="http://lonelywaiting.github.io/HISM原理与优化/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="HISM&amp;#x89E3;&amp;#x6790;&amp;#x4E0E;&amp;#x4F18;&amp;#x5316;HISM&amp;#x751F;&amp;#x6210;HISM&amp;#x539F;&amp;#x7406;HISM&amp;#x5168;&amp;#x540D;&amp;#x4E3A;Hierarchical Instanced Static Mesh&amp;#xFF0C;&amp;#x901A;&amp;#x8FC7;&amp;#x6309;LOD&amp;#x7EC4;&amp;#x7EC7;&amp;#x">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/ClusterLOD.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/HISM_Structure.png">
+<meta property="og:updated_time" content="2024-07-28T10:55:39.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lonelyWaiting">
+<meta name="twitter:description" content="HISM&amp;#x89E3;&amp;#x6790;&amp;#x4E0E;&amp;#x4F18;&amp;#x5316;HISM&amp;#x751F;&amp;#x6210;HISM&amp;#x539F;&amp;#x7406;HISM&amp;#x5168;&amp;#x540D;&amp;#x4E3A;Hierarchical Instanced Static Mesh&amp;#xFF0C;&amp;#x901A;&amp;#x8FC7;&amp;#x6309;LOD&amp;#x7EC4;&amp;#x7EC7;&amp;#x">
+<meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/ClusterLOD.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    <img src="/favicon.ico" alt height="28">
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/Rendering">Rendering</a>
+            
+            <a class="navbar-item " href="/Engine">Engine</a>
+            
+            <a class="navbar-item " href="/Language">Language</a>
+            
+            <a class="navbar-item " href="/Tool">Tool</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HISM&amp;#x89E3;&amp;#x6790;&amp;#x4E0E;&amp;#x4F18;&amp;#x5316;">1&nbsp;&nbsp;<b>HISM&amp;amp;#x89E3;&amp;amp;#x6790;&amp;amp;#x4E0E;&amp;amp;#x4F18;&amp;amp;#x5316;</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HISM&amp;#x751F;&amp;#x6210;">1.1&nbsp;&nbsp;HISM&amp;amp;#x751F;&amp;amp;#x6210;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HISM&amp;#x539F;&amp;#x7406;">1.2&nbsp;&nbsp;HISM&amp;amp;#x539F;&amp;amp;#x7406;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HISM&amp;#x6784;&amp;#x5EFA;">1.3&nbsp;&nbsp;HISM&amp;amp;#x6784;&amp;amp;#x5EFA;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Landscape-Grass">1.4&nbsp;&nbsp;Landscape Grass</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#HISM&amp;#x91CD;&amp;#x5E03;&amp;#x5C40;">1.5&nbsp;&nbsp;HISM&amp;amp;#x91CD;&amp;amp;#x5E03;&amp;amp;#x5C40;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x4F18;&amp;#x7F3A;&amp;#x70B9;">1.5.1&nbsp;&nbsp;&amp;amp;#x4F18;&amp;amp;#x7F3A;&amp;amp;#x70B9;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Ref">1.6&nbsp;&nbsp;Ref</a>
+                    
+                </div>
+            </div>
+             -->
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2024-07-28T10:55:39.117Z" itemprop="datePublished">Jul 28 2024</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            3 minutes read (About 416 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        
+            
+    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HISM解析与优化"><span class="toc-text">HISM解析与优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM生成"><span class="toc-text">HISM生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM原理"><span class="toc-text">HISM原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM构建"><span class="toc-text">HISM构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Landscape-Grass"><span class="toc-text">Landscape Grass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM重布局"><span class="toc-text">HISM重布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优缺点"><span class="toc-text">优缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ref"><span class="toc-text">Ref</span></a></li></ol></li></ol>
+    </div>
+
+            <h1 id="HISM&#x89E3;&#x6790;&#x4E0E;&#x4F18;&#x5316;"><a href="#HISM&#x89E3;&#x6790;&#x4E0E;&#x4F18;&#x5316;" class="headerlink" title="HISM&#x89E3;&#x6790;&#x4E0E;&#x4F18;&#x5316;"></a>HISM&#x89E3;&#x6790;&#x4E0E;&#x4F18;&#x5316;</h1><h2 id="HISM&#x751F;&#x6210;"><a href="#HISM&#x751F;&#x6210;" class="headerlink" title="HISM&#x751F;&#x6210;"></a>HISM&#x751F;&#x6210;</h2><h2 id="HISM&#x539F;&#x7406;"><a href="#HISM&#x539F;&#x7406;" class="headerlink" title="HISM&#x539F;&#x7406;"></a>HISM&#x539F;&#x7406;</h2><p>HISM&#x5168;&#x540D;&#x4E3A;Hierarchical Instanced Static Mesh&#xFF0C;&#x901A;&#x8FC7;&#x6309;LOD&#x7EC4;&#x7EC7;&#x4E3A;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4E3A;&#x4E00;&#x4E2A;Cluster&#xFF0C;&#x6BCF;&#x4E2A;Cluster&#x7531;&#x4E00;&#x6216;&#x591A;&#x4E2A;Mesh&#x7EC4;&#x6210;</p>
+<p><img src="./../resources/images/HISM&#x539F;&#x7406;&#x4E0E;&#x4F18;&#x5316;/ClusterLOD.png" alt="Cluster LOD"></p>
+<p>&#x6BCF;&#x4E2A;Cluster&#x7684;&#x5305;&#x56F4;&#x76D2;&#x90FD;&#x4E3A;&#x5176;&#x4E0B;&#x6240;&#x6709;StaticMesh&#x7684;&#x5305;&#x56F4;&#x76D2;&#x4E4B;&#x548C;&#xFF0C;&#x5224;&#x65AD;&#x53EF;&#x89C1;&#x6027;&#x65F6;&#x9010;&#x7EA7;&#x5224;&#x65AD;&#x5373;&#x53EF;&#x52A0;&#x901F;&#x641C;&#x7D22;&#x3002;&#x7C7B;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="./../resources/images/HISM&#x539F;&#x7406;&#x4E0E;&#x4F18;&#x5316;/HISM_Structure.png" alt="HISM_Structure"></p>
+<ul>
+<li>FStaticMeshInstanceData&#xFF1A;&#x5B58;&#x50A8;CPU&#x7AEF;&#x5B9E;&#x4F8B;&#x5316;&#x6570;&#x636E;</li>
+<li>FStaticMeshInstanceBuffer: &#x4F7F;&#x7528;CPU&#x5B9E;&#x4F8B;&#x5316;&#x6570;&#x636E;&#x6784;&#x5EFA;InstanceBuffer&#x4E0E;SRV</li>
+</ul>
+<p>&#x6E32;&#x67D3;&#x6D41;&#x7A0B;&#x5206;&#x4E3A;&#x9876;&#x70B9;&#x6D41;&#x4E0E;ManualVerexFetch&#x4E24;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x9876;&#x70B9;&#x6D41;&#xFF1A;&#x901A;&#x8FC7;&#x7ED1;&#x5B9A;InstanceBuffer&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5728;Shader&#x7AEF;&#x76F4;&#x63A5;&#x53D6;&#x5230;&#x5F53;&#x524D;Instance&#x6570;&#x636E;</li>
+<li>ManualVertexFetch: &#x901A;&#x8FC7;&#x7ED1;&#x5B9A;SRV&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;InstanceId&#x5B58;&#x53D6;&#x6570;&#x636E;</li>
+</ul>
+<p>HISM&#x4E0E;ISM&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;VertexFactory&#xFF0C;&#x8BE5;VertexFactory&#x8D1F;&#x8D23;&#x7ED1;&#x5B9A;&#x9876;&#x70B9;&#x6D41;&#x4E0E;SRV&#x4EE5;&#x53CA;&#x5B9E;&#x4F8B;&#x5316;&#x53C2;&#x6570;</p>
+<p>&#x5F0A;&#x7AEF;&#xFF1A;</p>
+<p>&#x57FA;&#x4E8E;Cluster&#x4F5C;&#x4E3A;Drawcall&#x5355;&#x5143;&#xFF0C;&#x5F53;Cluster&#x5185;&#x90E8;&#x90E8;&#x5206;&#x7269;&#x4F53;&#x88AB;&#x906E;&#x6321;&#x65F6;&#xFF0C;Instance&#x7684;&#x8FDE;&#x7EED;&#x6027;&#x5C06;&#x88AB;&#x6253;&#x65AD;&#x800C;&#x5FC5;&#x987B;&#x62C6;&#x5206;Drawcall</p>
+<h2 id="HISM&#x6784;&#x5EFA;"><a href="#HISM&#x6784;&#x5EFA;" class="headerlink" title="HISM&#x6784;&#x5EFA;"></a>HISM&#x6784;&#x5EFA;</h2><h2 id="Landscape-Grass"><a href="#Landscape-Grass" class="headerlink" title="Landscape Grass"></a>Landscape Grass</h2><h2 id="HISM&#x91CD;&#x5E03;&#x5C40;"><a href="#HISM&#x91CD;&#x5E03;&#x5C40;" class="headerlink" title="HISM&#x91CD;&#x5E03;&#x5C40;"></a>HISM&#x91CD;&#x5E03;&#x5C40;</h2><p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;Cluster&#x4E2D;&#x90E8;&#x5206;StaticMesh&#x88AB;&#x906E;&#x6321;&#x800C;&#x5BFC;&#x81F4;Instance&#x6570;&#x636E;&#x5728;InstanceBuffer&#x4E0D;&#x8FDE;&#x7EED;&#xFF0C;&#x800C;&#x88AB;&#x8FEB;&#x4F7F;&#x7528;&#x591A;&#x4E2A;Drawcall&#x7684;&#x60C5;&#x51B5;&#x3002;&#x6211;&#x4EEC;&#x6709;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li>&#x91CD;&#x6392;InstanceBuffer</li>
+<li>&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;Buffer&#xFF0C;&#x4F7F;&#x7528;&#x8BE5;Buffer&#x91CD;&#x6620;&#x5C04;InstanceId</li>
+</ul>
+<p>&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5C06;&#x7C7B;&#x56FE;&#x4FEE;&#x6539;&#x4E3A;&#x5982;&#x4E0B;&#x5F62;&#x5F0F;:</p>
+<h3 id="&#x4F18;&#x7F3A;&#x70B9;"><a href="#&#x4F18;&#x7F3A;&#x70B9;" class="headerlink" title="&#x4F18;&#x7F3A;&#x70B9;"></a>&#x4F18;&#x7F3A;&#x70B9;</h3><ul>
+<li>&#x4F18;&#x70B9;&#xFF1A;&#x51CF;&#x5C11;Drawcall&#x4E14;&#x901A;&#x5E38;&#x90FD;&#x4F1A;&#x547D;&#x4E2D;&#x7F13;&#x5B58;</li>
+<li>&#x7F3A;&#x70B9;&#xFF1A;&#x989D;&#x5916;&#x7684;&#x5185;&#x5B58;&#x5360;&#x7528;&#xFF0C;&#x521B;&#x5EFA;Uniformbuffer&#x4F1A;&#x7ED9;RHI&#x7EBF;&#x7A0B;&#x5E26;&#x6765;&#x4E0D;&#x5C0F;&#x5F00;&#x9500;</li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><p><a href="https://blog.csdn.net/qq_29523119/article/details/123932029" target="_blank" rel="noopener">UHierarchicalInstancedStaticMesh(HISM)&#x539F;&#x7406;&#x5206;&#x6790;</a></p>
+
+        
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Color-And-Radiometry/">Color and Radiometry</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/Radiometry/">Radiometry</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://lonelywaiting.github.io/HISM原理与优化/';
+        this.page.identifier = 'HISM原理与优化/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'lonelywaiting' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer" id="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2024 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/lonelyWaiting">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+<div id="fast-scroll">
+    <a href="#">
+        <button id="scroll-to-top" class="fast-btn btn-top" aria-label="Scroll to top" style="right: 67.5px; bottom: 120px; display: inline-block;">
+            <i class="fas fa-arrow-up">
+        </i></button>
+    </a>
+    <a href="#footer">
+        <button id="scroll-to-down" class="fast-btn btn-down" aria-label="Scroll to down" style="right: 67.5px; bottom: 60px; display: inline-block;">
+            <i class="fas fa-arrow-down">
+        </i></button>
+    </a>
+</div>
+
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("default");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
