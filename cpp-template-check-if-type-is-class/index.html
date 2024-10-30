@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="&amp;#x5229;&amp;#x7528;&amp;#x6210;&amp;#x5458;&amp;#x53D8;&amp;#x91CF;&amp;#x6307;&amp;#x9488;&amp;#x7684;&amp;#x5B9E;&amp;#x4F8B;&amp;#x5316;&amp;#x6765;&amp;#x5B9E;&amp;#x73B0;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2024-10-30T00:43:37.262Z">
+<meta property="og:updated_time" content="2024-10-30T15:47:37.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++模板检测类型是否为Class">
 <meta name="twitter:description" content="&amp;#x5229;&amp;#x7528;&amp;#x6210;&amp;#x5458;&amp;#x53D8;&amp;#x91CF;&amp;#x6307;&amp;#x9488;&amp;#x7684;&amp;#x5B9E;&amp;#x4F8B;&amp;#x5316;&amp;#x6765;&amp;#x5B9E;&amp;#x73B0;">
@@ -453,7 +453,23 @@
         window.INSIGHT_CONFIG = INSIGHT_CONFIG;
     })(window);
 </script>
-<script src="/js/insight.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="/js/insight.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -471,6 +487,5 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-    
 </body>
 </html>

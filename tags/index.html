@@ -17,7 +17,7 @@
 
 
     <meta name="description" content="Runtime and Offline Render">
-<meta name="keywords" content="Rendering,Engine,Rendering,Engine,Graphics,D3D,Debug, Tool,Debug,VPS,rendering,Math,c++,Unreal,directx11,Noise,python,software,Unity,hexo,github,vscode,Hexo, Blog">
+<meta name="keywords" content="Rendering,Engine,Rendering,Engine,D3D,Debug, Tool,Debug,Graphics,VPS,rendering,Math,c++,directx11,Unreal,Noise,python,software,Unity,hexo,github,vscode,Hexo, Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lonelyWaiting">
 <meta property="og:url" content="http://lonelywaiting.github.io/tags/index.html">
@@ -163,11 +163,11 @@
             </span>
             
             <span class="column is-narrow">
-                <a class="tag is-light article-tag" href="/tags/Unreal/">#Unreal&nbsp;(2)</a>
+                <a class="tag is-light article-tag" href="/tags/directx11/">#directx11&nbsp;(1)</a>
             </span>
             
             <span class="column is-narrow">
-                <a class="tag is-light article-tag" href="/tags/directx11/">#directx11&nbsp;(1)</a>
+                <a class="tag is-light article-tag" href="/tags/Unreal/">#Unreal&nbsp;(2)</a>
             </span>
             
             <span class="column is-narrow">
@@ -408,7 +408,23 @@
         window.INSIGHT_CONFIG = INSIGHT_CONFIG;
     })(window);
 </script>
-<script src="/js/insight.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="/js/insight.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -426,6 +442,5 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-    
 </body>
 </html>

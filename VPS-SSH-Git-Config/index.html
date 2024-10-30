@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/GIT_HOME_SYSTEM_VAR.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/GIT_ADDTO_SYSTEM_PATH.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Git_Config_Verify.png">
-<meta property="og:updated_time" content="2024-10-30T00:43:37.262Z">
+<meta property="og:updated_time" content="2024-10-30T15:47:37.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VPS SSH Git Config">
 <meta name="twitter:description" content="&amp;#x672C;&amp;#x5730;&amp;#x914D;&amp;#x7F6E;GitGit For Windows&amp;#x4E0B;&amp;#x8F7D;&amp;#x8DEF;&amp;#x5F84;Git for Windows">
@@ -530,7 +530,23 @@
         window.INSIGHT_CONFIG = INSIGHT_CONFIG;
     })(window);
 </script>
-<script src="/js/insight.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="/js/insight.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -548,6 +564,5 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-    
 </body>
 </html>
