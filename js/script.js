@@ -13,36 +13,40 @@ function toggleToc() {
     }
 }
 
-// 更新目录高亮
+let tocHighlightLock = false;
+
 function updateTocHighlight() {
-    const headings = document.querySelectorAll('.article-entry h1, .article-entry h2, .article-entry h3, .article-entry h4, .article-entry h5, .article-entry h6');
     const tocLinks = document.querySelectorAll('.toc-content a');
-    
-    // 移除所有高亮
     tocLinks.forEach(link => link.classList.remove('active'));
-    
-    // 找到当前视窗中最靠上的标题
+
+    const headings = document.querySelectorAll('.article-entry h1, .article-entry h2, .article-entry h3, .article-entry h4, .article-entry h5, .article-entry h6');
     let currentHeading = null;
-    let minDistance = Infinity;
-    
+    let currentTop = -Infinity;
+    const threshold = 32; // 顶部阈值，可根据页面实际调整
+
     headings.forEach(heading => {
         const rect = heading.getBoundingClientRect();
-        if (rect.top >= 0 && rect.top < minDistance) {
-            minDistance = rect.top;
+        if (rect.top <= threshold && rect.top > currentTop) {
+            currentTop = rect.top;
             currentHeading = heading;
         }
     });
-    
-    // 如果找到了当前标题，高亮对应的目录项
+
     if (currentHeading) {
-        const activeLink = document.querySelector(`.toc-content a[href="#${currentHeading.id}"]`);
+        const activeLink = document.querySelector('.toc-content a[href="#' + currentHeading.id + '"]');
         if (activeLink) {
             activeLink.classList.add('active');
-            // 确保高亮的目录项在可视区域内
-            activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     }
 }
+
+window.addEventListener('hashchange', function() {
+    setTimeout(updateTocHighlight, 10);
+});
+document.addEventListener('DOMContentLoaded', updateTocHighlight);
+window.addEventListener('scroll', function() {
+    setTimeout(updateTocHighlight, 100);
+});
 
 (function ($) {
     $('.navbar-burger').click(function () {
@@ -155,4 +159,10 @@ function updateTocHighlight() {
 
     // 初始化时执行一次高亮更新
     updateTocHighlight();
+
+    document.querySelectorAll('.toc-content a').forEach(link => {
+        link.addEventListener('click', function() {
+            setTimeout(updateTocHighlight, 10);
+        });
+    });
 })(jQuery);
