@@ -203,6 +203,24 @@ h1.article-title:hover:before {
     color: #333;
 }
 
+.toc-content a.active {
+    color: #3273dc;
+    font-weight: 500;
+    position: relative;
+}
+
+.toc-content a.active::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 16px;
+    background-color: #3273dc;
+    border-radius: 2px;
+}
+
 .toc-content .toc-child {
     margin-left: 1em;
 }
