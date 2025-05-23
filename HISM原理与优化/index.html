@@ -25,7 +25,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/ClusterLOD.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/HISM_Structure.png">
-<meta property="og:updated_time" content="2025-04-12T11:43:06.332Z">
+<meta property="og:updated_time" content="2025-05-23T00:46:34.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lonelyWaiting">
 <meta name="twitter:description" content="HISM&amp;#x89E3;&amp;#x6790;&amp;#x4E0E;&amp;#x4F18;&amp;#x5316;HISM&amp;#x751F;&amp;#x6210;HISM&amp;#x539F;&amp;#x7406;HISM&amp;#x5168;&amp;#x540D;&amp;#x4E3A;Hierarchical Instanced Static Mesh&amp;#xFF0C;&amp;#x901A;&amp;#x8FC7;&amp;#x6309;LOD&amp;#x7EC4;&amp;#x7EC7;&amp;#x">
@@ -175,7 +175,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-04-12T11:43:06.332Z" itemprop="datePublished">Apr 12 2025</time>
+                <time datetime="2025-05-23T00:46:34.590Z" itemprop="datePublished">May 23 2025</time>
             
         </span>
         
@@ -191,9 +191,20 @@
     
         
             
-    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HISM解析与优化"><span class="toc-text">HISM解析与优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM生成"><span class="toc-text">HISM生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM原理"><span class="toc-text">HISM原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM构建"><span class="toc-text">HISM构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Landscape-Grass"><span class="toc-text">Landscape Grass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM重布局"><span class="toc-text">HISM重布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优缺点"><span class="toc-text">优缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ref"><span class="toc-text">Ref</span></a></li></ol></li></ol>
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HISM解析与优化"><span class="toc-text">HISM解析与优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM生成"><span class="toc-text">HISM生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM原理"><span class="toc-text">HISM原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM构建"><span class="toc-text">HISM构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Landscape-Grass"><span class="toc-text">Landscape Grass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HISM重布局"><span class="toc-text">HISM重布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优缺点"><span class="toc-text">优缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ref"><span class="toc-text">Ref</span></a></li></ol></li></ol>
+        </div>
     </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
             <h1 id="HISM&#x89E3;&#x6790;&#x4E0E;&#x4F18;&#x5316;"><a href="#HISM&#x89E3;&#x6790;&#x4E0E;&#x4F18;&#x5316;" class="headerlink" title="HISM&#x89E3;&#x6790;&#x4E0E;&#x4F18;&#x5316;"></a>HISM&#x89E3;&#x6790;&#x4E0E;&#x4F18;&#x5316;</h1><h2 id="HISM&#x751F;&#x6210;"><a href="#HISM&#x751F;&#x6210;" class="headerlink" title="HISM&#x751F;&#x6210;"></a>HISM&#x751F;&#x6210;</h2><h2 id="HISM&#x539F;&#x7406;"><a href="#HISM&#x539F;&#x7406;" class="headerlink" title="HISM&#x539F;&#x7406;"></a>HISM&#x539F;&#x7406;</h2><p>HISM&#x5168;&#x540D;&#x4E3A;Hierarchical Instanced Static Mesh&#xFF0C;&#x901A;&#x8FC7;&#x6309;LOD&#x7EC4;&#x7EC7;&#x4E3A;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4E3A;&#x4E00;&#x4E2A;Cluster&#xFF0C;&#x6BCF;&#x4E2A;Cluster&#x7531;&#x4E00;&#x6216;&#x591A;&#x4E2A;Mesh&#x7EC4;&#x6210;</p>
 <p><img src="./../resources/images/HISM&#x539F;&#x7406;&#x4E0E;&#x4F18;&#x5316;/ClusterLOD.png" alt="Cluster LOD"></p>
@@ -231,7 +242,7 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/Color-And-Radiometry/">Color and Radiometry</a>
+            <a href="/剔除/"></a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">

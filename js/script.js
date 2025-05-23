@@ -1,3 +1,18 @@
+// 将toggleToc函数移到全局作用域
+function toggleToc() {
+    const tocContainer = document.querySelector('.toc-container');
+    const tocToggle = document.querySelector('.toc-toggle');
+    const isCollapsed = tocContainer.classList.contains('collapsed');
+    
+    if (isCollapsed) {
+        tocContainer.classList.remove('collapsed');
+        tocToggle.classList.remove('collapsed');
+    } else {
+        tocContainer.classList.add('collapsed');
+        tocToggle.classList.add('collapsed');
+    }
+}
+
 (function ($) {
     $('.navbar-burger').click(function () {
         $(this).toggleClass('is-active');

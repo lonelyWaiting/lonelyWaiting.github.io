@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_BRDF_LUT.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_1.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IBL/IBL_2.png">
-<meta property="og:updated_time" content="2025-04-12T11:43:06.332Z">
+<meta property="og:updated_time" content="2025-05-23T00:46:34.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IBL">
 <meta name="twitter:description" content="Reflectance equation&amp;#x8FD9;&amp;#x91CC;&amp;#x91C7;&amp;#x7528;&amp;#x7684;&amp;#x53CD;&amp;#x5C04;&amp;#x6A21;&amp;#x578B;&amp;#x5982;&amp;#x4E0B;:$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\om">
@@ -203,9 +203,20 @@
     
         
             
-    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reflectance-equation"><span class="toc-text">Reflectance equation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Diffuse-Irradiance"><span class="toc-text">Diffuse Irradiance</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#蒙特卡洛方法"><span class="toc-text">蒙特卡洛方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Specular-IBL"><span class="toc-text">Specular IBL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pre-Filtered-Environment-Map"><span class="toc-text">Pre-Filtered Environment Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Precompute-BRDF-LUT"><span class="toc-text">Precompute BRDF LUT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reflectance-equation"><span class="toc-text">Reflectance equation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Diffuse-Irradiance"><span class="toc-text">Diffuse Irradiance</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#蒙特卡洛方法"><span class="toc-text">蒙特卡洛方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Specular-IBL"><span class="toc-text">Specular IBL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pre-Filtered-Environment-Map"><span class="toc-text">Pre-Filtered Environment Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Precompute-BRDF-LUT"><span class="toc-text">Precompute BRDF LUT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+        </div>
     </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
             <h1 id="Reflectance-equation"><a href="#Reflectance-equation" class="headerlink" title="Reflectance equation"></a>Reflectance equation</h1><p>&#x8FD9;&#x91CC;&#x91C7;&#x7528;&#x7684;&#x53CD;&#x5C04;&#x6A21;&#x578B;&#x5982;&#x4E0B;:<br>$$L_o(p,\omega_o) = \int_\Omega (k_d \frac{c}{\pi} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)})L_i(p,\omega_i)(n \cdot \omega_i) d\omega_i$$<br><a id="more"></a></p>
 <p>$$\Rightarrow L_o(p,\omega_i) = \int_\Omega k_d \frac{c}{\pi}L_i(p,\omega_i)n\cdot \omega_i d\omega_i + \int_\Omega k_s \frac{DFG}{4(\omega_i \cdot n)(\omega_o \cdot n)}L_i(p,\omega_i)(n \cdot \omega_i) d\omega_i$$</p>

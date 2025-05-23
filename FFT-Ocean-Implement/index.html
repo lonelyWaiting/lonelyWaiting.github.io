@@ -24,7 +24,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/20/ECD1k6.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/04/20/ECDQTx.png">
-<meta property="og:updated_time" content="2025-04-12T11:43:06.332Z">
+<meta property="og:updated_time" content="2025-05-23T00:46:34.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FFT Ocean Implement">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/04/20/ECD1k6.png">
@@ -224,9 +224,20 @@
     
         
             
-    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#理论"><span class="toc-text">理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#根据Phillips-spectrum生成波谱"><span class="toc-text">根据Phillips spectrum生成波谱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算频域波形振幅"><span class="toc-text">计算频域波形振幅</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#根据色散关系-计算时间t处的频域振幅"><span class="toc-text">根据色散关系,计算时间t处的频域振幅</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用IFFT变换到时域"><span class="toc-text">使用IFFT变换到时域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成DisplacementMap"><span class="toc-text">生成DisplacementMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#法线计算"><span class="toc-text">法线计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Phillips"><span class="toc-text">Phillips</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-tilde-h-0-vec-k"><span class="toc-text">计算$\tilde{h}_0(\vec{k})$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-h-vec-k-t-D-x-t-D-z-t"><span class="toc-text">计算$h(\vec{k},t),D(x,t),D(z,t)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Radix-2-IFFT-GPU"><span class="toc-text">Radix-2 IFFT GPU</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#效果"><span class="toc-text">效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li></ol>
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#理论"><span class="toc-text">理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#根据Phillips-spectrum生成波谱"><span class="toc-text">根据Phillips spectrum生成波谱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算频域波形振幅"><span class="toc-text">计算频域波形振幅</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#根据色散关系-计算时间t处的频域振幅"><span class="toc-text">根据色散关系,计算时间t处的频域振幅</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用IFFT变换到时域"><span class="toc-text">使用IFFT变换到时域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成DisplacementMap"><span class="toc-text">生成DisplacementMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#法线计算"><span class="toc-text">法线计算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Phillips"><span class="toc-text">Phillips</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-tilde-h-0-vec-k"><span class="toc-text">计算$\tilde{h}_0(\vec{k})$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算-h-vec-k-t-D-x-t-D-z-t"><span class="toc-text">计算$h(\vec{k},t),D(x,t),D(z,t)$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Radix-2-IFFT-GPU"><span class="toc-text">Radix-2 IFFT GPU</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#效果"><span class="toc-text">效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li></ol>
+        </div>
     </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
             <p><img src="https://s2.ax1x.com/2019/04/20/ECD1k6.png" alt="The Diagram of Update Displacement Map,&#x6765;&#x6E90;:Nvidia DirectX 11 Sample OceanCS"><br><a id="more"></a></p>
 <h1 id="&#x7406;&#x8BBA;"><a href="#&#x7406;&#x8BBA;" class="headerlink" title="&#x7406;&#x8BBA;"></a>&#x7406;&#x8BBA;</h1><h2 id="&#x6839;&#x636E;Phillips-spectrum&#x751F;&#x6210;&#x6CE2;&#x8C31;"><a href="#&#x6839;&#x636E;Phillips-spectrum&#x751F;&#x6210;&#x6CE2;&#x8C31;" class="headerlink" title="&#x6839;&#x636E;Phillips spectrum&#x751F;&#x6210;&#x6CE2;&#x8C31;"></a>&#x6839;&#x636E;Phillips spectrum&#x751F;&#x6210;&#x6CE2;&#x8C31;</h2><p>$$P_h(\vec{k}) = A\frac{exp(\frac{-1}{kL})^2}{k^4} |\vec{k}\cdot \vec{\omega}|^2\tag{1}$$<br>$$L = \frac{V^2}{g}$$</p>

@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Create_New_Site.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Choose_A_Platform.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Disqus_Config.png">
-<meta property="og:updated_time" content="2025-04-12T11:43:06.333Z">
+<meta property="og:updated_time" content="2025-05-23T00:46:34.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="use hexo deploy github page">
 <meta name="twitter:description" content="Create Github PageCreate a new repo named &amp;lt;username&amp;gt;.github.io,&amp;lt;username&amp;gt; is your username on Github Create a new branch named source">
@@ -227,9 +227,20 @@
     
         
             
-    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Github-Page"><span class="toc-text">Create Github Page</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setup-Hexo"><span class="toc-text">Setup Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Node-js"><span class="toc-text">install Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Git"><span class="toc-text">install Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-hexo-command-line-interface"><span class="toc-text">install hexo command line interface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init-hexo"><span class="toc-text">init hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-git-deploy-tool"><span class="toc-text">install git deploy tool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#config-deploy"><span class="toc-text">config deploy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generate-and-deploy-hexo"><span class="toc-text">generate and deploy hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manage-Hexo"><span class="toc-text">Manage Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-Plugin"><span class="toc-text">Hexo Plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Latex"><span class="toc-text">Latex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disqus"><span class="toc-text">Disqus</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Disqus-Config"><span class="toc-text">Disqus Config</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Apply-Disqus"><span class="toc-text">Apply Disqus</span></a></li></ol></li></ol></li></ol>
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Github-Page"><span class="toc-text">Create Github Page</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setup-Hexo"><span class="toc-text">Setup Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Node-js"><span class="toc-text">install Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-Git"><span class="toc-text">install Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-hexo-command-line-interface"><span class="toc-text">install hexo command line interface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init-hexo"><span class="toc-text">init hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-git-deploy-tool"><span class="toc-text">install git deploy tool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#config-deploy"><span class="toc-text">config deploy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#generate-and-deploy-hexo"><span class="toc-text">generate and deploy hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Manage-Hexo"><span class="toc-text">Manage Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-Plugin"><span class="toc-text">Hexo Plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Latex"><span class="toc-text">Latex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disqus"><span class="toc-text">Disqus</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Disqus-Config"><span class="toc-text">Disqus Config</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Apply-Disqus"><span class="toc-text">Apply Disqus</span></a></li></ol></li></ol></li></ol>
+        </div>
     </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
             <h2 id="Create-Github-Page"><a href="#Create-Github-Page" class="headerlink" title="Create Github Page"></a>Create Github Page</h2><p>Create a new repo named <code>&lt;username&gt;.github.io</code>,<code>&lt;username&gt;</code> is your username on Github</p>
 <p>Create a new branch named <code>source</code><br><a id="more"></a></p>

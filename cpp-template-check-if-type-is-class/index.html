@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="&amp;#x5229;&amp;#x7528;&amp;#x6210;&amp;#x5458;&amp;#x53D8;&amp;#x91CF;&amp;#x6307;&amp;#x9488;&amp;#x7684;&amp;#x5B9E;&amp;#x4F8B;&amp;#x5316;&amp;#x6765;&amp;#x5B9E;&amp;#x73B0;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2025-04-12T11:43:06.333Z">
+<meta property="og:updated_time" content="2025-05-23T00:46:34.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++模板检测类型是否为Class">
 <meta name="twitter:description" content="&amp;#x5229;&amp;#x7528;&amp;#x6210;&amp;#x5458;&amp;#x53D8;&amp;#x91CF;&amp;#x6307;&amp;#x9488;&amp;#x7684;&amp;#x5B9E;&amp;#x4F8B;&amp;#x5316;&amp;#x6765;&amp;#x5B9E;&amp;#x73B0;">
@@ -172,9 +172,20 @@
     
         
             
-    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a></li></ol>
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a></li></ol>
+        </div>
     </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
             <p>&#x5229;&#x7528;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x6307;&#x9488;&#x7684;&#x5B9E;&#x4F8B;&#x5316;&#x6765;&#x5B9E;&#x73B0;<a id="more"></a></p>
 <h1 id="&#x5B9E;&#x73B0;"><a href="#&#x5B9E;&#x73B0;" class="headerlink" title="&#x5B9E;&#x73B0;"></a>&#x5B9E;&#x73B0;</h1><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T&gt;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TIsClass</span></span></span><br><span class="line"><span class="hljs-class">{</span></span><br><span class="line"><span class="hljs-keyword">private</span>:</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> U&gt; <span class="hljs-keyword">static</span> uint16 <span class="hljs-title">Func</span><span class="hljs-params">( <span class="hljs-keyword">int</span> U::* )</span></span>;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> U&gt; <span class="hljs-keyword">static</span> uint8  <span class="hljs-title">Func</span><span class="hljs-params">( ... )</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">	<span class="hljs-keyword">enum</span></span><br><span class="line">	{</span><br><span class="line">		Value = !__is_union( T ) &amp;&amp; ( <span class="hljs-keyword">sizeof</span>( Func&lt;T&gt;( <span class="hljs-number">0</span> ) ) == <span class="hljs-keyword">sizeof</span>( uint16 ) )</span><br><span class="line">	};</span><br><span class="line">};</span><br></pre></td></tr></table></figure>

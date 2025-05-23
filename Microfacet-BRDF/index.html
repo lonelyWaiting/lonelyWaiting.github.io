@@ -25,7 +25,7 @@
 <meta property="og:description" content="&amp;#x5FAE;&amp;#x9762;&amp;#x5143;&amp;#x7406;&amp;#x8BBA;&amp;#x5FAE;&amp;#x9762;&amp;#x5143;&amp;#x7406;&amp;#x8BBA;&amp;#x8BA4;&amp;#x4E3A;&amp;#x7C97;&amp;#x7CD9;&amp;#x8868;&amp;#x9762;&amp;#x662F;&amp;#x7531;&amp;#x7EC6;&amp;#x5C0F;&amp;#x7684;&amp;#x5FAE;&amp;#x9762;&amp;#x7EC4;&amp;#x6210;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Microfacet%20Theory/spherical_coordinate_system_oriented_wo.png">
-<meta property="og:updated_time" content="2025-04-12T11:43:06.332Z">
+<meta property="og:updated_time" content="2025-05-23T00:46:34.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Microfacet Theory">
 <meta name="twitter:description" content="&amp;#x5FAE;&amp;#x9762;&amp;#x5143;&amp;#x7406;&amp;#x8BBA;&amp;#x5FAE;&amp;#x9762;&amp;#x5143;&amp;#x7406;&amp;#x8BBA;&amp;#x8BA4;&amp;#x4E3A;&amp;#x7C97;&amp;#x7CD9;&amp;#x8868;&amp;#x9762;&amp;#x662F;&amp;#x7531;&amp;#x7EC6;&amp;#x5C0F;&amp;#x7684;&amp;#x5FAE;&amp;#x9762;&amp;#x7EC4;&amp;#x6210;">
@@ -198,9 +198,20 @@
     
         
             
-    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微面元理论"><span class="toc-text">微面元理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#法线分布项"><span class="toc-text">法线分布项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GGX"><span class="toc-text">GGX</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几何衰减项"><span class="toc-text">几何衰减项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Smith"><span class="toc-text">Smith</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#菲涅尔项"><span class="toc-text">菲涅尔项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shclick"><span class="toc-text">Shclick</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微面元理论"><span class="toc-text">微面元理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#法线分布项"><span class="toc-text">法线分布项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GGX"><span class="toc-text">GGX</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几何衰减项"><span class="toc-text">几何衰减项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Smith"><span class="toc-text">Smith</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#菲涅尔项"><span class="toc-text">菲涅尔项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shclick"><span class="toc-text">Shclick</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+        </div>
     </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
             <h1 id="&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;"><a href="#&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;" class="headerlink" title="&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;"></a>&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;</h1><p>&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;&#x8BA4;&#x4E3A;&#x7C97;&#x7CD9;&#x8868;&#x9762;&#x662F;&#x7531;&#x7EC6;&#x5C0F;&#x7684;&#x5FAE;&#x9762;&#x7EC4;&#x6210;&#x7684;,&#x6BCF;&#x4E2A;&#x5FAE;&#x9762;&#x5143;&#x90FD;&#x6EE1;&#x8DB3;&#x5B8C;&#x7F8E;&#x955C;&#x9762;&#x53CD;&#x5C04;<a id="more"></a></p>
 <p>$$\omega_h = \omega_i \hat{+} \omega_o$$</p>

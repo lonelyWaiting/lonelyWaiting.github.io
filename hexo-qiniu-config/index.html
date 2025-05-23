@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Qiniu/qiniu_ak_sk.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Qiniu/qiniu_url_prefix.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Qiniu/qiniu_region_endpoint.png">
-<meta property="og:updated_time" content="2025-04-12T11:43:06.333Z">
+<meta property="og:updated_time" content="2025-05-23T00:46:34.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo qiniu config">
 <meta name="twitter:description" content="&amp;#x7B80;&amp;#x5355;&amp;#x6765;&amp;#x8BF4;&amp;#x5C31;&amp;#x662F;&amp;#x4E03;&amp;#x725B;&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;&amp;#x6765;&amp;#x7BA1;&amp;#x7406;&amp;#x56FE;&amp;#x7247;,&amp;#x52A0;&amp;#x901F;&amp;#x8BBF;&amp;#x95EE;,&amp;#x6807;&amp;#x51C6;&amp;#x7528;&amp;#x6237;&amp;#x670">
@@ -214,9 +214,20 @@
     
         
             
-    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#七牛空间设置"><span class="toc-text">七牛空间设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置qiniu"><span class="toc-text">配置qiniu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-qiniu-sync"><span class="toc-text">hexo-qiniu-sync</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置说明"><span class="toc-text">配置说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo-asset-image"><span class="toc-text">hexo-asset-image</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-asset-image是什么"><span class="toc-text">hexo-asset-image是什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么改"><span class="toc-text">为什么改?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改成什么样？"><span class="toc-text">改成什么样？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么改？"><span class="toc-text">怎么改？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改结果"><span class="toc-text">修改结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步图片"><span class="toc-text">同步图片</span></a></li></ol></li></ol></li></ol>
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#七牛空间设置"><span class="toc-text">七牛空间设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置qiniu"><span class="toc-text">配置qiniu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-qiniu-sync"><span class="toc-text">hexo-qiniu-sync</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置说明"><span class="toc-text">配置说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo-asset-image"><span class="toc-text">hexo-asset-image</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-asset-image是什么"><span class="toc-text">hexo-asset-image是什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么改"><span class="toc-text">为什么改?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改成什么样？"><span class="toc-text">改成什么样？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么改？"><span class="toc-text">怎么改？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改结果"><span class="toc-text">修改结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步图片"><span class="toc-text">同步图片</span></a></li></ol></li></ol></li></ol>
+        </div>
     </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
             <p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x4E03;&#x725B;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x7BA1;&#x7406;&#x56FE;&#x7247;,&#x52A0;&#x901F;&#x8BBF;&#x95EE;,&#x6807;&#x51C6;&#x7528;&#x6237;&#x6709;10G&#x7684;&#x514D;&#x8D39;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;,&#x8D85;&#x51FA;&#x6536;&#x8D39;</p>
 <p>Github&#x6BD5;&#x7ADF;&#x7A7A;&#x95F4;&#x6709;&#x9650;,&#x800C;&#x4E14;&#x56FD;&#x5185;Github&#x8BBF;&#x95EE;&#x6162;,&#x6240;&#x4EE5;&#x9009;&#x7528;&#x4E86;&#x4E03;&#x725B;&#x4F5C;&#x4E3A;&#x56FE;&#x5E8A;<a id="more"></a></p>

@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/color_grading/src.bmp">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/color_grading/dst.bmp">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/color_grading/bmp_save_option.png">
-<meta property="og:updated_time" content="2025-04-12T11:43:06.333Z">
+<meta property="og:updated_time" content="2025-05-23T00:46:34.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="color grading">
 <meta name="twitter:description" content="&amp;#x7B80;&amp;#x4ECB;&amp;#x7B80;&amp;#x5355;&amp;#x6765;&amp;#x8BF4;&amp;#x5C31;&amp;#x662F;&amp;#x989C;&amp;#x8272;&amp;#x67E5;&amp;#x627E;&amp;#x8868;,&amp;#x4EE5;&amp;#x989C;&amp;#x8272;&amp;#x503C;&amp;#x4F5C;&amp;#x4E3A;3D&amp;#x7EB9;&amp;#x7406;&amp;#x7684;&amp;#x7EB9;&amp;#x7406;&amp;#x57">
@@ -220,9 +220,20 @@
     
         
             
-    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用场合"><span class="toc-text">适用场合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法描述"><span class="toc-text">算法描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#资源要求"><span class="toc-text">资源要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#资源制作"><span class="toc-text">资源制作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始色阶"><span class="toc-text">原始色阶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调节图像"><span class="toc-text">调节图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LUT生成"><span class="toc-text">LUT生成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工具"><span class="toc-text">工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#More-Info"><span class="toc-text">More Info</span></a></li></ol>
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#适用场合"><span class="toc-text">适用场合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法描述"><span class="toc-text">算法描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#资源要求"><span class="toc-text">资源要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#资源制作"><span class="toc-text">资源制作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始色阶"><span class="toc-text">原始色阶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调节图像"><span class="toc-text">调节图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LUT生成"><span class="toc-text">LUT生成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工具"><span class="toc-text">工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#More-Info"><span class="toc-text">More Info</span></a></li></ol>
+        </div>
     </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
             <h1 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h1><p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x989C;&#x8272;&#x67E5;&#x627E;&#x8868;,&#x4EE5;&#x989C;&#x8272;&#x503C;&#x4F5C;&#x4E3A;3D&#x7EB9;&#x7406;&#x7684;&#x7EB9;&#x7406;&#x5750;&#x6807;,&#x5229;&#x7528;&#x63D2;&#x503C;&#x4E0E;&#x8272;&#x9636;&#x5B9E;&#x73B0;&#x5168;&#x8272;&#x6620;&#x5C04;<a id="more"></a></p>
 <p>&#x76F8;&#x6BD4;HSV&#x8C03;&#x8272;&#x7B49;&#x5177;&#x6709;&#x66F4;&#x5F3A;&#x7684;&#x8868;&#x73B0;&#x529B;,&#x53EF;&#x7531;&#x7F8E;&#x672F;&#x8FDB;&#x884C;&#x8272;&#x5F69;,&#x5BF9;&#x6BD4;&#x5EA6;,&#x4EAE;&#x6697;&#x7B49;&#x7B49;&#x65B9;&#x9762;&#x7684;&#x63A7;&#x5236;</p>

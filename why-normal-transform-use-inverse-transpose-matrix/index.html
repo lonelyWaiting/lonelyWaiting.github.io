@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="&amp;#x5B9A;&amp;#x4E49;$T$&amp;#x4E3A;&amp;#x5207;&amp;#x7EBF;,$N$&amp;#x4E3A;&amp;#x6CD5;&amp;#x7EBF;,$M$&amp;#x4E3A;&amp;#x5207;&amp;#x7EBF;&amp;#x7684;&amp;#x53D8;&amp;#x6362;&amp;#x77E9;&amp;#x9635;,$Q$&amp;#x4E3A;&amp;#x6CD5;&amp;#x7EBF;&amp;#x7684;&amp;#x53D8;&amp;#x6362;&amp;#x77E9;&amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2025-04-12T11:43:06.333Z">
+<meta property="og:updated_time" content="2025-05-23T00:46:34.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="why normal transform use inverse-transpose matrix">
 <meta name="twitter:description" content="&amp;#x5B9A;&amp;#x4E49;$T$&amp;#x4E3A;&amp;#x5207;&amp;#x7EBF;,$N$&amp;#x4E3A;&amp;#x6CD5;&amp;#x7EBF;,$M$&amp;#x4E3A;&amp;#x5207;&amp;#x7EBF;&amp;#x7684;&amp;#x53D8;&amp;#x6362;&amp;#x77E9;&amp;#x9635;,$Q$&amp;#x4E3A;&amp;#x6CD5;&amp;#x7EBF;&amp;#x7684;&amp;#x53D8;&amp;#x6362;&amp;#x77E9;&amp;">
@@ -161,9 +161,20 @@
     
         
             
-    <div class="toc-title is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#证明"><span class="toc-text">证明</span></a></li></ol>
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#证明"><span class="toc-text">证明</span></a></li></ol>
+        </div>
     </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
             <p>&#x5B9A;&#x4E49;$T$&#x4E3A;&#x5207;&#x7EBF;,$N$&#x4E3A;&#x6CD5;&#x7EBF;,$M$&#x4E3A;&#x5207;&#x7EBF;&#x7684;&#x53D8;&#x6362;&#x77E9;&#x9635;,$Q$&#x4E3A;&#x6CD5;&#x7EBF;&#x7684;&#x53D8;&#x6362;&#x77E9;&#x9635;<a id="more"></a></p>
 <h1 id="&#x8BC1;&#x660E;"><a href="#&#x8BC1;&#x660E;" class="headerlink" title="&#x8BC1;&#x660E;"></a>&#x8BC1;&#x660E;</h1><p>$$<br>T\cdot N^T = 0\\[2ex]<br>T\cdot M = T&#x2019;\\[2ex]<br>N\cdot Q = N&#x2019;\\[2ex]<br>T&#x2019;\cdot (N&#x2019;)^T = 0\\[2ex]<br>T\cdot M \cdot (N\cdot Q)^T = 0\\[2ex]<br>T\cdot M \cdot Q^T \cdot N^T = 0\\[2ex]<br>\therefore M\cdot Q^T = I\\[2ex]<br>\therefore Q = (M^{-1})^T<br>$$</p>
