@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IOSPSOAsyncCompileCrash/XCodeShowDisassembly.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IOSPSOAsyncCompileCrash/WatchPointBreak.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/IOSPSOAsyncCompileCrash/UEFix.png">
-<meta property="og:updated_time" content="2025-05-23T14:22:41.919Z">
+<meta property="og:updated_time" content="2025-05-23T15:09:14.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="debug-example">
 <meta name="twitter:description" content="IOS PSO Async Compile Crash&amp;#x5D29;&amp;#x6E83;&amp;#x5806;&amp;#x6808;&amp;#x5D29;&amp;#x6E83;&amp;#x94FE;&amp;#x63A5;&amp;#xFF1A;  &amp;#x8C03;&amp;#x7528;&amp;#x4EE3;&amp;#x7801;&amp;#xFF1A;  &amp;#x5D29;&amp;#x6E83;&amp;#x5206;&amp;#x6790;&amp;#x4F7F;&amp;#x7528;XCode Att">
@@ -163,7 +163,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-05-23T14:22:41.919Z" itemprop="datePublished">May 23 2025</time>
+                <time datetime="2025-05-23T15:09:14.811Z" itemprop="datePublished">May 23 2025</time>
             
         </span>
         
@@ -394,14 +394,19 @@
 
         .hljs .clipboard-btn {
             float: right;
-            color: #9a9a9a;
-            background: none;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
+            color: #23272e;
+            background: #ffd43b;
         }
 
         .hljs > .clipboard-btn {
@@ -445,6 +450,14 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
         })
       })
     </script>
@@ -458,6 +471,19 @@
 
 
 <script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
 
     
     <div class="searchbox ins-search">

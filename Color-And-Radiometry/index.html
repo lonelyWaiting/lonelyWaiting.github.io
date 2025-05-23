@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/spectral_matching_curves.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/spectral_response_curves.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Color-And-Radiometry/SPDs_from_Displaying_Same_RGB.png">
-<meta property="og:updated_time" content="2025-05-23T14:22:41.918Z">
+<meta property="og:updated_time" content="2025-05-23T15:09:14.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Color and Radiometry">
 <meta name="twitter:description" content="&amp;#x53EF;&amp;#x89C1;&amp;#x5149;&amp;#x4EBA;&amp;#x773C;&amp;#x7684;&amp;#x53EF;&amp;#x89C1;&amp;#x5149;&amp;#x6CE2;&amp;#x8C31;&amp;#x8303;&amp;#x56F4;&amp;#x7EA6;&amp;#x4E3A;370nm~730nm &amp;#x84DD;&amp;#x5149;&amp;#xFF1A;400nm,&amp;#x7EFF;&amp;#x5149;&amp;#xFF1A;550nm,&amp;#x7EA2;">
@@ -174,7 +174,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-05-23T14:22:41.918Z" itemprop="datePublished">May 23 2025</time>
+                <time datetime="2025-05-23T15:09:14.810Z" itemprop="datePublished">May 23 2025</time>
             
         </span>
         
@@ -215,7 +215,7 @@
 
 <p>&#x63A5;&#x4E0B;&#x6765;&#x4ECB;&#x7ECD;&#x4E24;&#x79CD;&#x5E38;&#x7528;&#x7684;&#x8868;&#x793A;&#x65B9;&#x6CD5;</p>
 <h2 id="SampleSpectrum"><a href="#SampleSpectrum" class="headerlink" title="SampleSpectrum"></a>SampleSpectrum</h2><p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x5C06;&#x5149;&#x8C31;&#x91CD;&#x65B0;&#x5747;&#x5300;&#x91C7;&#x6837;&#x6765;&#x8FDB;&#x884C;&#x62DF;&#x5408;</p>
-<p>&#x8003;&#x8651;&#x6CE2;&#x957F;&#x4E3A;400nm~700nm&#x7684;&#x53EF;&#x89C1;&#x5149;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x533A;&#x95F4;&#x5206;&#x4E3A;N&#x6BB5;&#xFF0C;&#x4EE5;30&#x6BB5;&#x4E3A;&#x4F8B;&#xFF0C;&#x901A;&#x5E38;&#x8DB3;&#x4EE5;&#x62DF;&#x5408;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x5149;&#x8C31;&#x6570;&#x636E;<br><img src="/resources/images/Color-And-Radiometry/spectrum.png" alt="sample construct"></p>
+<p>&#x8003;&#x8651;&#x6CE2;&#x957F;&#x4E3A;400nm~700nm&#x7684;&#x53EF;&#x89C1;&#x5149;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x533A;&#x95F4;&#x5206;&#x4E3A;N&#x6BB5;&#xFF0C;&#x4EE5;30&#x6BB5;&#x4E3A;&#x4F8B;&#xFF0C;&#x901A;&#x5E38;&#x8DB3;&#x4EE5;&#x62DF;&#x5408;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x5149;&#x8C31;&#x6570;&#x636E;<br><img src="../resources/images/Color-And-Radiometry/spectrum.png" alt="sample construct"></p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;Spectrum Utility Declarations&gt; =</span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> sampledLambdaStart = <span class="hljs-number">370</span>;</span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> sampledLambdaEnd   = <span class="hljs-number">700</span>;</span><br><span class="line">	<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> nSpectralSamples   = <span class="hljs-number">30</span>;</span><br><span class="line"></span><br><span class="line">&lt;Spectrum Declarations&gt; =</span><br><span class="line">	class SampledSpectrum : <span class="hljs-keyword">public</span> CoefficientSpectrum&lt;nSpectralSamples&gt;</span><br><span class="line">	{</span><br><span class="line">		<span class="hljs-keyword">public</span>:</span><br><span class="line">			&lt;SampledSpectrum <span class="hljs-keyword">public</span> Methods&gt;</span><br><span class="line">		<span class="hljs-keyword">private</span>:</span><br><span class="line">			&lt;SampledSpectrum Private Data&gt;</span><br><span class="line">	};</span><br></pre></td></tr></table></figure>
 
 <p><strong>&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x4ECE;&#x4E00;&#x7EC4;&#x5149;&#x8C31;&#x6570;&#x636E;&#x6765;&#x6784;&#x9020;&#x5149;&#x8C31;&#x8868;&#x793A;?</strong></p>
@@ -247,7 +247,7 @@
 <p>$$y_\lambda = \frac{1}{\int Y(\lambda)d\lambda}\int_\lambda S(\lambda)Y(\lambda)d\lambda$$</p>
 <p>$$z_\lambda = \frac{1}{\int Y(\lambda)d\lambda}\int_\lambda S(\lambda)Z(\lambda)d\lambda$$</p>
 <p>$X(\lambda),Y(\lambda),Z(\lambda)$&#x4E3A;&#x5149;&#x8C31;&#x5339;&#x914D;&#x66F2;&#x7EBF;,&#x662F;&#x7531;&#x56FD;&#x9645;&#x7167;&#x660E;&#x59D4;&#x5458;&#x4F1A;&#x7ECF;&#x8FC7;&#x4E00;&#x7CFB;&#x5217;&#x5B9E;&#x9A8C;&#x5236;&#x5B9A;&#x7684;.</p>
-<p>&#x8FD9;&#x4E09;&#x6761;&#x66F2;&#x7EBF;&#x88AB;&#x8BA4;&#x4E3A;&#x4E0E;&#x4EBA;&#x7C7B;&#x89C6;&#x7F51;&#x819C;&#x7684;&#x4E09;&#x79CD;&#x611F;&#x8272;&#x89C6;&#x690E;&#x4F53;&#x7EC6;&#x80DE;&#x54CD;&#x5E94;&#x7C7B;&#x4F3C;<br><img src="/resources/images/Color-And-Radiometry/spectral_matching_curves.png" alt="spectral matching curves"></p>
+<p>&#x8FD9;&#x4E09;&#x6761;&#x66F2;&#x7EBF;&#x88AB;&#x8BA4;&#x4E3A;&#x4E0E;&#x4EBA;&#x7C7B;&#x89C6;&#x7F51;&#x819C;&#x7684;&#x4E09;&#x79CD;&#x611F;&#x8272;&#x89C6;&#x690E;&#x4F53;&#x7EC6;&#x80DE;&#x54CD;&#x5E94;&#x7C7B;&#x4F3C;<br><img src="../resources/images/Color-And-Radiometry/spectral_matching_curves.png" alt="spectral matching curves"></p>
 <p>&#x4E24;&#x4E2A;&#x7531;&#x591A;&#x79CD;&#x4E0D;&#x540C;&#x6CE2;&#x957F;&#x7684;&#x5149;&#x6DF7;&#x5408;&#x800C;&#x6210;&#x7684;&#x5149;&#x6E90;&#x53EF;&#x4EE5;&#x8868;&#x73B0;&#x51FA;&#x540C;&#x6837;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x8FD9;&#x53EB;&#x505A;&#x201C;&#x5F02;&#x8C31;&#x540C;&#x8272;&#x201D;(metamerism)</p>
 <p>&#x5C3D;&#x7BA1;&#x5BF9;&#x4E8E;&#x4EBA;&#x7C7B;&#x89C2;&#x5BDF;&#x8005;&#x800C;&#x8A00;&#xFF0C;XYZ&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x7684;&#x8868;&#x793A;SPD&#xFF0C;&#x7136;&#x800C;&#x5BF9;&#x4E8E;&#x5149;&#x8C31;&#x8BA1;&#x7B97;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x597D;&#x7684;&#x65B9;&#x6848;</p>
 <p>XYZ&#x7684;&#x4E58;&#x79EF;&#x4E0E;SPD&#x7684;&#x4E58;&#x79EF;&#x518D;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x7684;XYZ&#x76F8;&#x5DEE;&#x5F88;&#x5927;</p>
@@ -274,8 +274,8 @@
 
 <p><strong>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5C06;SPD&#x8F6C;&#x6362;&#x4E3A;&#x4E86;XYZ,&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x5C06;XYZ&#x8F6C;&#x5316;&#x4E3A;RGB&#x7528;&#x4E8E;&#x663E;&#x793A;&#x5462;&#xFF1F;</strong></p>
 <p>&#x5F53;&#x6211;&#x4EEC;&#x5C06;RGB&#x663E;&#x793A;&#x5728;&#x663E;&#x793A;&#x5668;&#x4E0A;&#x65F6;&#xFF0C;&#x771F;&#x5B9E;&#x663E;&#x793A;&#x7684;&#x5149;&#x8C31;&#x4E3B;&#x8981;&#x7531;&#x4E09;&#x8272;&#x5149;&#x8C31;&#x54CD;&#x5E94;&#x66F2;&#x7EBF;&#x7684;&#x52A0;&#x6743;&#x548C;&#x786E;&#x5B9A;.&#xFF0C;&#x7531;&#x53D1;&#x5149;&#x6750;&#x6599;&#x51B3;&#x5B9A;</p>
-<p>LED,LCD,&#x4EE5;&#x53CA;&#x7B49;&#x79BB;&#x5B50;&#x4F53;&#x7684;&#x4E09;&#x8272;&#x5149;&#x8C31;&#x54CD;&#x5E94;&#x66F2;&#x7EBF;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x76F8;&#x540C;&#x7684;SPD,&#x5728;&#x8FD9;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x663E;&#x793A;&#x51FA;&#x6765;&#x7684;RGB&#x662F;&#x4E0D;&#x540C;&#x7684;.<br><img src="/resources/images/Color-And-Radiometry/spectral_response_curves.png" alt="spectral response curves"></p>
-<p>&#x5728;LCD,LED&#x663E;&#x793A;RGB(0.6,0.3,0.2)&#x7684;&#x5149;&#x8C31;&#x5206;&#x522B;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;<br><img src="/resources/images/Color-And-Radiometry/SPDs_from_Displaying_Same_RGB.png" alt="SPD from display same rgb"></p>
+<p>LED,LCD,&#x4EE5;&#x53CA;&#x7B49;&#x79BB;&#x5B50;&#x4F53;&#x7684;&#x4E09;&#x8272;&#x5149;&#x8C31;&#x54CD;&#x5E94;&#x66F2;&#x7EBF;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x6B64;&#x76F8;&#x540C;&#x7684;SPD,&#x5728;&#x8FD9;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x663E;&#x793A;&#x51FA;&#x6765;&#x7684;RGB&#x662F;&#x4E0D;&#x540C;&#x7684;.<br><img src="../resources/images/Color-And-Radiometry/spectral_response_curves.png" alt="spectral response curves"></p>
+<p>&#x5728;LCD,LED&#x663E;&#x793A;RGB(0.6,0.3,0.2)&#x7684;&#x5149;&#x8C31;&#x5206;&#x522B;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;<br><img src="../resources/images/Color-And-Radiometry/SPDs_from_Displaying_Same_RGB.png" alt="SPD from display same rgb"></p>
 <p>&#x53EF;&#x89C1;SPD&#x76F8;&#x5DEE;&#x5F88;&#x5927;.&#x56E0;&#x6B64;&#xFF0C;RGB&#x4F5C;&#x4E3A;&#x989C;&#x8272;&#x53EA;&#x5728;&#x77E5;&#x9053;&#x663E;&#x793A;&#x5668;&#x5C5E;&#x6027;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x662F;&#x6709;&#x610F;&#x4E49;&#x7684;.</p>
 <p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;SPD&#x7684;$x_{\lambda},y_\lambda,z_\lambda$</p>
 <p>&#x5728;&#x7ED9;&#x5B9A;&#x663E;&#x793A;&#x5668;&#x7684;&#x60C5;&#x51B5;&#x4E0B;,&#x4E5F;&#x5C31;&#x662F;&#x7ED9;&#x5B9A;&#x4E09;&#x8272;&#x5149;&#x8C31;&#x54CD;&#x5E94;&#x66F2;&#x7EBF;$$R(\lambda),G(\lambda),B(\lambda)$$</p>
@@ -509,14 +509,19 @@
 
         .hljs .clipboard-btn {
             float: right;
-            color: #9a9a9a;
-            background: none;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
+            color: #23272e;
+            background: #ffd43b;
         }
 
         .hljs > .clipboard-btn {
@@ -560,6 +565,14 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
         })
       })
     </script>
@@ -573,6 +586,19 @@
 
 
 <script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
 
     
     <div class="searchbox ins-search">

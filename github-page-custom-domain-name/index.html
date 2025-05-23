@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/customDomainName/godaddy_modify_dns.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/customDomainName/custom_domain_name.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/customDomainName/add_host_parse_recode.png">
-<meta property="og:updated_time" content="2025-05-23T14:22:41.919Z">
+<meta property="og:updated_time" content="2025-05-23T15:09:14.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github page custom domain name">
 <meta name="twitter:description" content="&amp;#x57DF;&amp;#x540D;&amp;#x6CE8;&amp;#x518C;&amp;#x767B;&amp;#x5F55;GoDaddy,&amp;#x9009;&amp;#x62E9;&amp;#x57DF;&amp;#x540D;&amp;#x8FDB;&amp;#x884C;&amp;#x8D2D;&amp;#x4E70;">
@@ -421,14 +421,19 @@
 
         .hljs .clipboard-btn {
             float: right;
-            color: #9a9a9a;
-            background: none;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
+            color: #23272e;
+            background: #ffd43b;
         }
 
         .hljs > .clipboard-btn {
@@ -472,6 +477,14 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
         })
       })
     </script>
@@ -485,6 +498,19 @@
 
 
 <script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
 
     
     <div class="searchbox ins-search">

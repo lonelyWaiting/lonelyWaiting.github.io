@@ -296,3 +296,127 @@ h1.article-title:hover:before {
     background-color: rgb(0,0,0);
     color: white;
 }
+
+/* Carbon 风格代码框美化 */
+figure.highlight, pre, .highlight {
+    background: #23272e;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    padding: 40px 24px 32px 24px;
+    margin: 2em 0;
+    position: relative;
+    overflow: auto;
+    font-family: 'Fira Mono', 'JetBrains Mono', 'Menlo', 'Consolas', 'monospace';
+    font-size: 15px;
+    line-height: 1.5;
+    color: #f8f8f2;
+}
+
+/* 顶部彩色圆点 */
+figure.highlight .carbon-dots,
+pre .carbon-dots,
+.highlight .carbon-dots {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+}
+figure.highlight .carbon-dots span,
+pre .carbon-dots span,
+.highlight .carbon-dots span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+figure.highlight .carbon-dots .red,
+pre .carbon-dots .red,
+.highlight .carbon-dots .red { background: #ff5f56; }
+figure.highlight .carbon-dots .yellow,
+pre .carbon-dots .yellow,
+.highlight .carbon-dots .yellow { background: #ffbd2e; }
+figure.highlight .carbon-dots .green,
+pre .carbon-dots .green,
+.highlight .carbon-dots .green { background: #27c93f; }
+
+/* 移除代码内容 margin-top，保证行号和代码对齐 */
+figure.highlight pre, pre code, .highlight pre, .highlight code {
+    margin-top: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+figure.highlight table,
+figure.highlight tr,
+figure.highlight td {
+    vertical-align: top;
+    padding-bottom: 0 !important;
+}
+
+figure.highlight .gutter,
+pre .gutter,
+.highlight .gutter {
+    height: 100%;
+    min-height: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box;
+}
+
+/* 删除导致代码内容消失的规则 */
+/* figure.highlight tr:last-child .gutter,
+figure.highlight tr:last-child .code {
+    min-height: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    color: transparent !important;
+}
+figure.highlight tr:last-child .gutter pre,
+figure.highlight tr:last-child .code pre {
+    display: none !important;
+} */
+
+figure.highlight .code,
+figure.highlight .code pre,
+figure.highlight .code .line {
+    color: #f8f8f2 !important;
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background: none !important;
+}
+
+figure.highlight .code pre,
+figure.highlight .gutter pre {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+figure.highlight .code pre .line,
+figure.highlight .gutter pre .line {
+    display: block;
+}
+figure.highlight .code pre br,
+figure.highlight .gutter pre br {
+    display: none;
+}
+
+figure.highlight .code pre br:last-child,
+figure.highlight .gutter pre br:last-child {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0 !important;
+}
+
+/* 统一代码框内 tab 宽度为 4 空格 */
+figure.highlight, pre, .highlight, code, pre code {
+    tab-size: 4;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+}

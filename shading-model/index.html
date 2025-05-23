@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/solid_angle.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/Phong.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/Blinn-Phong.png">
-<meta property="og:updated_time" content="2025-05-23T14:22:41.920Z">
+<meta property="og:updated_time" content="2025-05-23T15:09:14.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shading model">
 <meta name="twitter:description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$">
@@ -162,7 +162,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-05-23T14:22:41.920Z" itemprop="datePublished">May 23 2025</time>
+                <time datetime="2025-05-23T15:09:14.812Z" itemprop="datePublished">May 23 2025</time>
             
         </span>
         
@@ -264,12 +264,12 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/剔除/"></a>
+            <a href="/reflect-refraction/">reflect and refraction</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/HISM原理与优化/"></a>
+            <a href="/剔除/"></a>
             
         </span>
     </div>
@@ -429,14 +429,19 @@
 
         .hljs .clipboard-btn {
             float: right;
-            color: #9a9a9a;
-            background: none;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
+            color: #23272e;
+            background: #ffd43b;
         }
 
         .hljs > .clipboard-btn {
@@ -480,6 +485,14 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
         })
       })
     </script>
@@ -493,6 +506,19 @@
 
 
 <script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
 
     
     <div class="searchbox ins-search">

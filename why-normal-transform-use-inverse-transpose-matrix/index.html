@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="&amp;#x5B9A;&amp;#x4E49;$T$&amp;#x4E3A;&amp;#x5207;&amp;#x7EBF;,$N$&amp;#x4E3A;&amp;#x6CD5;&amp;#x7EBF;,$M$&amp;#x4E3A;&amp;#x5207;&amp;#x7EBF;&amp;#x7684;&amp;#x53D8;&amp;#x6362;&amp;#x77E9;&amp;#x9635;,$Q$&amp;#x4E3A;&amp;#x6CD5;&amp;#x7EBF;&amp;#x7684;&amp;#x53D8;&amp;#x6362;&amp;#x77E9;&amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2025-05-23T14:22:41.920Z">
+<meta property="og:updated_time" content="2025-05-23T15:09:14.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="why normal transform use inverse-transpose matrix">
 <meta name="twitter:description" content="&amp;#x5B9A;&amp;#x4E49;$T$&amp;#x4E3A;&amp;#x5207;&amp;#x7EBF;,$N$&amp;#x4E3A;&amp;#x6CD5;&amp;#x7EBF;,$M$&amp;#x4E3A;&amp;#x5207;&amp;#x7EBF;&amp;#x7684;&amp;#x53D8;&amp;#x6362;&amp;#x77E9;&amp;#x9635;,$Q$&amp;#x4E3A;&amp;#x6CD5;&amp;#x7EBF;&amp;#x7684;&amp;#x53D8;&amp;#x6362;&amp;#x77E9;&amp;">
@@ -358,14 +358,19 @@
 
         .hljs .clipboard-btn {
             float: right;
-            color: #9a9a9a;
-            background: none;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
+            color: #23272e;
+            background: #ffd43b;
         }
 
         .hljs > .clipboard-btn {
@@ -409,6 +414,14 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
         })
       })
     </script>
@@ -422,6 +435,19 @@
 
 
 <script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
 
     
     <div class="searchbox ins-search">

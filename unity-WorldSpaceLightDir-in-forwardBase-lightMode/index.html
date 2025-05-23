@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/black_duck.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/turnon_forwardbase_shader_disassembly.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/unity-WorldSpaceLightDir-in-forwardBase-lightMode/turnoff_forwardbase_shader_disassembly.png">
-<meta property="og:updated_time" content="2025-05-23T14:22:41.920Z">
+<meta property="og:updated_time" content="2025-05-23T15:09:14.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unity _WorldSpaceLightDir in forwardBase lightMode">
 <meta name="twitter:description" content="&amp;#x73B0;&amp;#x8C61;&amp;#x5C06;&amp;#x65B9;&amp;#x5411;&amp;#x5149;&amp;#x7684;&amp;#x65CB;&amp;#x8F6C;&amp;#x5168;&amp;#x90E8;&amp;#x8BBE;&amp;#x4E3A;0&amp;#xFF0C;&amp;#x6B64;&amp;#x65F6;&amp;#x65B9;&amp;#x5411;&amp;#x5149;&amp;#x671D;&amp;#x5411;+Z,&amp;#x56E0;&amp;#x6B64;&amp;#x65B9;&amp;#x5">
@@ -385,14 +385,19 @@
 
         .hljs .clipboard-btn {
             float: right;
-            color: #9a9a9a;
-            background: none;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
+            color: #23272e;
+            background: #ffd43b;
         }
 
         .hljs > .clipboard-btn {
@@ -436,6 +441,14 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
         })
       })
     </script>
@@ -449,6 +462,19 @@
 
 
 <script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
 
     
     <div class="searchbox ins-search">

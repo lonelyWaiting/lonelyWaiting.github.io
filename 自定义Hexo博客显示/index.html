@@ -44,7 +44,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/TyporaPluginSupportFeature.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/SearchPluginSection.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/自定义Hexo博客显示/AppendPluginHTML.png">
-<meta property="og:updated_time" content="2025-05-23T14:22:41.920Z">
+<meta property="og:updated_time" content="2025-05-23T15:09:14.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义Hexo博客显示">
 <meta name="twitter:description" content="Hexo&amp;#x7ED3;&amp;#x6784;&amp;#x642D;&amp;#x5EFA;&amp;#x73AF;&amp;#x5883;&amp;#x5B89;&amp;#x88C5;NodeJS&amp;#x4E0E;Git&amp;#xFF0C;&amp;#x65B0;&amp;#x5EFA;&amp;#x76EE;&amp;#x5F55;&amp;#x7528;&amp;#x4E8E;&amp;#x5B58;&amp;#x653E;&amp;#x535A;&amp;#x5BA2;&amp;#xFF0C;&amp;#x5982;&amp;#x4E0B;&amp;#x">
@@ -784,14 +784,19 @@
 
         .hljs .clipboard-btn {
             float: right;
-            color: #9a9a9a;
-            background: none;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
+            color: #23272e;
+            background: #ffd43b;
         }
 
         .hljs > .clipboard-btn {
@@ -835,6 +840,14 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
         })
       })
     </script>
@@ -848,6 +861,19 @@
 
 
 <script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
 
     
     <div class="searchbox ins-search">

@@ -25,7 +25,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/ClusterLOD.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/HISM_Structure.png">
-<meta property="og:updated_time" content="2025-05-23T14:22:41.919Z">
+<meta property="og:updated_time" content="2025-05-23T15:09:14.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lonelyWaiting">
 <meta name="twitter:description" content="HISM&amp;#x89E3;&amp;#x6790;&amp;#x4E0E;&amp;#x4F18;&amp;#x5316;HISM&amp;#x751F;&amp;#x6210;HISM&amp;#x539F;&amp;#x7406;HISM&amp;#x5168;&amp;#x540D;&amp;#x4E3A;Hierarchical Instanced Static Mesh&amp;#xFF0C;&amp;#x901A;&amp;#x8FC7;&amp;#x6309;LOD&amp;#x7EC4;&amp;#x7EC7;&amp;#x">
@@ -175,7 +175,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-05-23T14:22:41.919Z" itemprop="datePublished">May 23 2025</time>
+                <time datetime="2025-05-23T15:09:14.811Z" itemprop="datePublished">May 23 2025</time>
             
         </span>
         
@@ -242,7 +242,7 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/shading-model/">shading model</a>
+            <a href="/剔除/"></a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
@@ -407,14 +407,19 @@
 
         .hljs .clipboard-btn {
             float: right;
-            color: #9a9a9a;
-            background: none;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
+            color: #23272e;
+            background: #ffd43b;
         }
 
         .hljs > .clipboard-btn {
@@ -458,6 +463,14 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
         })
       })
     </script>
@@ -471,6 +484,19 @@
 
 
 <script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
 
     
     <div class="searchbox ins-search">

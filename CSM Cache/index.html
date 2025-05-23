@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="CSM Cache&amp;#x8BE5;&amp;#x65B9;&amp;#x6848;&amp;#x7684;&amp;#x5B9E;&amp;#x73B0;&amp;#x6838;&amp;#x5FC3;&amp;#x5728;&amp;#x4E8E;  &amp;#x7531;&amp;#x4E8E;CSM&amp;#x8BB0;&amp;#x5F55;&amp;#x7684;&amp;#x6DF1;&amp;#x5EA6;&amp;#x4FE1;&amp;#x606F;&amp;#x662F;&amp;#x4E0A;&amp;#x4E00;&amp;#x5E27;&amp;#">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2025-05-23T14:22:41.918Z">
+<meta property="og:updated_time" content="2025-05-23T15:09:14.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lonelyWaiting">
 <meta name="twitter:description" content="CSM Cache&amp;#x8BE5;&amp;#x65B9;&amp;#x6848;&amp;#x7684;&amp;#x5B9E;&amp;#x73B0;&amp;#x6838;&amp;#x5FC3;&amp;#x5728;&amp;#x4E8E;  &amp;#x7531;&amp;#x4E8E;CSM&amp;#x8BB0;&amp;#x5F55;&amp;#x7684;&amp;#x6DF1;&amp;#x5EA6;&amp;#x4FE1;&amp;#x606F;&amp;#x662F;&amp;#x4E0A;&amp;#x4E00;&amp;#x5E27;&amp;#">
@@ -144,7 +144,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-05-23T14:22:41.918Z" itemprop="datePublished">May 23 2025</time>
+                <time datetime="2025-05-23T15:09:14.810Z" itemprop="datePublished">May 23 2025</time>
             
         </span>
         
@@ -354,14 +354,19 @@
 
         .hljs .clipboard-btn {
             float: right;
-            color: #9a9a9a;
-            background: none;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .hljs .clipboard-btn:hover {
-          color: #8a8a8a;
+            color: #23272e;
+            background: #ffd43b;
         }
 
         .hljs > .clipboard-btn {
@@ -405,6 +410,14 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
         })
       })
     </script>
@@ -418,6 +431,19 @@
 
 
 <script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
 
     
     <div class="searchbox ins-search">
