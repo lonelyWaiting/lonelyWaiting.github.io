@@ -165,4 +165,7 @@ window.addEventListener('scroll', function() {
             setTimeout(updateTocHighlight, 10);
         });
     });
+
+    // 移除正文图片自动添加 figure/figcaption 的功能
+    // 保留原 gallery 图片加 caption 的逻辑
 })(jQuery);

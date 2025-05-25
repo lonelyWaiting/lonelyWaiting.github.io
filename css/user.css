@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Nunito:wght@400;700&family=Quicksand:wght@400;700&display=swap');
+
 body {
     counter-reset: body;
     
     /* 修改正文字体 */
-    font-family: "Vollkorn", Palatino, Times;
+    font-family: 'Inter', 'Nunito', 'Quicksand', 'PingFang SC', 'HarmonyOS Sans SC', 'Microsoft YaHei', Arial, sans-serif;
 	color: #333;
-	line-height: 1.4;
+	line-height: 1.6;
 	text-align: justify;
+    font-size: 17px;
+    font-weight: 400;
 }
 
 /* 正文标题自动序号 */
@@ -419,4 +423,46 @@ figure.highlight, pre, .highlight, code, pre code {
     tab-size: 4;
     -moz-tab-size: 4;
     -o-tab-size: 4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}
+
+/* 终极 CSS：彻底解决代码块空行、行号与内容对齐、间距问题 */
+figure.highlight .gutter {
+    padding-right: 24px !important;
+}
+
+figure.highlight .gutter .line,
+figure.highlight .code .line {
+    display: block !important;
+    white-space: pre !important;
+    font-family: 'Fira Mono', 'JetBrains Mono', 'Menlo', 'Consolas', 'monospace' !important;
+    font-size: 15px !important;
+    line-height: 1.5rem !important;
+    min-height: 1.5rem;
+    height: 0rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-sizing: border-box !important;
+    vertical-align: top !important;
+    background: none !important;
+}
+
+figure.highlight .gutter .line:empty,
+figure.highlight .code .line:empty {
+    min-height: 1.5rem !important;
+    height: 1.5rem !important;
+    display: block !important;
+    content: ' ';
+}
+
+figure.highlight .gutter pre,
+figure.highlight .code pre {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
 }
