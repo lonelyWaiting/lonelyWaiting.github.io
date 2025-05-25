@@ -442,7 +442,7 @@ figure.highlight .code .line {
     font-size: 15px !important;
     line-height: 1.5rem !important;
     min-height: 1.5rem;
-    height: 0rem !important;
+    height: 1.5rem !important;
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
