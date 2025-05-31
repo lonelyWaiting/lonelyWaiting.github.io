@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>lonelyWaiting</title>
+<title>HISM解析与优化 - lonelyWaiting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -17,17 +17,18 @@
 
 
     <meta name="description" content="HISM&amp;#x89E3;&amp;#x6790;&amp;#x4E0E;&amp;#x4F18;&amp;#x5316;HISM&amp;#x751F;&amp;#x6210;HISM&amp;#x539F;&amp;#x7406;HISM&amp;#x5168;&amp;#x540D;&amp;#x4E3A;Hierarchical Instanced Static Mesh&amp;#xFF0C;&amp;#x901A;&amp;#x8FC7;&amp;#x6309;LOD&amp;#x7EC4;&amp;#x7EC7;&amp;#x">
+<meta name="keywords" content="Engine">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lonelyWaiting">
+<meta property="og:title" content="HISM解析与优化">
 <meta property="og:url" content="http://lonelywaiting.github.io/HISM原理与优化/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="HISM&amp;#x89E3;&amp;#x6790;&amp;#x4E0E;&amp;#x4F18;&amp;#x5316;HISM&amp;#x751F;&amp;#x6210;HISM&amp;#x539F;&amp;#x7406;HISM&amp;#x5168;&amp;#x540D;&amp;#x4E3A;Hierarchical Instanced Static Mesh&amp;#xFF0C;&amp;#x901A;&amp;#x8FC7;&amp;#x6309;LOD&amp;#x7EC4;&amp;#x7EC7;&amp;#x">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/ClusterLOD.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/HISM_Structure.png">
-<meta property="og:updated_time" content="2025-05-25T15:14:24.372Z">
+<meta property="og:updated_time" content="2025-05-31T07:58:33.675Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lonelyWaiting">
+<meta name="twitter:title" content="HISM解析与优化">
 <meta name="twitter:description" content="HISM&amp;#x89E3;&amp;#x6790;&amp;#x4E0E;&amp;#x4F18;&amp;#x5316;HISM&amp;#x751F;&amp;#x6210;HISM&amp;#x539F;&amp;#x7406;HISM&amp;#x5168;&amp;#x540D;&amp;#x4E3A;Hierarchical Instanced Static Mesh&amp;#xFF0C;&amp;#x901A;&amp;#x8FC7;&amp;#x6309;LOD&amp;#x7EC4;&amp;#x7EC7;&amp;#x">
 <meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/HISM原理与优化/ClusterLOD.png">
 
@@ -91,13 +92,15 @@
         
         <div class="navbar-menu navbar-start">
             
-            <a class="navbar-item " href="/Rendering">Rendering</a>
+            <a class="navbar-item " href="/categories/Rendering">Rendering</a>
             
-            <a class="navbar-item " href="/Engine">Engine</a>
+            <a class="navbar-item " href="/categories/Engine">Engine</a>
             
-            <a class="navbar-item " href="/Language">Language</a>
+            <a class="navbar-item " href="/categories/Language">Language</a>
             
-            <a class="navbar-item " href="/Tool">Tool</a>
+            <a class="navbar-item " href="/categories/Tool">Tool</a>
+            
+            <a class="navbar-item " href="/categories/Misc">Misc</a>
             
             <a class="navbar-item " href="/about">About</a>
             
@@ -169,13 +172,18 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            
+            HISM解析与优化
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-05-25T15:14:24.372Z" itemprop="datePublished">May 25 2025</time>
+                <time datetime="2025-05-31T07:58:33.675Z" itemprop="datePublished">May 31 2025</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
             
         </span>
         
@@ -238,16 +246,20 @@
     
     </div>
     
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+    </div>
+    
     
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/Color-And-Radiometry/">Color and Radiometry</a>
+            <a href="/自定义Hexo博客显示/">自定义Hexo博客显示</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/IOSPSOAsyncCompileCrash/">debug-example</a>
+            <a href="/IBL/">IBL</a>
             
         </span>
     </div>

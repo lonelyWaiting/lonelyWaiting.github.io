@@ -36,38 +36,39 @@ h6 {
 h1.article-title {
     counter-reset: body h1 h2 h3 h4 h5 h6;
 }
-h1:before ,
-.article .article-entry h1:hover:before {
+
+.article-entry h1:before,
+.article-entry h1:hover:before {
     counter-increment: body;
     content: counter(body) ". ";
     position: unset;
 }
-h2:before ,
-.article .article-entry h2:hover:before {
+.article-entry h2:before,
+.article-entry h2:hover:before {
     counter-increment: h1;
     content: counter(body) "." counter(h1) ". ";
     position: unset;
 }
-h3:before ,
-.article .article-entry h3:hover:before {
+.article-entry h3:before,
+.article-entry h3:hover:before {
     counter-increment: h2;
     content: counter(body) "." counter(h1)"." counter(h2) ". ";
     position: unset;
 }
-h4:before ,
-.article .article-entry h4:hover:before {
+.article-entry h4:before,
+.article-entry h4:hover:before {
     counter-increment: h3;
     content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3) ". ";
     position: unset;
 }
-h5:before ,
-.article .article-entry h5:hover:before {
+.article-entry h5:before,
+.article-entry h5:hover:before {
     counter-increment: h4;
     content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3)"." counter(h4) ". ";
     position: unset;
 }
-h6:before ,
-.article .article-entry h6:hover:before {
+.article-entry h6:before,
+.article-entry h6:hover:before {
     counter-increment: h5;
     content: counter(body) "." counter(h1)"." counter(h2)"." counter(h3)"." counter(h4)"." counter(h5) ". ";
     position: unset;
