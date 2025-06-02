@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>lonelyWaiting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Runtime and Offline Render">
+
+
+
+
+
+    <meta name="description" content="Shadow&amp;#x57FA;&amp;#x672C;&amp;#x5B9E;&amp;#x73B0;&amp;#x901A;&amp;#x8FC7;&amp;#x4ECE;&amp;#x706F;&amp;#x5149;&amp;#x89C6;&amp;#x89D2;&amp;#x6E32;&amp;#x67D3;&amp;#x573A;&amp;#x666F;&amp;#x751F;&amp;#x6210;&amp;#x6DF1;&amp;#x5EA6;&amp;#x56FE;(ShadowMap)&amp;#xFF0C;&amp;#x6E32;&amp;#x67D3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lonelyWaiting">
+<meta property="og:url" content="http://lonelywaiting.github.io/Shadow/index.html">
+<meta property="og:site_name" content="lonelyWaiting">
+<meta property="og:description" content="Shadow&amp;#x57FA;&amp;#x672C;&amp;#x5B9E;&amp;#x73B0;&amp;#x901A;&amp;#x8FC7;&amp;#x4ECE;&amp;#x706F;&amp;#x5149;&amp;#x89C6;&amp;#x89D2;&amp;#x6E32;&amp;#x67D3;&amp;#x573A;&amp;#x666F;&amp;#x751F;&amp;#x6210;&amp;#x6DF1;&amp;#x5EA6;&amp;#x56FE;(ShadowMap)&amp;#xFF0C;&amp;#x6E32;&amp;#x67D3">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/ShadowMap.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/SMTexelMapping.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/ShadowAcne.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/ShadowBias.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/ShadowBiasModel.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/BasicSlope.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/UESlope.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/NormalBiasMathModel.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/PCFAndWeight.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/D3DGatherRule.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/TentFilterCoordianate.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/TentFilter.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/CSMDistribution.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/CSMRadius.png">
+<meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/CSMRadiusVisualize.png">
+<meta property="og:updated_time" content="2025-06-02T15:21:46.384Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lonelyWaiting">
+<meta name="twitter:description" content="Shadow&amp;#x57FA;&amp;#x672C;&amp;#x5B9E;&amp;#x73B0;&amp;#x901A;&amp;#x8FC7;&amp;#x4ECE;&amp;#x706F;&amp;#x5149;&amp;#x89C6;&amp;#x89D2;&amp;#x6E32;&amp;#x67D3;&amp;#x573A;&amp;#x666F;&amp;#x751F;&amp;#x6210;&amp;#x6DF1;&amp;#x5EA6;&amp;#x56FE;(ShadowMap)&amp;#xFF0C;&amp;#x6E32;&amp;#x67D3">
+<meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/Shadow/ShadowMap.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+
+</head>
+<body>
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    <img src="/favicon.ico" alt height="28">
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/categories/Rendering">Rendering</a>
+            
+            <a class="navbar-item " href="/categories/Engine">Engine</a>
+            
+            <a class="navbar-item " href="/categories/Language">Language</a>
+            
+            <a class="navbar-item " href="/categories/Tool">Tool</a>
+            
+            <a class="navbar-item " href="/categories/Misc">Misc</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            <!-- 
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Shadow">1&nbsp;&nbsp;<b>Shadow</b></a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x57FA;&amp;#x672C;&amp;#x5B9E;&amp;#x73B0;">1.1&nbsp;&nbsp;&amp;amp;#x57FA;&amp;amp;#x672C;&amp;amp;#x5B9E;&amp;amp;#x73B0;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Bias">1.1.1&nbsp;&nbsp;Bias</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Depth-Bias">1.1.2&nbsp;&nbsp;Depth Bias</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Slope-Scale-Depth-Bias">1.1.3&nbsp;&nbsp;Slope Scale Depth Bias</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Normal-Bias">1.1.4&nbsp;&nbsp;Normal Bias</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Caster-Bias-amp-Receiver-Bias">1.1.5&nbsp;&nbsp;Caster Bias &amp;amp;amp; Receiver Bias</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#PCF">1.2&nbsp;&nbsp;PCF</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x8FDE;&amp;#x7EED;Tent-Filter">1.2.1&nbsp;&nbsp;&amp;amp;#x8FDE;&amp;amp;#x7EED;Tent Filter</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#PCSS">1.3&nbsp;&nbsp;PCSS</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#CSM">1.4&nbsp;&nbsp;CSM</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x6295;&amp;#x5F71;&amp;#x534A;&amp;#x5F84;">1.4.1&nbsp;&nbsp;&amp;amp;#x6295;&amp;amp;#x5F71;&amp;amp;#x534A;&amp;amp;#x5F84;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Bias-1">1.4.2&nbsp;&nbsp;Bias</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x9694;&amp;#x5E27;&amp;#x66F4;&amp;#x65B0;">1.4.3&nbsp;&nbsp;&amp;amp;#x9694;&amp;amp;#x5E27;&amp;amp;#x66F4;&amp;amp;#x65B0;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Scrolling">1.4.4&nbsp;&nbsp;Scrolling</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Variance-Shadow-Map">1.5&nbsp;&nbsp;Variance Shadow Map</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#RSM">1.6&nbsp;&nbsp;RSM</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#ShadowVolume">1.7&nbsp;&nbsp;ShadowVolume</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#PlaneShadow">1.8&nbsp;&nbsp;PlaneShadow</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#&amp;#x516C;&amp;#x5F0F;&amp;#x63A8;&amp;#x5BFC;">1.8.1&nbsp;&nbsp;&amp;amp;#x516C;&amp;amp;#x5F0F;&amp;amp;#x63A8;&amp;amp;#x5BFC;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#UE&amp;#x5B9E;&amp;#x73B0;">1.8.2&nbsp;&nbsp;UE&amp;amp;#x5B9E;&amp;amp;#x73B0;</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Capsule-Shadow">1.9&nbsp;&nbsp;Capsule Shadow</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Contact-Shadow">1.10&nbsp;&nbsp;Contact Shadow</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Virtual-Shadow-Map">1.11&nbsp;&nbsp;Virtual Shadow Map</a>
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Ref">1.12&nbsp;&nbsp;Ref</a>
+                    
+                </div>
+            </div>
+             -->
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/lonelyWaiting">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2025-06-02T15:21:46.384Z" itemprop="datePublished">Jun 2 2025</time>
+            
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            32 minutes read (About 4783 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        
+            
+    <div class="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">Contents</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shadow"><span class="toc-number">1.</span> <span class="toc-text">Shadow</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本实现"><span class="toc-number">1.1.</span> <span class="toc-text">基本实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bias"><span class="toc-number">1.1.1.</span> <span class="toc-text">Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-Bias"><span class="toc-number">1.1.2.</span> <span class="toc-text">Depth Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slope-Scale-Depth-Bias"><span class="toc-number">1.1.3.</span> <span class="toc-text">Slope Scale Depth Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normal-Bias"><span class="toc-number">1.1.4.</span> <span class="toc-text">Normal Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Caster-Bias-amp-Receiver-Bias"><span class="toc-number">1.1.5.</span> <span class="toc-text">Caster Bias &amp; Receiver Bias</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PCF"><span class="toc-number">1.2.</span> <span class="toc-text">PCF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#连续Tent-Filter"><span class="toc-number">1.2.1.</span> <span class="toc-text">连续Tent Filter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PCSS"><span class="toc-number">1.3.</span> <span class="toc-text">PCSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSM"><span class="toc-number">1.4.</span> <span class="toc-text">CSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#投影半径"><span class="toc-number">1.4.1.</span> <span class="toc-text">投影半径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bias-1"><span class="toc-number">1.4.2.</span> <span class="toc-text">Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隔帧更新"><span class="toc-number">1.4.3.</span> <span class="toc-text">隔帧更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scrolling"><span class="toc-number">1.4.4.</span> <span class="toc-text">Scrolling</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Variance-Shadow-Map"><span class="toc-number">1.5.</span> <span class="toc-text">Variance Shadow Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSM"><span class="toc-number">1.6.</span> <span class="toc-text">RSM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowVolume"><span class="toc-number">1.7.</span> <span class="toc-text">ShadowVolume</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PlaneShadow"><span class="toc-number">1.8.</span> <span class="toc-text">PlaneShadow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#公式推导"><span class="toc-number">1.8.1.</span> <span class="toc-text">公式推导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UE实现"><span class="toc-number">1.8.2.</span> <span class="toc-text">UE实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Shader"><span class="toc-number">1.8.2.1.</span> <span class="toc-text">Shader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shader-C-Implement"><span class="toc-number">1.8.2.2.</span> <span class="toc-text">Shader C++ Implement</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渲染管线修改"><span class="toc-number">1.8.2.3.</span> <span class="toc-text">渲染管线修改</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Capsule-Shadow"><span class="toc-number">1.9.</span> <span class="toc-text">Capsule Shadow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contact-Shadow"><span class="toc-number">1.10.</span> <span class="toc-text">Contact Shadow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Virtual-Shadow-Map"><span class="toc-number">1.11.</span> <span class="toc-text">Virtual Shadow Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ref"><span class="toc-number">1.12.</span> <span class="toc-text">Ref</span></a></li></ol></li></ol>
+        </div>
+    </div>
+    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
+            <h1 id="Shadow"><a href="#Shadow" class="headerlink" title="Shadow"></a>Shadow</h1><h2 id="&#x57FA;&#x672C;&#x5B9E;&#x73B0;"><a href="#&#x57FA;&#x672C;&#x5B9E;&#x73B0;" class="headerlink" title="&#x57FA;&#x672C;&#x5B9E;&#x73B0;"></a>&#x57FA;&#x672C;&#x5B9E;&#x73B0;</h2><p>&#x901A;&#x8FC7;&#x4ECE;&#x706F;&#x5149;&#x89C6;&#x89D2;&#x6E32;&#x67D3;&#x573A;&#x666F;&#x751F;&#x6210;&#x6DF1;&#x5EA6;&#x56FE;(ShadowMap)&#xFF0C;&#x6E32;&#x67D3;&#x4E3B;&#x89C6;&#x89D2;&#x7684;&#x50CF;&#x7D20;&#x65F6;&#x5C06;&#x5176;&#x53D8;&#x6362;&#x5230;&#x706F;&#x5149;&#x7A7A;&#x95F4;&#x4E0E;&#x706F;&#x5149;&#x7A7A;&#x95F4;&#x7684;&#x6DF1;&#x5EA6;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;</p>
+<p><img src="./../resources/images/Shadow/ShadowMap.png" alt="ShadowMap"></p>
+<p>&#x5E38;&#x89C4;&#x7684;&#x6BD4;&#x8F83;&#x662F;ShadowMap&#x6DF1;&#x5EA6;&#x6BD4;&#x50CF;&#x7D20;&#x6DF1;&#x5EA6;(&#x706F;&#x5149;&#x7A7A;&#x95F4;)&#x66F4;&#x8FD1;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x50CF;&#x7D20;&#x88AB;&#x906E;&#x6321;&#x4F4D;&#x4E8E;&#x9634;&#x5F71;&#x4E2D;&#x3002;</p>
+<p>UE&#x4E2D;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;&#x81EA;&#x906E;&#x6321;&#x5F15;&#x5165;&#x4E86;&#x6DF1;&#x5EA6;&#x8FC7;&#x6E21;&#x533A;&#x95F4;&#xFF0C;&#x5F53;&#x50CF;&#x7D20;&#x6DF1;&#x5EA6;&#x66F4;&#x8FDC;&#x4E14;ShadowMap&#x7684;&#x6DF1;&#x5EA6;&#x5DEE;&#x5927;&#x4E8E;&#x8BE5;&#x8FC7;&#x6E21;&#x503C;&#x624D;&#x5B8C;&#x5168;&#x4F4D;&#x4E8E;&#x9634;&#x5F71;&#x4E2D;</p>
+<figure class="highlight glsl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Using a soft transition based on depth difference</span></span><br><span class="line"><span class="hljs-comment">// Offsets shadows a bit but reduces self shadowing artifacts considerably</span></span><br><span class="line"><span class="hljs-type">float</span> TransitionScale = Settings.TransitionScale;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// ShadowFactor=0 if ShadowMapDepth &lt;= (SceneDepth - 1/TransitionScale)</span></span><br><span class="line"><span class="hljs-type">float</span> ShadowFactor = saturate((ShadowMapDepth - SceneDepth) * TransitionScale + <span class="hljs-number">1</span>);</span></pre></td></tr></table></figure>
+
+<h3 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h3><p>&#x7531;&#x4E8E;ShadowMap&#x7684;&#x5206;&#x8FA8;&#x7387;&#x6709;&#x9650;&#xFF0C;ShadowMap&#x7684;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x5FC5;&#x7136;&#x5BF9;&#x5E94;&#x4E8E;&#x573A;&#x666F;&#x7684;&#x4E00;&#x7247;&#x533A;&#x57DF;</p>
+<p>&#x5982;&#x4E0B;&#x56FE;&#x4E2D;&#x5149;&#x7EBF;&#x4EE3;&#x8868;&#x50CF;&#x7D20;&#x4E2D;&#x5FC3;&#xFF0C;&#x9ED1;&#x8272;&#x7684;&#x533A;&#x57DF;&#x5728;&#x706F;&#x5149;&#x7A7A;&#x95F4;&#x90FD;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x5927;&#x4E8E;&#x50CF;&#x7D20;&#x4E2D;&#x5FC3;&#x7684;&#x6DF1;&#x5EA6;&#xFF0C;&#x5373;&#x5904;&#x4E8E;&#x9634;&#x5F71;&#x4E2D;</p>
+<p><img src="./../resources/images/Shadow/SMTexelMapping.png" alt="Shadow Map Texel Mapping Area"><img src="./../resources/images/Shadow/ShadowAcne.png" alt="Shadow Acne"></p>
+<p>&#x901A;&#x8FC7;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;Depth Bias&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8BE5;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x540C;&#x65F6;&#x4E5F;&#x5F15;&#x5165;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;Peter Panning&#xFF08;&#x5373;&#x9634;&#x5F71;&#x7684;&#x4F4D;&#x7F6E;&#x53D1;&#x751F;&#x4E86;&#x504F;&#x79FB;&#xFF09;<br><img src="./../resources/images/Shadow/ShadowBias.png" alt="ShadowBias"></p>
+<p>Depth Bias&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x5E38;&#x91CF;&#x504F;&#x79FB;&#xFF0C;&#x4F46;&#x592A;&#x5C0F;&#x5BB9;&#x6613;&#x53D1;&#x751F;&#x81EA;&#x906E;&#x6321;&#xFF0C;&#x592A;&#x5927;&#x5BF9;&#x4E8E;&#x8584;&#x7684;&#x8868;&#x9762;&#x5BB9;&#x6613;&#x51FA;&#x73B0;&#x6F0F;&#x5149;</p>
+<h3 id="Depth-Bias"><a href="#Depth-Bias" class="headerlink" title="Depth Bias"></a>Depth Bias</h3><p>&#x7EE7;&#x7EED;&#x4EE5;&#x5E73;&#x9762;&#x4E3A;&#x4F8B;&#xFF0C;$|AB|$&#x4E3A;&#x8FD1;&#x5E73;&#x9762;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x50CF;&#x7D20;&#x533A;&#x57DF;&#xFF0C;$E$&#x70B9;&#x4E3A;&#x50CF;&#x7D20;&#x4E2D;&#x5FC3;&#xFF0C;&#x6E32;&#x67D3;ShadowMap&#x65F6;&#x8BB0;&#x5F55;&#x7684;&#x662F;<code>F</code>&#x70B9;&#x7684;&#x6DF1;&#x5EA6;</p>
+<p>$|FD|$&#x6BB5;&#x90FD;&#x5C06;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x5728;&#x9634;&#x5F71;&#x4E2D;&#xFF0C;&#x9700;&#x5C06;$D$&#x70B9;&#x7684;&#x6DF1;&#x5EA6;&#x504F;&#x79FB;&#x81F3;$G$&#x624D;&#x80FD;&#x4E0D;&#x53D1;&#x751F;&#x81EA;&#x906E;&#x6321;&#xFF0C;&#x504F;&#x79FB;&#x8DDD;&#x79BB;&#x4E3A;&#xFF1A;<br>$$<br>\begin{equation}<br>\begin{aligned}<br>DepthBias(D) &amp;= |FG|\cdot tan(\theta)\<br>&amp;=\frac{|AB|}{2}\cdot tan(\theta)\<br>&amp;=\frac{FrustumSize}{ShadowMapSize \times 2}\cdot tan(\theta)<br>\end{aligned}<br>\end{equation}<br>$$<br><img src="./../resources/images/Shadow/ShadowBiasModel.png" alt="Shadow Bias Math Model"></p>
+<p>&#x5F53;&#x5149;&#x65B9;&#x5411;&#x4E0E;&#x5E73;&#x9762;&#x51E0;&#x4E4E;&#x5E73;&#x884C;&#x65F6;&#xFF0C;&#x5355;&#x4E2A;&#x50CF;&#x7D20;&#x5BF9;&#x5E94;&#x7684;&#x8303;&#x56F4;&#x5C06;&#x4F1A;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x4EE5;&#x4E0A;&#x8FF0;&#x516C;&#x5F0F;&#x4E3A;&#x4F8B;&#xFF0C;$\theta$&#x5C06;&#x8D8B;&#x7D27;&#x4E8E;90&#xFF0C;$tan(\theta)$&#x4E3A;&#x65E0;&#x9650;&#x5927;</p>
+<h3 id="Slope-Scale-Depth-Bias"><a href="#Slope-Scale-Depth-Bias" class="headerlink" title="Slope Scale Depth Bias"></a>Slope Scale Depth Bias</h3><p>&#x901A;&#x5E38;&#x4E3A;&#x4E86;&#x7B80;&#x5316;$tan$&#x6216;$sin$&#x7684;&#x8BA1;&#x7B97;&#xFF0C;&#x4F1A;&#x6539;&#x7528;Slope Scale&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DepthBias = SlopeDepthBias * Slope + ConstantDepthBias</span></pre></td></tr></table></figure>
+
+<ul>
+<li>Slope&#xFF1A;&#x4E0E;&#x5F53;&#x524D;Pixel&#x6240;&#x5728;&#x4E09;&#x89D2;&#x5F62;&#x7684;&#x659C;&#x7387;&#x6709;&#x5173;&#xFF0C;&#x503C;&#x8D8A;&#x5927;&#x8868;&#x793A;&#x8D8A;&#x503E;&#x659C;</li>
+<li>SlopeDepthBias&#xFF1A;&#x81EA;&#x5B9A;&#x4E49;&#x7CFB;&#x6570;</li>
+<li>ConstantDepthBias&#xFF1A;&#x57FA;&#x7840;&#x504F;&#x79FB;&#x503C;</li>
+</ul>
+<p>Slope&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#xFF1A;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">float</span> Slope = clamp(<span class="hljs-built_in">abs</span>(NoL) &gt; <span class="hljs-number">0</span> ? (<span class="hljs-number">1.0</span> - NoL) : MaxSlopeDepthBias, <span class="hljs-number">0</span>, MaxSlopeDepthBias);</span></pre></td></tr></table></figure>
+
+<p><img src="./../resources/images/Shadow/BasicSlope.png" alt="Basic Slope"></p>
+<p>UE&#x4E2D;&#x4F7F;&#x7528;</p>
+<figure class="highlight glsl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-type">float</span> Slope = <span class="hljs-built_in">clamp</span>(<span class="hljs-built_in">abs</span>(NoL) &gt; <span class="hljs-number">0</span> ? <span class="hljs-built_in">sqrt</span>(saturate(<span class="hljs-number">1</span> - NoL*NoL)) / NoL : MaxSlopeDepthBias, <span class="hljs-number">0</span>, MaxSlopeDepthBias);</span></pre></td></tr></table></figure>
+
+<p><img src="./../resources/images/Shadow/UESlope.png" alt="UE Slope"></p>
+<h3 id="Normal-Bias"><a href="#Normal-Bias" class="headerlink" title="Normal Bias"></a>Normal Bias</h3><p>&#x7531;&#x4E8E;Depth Bias&#x5B58;&#x5728;&#x5149;&#x65B9;&#x5411;&#x4E0E;&#x5E73;&#x9762;&#x5E73;&#x884C;&#x65F6;&#x5931;&#x6548;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6539;&#x7528;&#x5411;Normal&#x65B9;&#x5411;&#x504F;&#x79FB;&#xFF1A;</p>
+<p><img src="./../resources/images/Shadow/NormalBiasMathModel.png" alt="Normal Bias Math Model"></p>
+<p>Bias&#x7684;&#x957F;&#x5EA6;&#x4E3A;$|GM|$&#xFF0C;&#x504F;&#x79FB;&#x540E;$C \rightarrow C^{\prime}$&#xFF0C;$D \rightarrow D^{\prime} $&#xFF0C;&#x6839;&#x636E;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x53EF;&#x77E5;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x65E0;&#x7A77;&#x5927;&#x5931;&#x6548;&#x7684;&#x60C5;&#x51B5;&#xFF1A;<br>$$<br>|GM| = |FG|\cdot sin(\theta) = \frac{|AB|}{2}\cdot sin(\theta) = \frac{FrustumSize}{ShadowMapSize \cdot 2}\cdot sin(\theta)<br>$$</p>
+<p>&#x5728;$|AB|$&#x4E0E;&#x5E73;&#x9762;&#x4E4B;&#x95F4;&#x4E0D;&#x5B58;&#x5728;&#x906E;&#x6321;&#x7269;&#x65F6;&#xFF0C;$|C^{\prime}G|$&#x5728;&#x5F53;&#x524D;&#x50CF;&#x7D20;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x81EA;&#x906E;&#x6321;&#x7684;&#x60C5;&#x51B5;&#xFF0C;$|GD^{\prime}|$&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x4E34;&#x8FD1;&#x50CF;&#x7D20;&#x533A;&#x57DF;&#x4E5F;&#x4E0D;&#x4F1A;&#x88AB;&#x906E;&#x6321;</p>
+<p>&#x4F46;&#x5F53;&#x51FA;&#x73B0;&#x4E0A;&#x56FE;&#x4E2D;&#x7684;&#x906E;&#x6321;&#x7269;&#x65F6;&#xFF0C;&#x5C06;&#x5BFC;&#x81F4;$C$&#x70B9;&#x6F0F;&#x5149;&#x3002;&#x4E14;&#x82E5;&#x4E34;&#x8FD1;&#x50CF;&#x7D20;&#x7684;$|DD^{\prime}|$&#x533A;&#x95F4;&#x51FA;&#x73B0;&#x906E;&#x6321;&#x7269;&#x65F6;&#xFF0C;$D$&#x70B9;&#x4E5F;&#x5C06;&#x6F0F;&#x5149;&#xFF0C;&#x51FA;&#x73B0;&#x4E24;&#x7AEF;&#x6F0F;&#x5149;&#x7684;&#x60C5;&#x51B5;</p>
+<h3 id="Caster-Bias-amp-Receiver-Bias"><a href="#Caster-Bias-amp-Receiver-Bias" class="headerlink" title="Caster Bias &amp; Receiver Bias"></a>Caster Bias &amp; Receiver Bias</h3><p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x90FD;&#x662F;&#x9ED8;&#x8BA4;Receiver Bias&#xFF0C;&#x5373;PS&#x9636;&#x6BB5;&#x8FDB;&#x884C;Depth Bias&#x518D;&#x4E0E;ShadowMap&#x8BB0;&#x5F55;&#x7684;&#x6DF1;&#x5EA6;&#x503C;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;</p>
+<p>Caster Bias&#x662F;&#x5728;ShadowMap&#x751F;&#x6210;&#x7684;VS&#x9636;&#x6BB5;&#x5BF9;&#x906E;&#x853D;&#x7269;&#x8FDB;&#x884C;&#x53CD;&#x5411;&#x504F;&#x79FB;&#xFF0C;&#x5176;&#x4F18;&#x52A3;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x4F18;&#x70B9;&#xFF1A;<ul>
+<li>&#x57FA;&#x4E8E;&#x9876;&#x70B9;&#x8BA1;&#x7B97;&#xFF0C;&#x5F00;&#x9500;&#x4F4E;</li>
+</ul>
+</li>
+<li>&#x7F3A;&#x70B9;&#xFF1A;<ul>
+<li>&#x4EC5;&#x8003;&#x8651;&#x9876;&#x70B9;&#x6CD5;&#x7EBF;&#xFF0C;&#x672A;&#x8003;&#x8651;&#x50CF;&#x7D20;&#x7EA7;&#x7684;Normal(&#x5982;&#x5E94;&#x7528;NormalMap)&#xFF0C;&#x7CBE;&#x5EA6;&#x4E0D;&#x8DB3;</li>
+</ul>
+</li>
+</ul>
+<h2 id="PCF"><a href="#PCF" class="headerlink" title="PCF"></a>PCF</h2><p>&#x7531;&#x4E8E;&#x50CF;&#x7D20;&#x6DF1;&#x5EA6;&#x4E0E;ShadowMap&#x503C;&#x6BD4;&#x8F83;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E2A;&#x4E8C;&#x503C;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x9634;&#x5F71;&#x8FB9;&#x7F18;&#x4F1A;&#x5448;&#x73B0;&#x51FA;&#x952F;&#x9F7F;&#x72B6;</p>
+<p>&#x4E3A;&#x89E3;&#x51B3;&#x8BE5;&#x95EE;&#x9898;&#xFF0C;&#x5F15;&#x5165;&#x4E86;Percentage Closer Filter(PCF)&#xFF1A;<br>$$<br>PCF(x_0, y_0) = \frac{1}{W}\sum_{(x_i, y_i)\in N}\omega(x_i, y_i)\cdot f(x_i, y_i)\<br>f(x, y) =<br>\begin{cases}<br>1, \quad if z_{receiver} &lt;= z_{shadow}(x, y)\quad (&#x5149;&#x7167;)\<br>0, \quad otherwise\quad(&#x9634;&#x5F71;)<br>\end{cases}<br>$$</p>
+<ul>
+<li>$x_0, y_0$&#xFF1A;&#x50CF;&#x7D20;&#x6295;&#x5F71;&#x5230;ShadowMap&#x7684;UV</li>
+</ul>
+<p>PCF&#x672C;&#x8D28;&#x662F;&#x5BF9;&#x90BB;&#x57DF;&#x7684;&#x6DF1;&#x5EA6;&#x6BD4;&#x8F83;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x6EE4;&#x6CE2;&#xFF0C;UE&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x5206;&#x79BB;&#x5377;&#x79EF;&#x6838;&#xFF0C;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x7684;&#x6743;&#x91CD;&#x4E3A;U&#xFF0C;V&#x6743;&#x91CD;&#x7684;&#x4E58;&#x79EF;&#xFF1A;</p>
+<p>5x5&#x7684;&#x6743;&#x91CD;&#x5206;&#x5E03;&#x4E3A;&#xFF1A;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U: <span class="hljs-number">1</span>-dx, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, dx</span><br><span class="line">V: <span class="hljs-number">1</span>, <span class="hljs-number">1</span>-dy, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, dy, <span class="hljs-number">1</span></span></pre></td></tr></table></figure>
+
+<p>3x3&#x7684;&#x6743;&#x91CD;&#x5206;&#x5E03;&#x4E3A;&#xFF1A;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U: <span class="hljs-number">1</span>-dx, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, dx</span><br><span class="line">V: <span class="hljs-number">1</span>, <span class="hljs-number">1</span>-dy, dy, <span class="hljs-number">1</span></span></pre></td></tr></table></figure>
+
+<p>2x2&#x7684;&#x6743;&#x91CD;&#x5206;&#x5E03;&#xFF1A;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U: <span class="hljs-number">1</span>-dx, <span class="hljs-number">1</span>, dx</span><br><span class="line">V: <span class="hljs-number">1</span>-dy, <span class="hljs-number">1</span>, dy</span></pre></td></tr></table></figure>
+
+<p>1x1&#x7684;&#x6743;&#x91CD;&#x5206;&#x5E03;&#xFF1A;</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U: <span class="hljs-number">1</span>-dx, dx</span><br><span class="line">V: <span class="hljs-number">1</span>-dy, dy</span></pre></td></tr></table></figure>
+
+<p><img src="./../resources/images/Shadow/PCFAndWeight.png" alt="PCF And Weight"></p>
+<p>Gather&#x83B7;&#x53D6;&#x56DB;&#x4E2A;&#x50CF;&#x7D20;&#x65F6;&#x6309;&#x7167;(-,+)&#xFF0C;(+,+)&#xFF0C;(+,-)&#xFF0C;(-,-)&#x7684;&#x539F;&#x5219;&#xFF1A;<br><img src="./../resources/images/Shadow/D3DGatherRule.png" alt="D3D Gather Rule"></p>
+<h3 id="&#x8FDE;&#x7EED;Tent-Filter"><a href="#&#x8FDE;&#x7EED;Tent-Filter" class="headerlink" title="&#x8FDE;&#x7EED;Tent Filter"></a>&#x8FDE;&#x7EED;Tent Filter</h3><p>&#x524D;&#x9762;&#x4EE5;Texel&#x4E2D;&#x5FC3;&#x4EE3;&#x66FF;Texel&#xFF0C;&#x6BCF;&#x4E2A;Texel&#x6839;&#x636E;&#x5206;&#x5E03;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x79BB;&#x6563;&#x6743;&#x91CD;&#x3002;</p>
+<p>&#x8FDE;&#x7EED;Tent Filter&#x4E5F;&#x662F;&#x5206;&#x79BB;&#x5377;&#x79EF;&#x7684;&#x65B9;&#x6848;&#xFF0C;&#x6839;&#x636E;&#x5404;Texel&#x7684;&#x79EF;&#x5206;&#x7ED3;&#x679C;&#x8BA1;&#x7B97;&#x6743;&#x91CD;&#x5E76;&#x5F52;&#x4E00;&#x5316;</p>
+<p>PCF5x5&#x4E3A;&#x4F8B;&#xFF0C;&#x4EE5;&#x91C7;&#x6837;&#x70B9;Texel&#x4E2D;&#x5FC3;&#x4E3A;&#x5750;&#x6807;&#x539F;&#x70B9;&#xFF0C;&#x5355;&#x65B9;&#x5411;&#x7684;&#x5377;&#x79EF;&#x6838;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;$max(2.5 - |x - dx|, 0)$&#xFF0C;&#x5219;&#x4EFB;&#x610F;&#x70B9;&#x7684;&#x503C;&#x4E3A;&#xFF1A;<br>$$<br>f_w(u,v) = \max(2.5-|u - dx|, 0)\cdot \max(2.5 -|v - dy|, 0)<br>$$<br><img src="./../resources/images/Shadow/TentFilterCoordianate.png" alt="Tent Filter Coordinate"></p>
+<p>&#x8BA1;&#x7B97;&#x50CF;&#x7D20;$i,j$&#x6240;&#x5360;&#x7684;&#x4F53;&#x79EF;&#xFF1A;<br>$$<br>A_{i,j} = \int_{i - 0.5}^{i + 0.5}\int_{j - 0.5}^{j + 0.5}max(2.5-|u-dx|, 0)\cdot max(2.5-|v-dy|, 0)dudv<br>$$</p>
+<p><img src="./../resources/images/Shadow/TentFilter.png" alt="&#x8FDE;&#x7EED;Tent Filter"></p>
+<p>&#x5F52;&#x4E00;&#x5316;&#x7CFB;&#x6570;&#xFF1A;<br>$$<br>\begin{equation}<br>\begin{aligned}<br>W &amp;= \int_{u = -2.5+dx}^{2.5+dx}\int_{v = -2.5+dy}^{2.5+dy}max(2.5-|u-dx|, 0)\cdot max(2.5-|v-dy|, 0)dudv\<br>&amp;= \int_{u = -2.5+dx}^{2.5+dx}max(2.5-|u-dx|, 0)du \cdot \int_{v = -2.5+dy}^{2.5+dy} max(2.5-|v-dy|, 0)dv\<br>&amp;= \int_{u^{\prime} = -2.5}^{2.5}max(2.5-|u^{\prime}|, 0)du^{\prime} \cdot \int_{v^{\prime} = -2.5}^{2.5} max(2.5-|v^{\prime}|, 0)dv^{\prime}\<br>&amp;=\frac{5\times 2.5}{2}\cdot \frac{5\times 2.5}{2}\<br>&amp;=\frac{625}{16}\<br>&amp;=39.0625<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<h2 id="PCSS"><a href="#PCSS" class="headerlink" title="PCSS"></a>PCSS</h2><h2 id="CSM"><a href="#CSM" class="headerlink" title="CSM"></a>CSM</h2><p>&#x5C06;&#x89C6;&#x690E;&#x4F53;&#x5212;&#x5206;&#x4E3A;&#x591A;&#x4E2A;&#x5B50;&#x89C6;&#x690E;&#x4F53;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B50;&#x89C6;&#x690E;&#x4F53;&#x5BF9;&#x5E94;&#x7684;ShadowMap&#x5C3A;&#x5BF8;&#x4E00;&#x81F4;&#xFF0C;&#x4EE5;&#x5B9E;&#x73B0;&#x5404;&#x7EA7;&#x4E0D;&#x540C;&#x7684;&#x7CBE;&#x5EA6;&#x63A7;&#x5236;</p>
+<p>&#x5B50;&#x89C6;&#x690E;&#x4F53;&#x5212;&#x5206;&#x901A;&#x5E38;&#x6309;&#x7167;&#x6307;&#x6570;&#x5206;&#x5E03;&#xFF0C;&#x4EE5;&#x4E09;&#x7EA7;Cascade&#x4E3A;&#x4F8B;&#xFF0C;&#x5047;&#x8BBE;&#x5206;&#x5E03;&#x6307;&#x6570;&#x4E3A;$\alpha$&#xFF0C;&#x5219;&#x5404;&#x7EA7;&#x7684;&#x5206;&#x5E03;&#x6BD4;&#x4F8B;&#x4E3A;&#xFF1A;$1, \alpha, \alpha^2$</p>
+<p><img src="./../resources/images/Shadow/CSMDistribution.png" alt="CSM Distribution"></p>
+<h3 id="&#x6295;&#x5F71;&#x534A;&#x5F84;"><a href="#&#x6295;&#x5F71;&#x534A;&#x5F84;" class="headerlink" title="&#x6295;&#x5F71;&#x534A;&#x5F84;"></a>&#x6295;&#x5F71;&#x534A;&#x5F84;</h3><p>&#x672C;&#x8D28;&#x662F;&#x6C42;&#x89E3;&#x5B50;&#x89C6;&#x690E;&#x4F53;&#x7684;&#x6700;&#x5C0F;&#x5305;&#x56F4;&#x7403;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x5373;&#x6C42;&#xFF1A;$min(a^2+c^2, d^2+b^2)$</p>
+<p><img src="./../resources/images/Shadow/CSMRadius.png" alt="CSM Radius"></p>
+<p>&#x5BF9;&#x4E8E;&#x6307;&#x5B9A;CSM&#x7EA7;&#x522B;&#x800C;&#x8A00;$c+d$&#x662F;&#x786E;&#x5B9A;&#x503C;&#xFF0C;$a$&#x4E0E;$b$&#x4E5F;&#x662F;&#x56FA;&#x5B9A;&#x503C;(&#x4E3A;&#x5176;&#x6240;&#x5C5E;&#x622A;&#x9762;&#x7684;&#x5BF9;&#x89D2;&#x7EBF;)</p>
+<p>&#x4EE4;&#xFF1A;$d = l - c$&#xFF0C;&#x5219;&#x6C42;&#x89E3;$c$&#x6EE1;&#x8DB3;$min(a^2+c^2, b^2+(l-c)^2)$&#xFF0C;&#x4E14;$b^2 &gt; a^2$&#x3002;&#x5176;&#x56FE;&#x50CF;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x6700;&#x5C0F;&#x503C;&#x5728;&#x4E8C;&#x8005;&#x7684;&#x4EA4;&#x70B9;&#x5904;&#x53D6;&#x5230;&#xFF1A;<br>$$<br>\begin{equation}<br>\begin{aligned}<br>a^2+c^2 &amp;= b^2+(l-c)^2\<br>a^2+c^2 &amp;= b^2+l^2+c^2-2\cdot l \cdot c\<br>2\cdot l \cdot c &amp;= b^2+l^2-a^2\<br>c &amp;= \frac{b^2+l^2-a^2}{2\cdot l}<br>\end{aligned}<br>\end{equation}<br>$$<br><img src="./../resources/images/Shadow/CSMRadiusVisualize.png" alt="CSM Radius Visualize"></p>
+<h3 id="Bias-1"><a href="#Bias-1" class="headerlink" title="Bias"></a>Bias</h3><p>&#x7531;&#x4E8E;CSM&#x662F;&#x6BCF;&#x7EA7;&#x5206;&#x8FA8;&#x7387;&#x4E00;&#x81F4;&#x4F46;&#x5BF9;&#x5E94;&#x7684;&#x89C6;&#x690E;&#x4F53;&#x8303;&#x56F4;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x56E0;&#x6B64;&#x5404;&#x7EA7;Cascade&#x5E94;&#x7528;&#x7684;Bias&#x4E5F;&#x4E0D;&#x4E00;&#x6837;</p>
+<h3 id="&#x9694;&#x5E27;&#x66F4;&#x65B0;"><a href="#&#x9694;&#x5E27;&#x66F4;&#x65B0;" class="headerlink" title="&#x9694;&#x5E27;&#x66F4;&#x65B0;"></a>&#x9694;&#x5E27;&#x66F4;&#x65B0;</h3><blockquote>
+<p>&#x63A7;&#x5236;&#x4E0D;&#x540C;&#x7EA7;&#x522B;Cascade&#x7684;&#x66F4;&#x65B0;&#x9891;&#x7387;&#xFF0C;&#x8FDC;&#x5904;&#x7684;&#x4FE1;&#x606F;&#x53D8;&#x5316;&#x6162;&#xFF0C;&#x53EF;&#x4EE5;&#x9694;N&#x5E27;&#x66F4;&#x65B0;&#x4E00;&#x6B21;</p>
+</blockquote>
+<p>&#x539F;&#x795E;&#x7684;&#x5206;&#x4EAB;&#x4E2D;&#x63D0;&#x5230;&#x4F7F;&#x7528;&#x4E86;&#x516B;&#x7EA7;CSM&#xFF0C;&#x91C7;&#x7528;&#x524D;&#x56DB;&#x7EA7;&#x6BCF;&#x5E27;&#x66F4;&#x65B0;&#xFF0C;&#x540E;&#x56DB;&#x7EA7;&#x6BCF;&#x5E27;&#x8F6E;&#x6D41;&#x66F4;&#x65B0;&#x7684;&#x7B56;&#x7565;</p>
+<p>&#x7531;&#x4E8E;CSM&#x7684;&#x751F;&#x6210;&#x662F;&#x57FA;&#x4E8E;&#x5B50;&#x89C6;&#x690E;&#x4F53;&#xFF0C;&#x5F53;&#x89C6;&#x89D2;&#x53D8;&#x5316;&#x65F6;&#xFF0C;WorldToLight&#x77E9;&#x9635;&#x4E5F;&#x5728;&#x968F;&#x4E4B;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#x8981;&#x5B9E;&#x73B0;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF0C;&#x5FC5;&#x987B;&#x8BB0;&#x5F55;&#x4E0B;CSM&#x751F;&#x6210;&#x65F6;&#x7684;WorldToLight&#x77E9;&#x9635;&#xFF0C;&#x5C06;&#x5F53;&#x524D;&#x5E27;&#x50CF;&#x7D20;&#x4ECE;World Space&#x53D8;&#x5316;&#x5230;N&#x5E27;&#x524D;&#x7684;LightSpace&#x91C7;&#x6837;CSM</p>
+<figure class="highlight glsl hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">float3 LightSpacePos = CurWorldPosition * PrevWorldToLight;</span><br><span class="line"><span class="hljs-type">float</span> CSMDepth = CSM.Sample(Sampler, LightSpacePos.xy);</span><br><span class="line"><span class="hljs-type">bool</span> inShadow = LightSpacePos &gt; CSMDepth; <span class="hljs-comment">// &#x5047;&#x8BBE;&#x6DF1;&#x5EA6;&#x8D8A;&#x5C0F;&#x8D8A;&#x8FD1;</span></span></pre></td></tr></table></figure>
+
+<h3 id="Scrolling"><a href="#Scrolling" class="headerlink" title="Scrolling"></a>Scrolling</h3><p>&#x5BF9;&#x4E8E;&#x8FD1;&#x5904;&#x7684;CSM&#x800C;&#x8A00;&#xFF0C;&#x590D;&#x7528;&#x5386;&#x53F2;&#x5E27;&#x7684;ShadowDepth&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5728;Receiver&#x9636;&#x6BB5;&#x4F7F;&#x7528;Bias&#xFF1F;&#xFF1F;&#xFF1F;</p>
+<h2 id="Variance-Shadow-Map"><a href="#Variance-Shadow-Map" class="headerlink" title="Variance Shadow Map"></a>Variance Shadow Map</h2><h2 id="RSM"><a href="#RSM" class="headerlink" title="RSM"></a>RSM</h2><h2 id="ShadowVolume"><a href="#ShadowVolume" class="headerlink" title="ShadowVolume"></a>ShadowVolume</h2><h2 id="PlaneShadow"><a href="#PlaneShadow" class="headerlink" title="PlaneShadow"></a>PlaneShadow</h2><h3 id="&#x516C;&#x5F0F;&#x63A8;&#x5BFC;"><a href="#&#x516C;&#x5F0F;&#x63A8;&#x5BFC;" class="headerlink" title="&#x516C;&#x5F0F;&#x63A8;&#x5BFC;"></a>&#x516C;&#x5F0F;&#x63A8;&#x5BFC;</h3><p>&#x4EE5;&#x4E0B;&#x63A8;&#x5BFC;&#x57FA;&#x4E8E;&#x4E16;&#x754C;&#x7A7A;&#x95F4;&#x5750;&#x6807;</p>
+<p>&#x5E73;&#x9762;&#x65B9;&#x7A0B;&#x5B9A;&#x4E49;&#xFF1A;$$\vec{N}$$&#x4E3A;&#x5E73;&#x9762;&#x6CD5;&#x7EBF;&#xFF0C;$$\vec{Q}$$&#x4E3A;&#x5E73;&#x9762;&#x4E0A;&#x4E00;&#x70B9;&#xFF0C;d&#x4E3A;&#x539F;&#x70B9;&#x5230;&#x8BE5;&#x5E73;&#x9762;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#x7684;&#x8D1F;&#x503C;<br>$$<br>$$\begin{equation} \vec{N} \cdot \vec{Q} + d = 0 \end{equation}<br>$$</p>
+<p>&#x5047;&#x8BBE;&#xFF0C;&#x6A21;&#x578B;&#x70B9;&#x4F4D;&#x4E8E;$$\vec{P}$$&#xFF0C;&#x65B9;&#x5411;&#x5149;&#x65B9;&#x5411;&#x4E3A;$$\vec{L}$$&#xFF0C;&#x5176;&#x6295;&#x5F71;&#x5230;&#x5E73;&#x9762;&#x4E0A;&#x7684;&#x4F4D;&#x7F6E;&#x4E3A;$$\vec{Q}$$&#xFF0C;&#x5219;&#xFF1A;<br>$$<br>\begin{equation} \vec{Q} = \vec{P} + t * \vec{L} \end{equation}<br>$$</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x53EF;&#x4EE5;&#x6C42;&#x89E3;t&#xFF1A;</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>\vec{N} \cdot (\vec{P} + t * \vec{L}) + d = 0 \<br>t = -\frac{d + \vec{N} \cdot \vec{P}}{\vec{N} \cdot \vec{L}}<br>\end{aligned}<br>\end{equation}<br>$$<br>&#x6B64;&#x65F6;&#x5C06;$t$&#x4EE3;&#x5165;(2)&#x4E2D;&#xFF0C;&#x5373;&#x53EF;&#x6C42;&#x89E3;$$\vec{Q}$$</p>
+<p>$$<br>\begin{equation}<br>\vec{Q} = \vec{P} - \frac{d + \vec{N} \cdot \vec{P}}{\vec{N} \cdot \vec{L}} * \vec{L}<br>\end{equation}<br>$$</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x6211;&#x4EEC;&#x671F;&#x671B;&#x7684;&#x662F;&#x8BA1;&#x7B97;&#x51FA;&#x4E00;&#x4E2A;&#x6295;&#x5F71;&#x77E9;&#x9635;$$\vec{M}$$&#xFF0C;&#x80FD;&#x591F;&#x5F97;&#x5230;$$\vec{Q} = \vec{M} \cdot \vec{P}$$&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x6784;&#x9020;&#xFF0C;&#x9996;&#x5148;&#x4E24;&#x8FB9;&#x4E58;&#x4EE5;$$\vec{N} \cdot \vec{L}$$:</p>
+<p>$$<br>\begin{equation} (\vec{N} \cdot \vec{L}) <em> \vec{Q} = (\vec{N} \cdot \vec{L}) </em> \vec{P} - d <em> \vec{L} - (\vec{N} \cdot \vec{P}) </em> \vec{L} \end{equation}<br>$$</p>
+<p>&#x9996;&#x5148;&#x5C06;$$(\vec{N} \cdot \vec{P})* \vec{L}$$&#x5206;&#x89E3;&#x4E3A;&#x5411;&#x91CF;&#x5F62;&#x5F0F;&#xFF1A;</p>
+<p>$$<br>\begin{equation} \begin{bmatrix} (N_x <em> P_x + N_y </em> P_y + N_z <em> P_z) </em> L_x \ (N_x <em> P_x + N_y </em> P_y + N_z <em> P_z) </em> L_y \ (N_x <em> P_x + N_y </em> P_y + N_z <em> P_z) </em> L_z \ \end{bmatrix} = \begin{bmatrix} N_x <em> L_x &amp; N_y </em> L_x &amp; N_z <em> L_x \ N_x </em> L_y &amp; N_y <em> L_y &amp; N_z </em> L_y \ N_x <em> L_z &amp; N_y </em> L_z &amp; N_z * L_z \ \end{bmatrix} \cdot \begin{bmatrix} P_x \ P_y \ P_z \ \end{bmatrix} \end{equation}<br>$$</p>
+<p>&#x5C55;&#x5F00;&#x4E3A;&#x5411;&#x91CF;&#x5F62;&#x5F0F;&#xFF1A;</p>
+<p>$$<br>\begin{equation} (\vec{N} \cdot \vec{L}) <em> \begin{bmatrix} Q_x \ Q_y \ Q_z \ \end{bmatrix} = (\vec{N} \cdot \vec{L}) </em> \begin{bmatrix} P_x \ P_y \ P_z \ \end{bmatrix} - \begin{bmatrix} d <em> L_x \ d </em> L_y \ d <em> L_z \ \end{bmatrix} - \begin{bmatrix} N_x </em> L_x &amp; N_y <em> L_x &amp; N_z </em> L_x \ N_x <em> L_y &amp; N_y </em> L_y &amp; N_z <em> L_y \ N_x </em> L_z &amp; N_y <em> L_z &amp; N_z </em> L_z \ \end{bmatrix} \cdot \begin{bmatrix} P_x \ P_y \ P_z \ \end{bmatrix} \end{equation}<br>$$</p>
+<p>&#x4E24;&#x8FB9;&#x9664;&#x4EE5;$$\vec{N} \cdot \vec{L}$$&#x5E76;&#x6574;&#x7406;&#x53EF;&#x5F97;&#xFF1A;</p>
+<p>$$<br>\begin{equation} \begin{bmatrix} Q_x \ Q_y \ Q_z \ \end{bmatrix} = \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} \ -\frac{N_x </em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z </em> L_y}{\vec{N} \cdot \vec{L}} \ -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} \ \end{bmatrix} \cdot \begin{bmatrix} P_x \ P_y \ P_z \ \end{bmatrix} - \frac{1}{ \vec{N} \cdot \vec{L}} </em> \begin{bmatrix} d <em> L_x \ d </em> L_y \ d * L_z \ \end{bmatrix} \end{equation}<br>$$</p>
+<p>&#x5BF9;&#x4E8E;&#x6700;&#x540E;&#x7684;&#x5E73;&#x79FB;&#x9879;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;&#x77E9;&#x9635;&#x53D8;&#x4E3A;4x4&#x8FDB;&#x800C;&#x6574;&#x5408;&#x5230;&#x4E00;&#x8D77;</p>
+<p>$$<br>\begin{equation} \begin{bmatrix} Q_x \ Q_y \ Q_z \ 1 \ \end{bmatrix} = \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_x}{\vec{N} \cdot {\vec{L}}} \ -\frac{N_x <em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y </em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_y}{\vec{N} \cdot {\vec{L}}}\ -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_z}{\vec{N} \cdot {\vec{L}}}\ 0 &amp; 0 &amp; 0 &amp; 1 \ \end{bmatrix} \cdot \begin{bmatrix} P_x \ P_y \ P_z \ 1 \ \end{bmatrix} \end{equation}<br>$$</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x6700;&#x7EC8;&#x7684;&#x9634;&#x5F71;&#x53D8;&#x6362;&#x77E9;&#x9635;&#x4E3A;&#xFF1A;</p>
+<p>$$<br>\begin{equation} \begin{aligned} \vec{M} &amp;= \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_x}{\vec{N} \cdot {\vec{L}}} \ -\frac{N_x <em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y </em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_y}{\vec{N} \cdot {\vec{L}}}\ -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_z}{\vec{N} \cdot {\vec{L}}}\ 0 &amp; 0 &amp; 0 &amp; 1 \ \end{bmatrix} \ &amp;= \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} - \frac{1}{\vec{N} \cdot \vec{L}} <em> \begin{bmatrix} N_x </em> L_x &amp; N_y <em> L_x &amp; N_z </em> L_x &amp; d <em> L_x \ N_x </em> L_y &amp; N_y <em> L_y &amp; N_z </em> L_y &amp; d <em> L_y \ N_x </em> L_z &amp; N_y <em> L_z &amp; N_z </em> L_z &amp; d * L_z\ 0 &amp; 0 &amp; 0 &amp; 0 \ \end{bmatrix} \end{aligned} \end{equation}<br>$$</p>
+<p>&#x82E5;&#x5411;&#x91CF;&#x91C7;&#x7528;&#x884C;&#x5F62;&#x5F0F;&#xFF1A;</p>
+<p>$$<br>\begin{equation} \begin{bmatrix} Q_x &amp; Q_y &amp; Q_z &amp;1 \end{bmatrix} = \begin{bmatrix} P_x &amp; P_y &amp; P_z &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_x </em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z </em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{d </em> L_x}{\vec{N} \cdot {\vec{L}}} &amp; -\frac{d <em> L_y}{\vec{N} \cdot {\vec{L}}} &amp; -\frac{d </em> L_z}{\vec{N} \cdot {\vec{L}}} &amp; 1 \ \end{bmatrix} \end{equation}<br>$$</p>
+<p>&#x5373;&#xFF1A;</p>
+<p>$$<br>\begin{equation} \begin{aligned} \vec{M} &amp;= \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_x </em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z </em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{d </em> L_x}{\vec{N} \cdot {\vec{L}}} &amp; -\frac{d <em> L_y}{\vec{N} \cdot {\vec{L}}} &amp; -\frac{d </em> L_z}{\vec{N} \cdot {\vec{L}}} &amp; 1 \ \end{bmatrix} \ &amp;= \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} - \frac{1}{\vec{N} \cdot \vec{L}} <em> \begin{bmatrix} N_x </em> L_x &amp; N_x <em> L_y &amp; N_x </em> L_z &amp; 0 \ N_y <em> L_x &amp; N_y </em> L_y &amp; N_y <em> L_z &amp; 0 \ N_z </em> L_x &amp; N_z <em> L_y &amp; N_z </em> L_z &amp; 0 \ d <em> L_x &amp; d </em> L_y &amp; d * L_z &amp; 0 \ \end{bmatrix} \end{aligned} \end{equation}<br>$$</p>
+<h3 id="UE&#x5B9E;&#x73B0;"><a href="#UE&#x5B9E;&#x73B0;" class="headerlink" title="UE&#x5B9E;&#x73B0;"></a>UE&#x5B9E;&#x73B0;</h3><h4 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h4><p>&#x501F;&#x52A9;VF&#x7684;&#x8BA1;&#x7B97;&#x63A5;&#x53E3;&#x83B7;&#x53D6;&#x9876;&#x70B9;&#x7684;WorldSpace&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x6295;&#x5F71;&#x77E9;&#x9635;&#xFF0C;&#x5C06;&#x5176;&#x6295;&#x5F71;&#x5230;&#x6307;&#x5B9A;&#x5E73;&#x9762;&#xFF0C;&#x518D;&#x505A;&#x900F;&#x89C6;&#x6295;&#x5F71;</p>
+<p>&#x5728;&#x6B64;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;VF&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;WorldSpace&#x662F;&#x7ECF;&#x8FC7;&#x9884;&#x504F;&#x79FB;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x51CF;&#x53BB;&#x504F;&#x79FB;&#x624D;&#x80FD;&#x5F97;&#x5230;&#x771F;&#x6B63;&#x7684;&#x6295;&#x5F71;&#x77E9;&#x9635;&#xFF1A;</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;Common.ush&quot;</span><br><span class="line"></span><br><span class="line">#include &quot;/Engine/Generated/Material.ush&quot;</span><br><span class="line">#include &quot;/Engine/Generated/VertexFactory.ush&quot;</span><br><span class="line"></span><br><span class="line">float4x4 ProjectMatrix;</span><br><span class="line"></span><br><span class="line">void MainVS( FVertexFactoryInput Input,</span><br><span class="line">                #if MOBILE_MULTI_VIEW</span><br><span class="line">                        , in uint ViewId : SV_ViewID</span><br><span class="line">                #endif</span><br><span class="line">                     out float4 OutPosition : SV_POSITION)</span><br><span class="line">{</span><br><span class="line">#if MOBILE_MULTI_VIEW</span><br><span class="line">    const int MultiViewId = int(ViewId);</span><br><span class="line">    ResolvedView = ResolveView(uint(MultiViewId));</span><br><span class="line">#else</span><br><span class="line">    ResolvedView = ResolveView();</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">    // ----------------------------------VertexFactory Require----------------------------------------------------</span><br><span class="line">    FVertexFactoryIntermediates VFIntermediates = GetVertexFactoryIntermediates(Input);</span><br><span class="line">    float4 WorldPositionExcludingWPO = VertexFactoryGetWorldPosition(Input, VFIntermediates);</span><br><span class="line">    float4 WorldPosition = WorldPositionExcludingWPO;</span><br><span class="line"></span><br><span class="line">    half3x3 TangentToLocal = VertexFactoryGetTangentToLocal(Input, VFIntermediates);        </span><br><span class="line">    FMaterialVertexParameters VertexParameters = GetMaterialVertexParameters(Input, VFIntermediates, WorldPosition.xyz, TangentToLocal);</span><br><span class="line"></span><br><span class="line">    WorldPosition.xyz += GetMaterialWorldPositionOffset(VertexParameters);</span><br><span class="line">    // ----------------------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">    // Project To Shadow Plane.</span><br><span class="line">    WorldPosition.xyz -= ResolvedView.PreViewTranslation.xyz;</span><br><span class="line">    WorldPosition = mul(WorldPosition, ProjectMatrix);</span><br><span class="line">    WorldPosition.xyz += ResolvedView.PreViewTranslation.xyz;</span><br><span class="line"></span><br><span class="line">    OutPosition = mul(WorldPosition, ResolvedView.TranslatedWorldToClip);</span><br><span class="line">        </span><br><span class="line">#if !OUTPUT_MOBILE_HDR &amp;&amp; (COMPILER_GLSL_ES2 || COMPILER_GLSL_ES3_1 || COMPILER_GLSL_ES3_1_EXT)</span><br><span class="line">    OutPosition.y *= -1;</span><br><span class="line">#endif</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">float4 ShadowColor;</span><br><span class="line"></span><br><span class="line">void MainPS(in  float4 svPos : SV_POSITION, </span><br><span class="line">                    out float4 outColor : SV_Target0)</span><br><span class="line">{</span><br><span class="line">    outColor = ShadowColor;</span><br><span class="line">}</span></pre></td></tr></table></figure>
+
+<h4 id="Shader-C-Implement"><a href="#Shader-C-Implement" class="headerlink" title="Shader C++ Implement"></a>Shader C++ Implement</h4><p>&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;shader&#x662F;&#x7528;&#x4E8E;Mesh&#x4E0A;&#x7684;&#xFF0C;&#x56E0;&#x6B64;shader&#x9700;&#x8981;&#x7EE7;&#x627F;&#x81EA;MeshMaterialShader</p>
+<p>&#x5BF9;&#x4E8E;MeshMaterialShader&#xFF0C;UE4&#x6709;&#x51E0;&#x4E2A;&#x9690;&#x5F0F;&#x9650;&#x5236;&#xFF1A;</p>
+<ul>
+<li>&#x5FC5;&#x987B;&#x7ED1;&#x5B9A;PassUniformBuffer</li>
+<li>&#x53C2;&#x6570;&#x4F20;&#x9012;&#x9700;&#x901A;&#x8FC7;FMeshMaterialShaderElementData&#x7684;&#x5B50;&#x7C7B;&#x83B7;&#x53D6;</li>
+</ul>
+<p>&#x5728;&#x4E0A;&#x8FF0;Shader&#x4E2D;&#xFF0C;VS&#x9700;&#x8981;&#x53C2;&#x6570;&#xFF1A;ProjectMaterix&#xFF0C;PS&#x9700;&#x8981;&#x53C2;&#x6570;&#xFF1A;ShadowColor&#xFF0C;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#x7ED3;&#x6784;&#xFF1A;</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FPlaneShadowElementData</span> :</span> <span class="hljs-keyword">public</span> FMeshMaterialShaderElementData</span><br><span class="line">{</span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    FMatrix ProjectMatrix;</span><br><span class="line">    FLinearColor ShadowColor;</span><br><span class="line">};</span></pre></td></tr></table></figure>
+
+<p>&#x8BE5;shader&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x6BCF;&#x4E2A;&#x6750;&#x8D28;&#x90FD;&#x7F16;&#x8BD1;&#x4E00;&#x4EFD;&#x53D8;&#x79CD;&#xFF0C;&#x6211;&#x4EEC;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;DefaultPlaneShadowMaterial&#x3002;&#x4EC5;&#x5728;&#x8BE5;&#x6750;&#x8D28;&#x4E0A;&#x7F16;&#x8BD1;&#x53D8;&#x79CD;</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">ShouldCompilePlaneShadowPermutation</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FMeshMaterialShaderPermutationParameters&amp; Parameters)</span></span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> VarXGAllowPlaneShadow = IConsoleManager::Get().FindTConsoleVariableDataInt(TEXT(<span class="hljs-string">&quot;r.XGAllowPlaneShadow&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> IsMobilePlatform(Parameters.Platform)</span><br><span class="line">            &amp;&amp; UMaterial::IsDefaultPlaneShadowMaterial(Parameters.Material)</span><br><span class="line">            &amp;&amp; VarXGAllowPlaneShadow-&gt;GetValueOnAnyThread() != <span class="hljs-number">0</span></span><br><span class="line">            &amp;&amp; Parameters.VertexFactoryType-&gt;IsUsedWithMaterials();</span><br><span class="line">}</span></pre></td></tr></table></figure>
+
+<p>&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;Shader&#x5BF9;&#x5E94;&#x7684;C++&#x7C7B;&#xFF1A;</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">template</span>&lt;int32 OutputFormat&gt;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FPlaneShadowVS</span> :</span> <span class="hljs-keyword">public</span> FMeshMaterialShader</span><br><span class="line">{</span><br><span class="line">    DECLARE_SHADER_TYPE(FPlaneShadowVS, MeshMaterial)</span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    FPlaneShadowVS() {}</span><br><span class="line">    FPlaneShadowVS(<span class="hljs-keyword">const</span> ShaderMetaType::CompiledShaderInitializerType&amp; Initializer)</span><br><span class="line">            : FMeshMaterialShader(Initializer)</span><br><span class="line">    {</span><br><span class="line">        ProjectMatrix.Bind(Initializer.ParameterMap, TEXT(<span class="hljs-string">&quot;ProjectMatrix&quot;</span>));</span><br><span class="line">        PassUniformBuffer.Bind(Initializer.ParameterMap, TEXT(<span class="hljs-string">&quot;NotUsed&quot;</span>));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">ShouldCompilePermutation</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FMeshMaterialShaderPermutationParameters&amp; Parameters)</span></span></span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">return</span> ShouldCompilePlaneShadowPermutation(Parameters);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ModifyCompilationEnvironment</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FMaterialShaderPermutationParameters&amp; Parameters, FShaderCompilerEnvironment&amp; OutEnvironment)</span></span></span><br><span class="line">    {</span><br><span class="line">        FMeshMaterialShader::ModifyCompilationEnvironment(Parameters, OutEnvironment);</span><br><span class="line"></span><br><span class="line">        OutEnvironment.SetDefine(TEXT(<span class="hljs-string">&quot;OUTPUT_MOBILE_HDR&quot;</span>), OutputFormat == <span class="hljs-number">1</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Serialize</span><span class="hljs-params">(FArchive&amp; Ar)</span> <span class="hljs-keyword">override</span></span></span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">bool</span> bShaderHasOutdatedParameters = FMeshMaterialShader::Serialize(Ar);</span><br><span class="line">        Ar &lt;&lt; ProjectMatrix;</span><br><span class="line">        <span class="hljs-keyword">return</span> bShaderHasOutdatedParameters;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GetShaderBindings</span><span class="hljs-params">(</span></span></span><br><span class="line">            <span class="hljs-keyword">const</span> FScene* Scene,</span><br><span class="line">            ERHIFeatureLevel::Type FeatureLevel,</span><br><span class="line">            <span class="hljs-keyword">const</span> FPrimitiveSceneProxy* PrimitiveSceneProxy,</span><br><span class="line">            <span class="hljs-keyword">const</span> FMaterialRenderProxy&amp; MaterialRenderProxy,</span><br><span class="line">            <span class="hljs-keyword">const</span> FMaterial&amp; Material,</span><br><span class="line">            <span class="hljs-keyword">const</span> FMeshPassProcessorRenderState&amp; DrawRenderState,</span><br><span class="line">            <span class="hljs-keyword">const</span> FPlaneShadowElementData&amp; ShaderElementData,</span><br><span class="line">            FMeshDrawSingleShaderBindings&amp; ShaderBindings) <span class="hljs-keyword">const</span></span><br><span class="line">    {</span><br><span class="line">            FMeshMaterialShader::GetShaderBindings(Scene, FeatureLevel, PrimitiveSceneProxy, MaterialRenderProxy, Material, DrawRenderState, ShaderElementData, ShaderBindings);</span><br><span class="line">            ShaderBindings.Add(ProjectMatrix, ShaderElementData.ProjectMatrix);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">private</span>:</span><br><span class="line">    FShaderParameter ProjectMatrix;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FPlaneShadowPS</span> :</span> <span class="hljs-keyword">public</span> FMeshMaterialShader</span><br><span class="line">{</span><br><span class="line">    DECLARE_SHADER_TYPE(FPlaneShadowPS, MeshMaterial)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    FPlaneShadowPS() {}</span><br><span class="line">    </span><br><span class="line">    FPlaneShadowPS(<span class="hljs-keyword">const</span> ShaderMetaType::CompiledShaderInitializerType&amp; Initializer)</span><br><span class="line">            : FMeshMaterialShader(Initializer)</span><br><span class="line">    {</span><br><span class="line">        ShadowColor.Bind(Initializer.ParameterMap, TEXT(<span class="hljs-string">&quot;ShadowColor&quot;</span>));</span><br><span class="line">        PassUniformBuffer.Bind(Initializer.ParameterMap, TEXT(<span class="hljs-string">&quot;NotUsed&quot;</span>));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">ShouldCompilePermutation</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FMeshMaterialShaderPermutationParameters&amp; Parameters)</span></span></span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">return</span> ShouldCompilePlaneShadowPermutation(Parameters) &amp;&amp; Parameters.PermutationId == <span class="hljs-number">0</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ModifyCompilationEnvironment</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FMaterialShaderPermutationParameters&amp; Parameters, FShaderCompilerEnvironment&amp; OutEnvironment)</span></span></span><br><span class="line">    {</span><br><span class="line">        FMeshMaterialShader::ModifyCompilationEnvironment(Parameters, OutEnvironment);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">Serialize</span><span class="hljs-params">(FArchive&amp; Ar)</span> <span class="hljs-keyword">override</span></span></span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">bool</span> bShaderHasOutdatedParameters = FMeshMaterialShader::Serialize(Ar);</span><br><span class="line">        Ar &lt;&lt; ShadowColor;</span><br><span class="line">        <span class="hljs-keyword">return</span> bShaderHasOutdatedParameters;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GetShaderBindings</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FScene* Scene,</span></span></span><br><span class="line">                           ERHIFeatureLevel::Type FeatureLevel,</span><br><span class="line">                           <span class="hljs-keyword">const</span> FPrimitiveSceneProxy* PrimitiveSceneProxy,</span><br><span class="line">                           <span class="hljs-keyword">const</span> FMaterialRenderProxy&amp; MaterialRenderProxy,</span><br><span class="line">                           <span class="hljs-keyword">const</span> FMaterial&amp; Material,</span><br><span class="line">                           <span class="hljs-keyword">const</span> FMeshPassProcessorRenderState&amp; DrawRenderState,</span><br><span class="line">                           <span class="hljs-keyword">const</span> FPlaneShadowElementData&amp; ShaderElementData,</span><br><span class="line">                           FMeshDrawSingleShaderBindings&amp; ShaderBindings) <span class="hljs-keyword">const</span></span><br><span class="line">    {</span><br><span class="line">        FMeshMaterialShader::GetShaderBindings(Scene, FeatureLevel, PrimitiveSceneProxy, MaterialRenderProxy, Material, DrawRenderState, ShaderElementData, ShaderBindings);</span><br><span class="line">    </span><br><span class="line">        ShaderBindings.Add(ShadowColor, ShaderElementData.ShadowColor);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">private</span>:</span><br><span class="line">    FShaderParameter ShadowColor;</span><br><span class="line">};</span></pre></td></tr></table></figure>
+
+<h4 id="&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x4FEE;&#x6539;"><a href="#&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x4FEE;&#x6539;" class="headerlink" title="&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x4FEE;&#x6539;"></a>&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x4FEE;&#x6539;</h4><p>  &#x9996;&#x5148;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x6295;&#x5F71;&#x52A8;&#x6001;&#x9634;&#x5F71;&#x7684;Mesh&#xFF0C;&#x90FD;&#x53EF;&#x80FD;&#x53D7;&#x591A;&#x76CF;&#x5149;&#x6E90;&#x6295;&#x5C04;&#x9634;&#x5F71;&#x3002;&#x56E0;&#x6B64;&#x9996;&#x5148;&#x653E;&#x5F03;&#x7C7B;&#x4F3C;&#x4E8E;MobileBasePass&#x7684;&#x5F62;&#x5F0F;&#x5B9A;&#x4E49;Processor&#xFF0C;&#x5176;&#x4F9D;&#x8D56;&#x4E8E;MainView&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x67D0;&#x4E9B;&#x89C6;&#x91CE;&#x5916;&#x4F46;&#x9700;&#x8981;&#x6295;&#x5C04;&#x9634;&#x5F71;&#x7684;&#x7269;&#x4F53;&#x5904;&#x7406;&#x4E0D;&#x5230;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x501F;&#x52A9;&#x539F;&#x6709;&#x7684;ProjectedShadowInfo&#xFF0C;&#x6BCF;&#x76CF;&#x6295;&#x5F71;&#x52A8;&#x6001;&#x9634;&#x5F71;&#x7684;&#x706F;&#x4E0E;&#x6BCF;&#x4E2A;&#x89D2;&#x8272;&#x90FD;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;ProjectedShadowInfo&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x53EA;&#x80FD;&#x52A8;&#x6001;&#x6784;&#x5EFA;MeshBatch&#xFF0C;&#x4E0D;&#x80FD;&#x590D;&#x7528;MainView&#x7684;MeshBatch&#x3002;&#x901A;&#x8FC7;&#x52A8;&#x6001;&#x65B0;&#x5EFA;MeshProcessor&#x5B9E;&#x73B0;&#xFF1A;</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">FProjectedShadowInfo::SetMeshDrawCommandsForPlaneShadow</span><span class="hljs-params">(FSceneRenderer&amp; Renderer)</span></span></span><br><span class="line">{</span><br><span class="line">    QUICK_SCOPE_CYCLE_COUNTER(STAT_SetupMeshDrawCommandsForPlaneShadow);</span><br><span class="line"></span><br><span class="line">    FPlaneShadowPassMeshProcessor* MeshPassProcessor = <span class="hljs-keyword">new</span>(FMemStack::Get()) FPlaneShadowPassMeshProcessor(Renderer.Scene,</span><br><span class="line">                                                                                                           ShadowDepthView,</span><br><span class="line">                                                                                                           ShadowDepthView-&gt;ViewUniformBuffer,</span><br><span class="line">                                                                                                           <span class="hljs-literal">nullptr</span>,</span><br><span class="line">                                                                                                           LightSceneInfo-&gt;Proxy-&gt;GetModulatedShadowColor(),</span><br><span class="line">                                                                                                           GetGlobalShadowPlane(),</span><br><span class="line">                                                                                                           LightSceneInfo-&gt;Proxy-&gt;GetDirection());</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (Renderer.ShouldDumpMeshDrawCommandInstancingStats())</span><br><span class="line">    {</span><br><span class="line">        PlaneShadowPass.SetDumpInstancingStats(TEXT(<span class="hljs-string">&quot;PlaneShadow &quot;</span>));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> uint32 InstanceFactor = !GetShadowDepthType().bOnePassPointLightShadow || RHISupportsGeometryShaders(Renderer.Scene-&gt;GetShaderPlatform()) ? <span class="hljs-number">1</span> : <span class="hljs-number">6</span>;</span><br><span class="line"></span><br><span class="line">    PlaneShadowPass.DispatchPassSetup(Renderer.Scene,</span><br><span class="line">                                      *ShadowDepthView,</span><br><span class="line">                                      EMeshPass::Num,</span><br><span class="line">                                      FExclusiveDepthStencil::DepthNop_StencilWrite,</span><br><span class="line">                                      MeshPassProcessor,</span><br><span class="line">                                      DynamicSubjectMeshElements,</span><br><span class="line">                                      <span class="hljs-literal">nullptr</span>,</span><br><span class="line">                                      NumDynamicSubjectMeshElements * InstanceFactor,</span><br><span class="line">                                      SubjectMeshCommandBuildRequests,</span><br><span class="line">                                      NumSubjectMeshCommandBuildRequestElements * InstanceFactor,</span><br><span class="line">                                      PlaneShadowPassVisibleCommands);</span><br><span class="line"></span><br><span class="line">    Renderer.DispatchedShadowDepthPasses.Add(&amp;PlaneShadowPass);</span><br><span class="line">}</span></pre></td></tr></table></figure>
+
+<p><code>FPlaneShadowPassMeshProcessor</code>&#x7684;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;:</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FPlaneShadowPassMeshProcessor</span> :</span> <span class="hljs-keyword">public</span> FMeshPassProcessor</span><br><span class="line">{</span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    FPlaneShadowPassMeshProcessor(<span class="hljs-keyword">const</span> FScene* Scene,</span><br><span class="line">                                  <span class="hljs-keyword">const</span> FSceneView* InViewIfDynamicMeshCommand,</span><br><span class="line">                                  <span class="hljs-keyword">const</span> TUniformBufferRef&lt;FViewUniformShaderParameters&gt;&amp; InViewUniformBuffer,</span><br><span class="line">                                  FMeshPassDrawListContext* InDrawListContext,</span><br><span class="line">                                  <span class="hljs-keyword">const</span> FLinearColor ShadowColor,</span><br><span class="line">                                  <span class="hljs-keyword">const</span> FPlane&amp; ShadowPlane,</span><br><span class="line">                                  <span class="hljs-keyword">const</span> FVector&amp; LightDir);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddMeshBatch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FMeshBatch&amp; RESTRICT MeshBatch, </span></span></span><br><span class="line">                              uint64 BatchElementMask, </span><br><span class="line">                              <span class="hljs-keyword">const</span> FPrimitiveSceneProxy* RESTRICT PrimitiveSceneProxy, </span><br><span class="line">                              int32 StaticMeshId = <span class="hljs-number">-1</span>) <span class="hljs-keyword">override</span> <span class="hljs-keyword">final</span>;</span><br><span class="line"></span><br><span class="line">    FMeshPassProcessorRenderState PassDrawRenderState;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">private</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Process</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FMeshBatch&amp; RESTRICT MeshBatch,</span></span></span><br><span class="line">                 uint64 BatchElementMask,</span><br><span class="line">                 int32 StaticMeshId,</span><br><span class="line">                 <span class="hljs-keyword">const</span> FPrimitiveSceneProxy* RESTRICT PrimitiveSceneProxy,</span><br><span class="line">                 <span class="hljs-keyword">const</span> FMaterialRenderProxy* RESTRICT MaterialRenderProxy,</span><br><span class="line">                 <span class="hljs-keyword">const</span> FMaterial&amp; RESTRICT MaterialResource,</span><br><span class="line">                 ERasterizerFillMode MeshFillMode,</span><br><span class="line">                 ERasterizerCullMode MeshCullMode);</span><br><span class="line"></span><br><span class="line">    FLinearColor ShadowColor;</span><br><span class="line">    FMatrix ProjectMatrix;</span><br><span class="line">};</span></pre></td></tr></table></figure>
+
+<p>&#x9634;&#x5F71;&#x7684;&#x6E32;&#x67D3;&#x65B9;&#x5F0F;&#x91C7;&#x7528;<code>Additive</code>&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x4E0E;&#x4E4B;&#x524D;<code>ModulatedShadow</code>&#x7684;&#x65B9;&#x6848;&#x4E00;&#x81F4;&#x3002;&#x51CF;&#x5C11;&#x573A;&#x666F;&#x7684;&#x4FEE;&#x6539;</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PassDrawRenderState.SetBlendState(TStaticBlendState&lt;CW_RGB, BO_Add, BF_Zero, BF_SourceColor, BO_Add, BF_Zero, BF_One&gt;::GetRHI());</span></pre></td></tr></table></figure>
+
+<p>&#x6DF1;&#x5EA6;&#x5199;&#x5165;&#x53EF;&#x4EE5;&#x5173;&#x95ED;&#xFF0C;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;&#x7269;&#x4F53;&#x91CD;&#x53E0;&#x9020;&#x6210;&#x7684;&#x9634;&#x5F71;&#x52A0;&#x6DF1;&#xFF0C;&#x5F15;&#x5165;<code>Stencil</code>&#x907F;&#x514D;&#x4E8C;&#x6B21;&#x7740;&#x8272;&#xFF1A;</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PassDrawRenderState.SetDepthStencilState(TStaticDepthStencilState&lt;</span><br><span class="line">                                         <span class="hljs-literal">false</span>, CF_DepthNearOrEqual, </span><br><span class="line">                                         <span class="hljs-literal">true</span>, CF_NotEqual, SO_Keep, SO_Keep, SO_Invert,</span><br><span class="line">                                         <span class="hljs-literal">false</span>, CF_Never, SO_Keep, SO_Keep, SO_Keep,</span><br><span class="line">                                         STENCIL_SANDBOX_MASK, STENCIL_SANDBOX_MASK&gt;::GetRHI());</span><br><span class="line"> PassDrawRenderState.SetStencilRef(<span class="hljs-number">0xff</span>);</span></pre></td></tr></table></figure>
+
+<p>&#x5E76;&#x5728;<code>FPlaneShadowPassMeshProcessor</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x8BA1;&#x7B97;&#x597D;&#x6295;&#x5F71;&#x77E9;&#x9635;&#xFF1A;</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function">FMatrix <span class="hljs-title">CreatePlaneShadowProjectMatrix</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FVector LightDir, <span class="hljs-keyword">const</span> FPlane&amp; ShadowPlane)</span></span></span><br><span class="line">{</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> UE_BUILD_DEVELOPMENT</span></span><br><span class="line">    ensure(!FMath::IsNearlyZero(LightDir | ShadowPlane));</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></span><br><span class="line">    <span class="hljs-keyword">float</span> NDotL = LightDir | ShadowPlane;</span><br><span class="line">    FVector Offset = -ShadowPlane.W / (LightDir | ShadowPlane) * LightDir;</span><br><span class="line">    <span class="hljs-keyword">return</span> FMatrix(FPlane(<span class="hljs-number">1</span> - ShadowPlane.X * LightDir.X / NDotL, <span class="hljs-number">0</span> - ShadowPlane.X * LightDir.Y / NDotL, <span class="hljs-number">0</span> - ShadowPlane.X * LightDir.Z / NDotL, <span class="hljs-number">0</span>),</span><br><span class="line">                   FPlane(<span class="hljs-number">0</span> - ShadowPlane.Y * LightDir.X / NDotL, <span class="hljs-number">1</span> - ShadowPlane.Y * LightDir.Y / NDotL, <span class="hljs-number">0</span> - ShadowPlane.Y * LightDir.Z / NDotL, <span class="hljs-number">0</span>),</span><br><span class="line">                   FPlane(<span class="hljs-number">0</span> - ShadowPlane.Z * LightDir.X / NDotL, <span class="hljs-number">0</span> - ShadowPlane.Z * LightDir.Y / NDotL, <span class="hljs-number">1</span> - ShadowPlane.Z * LightDir.Z / NDotL, <span class="hljs-number">0</span>),</span><br><span class="line">                   FPlane(Offset.X, Offset.Y, Offset.Z, <span class="hljs-number">1</span>));</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">FPlaneShadowPassMeshProcessor::FPlaneShadowPassMeshProcessor(......)</span><br><span class="line">{</span><br><span class="line">    ......</span><br><span class="line">    <span class="hljs-keyword">this</span>-&gt;ShadowColor = ShadowColor;</span><br><span class="line">    <span class="hljs-keyword">this</span>-&gt;ProjectMaterial = CreatePlaneShadowProjectMatrix(LightDir, ShadowPlane);</span><br><span class="line">}</span></pre></td></tr></table></figure>
+
+<p><code>AddMeshBatch</code>&#x8D1F;&#x8D23;&#x8BA1;&#x7B97;<code>MeshFillMode</code>&#xFF0C;<code>MeshCullMode</code>&#x4EE5;&#x53CA;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x6750;&#x8D28;&#xFF1A;&#x8FD9;&#x91CC;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x6750;&#x8D28;</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">FPlaneShadowPassMeshProcessor::AddMeshBatch</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FMeshBatch&amp; RESTRICT MeshBatch, </span></span></span><br><span class="line">                                                 uint64 BatchElementMask, </span><br><span class="line">                                                 <span class="hljs-keyword">const</span> FPrimitiveSceneProxy* RESTRICT PrimitiveSceneProxy, </span><br><span class="line">                                                 int32 StaticMeshId)</span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">if</span> (MeshBatch.CastShadow)</span><br><span class="line">    {</span><br><span class="line">        <span class="hljs-keyword">const</span> FMaterialRenderProxy&amp; MaterialRenderProxy = *UMaterial::GetDefaultMaterial(MD_PlaneShadow)-&gt;GetRenderProxy();</span><br><span class="line">        <span class="hljs-keyword">const</span> FMaterial&amp; Material = *MaterialRenderProxy.GetMaterial(FeatureLevel);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">const</span> EBlendMode BlendMode   = Material.GetBlendMode();</span><br><span class="line">        <span class="hljs-keyword">const</span> <span class="hljs-keyword">bool</span> bShouldCastShadow = Material.ShouldCastDynamicShadows();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">const</span> ERasterizerFillMode MeshFillMode = ComputeMeshFillMode(MeshBatch, Material);</span><br><span class="line">        ERasterizerCullMode FinalCullMode;</span><br><span class="line">        {</span><br><span class="line">            <span class="hljs-keyword">const</span> ERasterizerCullMode MeshCullMode = ComputeMeshCullMode(MeshBatch, Material);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">const</span> <span class="hljs-keyword">bool</span> bTwoSided = Material.IsTwoSided() || PrimitiveSceneProxy-&gt;CastsShadowAsTwoSided();</span><br><span class="line">            <span class="hljs-comment">// Invert culling order when mobile HDR == false.</span></span><br><span class="line">            <span class="hljs-keyword">static</span> <span class="hljs-keyword">auto</span>* MobileHDRCvar = IConsoleManager::Get().FindTConsoleVariableDataInt(TEXT(<span class="hljs-string">&quot;r.MobileHDR&quot;</span>));</span><br><span class="line">            check(MobileHDRCvar);</span><br><span class="line">            <span class="hljs-keyword">const</span> <span class="hljs-keyword">bool</span> bReverseCullMode = (RHINeedsToSwitchVerticalAxis(GShaderPlatformForFeatureLevel[FeatureLevel]) &amp;&amp; MobileHDRCvar-&gt;GetValueOnAnyThread() == <span class="hljs-number">0</span>);</span><br><span class="line">            FinalCullMode = bTwoSided ? CM_None : bReverseCullMode ? InverseCullMode(MeshCullMode) : MeshCullMode;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (bShouldCastShadow</span><br><span class="line">            &amp;&amp; ShouldIncludeDomainInMeshPass(Material.GetMaterialDomain())</span><br><span class="line">            &amp;&amp; ShouldIncludeMaterialInDefaultOpaquePass(Material))</span><br><span class="line">        {</span><br><span class="line">            Process(MeshBatch, BatchElementMask, StaticMeshId, PrimitiveSceneProxy, &amp;MaterialRenderProxy, Material, MeshFillMode, FinalCullMode);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span></pre></td></tr></table></figure>
+
+<p>&#x5728;<code>Process</code>&#x4E2D;&#x6700;&#x7EC8;&#x6784;&#x5EFA;&#x51FA;<code>MeshDrawCommand</code>&#xFF0C;&#x7528;&#x4E8E;&#x540E;&#x7EED;&#x6E32;&#x67D3;:</p>
+<figure class="highlight C++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">FPlaneShadowPassMeshProcessor::Process</span><span class="hljs-params">(<span class="hljs-keyword">const</span> FMeshBatch&amp; RESTRICT MeshBatch, </span></span></span><br><span class="line">                                            uint64 BatchElementMask, </span><br><span class="line">                                            int32 StaticMeshId, </span><br><span class="line">                                            <span class="hljs-keyword">const</span> FPrimitiveSceneProxy* RESTRICT PrimitiveSceneProxy, </span><br><span class="line">                                            <span class="hljs-keyword">const</span> FMaterialRenderProxy* RESTRICT MaterialRenderProxy, </span><br><span class="line">                                            <span class="hljs-keyword">const</span> FMaterial&amp; RESTRICT MaterialResource, </span><br><span class="line">                                            ERasterizerFillMode MeshFillMode, </span><br><span class="line">                                            ERasterizerCullMode MeshCullMode)</span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">const</span> FVertexFactory* VertexFactory = MeshBatch.VertexFactory;</span><br><span class="line">    </span><br><span class="line">    FPlaneShadowElementData ElementData;</span><br><span class="line">    ElementData.InitializeMeshMaterialData(ViewIfDynamicMeshCommand, PrimitiveSceneProxy, MeshBatch, StaticMeshId, <span class="hljs-literal">false</span>);</span><br><span class="line">    ElementData.ShadowColor   = ShadowColor;</span><br><span class="line">    ElementData.ProjectMatrix = ProjectMatrix;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SELECT_PLANESHADOW_SHADER(shaderType)\</span></span><br><span class="line">{\</span><br><span class="line">	TMeshProcessorShaders&lt;shaderType, FBaseHS, FBaseDS, FPlaneShadowPS&gt; PlaneShadowPassShaders;\</span><br><span class="line">    \</span><br><span class="line">    PlaneShadowPassShaders.VertexShader = MaterialResource.GetShader&lt;shaderType&gt;(VertexFactory-&gt;GetType());\</span><br><span class="line">    PlaneShadowPassShaders.PixelShader = MaterialResource.GetShader&lt;FPlaneShadowPS&gt;(VertexFactory-&gt;GetType());\</span><br><span class="line">    \</span><br><span class="line">    <span class="hljs-keyword">const</span> FMeshDrawCommandSortKey SortKey = CalculateMeshStaticSortKey(PlaneShadowPassShaders.VertexShader, PlaneShadowPassShaders.PixelShader);\</span><br><span class="line">    \</span><br><span class="line">    BuildMeshDrawCommands(MeshBatch,\</span><br><span class="line">                BatchElementMask,\</span><br><span class="line">                PrimitiveSceneProxy,\</span><br><span class="line">                *MaterialRenderProxy,\</span><br><span class="line">                MaterialResource,\</span><br><span class="line">                PassDrawRenderState,\</span><br><span class="line">                PlaneShadowPassShaders,\</span><br><span class="line">                MeshFillMode,\</span><br><span class="line">                MeshCullMode,\</span><br><span class="line">                SortKey,\</span><br><span class="line">                EMeshPassFeatures::Default,\</span><br><span class="line">                ElementData);\</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (IsMobileHDR())</span><br><span class="line">        SELECT_PLANESHADOW_SHADER(FPlaneShadowVS_HDR)</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        SELECT_PLANESHADOW_SHADER(FPlaneShadowVS_LDR)</span><br><span class="line">        </span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">undef</span> SELECT_PLANESHADOW_SHADER</span></span><br><span class="line"></span><br><span class="line">}</span></pre></td></tr></table></figure>
+
+<h2 id="Capsule-Shadow"><a href="#Capsule-Shadow" class="headerlink" title="Capsule Shadow"></a>Capsule Shadow</h2><h2 id="Contact-Shadow"><a href="#Contact-Shadow" class="headerlink" title="Contact Shadow"></a>Contact Shadow</h2><h2 id="Virtual-Shadow-Map"><a href="#Virtual-Shadow-Map" class="headerlink" title="Virtual Shadow Map"></a>Virtual Shadow Map</h2><h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><p><a href="https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping" target="_blank" rel="noopener">https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/370951892" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/370951892</a></p>
+<p><a href="https://www.cnblogs.com/KillerAery/p/15201310.html#percentage-closer-filteringpcf" target="_blank" rel="noopener">https://www.cnblogs.com/KillerAery/p/15201310.html#percentage-closer-filteringpcf</a></p>
+<p><a href="https://microsoft.github.io/DirectX-Specs/d3d/archive/D3D11_3_FunctionalSpec.htm#inst_GATHER4" target="_blank" rel="noopener">https://microsoft.github.io/DirectX-Specs/d3d/archive/D3D11_3_FunctionalSpec.htm#inst_GATHER4</a></p>
+<p><a href="https://www.flyandnotdown.com/post/3f3b31e8-f589-4e02-9b28-2c3c19f6f79b" target="_blank" rel="noopener">https://www.flyandnotdown.com/post/3f3b31e8-f589-4e02-9b28-2c3c19f6f79b</a></p>
+
+        
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Radiometry/">Radiometry</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/VPS-SSH-Git-Config/">VPS SSH Git Config</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://lonelywaiting.github.io/Shadow/';
+        this.page.identifier = 'Shadow/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'lonelywaiting' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer" id="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2025 Liuteng&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/lonelyWaiting">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+<div id="fast-scroll">
+    <a href="#">
+        <button id="scroll-to-top" class="fast-btn btn-top" aria-label="Scroll to top" style="right: 67.5px; bottom: 120px; display: inline-block;">
+            <i class="fas fa-arrow-up">
+        </i></button>
+    </a>
+    <a href="#footer">
+        <button id="scroll-to-down" class="fast-btn btn-down" aria-label="Scroll to down" style="right: 67.5px; bottom: 60px; display: inline-block;">
+            <i class="fas fa-arrow-down">
+        </i></button>
+    </a>
+</div>
+
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("default");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #fff;
+            background: rgba(50, 115, 220, 0.15);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            padding: 2px 12px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .hljs .clipboard-btn:hover {
+            color: #23272e;
+            background: #ffd43b;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+          var btn = e.trigger;
+          var oldText = btn.innerHTML;
+          btn.innerHTML = 'Copied!';
+          btn.disabled = true;
+          setTimeout(function() {
+            btn.innerHTML = oldText;
+            btn.disabled = false;
+          }, 1000);
+        })
+      })
+    </script>
+
+    
+    
+
+    
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    
+
+
+<script src="/js/script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('figure.highlight, .highlight').forEach(block => {
+    if (!block.querySelector('.carbon-dots')) {
+      const dots = document.createElement('div');
+      dots.className = 'carbon-dots';
+      dots.innerHTML = '<span class="red"></span><span class="yellow"></span><span class="green"></span>';
+      block.insertBefore(dots, block.firstChild);
+    }
+  });
+});
+</script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
