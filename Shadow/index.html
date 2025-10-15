@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/CSMDistribution.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/CSMRadius.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/CSMRadiusVisualize.png">
-<meta property="og:updated_time" content="2025-10-15T02:21:48.419Z">
+<meta property="og:updated_time" content="2025-10-15T02:41:03.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lonelyWaiting">
 <meta name="twitter:description" content="Shadow&amp;#x57FA;&amp;#x672C;&amp;#x5B9E;&amp;#x73B0;&amp;#x901A;&amp;#x8FC7;&amp;#x4ECE;&amp;#x706F;&amp;#x5149;&amp;#x89C6;&amp;#x89D2;&amp;#x6E32;&amp;#x67D3;&amp;#x573A;&amp;#x666F;&amp;#x751F;&amp;#x6210;&amp;#x6DF1;&amp;#x5EA6;&amp;#x56FE;(ShadowMap)&amp;#xFF0C;&amp;#x6E32;&amp;#x67D3">
@@ -120,13 +120,13 @@
         
         <div class="navbar-menu navbar-end">
             
-            <a class="navbar-item search" title="Search" href="javascript:;">
+            <a class="navbar-item search" title="搜索" href="javascript:;">
                 <i class="fas fa-search"></i>
             </a>
             
             <!-- 
             <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Table of Contents">
+                <a class="navbar-item" title="目录">
                     <i class="fa fa-list"></i>
                 </a>
                 <div class="navbar-dropdown is-right">
@@ -258,7 +258,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-10-15T02:21:48.419Z" itemprop="datePublished">Oct 15 2025</time>
+                <time datetime="2025-10-15T02:41:03.031Z" itemprop="datePublished">Oct 15 2025</time>
             
         </span>
         
@@ -266,7 +266,7 @@
         <span class="column is-narrow">
             
             
-            32 minutes read (About 4783 words)
+            32 minutes 读完 (约 4783 字)
         </span>
         
     </div>
@@ -276,8 +276,8 @@
             
     <div class="toc-container">
         <div class="toc-header">
-            <span class="toc-title">Contents</span>
-            <button class="toc-toggle" onclick="toggleToc()" title="Table of Contents">
+            <span class="toc-title">目录</span>
+            <button class="toc-toggle" onclick="toggleToc()" title="目录">
                 <i class="fas fa-chevron-left"></i>
             </button>
         </div>
@@ -285,7 +285,7 @@
             <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shadow"><span class="toc-number">1.</span> <span class="toc-text">Shadow</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本实现"><span class="toc-number">1.1.</span> <span class="toc-text">基本实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bias"><span class="toc-number">1.1.1.</span> <span class="toc-text">Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-Bias"><span class="toc-number">1.1.2.</span> <span class="toc-text">Depth Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slope-Scale-Depth-Bias"><span class="toc-number">1.1.3.</span> <span class="toc-text">Slope Scale Depth Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normal-Bias"><span class="toc-number">1.1.4.</span> <span class="toc-text">Normal Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Caster-Bias-amp-Receiver-Bias"><span class="toc-number">1.1.5.</span> <span class="toc-text">Caster Bias &amp; Receiver Bias</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PCF"><span class="toc-number">1.2.</span> <span class="toc-text">PCF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#连续Tent-Filter"><span class="toc-number">1.2.1.</span> <span class="toc-text">连续Tent Filter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PCSS"><span class="toc-number">1.3.</span> <span class="toc-text">PCSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSM"><span class="toc-number">1.4.</span> <span class="toc-text">CSM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#投影半径"><span class="toc-number">1.4.1.</span> <span class="toc-text">投影半径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bias-1"><span class="toc-number">1.4.2.</span> <span class="toc-text">Bias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隔帧更新"><span class="toc-number">1.4.3.</span> <span class="toc-text">隔帧更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scrolling"><span class="toc-number">1.4.4.</span> <span class="toc-text">Scrolling</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Variance-Shadow-Map"><span class="toc-number">1.5.</span> <span class="toc-text">Variance Shadow Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSM"><span class="toc-number">1.6.</span> <span class="toc-text">RSM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowVolume"><span class="toc-number">1.7.</span> <span class="toc-text">ShadowVolume</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PlaneShadow"><span class="toc-number">1.8.</span> <span class="toc-text">PlaneShadow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#公式推导"><span class="toc-number">1.8.1.</span> <span class="toc-text">公式推导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UE实现"><span class="toc-number">1.8.2.</span> <span class="toc-text">UE实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Shader"><span class="toc-number">1.8.2.1.</span> <span class="toc-text">Shader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shader-C-Implement"><span class="toc-number">1.8.2.2.</span> <span class="toc-text">Shader C++ Implement</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渲染管线修改"><span class="toc-number">1.8.2.3.</span> <span class="toc-text">渲染管线修改</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Capsule-Shadow"><span class="toc-number">1.9.</span> <span class="toc-text">Capsule Shadow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contact-Shadow"><span class="toc-number">1.10.</span> <span class="toc-text">Contact Shadow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Virtual-Shadow-Map"><span class="toc-number">1.11.</span> <span class="toc-text">Virtual Shadow Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ref"><span class="toc-number">1.12.</span> <span class="toc-text">Ref</span></a></li></ol></li></ol>
         </div>
     </div>
-    <button class="toc-expand" onclick="toggleToc()" title="Table of Contents">
+    <button class="toc-expand" onclick="toggleToc()" title="目录">
         <i class="fas fa-chevron-right"></i>
     </button>
 
@@ -472,7 +472,7 @@
 
 
 <div class="comments">
-    <h3 class="title is-4">Comments</h3>
+    <h3 class="title is-4">评论</h3>
     
 <script>
     var disqus_config = function () {
@@ -717,7 +717,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站内搜索">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -729,11 +729,11 @@ document.addEventListener('DOMContentLoaded', function() {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };
