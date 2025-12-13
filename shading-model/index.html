@@ -16,22 +16,22 @@
 
 
 
-    <meta name="description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$">
+    <meta name="description" content="Lambert Model">
 <meta name="keywords" content="Rendering">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shading model">
 <meta property="og:url" content="http://lonelywaiting.github.io/shading-model/index.html">
 <meta property="og:site_name" content="lonelyWaiting">
-<meta property="og:description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$">
+<meta property="og:description" content="Lambert Model">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/DiffuseModel.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/solid_angle.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/Phong.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/Blinn-Phong.png">
-<meta property="og:updated_time" content="2025-12-13T11:02:07.246Z">
+<meta property="og:updated_time" content="2025-12-13T13:05:35.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shading model">
-<meta name="twitter:description" content="Lambert Model$$I_o = D * I_i\cos(\theta)$$ $$D  = \frac{\rho_d}{\pi}$$">
+<meta name="twitter:description" content="Lambert Model">
 <meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/shadingModel/DiffuseModel.png">
 
 
@@ -164,7 +164,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-12-13T11:02:07.246Z" itemprop="datePublished">Dec 13 2025</time>
+                <time datetime="2025-12-13T13:05:35.355Z" itemprop="datePublished">Dec 13 2025</time>
             
         </span>
         
@@ -200,25 +200,41 @@
         <i class="fas fa-chevron-right"></i>
     </button>
 
-            <h3 id="Lambert-Model"><a href="#Lambert-Model" class="headerlink" title="Lambert Model"></a>Lambert Model</h3><p>$$I_o = D * I_i\cos(\theta)$$</p>
-<p>$$D  = \frac{\rho_d}{\pi}$$<br><a id="more"></a></p>
-<p>$\rho_d$&#x8868;&#x793A;&#x8868;&#x9762;&#x7684;&#x53CD;&#x5C04;&#x7387;&#xFF1A;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5165;&#x5C04;&#x5149;&#x80FD;&#x91CF;&#x5728;&#x8868;&#x9762;&#x88AB;&#x53CD;&#x5C04;&#x7684;&#x6BD4;&#x4F8B;&#x3002;&#x8303;&#x56F4;&#x5728;[0 , 1]</p>
-<p>$\theta$&#x4E3A;&#x5165;&#x5C04;&#x5149;&#x7EBF;$L$&#x4E0E;&#x6CD5;&#x7EBF;$n$&#x7684;&#x5939;&#x89D2;</p>
-<p><img src="/resources/images/shadingModel/DiffuseModel.png" alt="Lambert"></p>
-<p>Lambert Model&#x662F;&#x6F2B;&#x53CD;&#x5C04;&#x6A21;&#x578B;&#xFF0C;&#x5728;&#x4EFB;&#x4F55;&#x51FA;&#x5C04;&#x65B9;&#x5411;&#x7684;&#x5149;&#x80FD;&#x90FD;&#x662F;&#x4E00;&#x6837;</p>
-<p>&#x56E0;&#x6B64;</p>
-<p>$$I_o = \frac{\rho_d}{\pi}I_i\cos(\theta)$$</p>
+            <h3 id="Lambert-Model"><a href="#Lambert-Model" class="headerlink" title="Lambert Model"></a>Lambert Model</h3>$$I_o = D * I_i\cos(\theta)
+
+$$
+$$D  = \frac{\rho_d}{\pi}
+
+$$
+<a id="more"></a>
+$\rho_d$&#x8868;&#x793A;&#x8868;&#x9762;&#x7684;&#x53CD;&#x5C04;&#x7387;&#xFF1A;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5165;&#x5C04;&#x5149;&#x80FD;&#x91CF;&#x5728;&#x8868;&#x9762;&#x88AB;&#x53CD;&#x5C04;&#x7684;&#x6BD4;&#x4F8B;&#x3002;&#x8303;&#x56F4;&#x5728;[0 , 1]<br><br>$\theta$&#x4E3A;&#x5165;&#x5C04;&#x5149;&#x7EBF;$L$&#x4E0E;&#x6CD5;&#x7EBF;$n$&#x7684;&#x5939;&#x89D2;<br><br><img src="/resources/images/shadingModel/DiffuseModel.png" alt="Lambert"><br><br>Lambert Model&#x662F;&#x6F2B;&#x53CD;&#x5C04;&#x6A21;&#x578B;&#xFF0C;&#x5728;&#x4EFB;&#x4F55;&#x51FA;&#x5C04;&#x65B9;&#x5411;&#x7684;&#x5149;&#x80FD;&#x90FD;&#x662F;&#x4E00;&#x6837;<br><br>&#x56E0;&#x6B64;<br><br>$$I_o = \frac{\rho_d}{\pi}I_i\cos(\theta)
+
+$$
 <p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5BF9;&#x6240;&#x6709;&#x7684;&#x51FA;&#x5C04;&#x5149;&#x8FDB;&#x884C;&#x79EF;&#x5206;&#xFF1A;</p>
-<p>$$I_{total-ouput} = \int_\Omega \frac{\rho_d}{\pi}I_i\cos(\theta)d\omega$$</p>
+$$I_{total-ouput} = \int_\Omega \frac{\rho_d}{\pi}I_i\cos(\theta)d\omega
+
+$$
 <p><img src="/resources/images/shadingModel/solid_angle.png" alt="solid angle"></p>
-<p>$$d\omega = \sin(\theta)d\theta d\varphi$$</p>
-<p>$$I_{total-ouput} = \int_0^{2\pi}d\varphi\int_0^{\frac{\pi}{2}}I_i\frac{\rho_d}{\pi}\cos(\theta)\sin(\theta)d\theta$$</p>
-<p>$$I_{total-ouput} = 2\pi\frac{\rho_d}{\pi}I_i\int_0^{\frac{\pi}{2}}\frac{\sin(2\theta)}{2}d\theta$$</p>
-<p>$$I_{total-ouput} = \rho_dI_i*(-\frac{\cos(2\theta)}{2})\mid_0^{\frac{\pi}{2}}$$</p>
-<p>$$I_{total-ouput} = \rho_dI_i$$</p>
+$$d\omega = \sin(\theta)d\theta d\varphi
+
+$$
+$$I_{total-ouput} = \int_0^{2\pi}d\varphi\int_0^{\frac{\pi}{2}}I_i\frac{\rho_d}{\pi}\cos(\theta)\sin(\theta)d\theta
+
+$$
+$$I_{total-ouput} = 2\pi\frac{\rho_d}{\pi}I_i\int_0^{\frac{\pi}{2}}\frac{\sin(2\theta)}{2}d\theta
+
+$$
+$$I_{total-ouput} = \rho_dI_i*(-\frac{\cos(2\theta)}{2})\mid_0^{\frac{\pi}{2}}
+
+$$
+$$I_{total-ouput} = \rho_dI_i
+
+$$
 <p>&#x4E0E;$\rho_d$&#x7684;&#x5B9A;&#x4E49;&#x4E00;&#x81F4;</p>
 <h3 id="Phong-Model"><a href="#Phong-Model" class="headerlink" title="Phong Model"></a>Phong Model</h3><p>&#x8BE5;&#x6A21;&#x578B;&#x662F;&#x4E2A;&#x7ECF;&#x9A8C;&#x6A21;&#x578B;<br><img src="/resources/images/shadingModel/Phong.png" alt="phong"></p>
-<p>$$I_o = k_a I_a + \sum_{m\in lights}(k_d(\overrightarrow{L_m}\cdot \overrightarrow{N})I_{m , d}) + \sum_{m\in lights}(k_s(\overrightarrow{R_m} \cdot \overrightarrow{V})^{\alpha}I_{m , s})$$</p>
+$$I_o = k_a I_a + \sum_{m\in lights}(k_d(\overrightarrow{L_m}\cdot \overrightarrow{N})I_{m , d}) + \sum_{m\in lights}(k_s(\overrightarrow{R_m} \cdot \overrightarrow{V})^{\alpha}I_{m , s})
+
+$$
 <ul>
 <li>$k_a$&#xFF1A;&#x73AF;&#x5883;&#x5149;&#x53CD;&#x5C04;&#x7387;</li>
 <li>$k_d$&#xFF1A;&#x6F2B;&#x53CD;&#x5C04;&#x5149;&#x53CD;&#x5C04;&#x7387;</li>
@@ -234,24 +250,39 @@
 </ul>
 <p>&#x8BE5;&#x6A21;&#x578B;&#x7531;&#x4E09;&#x4E2A;&#x5206;&#x91CF;&#x7EC4;&#x6210;&#xFF1A;&#x73AF;&#x5883;&#x5149;&#xFF0C;&#x6F2B;&#x53CD;&#x5C04;&#x5149;&#xFF0C;&#x955C;&#x9762;&#x5149;&#x3002;</p>
 <p>&#x73AF;&#x5883;&#x5149;&#x90E8;&#x5206;&#xFF1A;</p>
-<p>$$I_{o , a} = k_a I_a$$</p>
+$$I_{o , a} = k_a I_a
+
+$$
 <p>&#x6F2B;&#x53CD;&#x5C04;&#x90E8;&#x5206;&#xFF1A;</p>
-<p>$$I_{o , d} = \sum_{m\in lights}(k_d(\overrightarrow{L_m}\cdot \overrightarrow{N})I_{m , d})$$</p>
+$$I_{o , d} = \sum_{m\in lights}(k_d(\overrightarrow{L_m}\cdot \overrightarrow{N})I_{m , d})
+
+$$
 <p>&#x955C;&#x9762;&#x5149;&#x90E8;&#x5206;&#xFF1A;</p>
-<p>$$I_{o , s} = \sum_{m\in lights}(k_s(\overrightarrow{R_m}\cdot \overrightarrow{V})^{\alpha}I_{m , s})$$</p>
+$$I_{o , s} = \sum_{m\in lights}(k_s(\overrightarrow{R_m}\cdot \overrightarrow{V})^{\alpha}I_{m , s})
+
+$$
 <h3 id="Blinn-Phong-Model"><a href="#Blinn-Phong-Model" class="headerlink" title="Blinn-Phong Model"></a>Blinn-Phong Model</h3><p>&#x8BE5;&#x6A21;&#x578B;&#x5728;Phong Model&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6539;&#x8FDB;&#x4E86;&#x8BA1;&#x7B97;&#x65B9;&#x6CD5;</p>
 <p><img src="/resources/images/shadingModel/Blinn-Phong.png" alt="blinn phong"></p>
-<p>$$H = \frac{\overrightarrow{L} + \overrightarrow{V}}{\lVert \overrightarrow{L} + \overrightarrow{V} \rVert}$$</p>
+$$H = \frac{\overrightarrow{L} + \overrightarrow{V}}{\lVert \overrightarrow{L} + \overrightarrow{V} \rVert}
+
+$$
 <p>&#x4F7F;&#x7528;$\overrightarrow{N}\cdot \overrightarrow{H_m}$&#x4EE3;&#x66FF;$\overrightarrow{R_m}\cdot \overrightarrow{V}$</p>
 <p>&#x56E0;&#x4E3A;$\overrightarrow{N}\cdot \overrightarrow{H_m}$&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x8BA1;&#x7B97;&#x597D;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x52A0;&#x5FEB;&#x8BA1;&#x7B97;&#x3002;</p>
-<p>$$I_o = k_aI_a + \sum_{m \in lights}(k_d(\overrightarrow{L_m} \cdot \overrightarrow{N})I_{m , d}) + \sum_{m \in lights}(k_s(\overrightarrow{N}\cdot \overrightarrow{H_m})^{\alpha}I_{m , s})$$</p>
-<p>&#x73AF;&#x5883;&#x5149;&#x5206;&#x91CF;&#xFF1A;</p>
-<p>$$I_{o , a} = k_a I_a$$</p>
-<p>&#x6F2B;&#x53CD;&#x5C04;&#x5206;&#x91CF;&#xFF1A;</p>
-<p>$$I_{o , d} = \sum_{m \in lights}(k_d(\overrightarrow{L_m} \cdot \overrightarrow{N})I_{m , d})$$</p>
-<p>&#x955C;&#x9762;&#x5149;&#x5206;&#x91CF;&#xFF1A;</p>
-<p>$$I_{o , s} = \sum_{m \in lights}(k_s(\overrightarrow{N}\cdot \overrightarrow{H_m})^{\alpha}I_{m , s})$$</p>
+$$I_o = k_aI_a + \sum_{m \in lights}(k_d(\overrightarrow{L_m} \cdot \overrightarrow{N})I_{m , d}) + \sum_{m \in lights}(k_s(\overrightarrow{N}\cdot \overrightarrow{H_m})^{\alpha}I_{m , s})
 
+$$
+<p>&#x73AF;&#x5883;&#x5149;&#x5206;&#x91CF;&#xFF1A;</p>
+$$I_{o , a} = k_a I_a
+
+$$
+<p>&#x6F2B;&#x53CD;&#x5C04;&#x5206;&#x91CF;&#xFF1A;</p>
+$$I_{o , d} = \sum_{m \in lights}(k_d(\overrightarrow{L_m} \cdot \overrightarrow{N})I_{m , d})
+
+$$
+<p>&#x955C;&#x9762;&#x5149;&#x5206;&#x91CF;&#xFF1A;</p>
+$$I_{o , s} = \sum_{m \in lights}(k_s(\overrightarrow{N}\cdot \overrightarrow{H_m})^{\alpha}I_{m , s})
+
+$$
         
     
     </div>

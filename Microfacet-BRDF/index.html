@@ -25,7 +25,7 @@
 <meta property="og:description" content="&amp;#x5FAE;&amp;#x9762;&amp;#x5143;&amp;#x7406;&amp;#x8BBA;&amp;#x5FAE;&amp;#x9762;&amp;#x5143;&amp;#x7406;&amp;#x8BBA;&amp;#x8BA4;&amp;#x4E3A;&amp;#x7C97;&amp;#x7CD9;&amp;#x8868;&amp;#x9762;&amp;#x662F;&amp;#x7531;&amp;#x7EC6;&amp;#x5C0F;&amp;#x7684;&amp;#x5FAE;&amp;#x9762;&amp;#x7EC4;&amp;#x6210;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Microfacet%20Theory/spherical_coordinate_system_oriented_wo.png">
-<meta property="og:updated_time" content="2025-12-13T11:02:07.246Z">
+<meta property="og:updated_time" content="2025-12-13T13:05:35.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Microfacet Theory">
 <meta name="twitter:description" content="&amp;#x5FAE;&amp;#x9762;&amp;#x5143;&amp;#x7406;&amp;#x8BBA;&amp;#x5FAE;&amp;#x9762;&amp;#x5143;&amp;#x7406;&amp;#x8BBA;&amp;#x8BA4;&amp;#x4E3A;&amp;#x7C97;&amp;#x7CD9;&amp;#x8868;&amp;#x9762;&amp;#x662F;&amp;#x7531;&amp;#x7EC6;&amp;#x5C0F;&amp;#x7684;&amp;#x5FAE;&amp;#x9762;&amp;#x7EC4;&amp;#x6210;">
@@ -179,7 +179,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-12-13T11:02:07.246Z" itemprop="datePublished">Dec 13 2025</time>
+                <time datetime="2025-12-13T13:05:35.354Z" itemprop="datePublished">Dec 13 2025</time>
             
         </span>
         
@@ -216,45 +216,96 @@
     </button>
 
             <h1 id="&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;"><a href="#&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;" class="headerlink" title="&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;"></a>&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;</h1><p>&#x5FAE;&#x9762;&#x5143;&#x7406;&#x8BBA;&#x8BA4;&#x4E3A;&#x7C97;&#x7CD9;&#x8868;&#x9762;&#x662F;&#x7531;&#x7EC6;&#x5C0F;&#x7684;&#x5FAE;&#x9762;&#x7EC4;&#x6210;&#x7684;,&#x6BCF;&#x4E2A;&#x5FAE;&#x9762;&#x5143;&#x90FD;&#x6EE1;&#x8DB3;&#x5B8C;&#x7F8E;&#x955C;&#x9762;&#x53CD;&#x5C04;<a id="more"></a></p>
-<p>$$\omega_h = \omega_i \hat{+} \omega_o$$</p>
-<p>$$d\Phi_h = L_i(\omega_i)d\omega_i dA^{\perp}(\omega_h) = L_i(\omega_i)d\omega_i cos\theta_h dA(\omega_h)$$</p>
-<p>$$dA(\omega_h) = D(\omega_h)d\omega_h dA$$</p>
+$$\omega_h = \omega_i \hat{+} \omega_o
+
+$$
+$$d\Phi_h = L_i(\omega_i)d\omega_i dA^{\perp}(\omega_h) = L_i(\omega_i)d\omega_i cos\theta_h dA(\omega_h)
+
+$$
+$$dA(\omega_h) = D(\omega_h)d\omega_h dA
+
+$$
 <ul>
 <li>$D(\omega_h)$:&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;,&#x63CF;&#x8FF0;&#x5FAE;&#x9762;&#x5143;&#x7684;&#x6CD5;&#x7EBF;&#x4E3A;$\omega_h$&#x7684;&#x6BD4;&#x4F8B;,&#x53EA;&#x6709;&#x6CD5;&#x7EBF;&#x4E3A;$\omega_h$&#x7684;&#x624D;&#x80FD;&#x88AB;&#x770B;&#x89C1;</li>
 </ul>
-<p>$$\Rightarrow d\Phi_h = L_i(\omega_i)d\omega_i cos\theta_h D(\omega_h)d\omega_h dA$$</p>
+$$\Rightarrow d\Phi_h = L_i(\omega_i)d\omega_i cos\theta_h D(\omega_h)d\omega_h dA
+
+$$
 <p>&#x5047;&#x8BBE;&#x6BCF;&#x4E2A;&#x5FAE;&#x9762;&#x5143;&#x90FD;&#x5404;&#x81EA;&#x6309;&#x7167;<code>Fresnel&apos;s Law</code>&#x53CD;&#x5C04;&#x5149;&#x7EBF;</p>
-<p>$$\Rightarrow d\Phi_o = F_r(\omega_o)d\Phi_h$$</p>
-<p>$$\because L(\omega_o) = \frac{d\Phi_o}{d\omega_o cos\theta_o dA}$$</p>
-<p>$$\therefore L(\omega_o) = \frac{F_r(\omega_o)L_i(\omega_i)d\omega_i cos\theta_h D(\omega_h) d\omega_h dA}{d\omega_o cos\theta_o dA}\tag{1}$$</p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x8BA1;&#x7B97;$\frac{d\omega_h}{d\omega_i}$,&#x8003;&#x8651;&#x57FA;&#x4E8E;$\omega_o$&#x7684;&#x7403;&#x5750;&#x6807;&#x7CFB;,&#x5982;&#x4E0B;&#x56FE;:<br><img src="/resources/images/Microfacet Theory/spherical_coordinate_system_oriented_wo.png" alt="&#x57FA;&#x4E8E;$\omega_o$&#x7684;&#x7403;&#x5750;&#x6807;&#x7CFB;,&#x6765;&#x6E90;PBRT"></p>
-<p>$$\frac{d\omega_h}{d\omega_i} = \frac{sin\theta_h d\theta_h d\phi_h}{sin\theta_i d\theta_i d\phi_i}$$</p>
-<p>$$\because \theta_i = 2\theta_h$$</p>
-<p>$$\therefore \frac{d\omega_h}{d\omega_i} = \frac{sin\theta_h d\theta_h d\phi_h}{sin(2\theta_h)2d\theta_h d\phi_h} = \frac{sin\theta_h}{4sin\theta_h cos\theta_h} = \frac{1}{4cos\theta_h}$$</p>
-<p>$$\Rightarrow \frac{d\omega_h}{d\omega_i} = \frac{1}{4cos\theta_h} = \frac{1}{4\omega_i \cdot \omega_h} = \frac{1}{4\omega_o \cdot \omega_h}$$<br>$$\Rightarrow \frac{d\omega_h}{d\omega_o} = \frac{1}{4cos\theta_h} = \frac{1}{4\omega_i \cdot \omega_h} = \frac{1}{4\omega_o \cdot \omega_h}$$</p>
-<p>&#x4EE3;&#x5165;(1)&#x5F0F;:<br>$$\Rightarrow L(\omega_o) = \frac{F_r(\omega_o)L_i(\omega_i)D(\omega_h)d\omega_i}{4cos\theta_o}$$</p>
-<p>$$\because L(\omega_o) = L(\omega_i) f_r(p,\omega_i, \omega_o)cos\theta_i d\omega_i$$</p>
-<p>$$\therefore f_r(p,\omega_i,\omega_o) = \frac{L(\omega_o)}{L(\omega_i) cos\theta_i d\omega_i} = \frac{F_r(\omega_o)D(\omega_h)}{4cos\theta_i cos\theta_o} = \frac{F_r(\omega_o)D(\omega_h)}{4(n\cdot l)(n \cdot v)}$$</p>
+$$\Rightarrow d\Phi_o = F_r(\omega_o)d\Phi_h
+
+$$
+$$\because L(\omega_o) = \frac{d\Phi_o}{d\omega_o cos\theta_o dA}
+
+$$
+$$\therefore L(\omega_o) = \frac{F_r(\omega_o)L_i(\omega_i)d\omega_i cos\theta_h D(\omega_h) d\omega_h dA}{d\omega_o cos\theta_o dA}\tag{1}
+
+$$
+<p>&#x63A5;&#x4E0B;&#x6765;&#x8BA1;&#x7B97;$\frac{d\omega_h}{d\omega_i}$,&#x8003;&#x8651;&#x57FA;&#x4E8E;$\omega_o$&#x7684;&#x7403;&#x5750;&#x6807;&#x7CFB;,&#x5982;&#x4E0B;&#x56FE;:<br><img src="/resources/images/Microfacet Theory/spherical_coordinate_system_oriented_wo.png" alt="&#x57FA;&#x4E8E;&lt;!--HEXO_MATH_INLINE_28--&gt;&#x7684;&#x7403;&#x5750;&#x6807;&#x7CFB;,&#x6765;&#x6E90;PBRT"></p>
+$$\frac{d\omega_h}{d\omega_i} = \frac{sin\theta_h d\theta_h d\phi_h}{sin\theta_i d\theta_i d\phi_i}
+
+$$
+$$\because \theta_i = 2\theta_h
+
+$$
+$$\therefore \frac{d\omega_h}{d\omega_i} = \frac{sin\theta_h d\theta_h d\phi_h}{sin(2\theta_h)2d\theta_h d\phi_h} = \frac{sin\theta_h}{4sin\theta_h cos\theta_h} = \frac{1}{4cos\theta_h}
+
+$$
+$$\Rightarrow \frac{d\omega_h}{d\omega_i} = \frac{1}{4cos\theta_h} = \frac{1}{4\omega_i \cdot \omega_h} = \frac{1}{4\omega_o \cdot \omega_h}
+
+$$
+$$\Rightarrow \frac{d\omega_h}{d\omega_o} = \frac{1}{4cos\theta_h} = \frac{1}{4\omega_i \cdot \omega_h} = \frac{1}{4\omega_o \cdot \omega_h}
+
+$$
+<p>&#x4EE3;&#x5165;(1)&#x5F0F;:</p>
+$$\Rightarrow L(\omega_o) = \frac{F_r(\omega_o)L_i(\omega_i)D(\omega_h)d\omega_i}{4cos\theta_o}
+
+$$
+$$\because L(\omega_o) = L(\omega_i) f_r(p,\omega_i, \omega_o)cos\theta_i d\omega_i
+
+$$
+$$\therefore f_r(p,\omega_i,\omega_o) = \frac{L(\omega_o)}{L(\omega_i) cos\theta_i d\omega_i} = \frac{F_r(\omega_o)D(\omega_h)}{4cos\theta_i cos\theta_o} = \frac{F_r(\omega_o)D(\omega_h)}{4(n\cdot l)(n \cdot v)}
+
+$$
 <p>&#x518D;&#x4E58;&#x4E0A;&#x4E00;&#x4E2A;&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;G,&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5FAE;&#x9762;&#x5143;&#x88AB;&#x906E;&#x6321;&#x6216;&#x8005;&#x5904;&#x4E8E;&#x9634;&#x5F71;&#x4E2D;&#x7684;&#x6BD4;&#x4F8B;</p>
-<p>$$\Rightarrow f_r(p,\omega_i,\omega_o) = \frac{F_r(\omega_o)D(\omega_h)G(\omega_i,\omega_o)}{4cos\theta_o cos\theta_i}$$</p>
+$$\Rightarrow f_r(p,\omega_i,\omega_o) = \frac{F_r(\omega_o)D(\omega_h)G(\omega_i,\omega_o)}{4cos\theta_o cos\theta_i}
+
+$$
 <p>&#x63A5;&#x4E0B;&#x6765;&#x8BB2;&#x4E0B;<code>D,F,G</code>&#x7684;&#x5E38;&#x7528;&#x5B9E;&#x73B0;&#x65B9;&#x6848;</p>
-<h2 id="&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;"><a href="#&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;" class="headerlink" title="&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;"></a>&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;</h2><h3 id="GGX"><a href="#GGX" class="headerlink" title="GGX"></a>GGX</h3><p>$$D(h) = \frac{\alpha^2}{\pi((n\cdot h)^2(\alpha^2 - 1) + 1)^2}$$<br>$$\alpha = roughness^2$$</p>
+<h2 id="&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;"><a href="#&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;" class="headerlink" title="&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;"></a>&#x6CD5;&#x7EBF;&#x5206;&#x5E03;&#x9879;</h2><h3 id="GGX"><a href="#GGX" class="headerlink" title="GGX"></a>GGX</h3>$$D(h) = \frac{\alpha^2}{\pi((n\cdot h)^2(\alpha^2 - 1) + 1)^2}
+
+$$
+$$\alpha = roughness^2
+
+$$
 <ul>
 <li>roughness: &#x7C97;&#x7CD9;&#x5EA6;</li>
 </ul>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">D</span><span class="hljs-params">(<span class="hljs-keyword">float</span> alpha, <span class="hljs-keyword">float</span> NdotH)</span></span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">float</span> alphaSqr = sqr(alpha);</span><br><span class="line">    <span class="hljs-keyword">float</span> denominator = sqr(NdotH) * (alphaSqr - <span class="hljs-number">1.0f</span>) + <span class="hljs-number">1.0f</span>;</span><br><span class="line">    <span class="hljs-keyword">float</span> D = alphaSqr / (PI * sqr(denominator));</span><br><span class="line">    <span class="hljs-keyword">return</span> D;</span><br><span class="line">}</span></pre></td></tr></table></figure>
 
 <h2 id="&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;"><a href="#&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;" class="headerlink" title="&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;"></a>&#x51E0;&#x4F55;&#x8870;&#x51CF;&#x9879;</h2><h3 id="Smith"><a href="#Smith" class="headerlink" title="Smith"></a>Smith</h3><p><code>Smith</code>&#x51FD;&#x6570;&#x5BF9;G&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x8FD1;&#x4F3C;,&#x5373;&#x5047;&#x8BBE;&#x5165;&#x5C04;&#x906E;&#x6321;&#x4E0E;&#x51FA;&#x5C04;&#x906E;&#x6321;&#x662F;&#x4E0D;&#x76F8;&#x5173;&#x7684;,&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x88AB;&#x5206;&#x79BB;&#x5F00;&#x6765;</p>
-<p>$$G(l,v,h) = G_1(n,l)G_1(n,v)$$<br>$$G_1(n,v) = \frac{n\cdot v}{(n\cdot v)(1 - k) + k}$$<br>$$k = \frac{(Roughness + 1)^2}{8}$$</p>
+$$G(l,v,h) = G_1(n,l)G_1(n,v)
+
+$$
+$$G_1(n,v) = \frac{n\cdot v}{(n\cdot v)(1 - k) + k}
+
+$$
+$$k = \frac{(Roughness + 1)^2}{8}
+
+$$
 <p>&#x5B9E;&#x73B0;:</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">K</span><span class="hljs-params">(<span class="hljs-keyword">float</span> _Roughness)</span></span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">float</span> modifiedRoughness = _Roughness + <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> sqr(modifiedRoughness) / <span class="hljs-number">8</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">G1</span><span class="hljs-params">(<span class="hljs-keyword">float</span> k, <span class="hljs-keyword">float</span> NdotV)</span></span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">return</span> NdotV / (NdotV * (<span class="hljs-number">1</span> - k) + k);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">G_Smith</span><span class="hljs-params">(<span class="hljs-keyword">float</span> _Roughness, <span class="hljs-keyword">float</span> NdotL, <span class="hljs-keyword">float</span> NdotV)</span></span></span><br><span class="line">{</span><br><span class="line">    <span class="hljs-keyword">float</span> k   = K(_Roughness);</span><br><span class="line">    <span class="hljs-keyword">float</span> G1L = G1(k, NdotL);</span><br><span class="line">    <span class="hljs-keyword">float</span> G1V = G1(k, NdotV);</span><br><span class="line">    <span class="hljs-keyword">float</span> G = G1L * G1V;</span><br><span class="line">    <span class="hljs-keyword">return</span> G;</span><br><span class="line">}</span></pre></td></tr></table></figure>
 
 <h2 id="&#x83F2;&#x6D85;&#x5C14;&#x9879;"><a href="#&#x83F2;&#x6D85;&#x5C14;&#x9879;" class="headerlink" title="&#x83F2;&#x6D85;&#x5C14;&#x9879;"></a>&#x83F2;&#x6D85;&#x5C14;&#x9879;</h2><h3 id="Shclick"><a href="#Shclick" class="headerlink" title="Shclick"></a>Shclick</h3><p>&#x539F;&#x59CB;&#x7684;&#x83F2;&#x6D85;&#x5C14;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#x6BD4;&#x8F83;&#x590D;&#x6742;,&#x4E00;&#x822C;&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x65B9;&#x7A0B;&#x8FDB;&#x884C;&#x8FD1;&#x4F3C;:</p>
-<p>$$F_{schlick}(F_0,l,h) = F_0 + (1 - F_0)(1-(l\cdot h))^5$$</p>
+$$F_{schlick}(F_0,l,h) = F_0 + (1 - F_0)(1-(l\cdot h))^5
+
+$$
 <ul>
 <li>$F_0$: &#x5165;&#x5C04;&#x5149;&#x5782;&#x76F4;&#x4E8E;&#x8868;&#x9762;&#x65F6;&#x7684;&#x83F2;&#x6D85;&#x5C14;&#x53CD;&#x5C04;&#x7387;&#x503C;,&#x4E5F;&#x79F0;&#x4E4B;&#x4E3A;&#x955C;&#x9762;&#x989C;&#x8272;</li>
 </ul>
-<p>$$F(0) = (\frac{\eta_i - \eta_o}{\eta_i + \eta_o})^2$$</p>
+$$F(0) = (\frac{\eta_i - \eta_o}{\eta_i + \eta_o})^2
+
+$$
 <p>&#x4EE5;&#x4E0B;&#x4E3A;&#x5E38;&#x89C1;&#x6750;&#x8D28;&#x7684;<code>F(0)</code>&#x503C;</p>
 <table>
 <thead>
@@ -347,7 +398,7 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/IOSPSOAsyncCompileCrash/">IOS PSO Async Compile Crash</a>
+            <a href="/自定义Hexo博客显示/">自定义Hexo博客显示</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">

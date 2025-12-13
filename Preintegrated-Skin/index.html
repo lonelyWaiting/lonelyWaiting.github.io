@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Preintegrated-Skin/SkinRenderModel.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Preintegrated-Skin/DiffusionProfileWeights.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Preintegrated-Skin/DiffusionProfileIntegrate.png">
-<meta property="og:updated_time" content="2025-12-13T11:02:07.246Z">
+<meta property="og:updated_time" content="2025-12-13T13:05:35.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="preintegrated skin rendering">
 <meta name="twitter:description" content="&amp;#x9884;&amp;#x79EF;&amp;#x5206;&amp;#x76AE;&amp;#x80A4;&amp;#x6E32;&amp;#x67D3;&amp;#x672C;&amp;#x6587;&amp;#x4E3B;&amp;#x8981;&amp;#x8BB0;&amp;#x5F55;&amp;#x9884;&amp;#x79EF;&amp;#x5206;&amp;#x76AE;&amp;#x80A4;&amp;#x6E32;&amp;#x67D3;&amp;#x7684;&amp;#x601D;&amp;#x8DEF;&amp;#x4EE5;&amp;#x53CA;">
@@ -159,7 +159,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-12-13T11:02:07.246Z" itemprop="datePublished">Dec 13 2025</time>
+                <time datetime="2025-12-13T13:05:35.354Z" itemprop="datePublished">Dec 13 2025</time>
             
         </span>
         
@@ -225,11 +225,87 @@
 <p>&#x4EE5;&#x4E0B;&#x63A8;&#x5BFC;&#x642C;&#x8FD0;&#x81EA;&#x5E7D;&#x7384;&#x5927;&#x4F6C;&#x7684;&#x77E5;&#x4E4E;&#x6587;&#x7AE0;&#xFF1A;</p>
 <p>N&#x4E3A;&#x8868;&#x9762;&#x6CD5;&#x7EBF;&#xFF0C;L&#x4E3A;&#x5165;&#x5C04;&#x5149;&#x65B9;&#x5411;&#xFF0C;P&#x4E3A;&#x6CD5;&#x7EBF;&#x65B9;&#x5411;&#x4E0E;&#x7403;&#x9762;&#x7684;&#x4EA4;&#x70B9;&#xFF0C; $\theta$&#x4E3A;N&#x4E0E;L&#x7684;&#x5939;&#x89D2;</p>
 <p>&#x5047;&#x8BBE;P<strong>&#x4F1A;&#x4E14;&#x4EC5;&#x4F1A;</strong>&#x53D7;&#x5230;&#x6CD5;&#x7EBF;&#x6B63;&#x65B9;&#x5411;&#x534A;&#x5F84;&#x4E3A;r&#x7684;&#x534A;&#x7403;&#x8868;&#x9762;&#x5404;&#x70B9;&#x7684;&#x6563;&#x5C04;&#x5149;&#x5F71;&#x54CD;</p>
-<p>&#x5047;&#x8BBE;L&#x65B9;&#x5411;&#x7684;&#x5149;&#x7684;&#x8F90;&#x5C04;&#x4EAE;&#x5EA6;&#x4E3A;1&#xFF0C; &#x5728;APB&#x534A;&#x7403;&#x7A7A;&#x95F4;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x70B9;Q&#xFF0C;&#x5176;&#x76F4;&#x63A5;&#x5149;&#x7167;&#x7684;&#x4EAE;&#x5EA6;&#x4E3A;&#xFF1A;<br>$$<br>L_Q = 1\cdot dot(OQ, OL) = cos(x+\theta)<br>$$<br>&#x5047;&#x8BBE;Q&#x70B9;&#x5BF9;P&#x70B9;&#x7684;&#x6563;&#x5C04;&#x7387;&#x4E3A;$q(x)$&#xFF0C;$x$&#x4E3A;OQ&#x4E0E;&#x6CD5;&#x7EBF;&#x7684;&#x5939;&#x89D2;&#xFF0C;&#x8BBE;Q&#x6240;&#x5360;&#x534A;&#x7403;&#x7684;&#x5F27;&#x5EA6;&#x4E3A;$\Delta{x}$&#xFF0C;&#x5219;Q&#x5BF9;P&#x7684;&#x8D21;&#x732E;&#x4E3A;&#xFF1A;<br>$$<br>L_Q \times q(x) \times \Delta{x} = cos(x+\theta)q(x)\Delta{x}<br>$$<br>&#x5BF9;&#x4E8E;&#x6574;&#x4E2A;&#x534A;&#x7403;&#x79EF;&#x5206;&#xFF1A;<br>$$<br>\int_{-\pi}^cos(x+\theta)q(x)\Delta{x}<br>$$<br>&#x6839;&#x636E;&#x80FD;&#x91CF;&#x5B88;&#x6052;&#xFF0C;$q(x)$&#x4F5C;&#x4E3A;&#x6563;&#x5C04;&#x7387;&#x51FD;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x6EE1;&#x8DB3;&#x6574;&#x4E2A;&#x7403;&#x9762;&#x79EF;&#x5206;&#x7684;&#x7ED3;&#x679C;&#x4E3A;1&#xFF1A;<br>$$<br>\int_{-{\pi}}^{\pi}q(x) = 1<br>$$<br>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x9009;&#x7528;&#x6269;&#x6563;&#x5256;&#x9762;&#x4F5C;&#x4E3A;&#x6563;&#x5C04;&#x7387;&#x51FD;&#x6570;&#xFF0C;&#x6269;&#x6563;&#x5256;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x8DDD;&#x79BB;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x4E14;&#x5176;&#x79EF;&#x5206;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x4E3A;1<br>$$<br>\because d = 2rsin(\frac{x}{2}) \<br>\Rightarrow R(d) = R(2rsin(\frac{x}{2}))<br>$$<br>&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5047;&#x8BBE;&#x5982;&#x4E0B;&#x5173;&#x7CFB;&#xFF1A;<br>$$<br>q(x) = kR(d) = kR(2rsin(\frac{x}{2}))<br>$$<br>&#x56E0;&#x6B64;&#xFF1A;<br>$$<br>\int_{-{\pi}}^q(x) = \int_{-{\pi}}^kR(d) = k\int_{-{\pi}}^R(d) = 1<br>$$<br>&#x6C42;&#x89E3;k:<br>$$<br>k = \frac{1}{\int_{-{\pi}}^R(d)}<br>$$<br>&#x56E0;&#x6B64;&#xFF1A;<br>$$<br>q(x) = \frac{R(d)}{\int_{-{\pi}}^R(d)}<br>$$<br>&#x4EE3;&#x5165;3&#x5F0F;&#x4E2D;&#xFF1A;<br>$$<br>\int_{-{\pi}}^\frac{cos(x+\theta)R(d)}{\int_{-{\pi}}^R(d)}\Delta{x}<br>$$</p>
-<p>&#x7531;&#x4E8E;$\int_{-{\pi}}^R(x)$&#x4E3A;&#x5E38;&#x6570;&#xFF0C;&#x56E0;&#x6B64;&#x4E0A;&#x5F0F;&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A;<br>$$<br>\frac{\int_{-{\pi}}^cos(x+\theta)R(d)\Delta{x}}{\int_{-{\pi}}^R(d)}<br>$$</p>
-<p>&#x7ED3;&#x5408;(5)&#x5F0F;&#x53EF;&#x5F97;&#xFF1A;<br>$$<br>\frac{\int_{-{\pi}}^cos(x+\theta)\cdot R(2rsin(\frac{x}{2}))\Delta{x}}{\int_{-{\pi}}^R(2rsin(\frac{x}{2}))}<br>$$</p>
+<p>&#x5047;&#x8BBE;L&#x65B9;&#x5411;&#x7684;&#x5149;&#x7684;&#x8F90;&#x5C04;&#x4EAE;&#x5EA6;&#x4E3A;1&#xFF0C; &#x5728;APB&#x534A;&#x7403;&#x7A7A;&#x95F4;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x70B9;Q&#xFF0C;&#x5176;&#x76F4;&#x63A5;&#x5149;&#x7167;&#x7684;&#x4EAE;&#x5EA6;&#x4E3A;&#xFF1A;</p>
+$$
+
+L_Q = 1\cdot dot(OQ, OL) = cos(x+\theta)
+
+$$
+<p>&#x5047;&#x8BBE;Q&#x70B9;&#x5BF9;P&#x70B9;&#x7684;&#x6563;&#x5C04;&#x7387;&#x4E3A;$q(x)$&#xFF0C;$x$&#x4E3A;OQ&#x4E0E;&#x6CD5;&#x7EBF;&#x7684;&#x5939;&#x89D2;&#xFF0C;&#x8BBE;Q&#x6240;&#x5360;&#x534A;&#x7403;&#x7684;&#x5F27;&#x5EA6;&#x4E3A;$\Delta{x}$&#xFF0C;&#x5219;Q&#x5BF9;P&#x7684;&#x8D21;&#x732E;&#x4E3A;&#xFF1A;</p>
+$$
+
+L_Q \times q(x) \times \Delta{x} = cos(x+\theta)q(x)\Delta{x}
+
+$$
+<p>&#x5BF9;&#x4E8E;&#x6574;&#x4E2A;&#x534A;&#x7403;&#x79EF;&#x5206;&#xFF1A;</p>
+$$
+
+\int_{-\pi}^{{\pi}}cos(x+\theta)q(x)\Delta{x}
+
+$$
+<p>&#x6839;&#x636E;&#x80FD;&#x91CF;&#x5B88;&#x6052;&#xFF0C;$q(x)$&#x4F5C;&#x4E3A;&#x6563;&#x5C04;&#x7387;&#x51FD;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x6EE1;&#x8DB3;&#x6574;&#x4E2A;&#x7403;&#x9762;&#x79EF;&#x5206;&#x7684;&#x7ED3;&#x679C;&#x4E3A;1&#xFF1A;</p>
+$$
+
+\int_{-{\pi}}^{\pi}q(x) = 1
+
+$$
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x9009;&#x7528;&#x6269;&#x6563;&#x5256;&#x9762;&#x4F5C;&#x4E3A;&#x6563;&#x5C04;&#x7387;&#x51FD;&#x6570;&#xFF0C;&#x6269;&#x6563;&#x5256;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x8DDD;&#x79BB;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x4E14;&#x5176;&#x79EF;&#x5206;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x4E3A;1</p>
+$$
+
+\because d = 2rsin(\frac{x}{2}) \\
+\Rightarrow R(d) = R(2rsin(\frac{x}{2}))
+
+$$
+<p>&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5047;&#x8BBE;&#x5982;&#x4E0B;&#x5173;&#x7CFB;&#xFF1A;</p>
+$$
+
+q(x) = kR(d) = kR(2rsin(\frac{x}{2}))
+
+$$
+<p>&#x56E0;&#x6B64;&#xFF1A;</p>
+$$
+
+\int_{-{\pi}}^{{\pi}}q(x) = \int_{-{\pi}}^{{\pi}}kR(d) = k\int_{-{\pi}}^{{\pi}}R(d) = 1
+
+$$
+<p>&#x6C42;&#x89E3;k:</p>
+$$
+
+k = \frac{1}{\int_{-{\pi}}^{{\pi}}R(d)}
+
+$$
+<p>&#x56E0;&#x6B64;&#xFF1A;</p>
+$$
+
+q(x) = \frac{R(d)}{\int_{-{\pi}}^{{\pi}}R(d)}
+
+$$
+<p>&#x4EE3;&#x5165;3&#x5F0F;&#x4E2D;&#xFF1A;</p>
+$$
+
+\int_{-{\pi}}^{{\pi}}\frac{cos(x+\theta)R(d)}{\int_{-{\pi}}^{{\pi}}R(d)}\Delta{x}
+
+$$
+<p>&#x7531;&#x4E8E;$\int_{-{\pi}}^{{\pi}}R(x)$&#x4E3A;&#x5E38;&#x6570;&#xFF0C;&#x56E0;&#x6B64;&#x4E0A;&#x5F0F;&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A;</p>
+$$
+
+\frac{\int_{-{\pi}}^{{\pi}}cos(x+\theta)R(d)\Delta{x}}{\int_{-{\pi}}^{{\pi}}R(d)}
+
+$$
+<p>&#x7ED3;&#x5408;(5)&#x5F0F;&#x53EF;&#x5F97;&#xFF1A;</p>
+$$
+
+\frac{\int_{-{\pi}}^{{\pi}}cos(x+\theta)\cdot R(2rsin(\frac{x}{2}))\Delta{x}}{\int_{-{\pi}}^{{\pi}}R(2rsin(\frac{x}{2}))}
+
+$$
 <p><img src="/resources/images/Preintegrated-Skin/DiffusionProfileWeights.png" alt="DiffusionProfileWeights"></p>
-<p>&#x9AD8;&#x65AF;&#x51FD;&#x6570;&#x4F7F;&#x7528;&#xFF1A;<br>$$<br>G(v, r) = \frac{1}{\sqrt{2\pi v }}e^{-\frac{r^2}{2v}}<br>$$<br>&#x56E0;&#x6B64;&#x4E0A;&#x8FF0;&#x9AD8;&#x65AF;&#x548C;&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A;</p>
+<p>&#x9AD8;&#x65AF;&#x51FD;&#x6570;&#x4F7F;&#x7528;&#xFF1A;</p>
+$$
+
+G(v, r) = \frac{1}{\sqrt{2\pi v }}e^{-\frac{r^2}{2v}}
+
+$$
+<p>&#x56E0;&#x6B64;&#x4E0A;&#x8FF0;&#x9AD8;&#x65AF;&#x548C;&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A;</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">G(r) = </span><br><span class="line">G(<span class="hljs-number">0.0064</span> * <span class="hljs-number">1.414</span>, r) * float3(<span class="hljs-number">0.233</span>, <span class="hljs-number">0.455</span>, <span class="hljs-number">0.649</span>) +</span><br><span class="line">G(<span class="hljs-number">0.0484</span> * <span class="hljs-number">1.414</span>, r) * float3(<span class="hljs-number">0.100</span>, <span class="hljs-number">0.336</span>, <span class="hljs-number">0.344</span>) +</span><br><span class="line">G(<span class="hljs-number">0.1870</span> * <span class="hljs-number">1.414</span>, r) * float3(<span class="hljs-number">0.118</span>, <span class="hljs-number">0.198</span>, <span class="hljs-number">0.000</span>) +</span><br><span class="line">G(<span class="hljs-number">0.5670</span> * <span class="hljs-number">1.414</span>, r) * float3(<span class="hljs-number">0.113</span>, <span class="hljs-number">0.007</span>, <span class="hljs-number">0.007</span>) +</span><br><span class="line">G(<span class="hljs-number">1.9900</span> * <span class="hljs-number">1.414</span>, r) * float3(<span class="hljs-number">0.358</span>, <span class="hljs-number">0.004</span>, <span class="hljs-number">0.000</span>) +</span><br><span class="line">G(<span class="hljs-number">7.4100</span> * <span class="hljs-number">1.414</span>, r) * float3(<span class="hljs-number">0.078</span>, <span class="hljs-number">0.000</span>, <span class="hljs-number">0.000</span>);</span></pre></td></tr></table></figure>
 
 <p>&#x5DE6;&#x56FE;&#x8868;&#x793A;&#x4F7F;&#x7528;&#x4E0A;&#x8FF0;&#x9AD8;&#x65AF;&#x548C;&#x65F6;&#x7EA2;&#xFF0C;&#x7EFF;&#xFF0C;&#x84DD;&#x5149;&#x5728;&#x76AE;&#x80A4;&#x4E0B;&#x7684;&#x6269;&#x6563;&#x5256;&#x9762;&#x53EF;&#x89C6;&#x5316;</p>

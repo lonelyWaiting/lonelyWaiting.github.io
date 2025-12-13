@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/CSMDistribution.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/CSMRadius.png">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/Shadow/CSMRadiusVisualize.png">
-<meta property="og:updated_time" content="2025-12-13T11:02:07.246Z">
+<meta property="og:updated_time" content="2025-12-13T13:05:35.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lonelyWaiting">
 <meta name="twitter:description" content="Shadow&amp;#x57FA;&amp;#x672C;&amp;#x5B9E;&amp;#x73B0;&amp;#x901A;&amp;#x8FC7;&amp;#x4ECE;&amp;#x706F;&amp;#x5149;&amp;#x89C6;&amp;#x89D2;&amp;#x6E32;&amp;#x67D3;&amp;#x573A;&amp;#x666F;&amp;#x751F;&amp;#x6210;&amp;#x6DF1;&amp;#x5EA6;&amp;#x56FE;(ShadowMap)&amp;#xFF0C;&amp;#x6E32;&amp;#x67D3">
@@ -258,7 +258,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-12-13T11:02:07.246Z" itemprop="datePublished">Dec 13 2025</time>
+                <time datetime="2025-12-13T13:05:35.354Z" itemprop="datePublished">Dec 13 2025</time>
             
         </span>
         
@@ -301,7 +301,18 @@
 <p>&#x901A;&#x8FC7;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;Depth Bias&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8BE5;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x540C;&#x65F6;&#x4E5F;&#x5F15;&#x5165;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;Peter Panning&#xFF08;&#x5373;&#x9634;&#x5F71;&#x7684;&#x4F4D;&#x7F6E;&#x53D1;&#x751F;&#x4E86;&#x504F;&#x79FB;&#xFF09;<br><img src="./../resources/images/Shadow/ShadowBias.png" alt="ShadowBias"></p>
 <p>Depth Bias&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x5E38;&#x91CF;&#x504F;&#x79FB;&#xFF0C;&#x4F46;&#x592A;&#x5C0F;&#x5BB9;&#x6613;&#x53D1;&#x751F;&#x81EA;&#x906E;&#x6321;&#xFF0C;&#x592A;&#x5927;&#x5BF9;&#x4E8E;&#x8584;&#x7684;&#x8868;&#x9762;&#x5BB9;&#x6613;&#x51FA;&#x73B0;&#x6F0F;&#x5149;</p>
 <h3 id="Depth-Bias"><a href="#Depth-Bias" class="headerlink" title="Depth Bias"></a>Depth Bias</h3><p>&#x7EE7;&#x7EED;&#x4EE5;&#x5E73;&#x9762;&#x4E3A;&#x4F8B;&#xFF0C;$|AB|$&#x4E3A;&#x8FD1;&#x5E73;&#x9762;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x50CF;&#x7D20;&#x533A;&#x57DF;&#xFF0C;$E$&#x70B9;&#x4E3A;&#x50CF;&#x7D20;&#x4E2D;&#x5FC3;&#xFF0C;&#x6E32;&#x67D3;ShadowMap&#x65F6;&#x8BB0;&#x5F55;&#x7684;&#x662F;<code>F</code>&#x70B9;&#x7684;&#x6DF1;&#x5EA6;</p>
-<p>$|FD|$&#x6BB5;&#x90FD;&#x5C06;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x5728;&#x9634;&#x5F71;&#x4E2D;&#xFF0C;&#x9700;&#x5C06;$D$&#x70B9;&#x7684;&#x6DF1;&#x5EA6;&#x504F;&#x79FB;&#x81F3;$G$&#x624D;&#x80FD;&#x4E0D;&#x53D1;&#x751F;&#x81EA;&#x906E;&#x6321;&#xFF0C;&#x504F;&#x79FB;&#x8DDD;&#x79BB;&#x4E3A;&#xFF1A;<br>$$<br>\begin{equation}<br>\begin{aligned}<br>DepthBias(D) &amp;= |FG|\cdot tan(\theta)\<br>&amp;=\frac{|AB|}{2}\cdot tan(\theta)\<br>&amp;=\frac{FrustumSize}{ShadowMapSize \times 2}\cdot tan(\theta)<br>\end{aligned}<br>\end{equation}<br>$$<br><img src="./../resources/images/Shadow/ShadowBiasModel.png" alt="Shadow Bias Math Model"></p>
+$|FD|$&#x6BB5;&#x90FD;&#x5C06;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x5728;&#x9634;&#x5F71;&#x4E2D;&#xFF0C;&#x9700;&#x5C06;$D$&#x70B9;&#x7684;&#x6DF1;&#x5EA6;&#x504F;&#x79FB;&#x81F3;$G$&#x624D;&#x80FD;&#x4E0D;&#x53D1;&#x751F;&#x81EA;&#x906E;&#x6321;&#xFF0C;&#x504F;&#x79FB;&#x8DDD;&#x79BB;&#x4E3A;&#xFF1A;<br><br>$$
+
+\begin{equation}
+\begin{aligned}
+DepthBias(D) &= |FG|\cdot tan(\theta)\\
+&=\frac{|AB|}{2}\cdot tan(\theta)\\
+&=\frac{FrustumSize}{ShadowMapSize \times 2}\cdot tan(\theta)
+\end{aligned}
+\end{equation}
+
+$$
+<p><img src="./../resources/images/Shadow/ShadowBiasModel.png" alt="Shadow Bias Math Model"></p>
 <p>&#x5F53;&#x5149;&#x65B9;&#x5411;&#x4E0E;&#x5E73;&#x9762;&#x51E0;&#x4E4E;&#x5E73;&#x884C;&#x65F6;&#xFF0C;&#x5355;&#x4E2A;&#x50CF;&#x7D20;&#x5BF9;&#x5E94;&#x7684;&#x8303;&#x56F4;&#x5C06;&#x4F1A;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x4EE5;&#x4E0A;&#x8FF0;&#x516C;&#x5F0F;&#x4E3A;&#x4F8B;&#xFF0C;$\theta$&#x5C06;&#x8D8B;&#x7D27;&#x4E8E;90&#xFF0C;$tan(\theta)$&#x4E3A;&#x65E0;&#x9650;&#x5927;</p>
 <h3 id="Slope-Scale-Depth-Bias"><a href="#Slope-Scale-Depth-Bias" class="headerlink" title="Slope Scale Depth Bias"></a>Slope Scale Depth Bias</h3><p>&#x901A;&#x5E38;&#x4E3A;&#x4E86;&#x7B80;&#x5316;$tan$&#x6216;$sin$&#x7684;&#x8BA1;&#x7B97;&#xFF0C;&#x4F1A;&#x6539;&#x7528;Slope Scale&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DepthBias = SlopeDepthBias * Slope + ConstantDepthBias</span></pre></td></tr></table></figure>
@@ -321,7 +332,12 @@
 <p><img src="./../resources/images/Shadow/UESlope.png" alt="UE Slope"></p>
 <h3 id="Normal-Bias"><a href="#Normal-Bias" class="headerlink" title="Normal Bias"></a>Normal Bias</h3><p>&#x7531;&#x4E8E;Depth Bias&#x5B58;&#x5728;&#x5149;&#x65B9;&#x5411;&#x4E0E;&#x5E73;&#x9762;&#x5E73;&#x884C;&#x65F6;&#x5931;&#x6548;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6539;&#x7528;&#x5411;Normal&#x65B9;&#x5411;&#x504F;&#x79FB;&#xFF1A;</p>
 <p><img src="./../resources/images/Shadow/NormalBiasMathModel.png" alt="Normal Bias Math Model"></p>
-<p>Bias&#x7684;&#x957F;&#x5EA6;&#x4E3A;$|GM|$&#xFF0C;&#x504F;&#x79FB;&#x540E;$C \rightarrow C^{\prime}$&#xFF0C;$D \rightarrow D^{\prime} $&#xFF0C;&#x6839;&#x636E;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x53EF;&#x77E5;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x65E0;&#x7A77;&#x5927;&#x5931;&#x6548;&#x7684;&#x60C5;&#x51B5;&#xFF1A;<br>$$<br>|GM| = |FG|\cdot sin(\theta) = \frac{|AB|}{2}\cdot sin(\theta) = \frac{FrustumSize}{ShadowMapSize \cdot 2}\cdot sin(\theta)<br>$$</p>
+<p>Bias&#x7684;&#x957F;&#x5EA6;&#x4E3A;$|GM|$&#xFF0C;&#x504F;&#x79FB;&#x540E;$C \rightarrow C^{\prime}$&#xFF0C;$D \rightarrow D^{\prime} $&#xFF0C;&#x6839;&#x636E;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x53EF;&#x77E5;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x65E0;&#x7A77;&#x5927;&#x5931;&#x6548;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+$$
+
+|GM| = |FG|\cdot sin(\theta) = \frac{|AB|}{2}\cdot sin(\theta) = \frac{FrustumSize}{ShadowMapSize \cdot 2}\cdot sin(\theta)
+
+$$
 <p>&#x5728;$|AB|$&#x4E0E;&#x5E73;&#x9762;&#x4E4B;&#x95F4;&#x4E0D;&#x5B58;&#x5728;&#x906E;&#x6321;&#x7269;&#x65F6;&#xFF0C;$|C^{\prime}G|$&#x5728;&#x5F53;&#x524D;&#x50CF;&#x7D20;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x81EA;&#x906E;&#x6321;&#x7684;&#x60C5;&#x51B5;&#xFF0C;$|GD^{\prime}|$&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x4E34;&#x8FD1;&#x50CF;&#x7D20;&#x533A;&#x57DF;&#x4E5F;&#x4E0D;&#x4F1A;&#x88AB;&#x906E;&#x6321;</p>
 <p>&#x4F46;&#x5F53;&#x51FA;&#x73B0;&#x4E0A;&#x56FE;&#x4E2D;&#x7684;&#x906E;&#x6321;&#x7269;&#x65F6;&#xFF0C;&#x5C06;&#x5BFC;&#x81F4;$C$&#x70B9;&#x6F0F;&#x5149;&#x3002;&#x4E14;&#x82E5;&#x4E34;&#x8FD1;&#x50CF;&#x7D20;&#x7684;$|DD^{\prime}|$&#x533A;&#x95F4;&#x51FA;&#x73B0;&#x906E;&#x6321;&#x7269;&#x65F6;&#xFF0C;$D$&#x70B9;&#x4E5F;&#x5C06;&#x6F0F;&#x5149;&#xFF0C;&#x51FA;&#x73B0;&#x4E24;&#x7AEF;&#x6F0F;&#x5149;&#x7684;&#x60C5;&#x51B5;</p>
 <h3 id="Caster-Bias-amp-Receiver-Bias"><a href="#Caster-Bias-amp-Receiver-Bias" class="headerlink" title="Caster Bias &amp; Receiver Bias"></a>Caster Bias &amp; Receiver Bias</h3><p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x90FD;&#x662F;&#x9ED8;&#x8BA4;Receiver Bias&#xFF0C;&#x5373;PS&#x9636;&#x6BB5;&#x8FDB;&#x884C;Depth Bias&#x518D;&#x4E0E;ShadowMap&#x8BB0;&#x5F55;&#x7684;&#x6DF1;&#x5EA6;&#x503C;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;</p>
@@ -337,7 +353,17 @@
 </li>
 </ul>
 <h2 id="PCF"><a href="#PCF" class="headerlink" title="PCF"></a>PCF</h2><p>&#x7531;&#x4E8E;&#x50CF;&#x7D20;&#x6DF1;&#x5EA6;&#x4E0E;ShadowMap&#x503C;&#x6BD4;&#x8F83;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E2A;&#x4E8C;&#x503C;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x9634;&#x5F71;&#x8FB9;&#x7F18;&#x4F1A;&#x5448;&#x73B0;&#x51FA;&#x952F;&#x9F7F;&#x72B6;</p>
-<p>&#x4E3A;&#x89E3;&#x51B3;&#x8BE5;&#x95EE;&#x9898;&#xFF0C;&#x5F15;&#x5165;&#x4E86;Percentage Closer Filter(PCF)&#xFF1A;<br>$$<br>PCF(x_0, y_0) = \frac{1}{W}\sum_{(x_i, y_i)\in N}\omega(x_i, y_i)\cdot f(x_i, y_i)\<br>f(x, y) =<br>\begin{cases}<br>1, \quad if z_{receiver} &lt;= z_{shadow}(x, y)\quad (&#x5149;&#x7167;)\<br>0, \quad otherwise\quad(&#x9634;&#x5F71;)<br>\end{cases}<br>$$</p>
+<p>&#x4E3A;&#x89E3;&#x51B3;&#x8BE5;&#x95EE;&#x9898;&#xFF0C;&#x5F15;&#x5165;&#x4E86;Percentage Closer Filter(PCF)&#xFF1A;</p>
+$$
+
+PCF(x_0, y_0) = \frac{1}{W}\sum_{(x_i, y_i)\in N}\omega(x_i, y_i)\cdot f(x_i, y_i)\\
+f(x, y) = 
+\begin{cases}
+1, \quad if z_{receiver} &lt;= z_{shadow}(x, y)\quad (光照)\\
+0, \quad otherwise\quad(阴影)
+\end{cases}
+
+$$
 <ul>
 <li>$x_0, y_0$&#xFF1A;&#x50CF;&#x7D20;&#x6295;&#x5F71;&#x5230;ShadowMap&#x7684;UV</li>
 </ul>
@@ -358,17 +384,55 @@
 <p>Gather&#x83B7;&#x53D6;&#x56DB;&#x4E2A;&#x50CF;&#x7D20;&#x65F6;&#x6309;&#x7167;(-,+)&#xFF0C;(+,+)&#xFF0C;(+,-)&#xFF0C;(-,-)&#x7684;&#x539F;&#x5219;&#xFF1A;<br><img src="./../resources/images/Shadow/D3DGatherRule.png" alt="D3D Gather Rule"></p>
 <h3 id="&#x8FDE;&#x7EED;Tent-Filter"><a href="#&#x8FDE;&#x7EED;Tent-Filter" class="headerlink" title="&#x8FDE;&#x7EED;Tent Filter"></a>&#x8FDE;&#x7EED;Tent Filter</h3><p>&#x524D;&#x9762;&#x4EE5;Texel&#x4E2D;&#x5FC3;&#x4EE3;&#x66FF;Texel&#xFF0C;&#x6BCF;&#x4E2A;Texel&#x6839;&#x636E;&#x5206;&#x5E03;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x79BB;&#x6563;&#x6743;&#x91CD;&#x3002;</p>
 <p>&#x8FDE;&#x7EED;Tent Filter&#x4E5F;&#x662F;&#x5206;&#x79BB;&#x5377;&#x79EF;&#x7684;&#x65B9;&#x6848;&#xFF0C;&#x6839;&#x636E;&#x5404;Texel&#x7684;&#x79EF;&#x5206;&#x7ED3;&#x679C;&#x8BA1;&#x7B97;&#x6743;&#x91CD;&#x5E76;&#x5F52;&#x4E00;&#x5316;</p>
-<p>PCF5x5&#x4E3A;&#x4F8B;&#xFF0C;&#x4EE5;&#x91C7;&#x6837;&#x70B9;Texel&#x4E2D;&#x5FC3;&#x4E3A;&#x5750;&#x6807;&#x539F;&#x70B9;&#xFF0C;&#x5355;&#x65B9;&#x5411;&#x7684;&#x5377;&#x79EF;&#x6838;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;$max(2.5 - |x - dx|, 0)$&#xFF0C;&#x5219;&#x4EFB;&#x610F;&#x70B9;&#x7684;&#x503C;&#x4E3A;&#xFF1A;<br>$$<br>f_w(u,v) = \max(2.5-|u - dx|, 0)\cdot \max(2.5 -|v - dy|, 0)<br>$$<br><img src="./../resources/images/Shadow/TentFilterCoordianate.png" alt="Tent Filter Coordinate"></p>
-<p>&#x8BA1;&#x7B97;&#x50CF;&#x7D20;$i,j$&#x6240;&#x5360;&#x7684;&#x4F53;&#x79EF;&#xFF1A;<br>$$<br>A_{i,j} = \int_{i - 0.5}^{i + 0.5}\int_{j - 0.5}^{j + 0.5}max(2.5-|u-dx|, 0)\cdot max(2.5-|v-dy|, 0)dudv<br>$$</p>
+<p>PCF5x5&#x4E3A;&#x4F8B;&#xFF0C;&#x4EE5;&#x91C7;&#x6837;&#x70B9;Texel&#x4E2D;&#x5FC3;&#x4E3A;&#x5750;&#x6807;&#x539F;&#x70B9;&#xFF0C;&#x5355;&#x65B9;&#x5411;&#x7684;&#x5377;&#x79EF;&#x6838;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;$max(2.5 - |x - dx|, 0)$&#xFF0C;&#x5219;&#x4EFB;&#x610F;&#x70B9;&#x7684;&#x503C;&#x4E3A;&#xFF1A;</p>
+$$
+
+f_w(u,v) = \max(2.5-|u - dx|, 0)\cdot \max(2.5 -|v - dy|, 0)
+
+$$
+<p><img src="./../resources/images/Shadow/TentFilterCoordianate.png" alt="Tent Filter Coordinate"></p>
+<p>&#x8BA1;&#x7B97;&#x50CF;&#x7D20;$i,j$&#x6240;&#x5360;&#x7684;&#x4F53;&#x79EF;&#xFF1A;</p>
+$$
+
+A_{i,j} = \int_{i - 0.5}^{i + 0.5}\int_{j - 0.5}^{j + 0.5}max(2.5-|u-dx|, 0)\cdot max(2.5-|v-dy|, 0)dudv
+
+$$
 <p><img src="./../resources/images/Shadow/TentFilter.png" alt="&#x8FDE;&#x7EED;Tent Filter"></p>
-<p>&#x5F52;&#x4E00;&#x5316;&#x7CFB;&#x6570;&#xFF1A;<br>$$<br>\begin{equation}<br>\begin{aligned}<br>W &amp;= \int_{u = -2.5+dx}^{2.5+dx}\int_{v = -2.5+dy}^{2.5+dy}max(2.5-|u-dx|, 0)\cdot max(2.5-|v-dy|, 0)dudv\<br>&amp;= \int_{u = -2.5+dx}^{2.5+dx}max(2.5-|u-dx|, 0)du \cdot \int_{v = -2.5+dy}^{2.5+dy} max(2.5-|v-dy|, 0)dv\<br>&amp;= \int_{u^{\prime} = -2.5}^{2.5}max(2.5-|u^{\prime}|, 0)du^{\prime} \cdot \int_{v^{\prime} = -2.5}^{2.5} max(2.5-|v^{\prime}|, 0)dv^{\prime}\<br>&amp;=\frac{5\times 2.5}{2}\cdot \frac{5\times 2.5}{2}\<br>&amp;=\frac{625}{16}\<br>&amp;=39.0625<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>&#x5F52;&#x4E00;&#x5316;&#x7CFB;&#x6570;&#xFF1A;</p>
+$$
+
+\begin{equation}
+\begin{aligned}
+W &= \int_{u = -2.5+dx}^{2.5+dx}\int_{v = -2.5+dy}^{2.5+dy}max(2.5-|u-dx|, 0)\cdot max(2.5-|v-dy|, 0)dudv\\
+&= \int_{u = -2.5+dx}^{2.5+dx}max(2.5-|u-dx|, 0)du \cdot \int_{v = -2.5+dy}^{2.5+dy} max(2.5-|v-dy|, 0)dv\\
+&= \int_{u^{\prime} = -2.5}^{2.5}max(2.5-|u^{\prime}|, 0)du^{\prime} \cdot \int_{v^{\prime} = -2.5}^{2.5} max(2.5-|v^{\prime}|, 0)dv^{\prime}\\
+&=\frac{5\times 2.5}{2}\cdot \frac{5\times 2.5}{2}\\
+&=\frac{625}{16}\\
+&=39.0625
+\end{aligned}
+\end{equation}
+
+$$
 <h2 id="PCSS"><a href="#PCSS" class="headerlink" title="PCSS"></a>PCSS</h2><h2 id="CSM"><a href="#CSM" class="headerlink" title="CSM"></a>CSM</h2><p>&#x5C06;&#x89C6;&#x690E;&#x4F53;&#x5212;&#x5206;&#x4E3A;&#x591A;&#x4E2A;&#x5B50;&#x89C6;&#x690E;&#x4F53;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B50;&#x89C6;&#x690E;&#x4F53;&#x5BF9;&#x5E94;&#x7684;ShadowMap&#x5C3A;&#x5BF8;&#x4E00;&#x81F4;&#xFF0C;&#x4EE5;&#x5B9E;&#x73B0;&#x5404;&#x7EA7;&#x4E0D;&#x540C;&#x7684;&#x7CBE;&#x5EA6;&#x63A7;&#x5236;</p>
 <p>&#x5B50;&#x89C6;&#x690E;&#x4F53;&#x5212;&#x5206;&#x901A;&#x5E38;&#x6309;&#x7167;&#x6307;&#x6570;&#x5206;&#x5E03;&#xFF0C;&#x4EE5;&#x4E09;&#x7EA7;Cascade&#x4E3A;&#x4F8B;&#xFF0C;&#x5047;&#x8BBE;&#x5206;&#x5E03;&#x6307;&#x6570;&#x4E3A;$\alpha$&#xFF0C;&#x5219;&#x5404;&#x7EA7;&#x7684;&#x5206;&#x5E03;&#x6BD4;&#x4F8B;&#x4E3A;&#xFF1A;$1, \alpha, \alpha^2$</p>
 <p><img src="./../resources/images/Shadow/CSMDistribution.png" alt="CSM Distribution"></p>
 <h3 id="&#x6295;&#x5F71;&#x534A;&#x5F84;"><a href="#&#x6295;&#x5F71;&#x534A;&#x5F84;" class="headerlink" title="&#x6295;&#x5F71;&#x534A;&#x5F84;"></a>&#x6295;&#x5F71;&#x534A;&#x5F84;</h3><p>&#x672C;&#x8D28;&#x662F;&#x6C42;&#x89E3;&#x5B50;&#x89C6;&#x690E;&#x4F53;&#x7684;&#x6700;&#x5C0F;&#x5305;&#x56F4;&#x7403;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x5373;&#x6C42;&#xFF1A;$min(a^2+c^2, d^2+b^2)$</p>
 <p><img src="./../resources/images/Shadow/CSMRadius.png" alt="CSM Radius"></p>
 <p>&#x5BF9;&#x4E8E;&#x6307;&#x5B9A;CSM&#x7EA7;&#x522B;&#x800C;&#x8A00;$c+d$&#x662F;&#x786E;&#x5B9A;&#x503C;&#xFF0C;$a$&#x4E0E;$b$&#x4E5F;&#x662F;&#x56FA;&#x5B9A;&#x503C;(&#x4E3A;&#x5176;&#x6240;&#x5C5E;&#x622A;&#x9762;&#x7684;&#x5BF9;&#x89D2;&#x7EBF;)</p>
-<p>&#x4EE4;&#xFF1A;$d = l - c$&#xFF0C;&#x5219;&#x6C42;&#x89E3;$c$&#x6EE1;&#x8DB3;$min(a^2+c^2, b^2+(l-c)^2)$&#xFF0C;&#x4E14;$b^2 &gt; a^2$&#x3002;&#x5176;&#x56FE;&#x50CF;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x6700;&#x5C0F;&#x503C;&#x5728;&#x4E8C;&#x8005;&#x7684;&#x4EA4;&#x70B9;&#x5904;&#x53D6;&#x5230;&#xFF1A;<br>$$<br>\begin{equation}<br>\begin{aligned}<br>a^2+c^2 &amp;= b^2+(l-c)^2\<br>a^2+c^2 &amp;= b^2+l^2+c^2-2\cdot l \cdot c\<br>2\cdot l \cdot c &amp;= b^2+l^2-a^2\<br>c &amp;= \frac{b^2+l^2-a^2}{2\cdot l}<br>\end{aligned}<br>\end{equation}<br>$$<br><img src="./../resources/images/Shadow/CSMRadiusVisualize.png" alt="CSM Radius Visualize"></p>
+<p>&#x4EE4;&#xFF1A;$d = l - c$&#xFF0C;&#x5219;&#x6C42;&#x89E3;$c$&#x6EE1;&#x8DB3;$min(a^2+c^2, b^2+(l-c)^2)$&#xFF0C;&#x4E14;$b^2 &gt; a^2$&#x3002;&#x5176;&#x56FE;&#x50CF;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x6700;&#x5C0F;&#x503C;&#x5728;&#x4E8C;&#x8005;&#x7684;&#x4EA4;&#x70B9;&#x5904;&#x53D6;&#x5230;&#xFF1A;</p>
+$$
+
+\begin{equation}
+\begin{aligned}
+a^2+c^2 &= b^2+(l-c)^2\\
+a^2+c^2 &= b^2+l^2+c^2-2\cdot l \cdot c\\
+2\cdot l \cdot c &= b^2+l^2-a^2\\
+c &= \frac{b^2+l^2-a^2}{2\cdot l}
+\end{aligned}
+\end{equation}
+
+$$
+<p><img src="./../resources/images/Shadow/CSMRadiusVisualize.png" alt="CSM Radius Visualize"></p>
 <h3 id="Bias-1"><a href="#Bias-1" class="headerlink" title="Bias"></a>Bias</h3><p>&#x7531;&#x4E8E;CSM&#x662F;&#x6BCF;&#x7EA7;&#x5206;&#x8FA8;&#x7387;&#x4E00;&#x81F4;&#x4F46;&#x5BF9;&#x5E94;&#x7684;&#x89C6;&#x690E;&#x4F53;&#x8303;&#x56F4;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x56E0;&#x6B64;&#x5404;&#x7EA7;Cascade&#x5E94;&#x7528;&#x7684;Bias&#x4E5F;&#x4E0D;&#x4E00;&#x6837;</p>
 <h3 id="&#x9694;&#x5E27;&#x66F4;&#x65B0;"><a href="#&#x9694;&#x5E27;&#x66F4;&#x65B0;" class="headerlink" title="&#x9694;&#x5E27;&#x66F4;&#x65B0;"></a>&#x9694;&#x5E27;&#x66F4;&#x65B0;</h3><blockquote>
 <p>&#x63A7;&#x5236;&#x4E0D;&#x540C;&#x7EA7;&#x522B;Cascade&#x7684;&#x66F4;&#x65B0;&#x9891;&#x7387;&#xFF0C;&#x8FDC;&#x5904;&#x7684;&#x4FE1;&#x606F;&#x53D8;&#x5316;&#x6162;&#xFF0C;&#x53EF;&#x4EE5;&#x9694;N&#x5E27;&#x66F4;&#x65B0;&#x4E00;&#x6B21;</p>
@@ -380,27 +444,87 @@
 
 <h3 id="Scrolling"><a href="#Scrolling" class="headerlink" title="Scrolling"></a>Scrolling</h3><p>&#x5BF9;&#x4E8E;&#x8FD1;&#x5904;&#x7684;CSM&#x800C;&#x8A00;&#xFF0C;&#x590D;&#x7528;&#x5386;&#x53F2;&#x5E27;&#x7684;ShadowDepth&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5728;Receiver&#x9636;&#x6BB5;&#x4F7F;&#x7528;Bias&#xFF1F;&#xFF1F;&#xFF1F;</p>
 <h2 id="Variance-Shadow-Map"><a href="#Variance-Shadow-Map" class="headerlink" title="Variance Shadow Map"></a>Variance Shadow Map</h2><h2 id="RSM"><a href="#RSM" class="headerlink" title="RSM"></a>RSM</h2><h2 id="ShadowVolume"><a href="#ShadowVolume" class="headerlink" title="ShadowVolume"></a>ShadowVolume</h2><h2 id="PlaneShadow"><a href="#PlaneShadow" class="headerlink" title="PlaneShadow"></a>PlaneShadow</h2><h3 id="&#x516C;&#x5F0F;&#x63A8;&#x5BFC;"><a href="#&#x516C;&#x5F0F;&#x63A8;&#x5BFC;" class="headerlink" title="&#x516C;&#x5F0F;&#x63A8;&#x5BFC;"></a>&#x516C;&#x5F0F;&#x63A8;&#x5BFC;</h3><p>&#x4EE5;&#x4E0B;&#x63A8;&#x5BFC;&#x57FA;&#x4E8E;&#x4E16;&#x754C;&#x7A7A;&#x95F4;&#x5750;&#x6807;</p>
-<p>&#x5E73;&#x9762;&#x65B9;&#x7A0B;&#x5B9A;&#x4E49;&#xFF1A;$$\vec{N}$$&#x4E3A;&#x5E73;&#x9762;&#x6CD5;&#x7EBF;&#xFF0C;$$\vec{Q}$$&#x4E3A;&#x5E73;&#x9762;&#x4E0A;&#x4E00;&#x70B9;&#xFF0C;d&#x4E3A;&#x539F;&#x70B9;&#x5230;&#x8BE5;&#x5E73;&#x9762;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#x7684;&#x8D1F;&#x503C;<br>$$<br>$$\begin{equation} \vec{N} \cdot \vec{Q} + d = 0 \end{equation}<br>$$</p>
-<p>&#x5047;&#x8BBE;&#xFF0C;&#x6A21;&#x578B;&#x70B9;&#x4F4D;&#x4E8E;$$\vec{P}$$&#xFF0C;&#x65B9;&#x5411;&#x5149;&#x65B9;&#x5411;&#x4E3A;$$\vec{L}$$&#xFF0C;&#x5176;&#x6295;&#x5F71;&#x5230;&#x5E73;&#x9762;&#x4E0A;&#x7684;&#x4F4D;&#x7F6E;&#x4E3A;$$\vec{Q}$$&#xFF0C;&#x5219;&#xFF1A;<br>$$<br>\begin{equation} \vec{Q} = \vec{P} + t * \vec{L} \end{equation}<br>$$</p>
+<p>&#x5E73;&#x9762;&#x65B9;&#x7A0B;&#x5B9A;&#x4E49;&#xFF1A;$\vec{N}$&#x4E3A;&#x5E73;&#x9762;&#x6CD5;&#x7EBF;&#xFF0C;$\vec{Q}$&#x4E3A;&#x5E73;&#x9762;&#x4E0A;&#x4E00;&#x70B9;&#xFF0C;d&#x4E3A;&#x539F;&#x70B9;&#x5230;&#x8BE5;&#x5E73;&#x9762;&#x6700;&#x77ED;&#x8DDD;&#x79BB;&#x7684;&#x8D1F;&#x503C;</p>
+$$
+
+\begin{equation} \vec{N} \cdot \vec{Q} + d = 0 \end{equation}
+
+$$
+<p>&#x5047;&#x8BBE;&#xFF0C;&#x6A21;&#x578B;&#x70B9;&#x4F4D;&#x4E8E;$\vec{P}$&#xFF0C;&#x65B9;&#x5411;&#x5149;&#x65B9;&#x5411;&#x4E3A;$\vec{L}$&#xFF0C;&#x5176;&#x6295;&#x5F71;&#x5230;&#x5E73;&#x9762;&#x4E0A;&#x7684;&#x4F4D;&#x7F6E;&#x4E3A;$\vec{Q}$&#xFF0C;&#x5219;&#xFF1A;</p>
+$$
+
+\begin{equation} \vec{Q} = \vec{P} + t * \vec{L} \end{equation}
+
+$$
 <p>&#x56E0;&#x6B64;&#xFF0C;&#x53EF;&#x4EE5;&#x6C42;&#x89E3;t&#xFF1A;</p>
-<p>$$<br>\begin{equation}<br>\begin{aligned}<br>\vec{N} \cdot (\vec{P} + t * \vec{L}) + d = 0 \<br>t = -\frac{d + \vec{N} \cdot \vec{P}}{\vec{N} \cdot \vec{L}}<br>\end{aligned}<br>\end{equation}<br>$$<br>&#x6B64;&#x65F6;&#x5C06;$t$&#x4EE3;&#x5165;(2)&#x4E2D;&#xFF0C;&#x5373;&#x53EF;&#x6C42;&#x89E3;$$\vec{Q}$$</p>
-<p>$$<br>\begin{equation}<br>\vec{Q} = \vec{P} - \frac{d + \vec{N} \cdot \vec{P}}{\vec{N} \cdot \vec{L}} * \vec{L}<br>\end{equation}<br>$$</p>
-<p>&#x7136;&#x800C;&#xFF0C;&#x6211;&#x4EEC;&#x671F;&#x671B;&#x7684;&#x662F;&#x8BA1;&#x7B97;&#x51FA;&#x4E00;&#x4E2A;&#x6295;&#x5F71;&#x77E9;&#x9635;$$\vec{M}$$&#xFF0C;&#x80FD;&#x591F;&#x5F97;&#x5230;$$\vec{Q} = \vec{M} \cdot \vec{P}$$&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x6784;&#x9020;&#xFF0C;&#x9996;&#x5148;&#x4E24;&#x8FB9;&#x4E58;&#x4EE5;$$\vec{N} \cdot \vec{L}$$:</p>
-<p>$$<br>\begin{equation} (\vec{N} \cdot \vec{L}) <em> \vec{Q} = (\vec{N} \cdot \vec{L}) </em> \vec{P} - d <em> \vec{L} - (\vec{N} \cdot \vec{P}) </em> \vec{L} \end{equation}<br>$$</p>
-<p>&#x9996;&#x5148;&#x5C06;$$(\vec{N} \cdot \vec{P})* \vec{L}$$&#x5206;&#x89E3;&#x4E3A;&#x5411;&#x91CF;&#x5F62;&#x5F0F;&#xFF1A;</p>
-<p>$$<br>\begin{equation} \begin{bmatrix} (N_x <em> P_x + N_y </em> P_y + N_z <em> P_z) </em> L_x \ (N_x <em> P_x + N_y </em> P_y + N_z <em> P_z) </em> L_y \ (N_x <em> P_x + N_y </em> P_y + N_z <em> P_z) </em> L_z \ \end{bmatrix} = \begin{bmatrix} N_x <em> L_x &amp; N_y </em> L_x &amp; N_z <em> L_x \ N_x </em> L_y &amp; N_y <em> L_y &amp; N_z </em> L_y \ N_x <em> L_z &amp; N_y </em> L_z &amp; N_z * L_z \ \end{bmatrix} \cdot \begin{bmatrix} P_x \ P_y \ P_z \ \end{bmatrix} \end{equation}<br>$$</p>
+$$
+
+\begin{equation}
+\begin{aligned}
+\vec{N} \cdot (\vec{P} + t * \vec{L}) + d = 0 \\
+t = -\frac{d + \vec{N} \cdot \vec{P}}{\vec{N} \cdot \vec{L}}
+\end{aligned}
+\end{equation}
+
+$$
+<p>&#x6B64;&#x65F6;&#x5C06;$t$&#x4EE3;&#x5165;(2)&#x4E2D;&#xFF0C;&#x5373;&#x53EF;&#x6C42;&#x89E3;$\vec{Q}$</p>
+$$
+
+\begin{equation}
+\vec{Q} = \vec{P} - \frac{d + \vec{N} \cdot \vec{P}}{\vec{N} \cdot \vec{L}} * \vec{L}
+\end{equation}
+
+$$
+<p>&#x7136;&#x800C;&#xFF0C;&#x6211;&#x4EEC;&#x671F;&#x671B;&#x7684;&#x662F;&#x8BA1;&#x7B97;&#x51FA;&#x4E00;&#x4E2A;&#x6295;&#x5F71;&#x77E9;&#x9635;$\vec{M}$&#xFF0C;&#x80FD;&#x591F;&#x5F97;&#x5230;$\vec{Q} = \vec{M} \cdot \vec{P}$&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x6784;&#x9020;&#xFF0C;&#x9996;&#x5148;&#x4E24;&#x8FB9;&#x4E58;&#x4EE5;$\vec{N} \cdot \vec{L}$:</p>
+$$
+
+\begin{equation}
+(\vec{N} \cdot \vec{L}) * \vec{Q} = (\vec{N} \cdot \vec{L}) * \vec{P} - d * \vec{L} - (\vec{N} \cdot \vec{P}) * \vec{L}
+\end{equation}
+
+$$
+<p>&#x9996;&#x5148;&#x5C06;$(\vec{N} \cdot \vec{P})* \vec{L}$&#x5206;&#x89E3;&#x4E3A;&#x5411;&#x91CF;&#x5F62;&#x5F0F;&#xFF1A;</p>
+$$
+
+\begin{equation} \begin{bmatrix} (N_x * P_x + N_y * P_y + N_z * P_z) * L_x \\ (N_x * P_x + N_y * P_y + N_z * P_z) * L_y \\ (N_x * P_x + N_y * P_y + N_z * P_z) * L_z \\ \end{bmatrix} = \begin{bmatrix} N_x * L_x & N_y * L_x & N_z * L_x \\ N_x * L_y & N_y * L_y & N_z * L_y \\ N_x * L_z & N_y * L_z & N_z * L_z \\ \end{bmatrix} \cdot \begin{bmatrix} P_x \\ P_y \\ P_z \\ \end{bmatrix} \end{equation}
+
+$$
 <p>&#x5C55;&#x5F00;&#x4E3A;&#x5411;&#x91CF;&#x5F62;&#x5F0F;&#xFF1A;</p>
-<p>$$<br>\begin{equation} (\vec{N} \cdot \vec{L}) <em> \begin{bmatrix} Q_x \ Q_y \ Q_z \ \end{bmatrix} = (\vec{N} \cdot \vec{L}) </em> \begin{bmatrix} P_x \ P_y \ P_z \ \end{bmatrix} - \begin{bmatrix} d <em> L_x \ d </em> L_y \ d <em> L_z \ \end{bmatrix} - \begin{bmatrix} N_x </em> L_x &amp; N_y <em> L_x &amp; N_z </em> L_x \ N_x <em> L_y &amp; N_y </em> L_y &amp; N_z <em> L_y \ N_x </em> L_z &amp; N_y <em> L_z &amp; N_z </em> L_z \ \end{bmatrix} \cdot \begin{bmatrix} P_x \ P_y \ P_z \ \end{bmatrix} \end{equation}<br>$$</p>
-<p>&#x4E24;&#x8FB9;&#x9664;&#x4EE5;$$\vec{N} \cdot \vec{L}$$&#x5E76;&#x6574;&#x7406;&#x53EF;&#x5F97;&#xFF1A;</p>
-<p>$$<br>\begin{equation} \begin{bmatrix} Q_x \ Q_y \ Q_z \ \end{bmatrix} = \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} \ -\frac{N_x </em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z </em> L_y}{\vec{N} \cdot \vec{L}} \ -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} \ \end{bmatrix} \cdot \begin{bmatrix} P_x \ P_y \ P_z \ \end{bmatrix} - \frac{1}{ \vec{N} \cdot \vec{L}} </em> \begin{bmatrix} d <em> L_x \ d </em> L_y \ d * L_z \ \end{bmatrix} \end{equation}<br>$$</p>
+$$
+
+\begin{equation} (\vec{N} \cdot \vec{L}) * \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ \end{bmatrix} = (\vec{N} \cdot \vec{L}) * \begin{bmatrix} P_x \\ P_y \\ P_z \\ \end{bmatrix} - \begin{bmatrix} d * L_x \\ d * L_y \\ d * L_z \\ \end{bmatrix} - \begin{bmatrix} N_x * L_x & N_y * L_x & N_z * L_x \\ N_x * L_y & N_y * L_y & N_z * L_y \\ N_x * L_z & N_y * L_z & N_z * L_z \\ \end{bmatrix} \cdot \begin{bmatrix} P_x \\ P_y \\ P_z \\ \end{bmatrix} \end{equation}
+
+$$
+<p>&#x4E24;&#x8FB9;&#x9664;&#x4EE5;$\vec{N} \cdot \vec{L}$&#x5E76;&#x6574;&#x7406;&#x53EF;&#x5F97;&#xFF1A;</p>
+$$
+
+\begin{equation} \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ \end{bmatrix} = \begin{bmatrix} 1 - \frac{N_x * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_y * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_z * L_x}{\vec{N} \cdot \vec{L}} \\ -\frac{N_x * L_y}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_y * L_y}{\vec{N} \cdot \vec{L}} & -\frac{N_z * L_y}{\vec{N} \cdot \vec{L}} \\ -\frac{N_x * L_z}{\vec{N} \cdot \vec{L}} & -\frac{N_y * L_z}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_z * L_z}{\vec{N} \cdot \vec{L}} \\ \end{bmatrix} \cdot \begin{bmatrix} P_x \\ P_y \\ P_z \\ \end{bmatrix} - \frac{1}{ \vec{N} \cdot \vec{L}} * \begin{bmatrix} d * L_x \\ d * L_y \\ d * L_z \\ \end{bmatrix} \end{equation}
+
+$$
 <p>&#x5BF9;&#x4E8E;&#x6700;&#x540E;&#x7684;&#x5E73;&#x79FB;&#x9879;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;&#x77E9;&#x9635;&#x53D8;&#x4E3A;4x4&#x8FDB;&#x800C;&#x6574;&#x5408;&#x5230;&#x4E00;&#x8D77;</p>
-<p>$$<br>\begin{equation} \begin{bmatrix} Q_x \ Q_y \ Q_z \ 1 \ \end{bmatrix} = \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_x}{\vec{N} \cdot {\vec{L}}} \ -\frac{N_x <em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y </em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_y}{\vec{N} \cdot {\vec{L}}}\ -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_z}{\vec{N} \cdot {\vec{L}}}\ 0 &amp; 0 &amp; 0 &amp; 1 \ \end{bmatrix} \cdot \begin{bmatrix} P_x \ P_y \ P_z \ 1 \ \end{bmatrix} \end{equation}<br>$$</p>
+$$
+
+\begin{equation} \begin{bmatrix} Q_x \\ Q_y \\ Q_z \\ 1 \\ \end{bmatrix} = \begin{bmatrix} 1 - \frac{N_x * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_y * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_z * L_x}{\vec{N} \cdot \vec{L}} & -\frac{d * L_x}{\vec{N} \cdot {\vec{L}}} \\ -\frac{N_x * L_y}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_y * L_y}{\vec{N} \cdot \vec{L}} & -\frac{N_z * L_y}{\vec{N} \cdot \vec{L}} & -\frac{d * L_y}{\vec{N} \cdot {\vec{L}}}\\ -\frac{N_x * L_z}{\vec{N} \cdot \vec{L}} & -\frac{N_y * L_z}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_z * L_z}{\vec{N} \cdot \vec{L}} & -\frac{d * L_z}{\vec{N} \cdot {\vec{L}}}\\ 0 & 0 & 0 & 1 \\ \end{bmatrix} \cdot \begin{bmatrix} P_x \\ P_y \\ P_z \\ 1 \\ \end{bmatrix} \end{equation}
+
+$$
 <p>&#x56E0;&#x6B64;&#xFF0C;&#x6700;&#x7EC8;&#x7684;&#x9634;&#x5F71;&#x53D8;&#x6362;&#x77E9;&#x9635;&#x4E3A;&#xFF1A;</p>
-<p>$$<br>\begin{equation} \begin{aligned} \vec{M} &amp;= \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_x}{\vec{N} \cdot {\vec{L}}} \ -\frac{N_x <em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y </em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_y}{\vec{N} \cdot {\vec{L}}}\ -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} &amp; -\frac{d </em> L_z}{\vec{N} \cdot {\vec{L}}}\ 0 &amp; 0 &amp; 0 &amp; 1 \ \end{bmatrix} \ &amp;= \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} - \frac{1}{\vec{N} \cdot \vec{L}} <em> \begin{bmatrix} N_x </em> L_x &amp; N_y <em> L_x &amp; N_z </em> L_x &amp; d <em> L_x \ N_x </em> L_y &amp; N_y <em> L_y &amp; N_z </em> L_y &amp; d <em> L_y \ N_x </em> L_z &amp; N_y <em> L_z &amp; N_z </em> L_z &amp; d * L_z\ 0 &amp; 0 &amp; 0 &amp; 0 \ \end{bmatrix} \end{aligned} \end{equation}<br>$$</p>
+$$
+
+\begin{equation} \begin{aligned} \vec{M} &= \begin{bmatrix} 1 - \frac{N_x * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_y * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_z * L_x}{\vec{N} \cdot \vec{L}} & -\frac{d * L_x}{\vec{N} \cdot {\vec{L}}} \\ -\frac{N_x * L_y}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_y * L_y}{\vec{N} \cdot \vec{L}} & -\frac{N_z * L_y}{\vec{N} \cdot \vec{L}} & -\frac{d * L_y}{\vec{N} \cdot {\vec{L}}}\\ -\frac{N_x * L_z}{\vec{N} \cdot \vec{L}} & -\frac{N_y * L_z}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_z * L_z}{\vec{N} \cdot \vec{L}} & -\frac{d * L_z}{\vec{N} \cdot {\vec{L}}}\\ 0 & 0 & 0 & 1 \\ \end{bmatrix} \\ &= \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} - \frac{1}{\vec{N} \cdot \vec{L}} * \begin{bmatrix} N_x * L_x & N_y * L_x & N_z * L_x & d * L_x \\ N_x * L_y & N_y * L_y & N_z * L_y & d * L_y \\ N_x * L_z & N_y * L_z & N_z * L_z & d * L_z\\ 0 & 0 & 0 & 0 \\ \end{bmatrix} \end{aligned} \end{equation}
+
+$$
 <p>&#x82E5;&#x5411;&#x91CF;&#x91C7;&#x7528;&#x884C;&#x5F62;&#x5F0F;&#xFF1A;</p>
-<p>$$<br>\begin{equation} \begin{bmatrix} Q_x &amp; Q_y &amp; Q_z &amp;1 \end{bmatrix} = \begin{bmatrix} P_x &amp; P_y &amp; P_z &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_x </em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z </em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{d </em> L_x}{\vec{N} \cdot {\vec{L}}} &amp; -\frac{d <em> L_y}{\vec{N} \cdot {\vec{L}}} &amp; -\frac{d </em> L_z}{\vec{N} \cdot {\vec{L}}} &amp; 1 \ \end{bmatrix} \end{equation}<br>$$</p>
+$$
+
+\begin{equation} \begin{bmatrix} Q_x & Q_y & Q_z &1 \end{bmatrix} = \begin{bmatrix} P_x & P_y & P_z & 1 \end{bmatrix} \cdot \begin{bmatrix} 1 - \frac{N_x * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_x * L_y}{\vec{N} \cdot \vec{L}} & -\frac{N_x * L_z}{\vec{N} \cdot \vec{L}} & 0 \\ -\frac{N_y * L_x}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_y * L_y}{\vec{N} \cdot \vec{L}} & -\frac{N_y * L_z}{\vec{N} \cdot \vec{L}} & 0 \\ -\frac{N_z * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_z * L_y}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_z * L_z}{\vec{N} \cdot \vec{L}} & 0 \\ -\frac{d * L_x}{\vec{N} \cdot {\vec{L}}} & -\frac{d * L_y}{\vec{N} \cdot {\vec{L}}} & -\frac{d * L_z}{\vec{N} \cdot {\vec{L}}} & 1 \\ \end{bmatrix} \end{equation}
+
+$$
 <p>&#x5373;&#xFF1A;</p>
-<p>$$<br>\begin{equation} \begin{aligned} \vec{M} &amp;= \begin{bmatrix} 1 - \frac{N_x <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_x </em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_x <em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{N_y </em> L_x}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_y <em> L_y}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_y </em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{N_z <em> L_x}{\vec{N} \cdot \vec{L}} &amp; -\frac{N_z </em> L_y}{\vec{N} \cdot \vec{L}} &amp; 1 - \frac{N_z <em> L_z}{\vec{N} \cdot \vec{L}} &amp; 0 \ -\frac{d </em> L_x}{\vec{N} \cdot {\vec{L}}} &amp; -\frac{d <em> L_y}{\vec{N} \cdot {\vec{L}}} &amp; -\frac{d </em> L_z}{\vec{N} \cdot {\vec{L}}} &amp; 1 \ \end{bmatrix} \ &amp;= \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} - \frac{1}{\vec{N} \cdot \vec{L}} <em> \begin{bmatrix} N_x </em> L_x &amp; N_x <em> L_y &amp; N_x </em> L_z &amp; 0 \ N_y <em> L_x &amp; N_y </em> L_y &amp; N_y <em> L_z &amp; 0 \ N_z </em> L_x &amp; N_z <em> L_y &amp; N_z </em> L_z &amp; 0 \ d <em> L_x &amp; d </em> L_y &amp; d * L_z &amp; 0 \ \end{bmatrix} \end{aligned} \end{equation}<br>$$</p>
+$$
+
+\begin{equation} \begin{aligned} \vec{M} &= \begin{bmatrix} 1 - \frac{N_x * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_x * L_y}{\vec{N} \cdot \vec{L}} & -\frac{N_x * L_z}{\vec{N} \cdot \vec{L}} & 0 \\ -\frac{N_y * L_x}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_y * L_y}{\vec{N} \cdot \vec{L}} & -\frac{N_y * L_z}{\vec{N} \cdot \vec{L}} & 0 \\ -\frac{N_z * L_x}{\vec{N} \cdot \vec{L}} & -\frac{N_z * L_y}{\vec{N} \cdot \vec{L}} & 1 - \frac{N_z * L_z}{\vec{N} \cdot \vec{L}} & 0 \\ -\frac{d * L_x}{\vec{N} \cdot {\vec{L}}} & -\frac{d * L_y}{\vec{N} \cdot {\vec{L}}} & -\frac{d * L_z}{\vec{N} \cdot {\vec{L}}} & 1 \\ \end{bmatrix} \\ &= \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} - \frac{1}{\vec{N} \cdot \vec{L}} * \begin{bmatrix} N_x * L_x & N_x * L_y & N_x * L_z & 0 \\ N_y * L_x & N_y * L_y & N_y * L_z & 0 \\ N_z * L_x & N_z * L_y & N_z * L_z & 0 \\ d * L_x & d * L_y & d * L_z & 0 \\ \end{bmatrix} \end{aligned} \end{equation}
+
+$$
 <h3 id="UE&#x5B9E;&#x73B0;"><a href="#UE&#x5B9E;&#x73B0;" class="headerlink" title="UE&#x5B9E;&#x73B0;"></a>UE&#x5B9E;&#x73B0;</h3><h4 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h4><p>&#x501F;&#x52A9;VF&#x7684;&#x8BA1;&#x7B97;&#x63A5;&#x53E3;&#x83B7;&#x53D6;&#x9876;&#x70B9;&#x7684;WorldSpace&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x6295;&#x5F71;&#x77E9;&#x9635;&#xFF0C;&#x5C06;&#x5176;&#x6295;&#x5F71;&#x5230;&#x6307;&#x5B9A;&#x5E73;&#x9762;&#xFF0C;&#x518D;&#x505A;&#x900F;&#x89C6;&#x6295;&#x5F71;</p>
 <p>&#x5728;&#x6B64;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;VF&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;WorldSpace&#x662F;&#x7ECF;&#x8FC7;&#x9884;&#x504F;&#x79FB;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x51CF;&#x53BB;&#x504F;&#x79FB;&#x624D;&#x80FD;&#x5F97;&#x5230;&#x771F;&#x6B63;&#x7684;&#x6295;&#x5F71;&#x77E9;&#x9635;&#xFF1A;</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;Common.ush&quot;</span><br><span class="line"></span><br><span class="line">#include &quot;/Engine/Generated/Material.ush&quot;</span><br><span class="line">#include &quot;/Engine/Generated/VertexFactory.ush&quot;</span><br><span class="line"></span><br><span class="line">float4x4 ProjectMatrix;</span><br><span class="line"></span><br><span class="line">void MainVS( FVertexFactoryInput Input,</span><br><span class="line">                #if MOBILE_MULTI_VIEW</span><br><span class="line">                        , in uint ViewId : SV_ViewID</span><br><span class="line">                #endif</span><br><span class="line">                     out float4 OutPosition : SV_POSITION)</span><br><span class="line">{</span><br><span class="line">#if MOBILE_MULTI_VIEW</span><br><span class="line">    const int MultiViewId = int(ViewId);</span><br><span class="line">    ResolvedView = ResolveView(uint(MultiViewId));</span><br><span class="line">#else</span><br><span class="line">    ResolvedView = ResolveView();</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">    // ----------------------------------VertexFactory Require----------------------------------------------------</span><br><span class="line">    FVertexFactoryIntermediates VFIntermediates = GetVertexFactoryIntermediates(Input);</span><br><span class="line">    float4 WorldPositionExcludingWPO = VertexFactoryGetWorldPosition(Input, VFIntermediates);</span><br><span class="line">    float4 WorldPosition = WorldPositionExcludingWPO;</span><br><span class="line"></span><br><span class="line">    half3x3 TangentToLocal = VertexFactoryGetTangentToLocal(Input, VFIntermediates);        </span><br><span class="line">    FMaterialVertexParameters VertexParameters = GetMaterialVertexParameters(Input, VFIntermediates, WorldPosition.xyz, TangentToLocal);</span><br><span class="line"></span><br><span class="line">    WorldPosition.xyz += GetMaterialWorldPositionOffset(VertexParameters);</span><br><span class="line">    // ----------------------------------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">    // Project To Shadow Plane.</span><br><span class="line">    WorldPosition.xyz -= ResolvedView.PreViewTranslation.xyz;</span><br><span class="line">    WorldPosition = mul(WorldPosition, ProjectMatrix);</span><br><span class="line">    WorldPosition.xyz += ResolvedView.PreViewTranslation.xyz;</span><br><span class="line"></span><br><span class="line">    OutPosition = mul(WorldPosition, ResolvedView.TranslatedWorldToClip);</span><br><span class="line">        </span><br><span class="line">#if !OUTPUT_MOBILE_HDR &amp;&amp; (COMPILER_GLSL_ES2 || COMPILER_GLSL_ES3_1 || COMPILER_GLSL_ES3_1_EXT)</span><br><span class="line">    OutPosition.y *= -1;</span><br><span class="line">#endif</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">float4 ShadowColor;</span><br><span class="line"></span><br><span class="line">void MainPS(in  float4 svPos : SV_POSITION, </span><br><span class="line">                    out float4 outColor : SV_Target0)</span><br><span class="line">{</span><br><span class="line">    outColor = ShadowColor;</span><br><span class="line">}</span></pre></td></tr></table></figure>
@@ -456,12 +580,12 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/VPS-SSH-Git-Config/">VPS SSH Git Config</a>
+            <a href="/IOSPSOAsyncCompileCrash/">IOS PSO Async Compile Crash</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/WriteUintRT/">Write UINT RenderTarget</a>
+            <a href="/VPS-SSH-Git-Config/">VPS SSH Git Config</a>
             
         </span>
     </div>

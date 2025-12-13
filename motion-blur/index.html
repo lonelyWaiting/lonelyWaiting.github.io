@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:description" content="motion blur&amp;#x7528;&amp;#x4E8E;&amp;#x8868;&amp;#x73B0;&amp;#x901F;&amp;#x5EA6;&amp;#x611F;.&amp;#x4E00;&amp;#x79CD;&amp;#x5F88;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x540E;&amp;#x5904;&amp;#x7406;&amp;#x6280;&amp;#x672F;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2025-12-13T11:02:07.246Z">
+<meta property="og:updated_time" content="2025-12-13T13:05:35.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="motion blur">
 <meta name="twitter:description" content="motion blur&amp;#x7528;&amp;#x4E8E;&amp;#x8868;&amp;#x73B0;&amp;#x901F;&amp;#x5EA6;&amp;#x611F;.&amp;#x4E00;&amp;#x79CD;&amp;#x5F88;&amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x540E;&amp;#x5904;&amp;#x7406;&amp;#x6280;&amp;#x672F;">
@@ -177,7 +177,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-12-13T11:02:07.246Z" itemprop="datePublished">Dec 13 2025</time>
+                <time datetime="2025-12-13T13:05:35.354Z" itemprop="datePublished">Dec 13 2025</time>
             
         </span>
         
@@ -222,7 +222,7 @@
 </ul>
 <h1 id="&#x6DF1;&#x5EA6;&#x56FE;&#x63D0;&#x53D6;&#x7269;&#x4F53;&#x4F4D;&#x7F6E;"><a href="#&#x6DF1;&#x5EA6;&#x56FE;&#x63D0;&#x53D6;&#x7269;&#x4F53;&#x4F4D;&#x7F6E;" class="headerlink" title="&#x6DF1;&#x5EA6;&#x56FE;&#x63D0;&#x53D6;&#x7269;&#x4F53;&#x4F4D;&#x7F6E;"></a>&#x6DF1;&#x5EA6;&#x56FE;&#x63D0;&#x53D6;&#x7269;&#x4F53;&#x4F4D;&#x7F6E;</h1><p>viewport position: $H = (\frac{x}{w}, \frac{y}{w}, \frac{z}{w} , 1)$</p>
 <p>world-view-project matrix: M</p>
-<p>$H \times M^{-1} = (\frac{X}{W}, \frac{Y}{W}, \frac{Z}{W}, W) = D$</p>
+$H \times M^{-1} = (\frac{X}{W}, \frac{Y}{W}, \frac{Z}{W}, W) = D$
 <p>world position: $WorldPos = \frac{D}{D.w}$</p>
 <p>&#x63D0;&#x53D6;&#x4E16;&#x754C;&#x7A7A;&#x95F4;&#x4F4D;&#x7F6E;:</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">float2 zOverW = tex2D(depthTexture, texCoord);</span><br><span class="line">float4 H = float4(texCoord.x * <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, (<span class="hljs-number">1</span> - texCoord.y) * <span class="hljs-number">2</span> - <span class="hljs-number">1</span> , zOverw , <span class="hljs-number">1</span>);</span><br><span class="line">float4 D = mul(H, g_ViewProjectionInverseMatrix);</span><br><span class="line">float4 worldPos = D / D.w;</span></pre></td></tr></table></figure>
@@ -252,12 +252,12 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/github-page-custom-domain-name/">github page custom domain name</a>
+            <a href="/hexo-qiniu-config/">hexo qiniu config</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/hexo-qiniu-config/">hexo qiniu config</a>
+            <a href="/perlin-noise/">perlin-noise</a>
             
         </span>
     </div>

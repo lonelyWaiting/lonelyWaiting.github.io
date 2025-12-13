@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="lonelyWaiting">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelywaiting.github.io/resources/images/refraction_direction/Refraction.png">
-<meta property="og:updated_time" content="2025-12-13T11:02:07.246Z">
+<meta property="og:updated_time" content="2025-12-13T13:05:35.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="compute refract direction">
 <meta name="twitter:image" content="http://lonelywaiting.github.io/resources/images/refraction_direction/Refraction.png">
@@ -146,7 +146,7 @@
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
             
-                <time datetime="2025-12-13T11:02:07.246Z" itemprop="datePublished">Dec 13 2025</time>
+                <time datetime="2025-12-13T13:05:35.354Z" itemprop="datePublished">Dec 13 2025</time>
             
         </span>
         
@@ -183,12 +183,53 @@
     </button>
 
             <p><img src="/resources/images/refraction_direction/Refraction.png" alt="refraction direction"><br><a id="more"></a></p>
-<h1 id="Snell&#x2019;s-Law"><a href="#Snell&#x2019;s-Law" class="headerlink" title="Snell&#x2019;s Law"></a>Snell&#x2019;s Law</h1><p>$$<br>\begin{align}<br>\eta{_1} \sin(\theta_1) &amp;\quad = \eta{_2}\sin(\theta{_2}) &amp; n &amp;\quad = (0,1) \notag \\[2ex]<br>L\qquad &amp;\quad = (-\sin(\theta_1) , \cos(\theta_1)) &amp; T &amp;\quad = (\sin(\theta_2) , -\cos(\theta_2))\notag<br>\end{align}<br>$$</p>
-<p>&#x8BBE;:<br>$$\overrightarrow{T} = x \times \overrightarrow{L} + y \times \overrightarrow{n}$$</p>
-<p>$$<br>\begin{align}<br>\Rightarrow<br>&amp; \begin{cases}<br>&amp;\sin(\theta_2) &amp;= &amp;\quad -\sin(\theta_1) \times x + 0 \times y \notag \\[2ex]<br>&amp;-\cos(\theta_2) &amp;= &amp;\quad \cos(\theta_1) \times x + 1 \times y \notag<br>\end{cases} \\[2ex]<br>\Rightarrow<br>&amp; \begin{cases}<br>x &amp;= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \notag \\[2ex]<br>y &amp;= \cos(\theta_1) * \frac{\sin(\theta_2)}{\sin(\theta_1)} - \cos(\theta_2) \notag<br>\end{cases}<br>\end{align}<br>$$</p>
-<p>$$<br>\begin{align}<br>\Rightarrow<br>\overrightarrow{T} &amp;= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \times \overrightarrow{L} + (\cos(\theta_1) \times \frac{\sin(\theta_2)}{\sin(\theta_1)} - \cos(\theta_2)) \times \overrightarrow{n} \notag \\[2ex]<br>\because \cos(\theta_2) &amp;= \sqrt{1 - \sin^2(\theta_2)} \notag \\<br>&amp;= \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - \cos^2(\theta_1))} \notag \\<br>&amp;= \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}\notag<br>\end{align}<br>$$</p>
-<p>$$<br>\begin{align}<br>\Rightarrow \overrightarrow{T} &amp;= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \times \overrightarrow{L} + (\cos(\theta_1) \times \frac{\sin(\theta_2)}{\sin(\theta_1)} - \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}) \times \overrightarrow{n}\notag \\[2ex]<br>&amp;= -\frac{\eta_1}{\eta_2} \times \overrightarrow{L} + \overrightarrow{n}(\frac{\eta_1}{\eta_2}(\overrightarrow{L} \cdot \overrightarrow{n}) - \sqrt{1 - \frac{\eta_1^2}{\eta_2^2}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)})\notag<br>\end{align}<br>$$</p>
+<h1 id="Snell&#x2019;s-Law"><a href="#Snell&#x2019;s-Law" class="headerlink" title="Snell&#x2019;s Law"></a>Snell&#x2019;s Law</h1>$$
 
+\begin{align}
+\eta{_1} \sin(\theta_1) &\quad = \eta{_2}\sin(\theta{_2}) & n &\quad = (0,1) \notag \\\\[2ex]
+L\qquad &\quad = (-\sin(\theta_1) , \cos(\theta_1)) & T &\quad = (\sin(\theta_2) , -\cos(\theta_2))\notag
+\end{align}
+
+$$
+<p>&#x8BBE;:</p>
+$$\overrightarrow{T} = x \times \overrightarrow{L} + y \times \overrightarrow{n}
+
+$$
+$$
+
+\begin{align}
+\Rightarrow 
+& \begin{cases}
+&\sin(\theta_2) &= &\quad -\sin(\theta_1) \times x + 0 \times y \notag \\\\[2ex]
+&-\cos(\theta_2) &= &\quad \cos(\theta_1) \times x + 1 \times y \notag 
+\end{cases} \\\\[2ex]
+\Rightarrow 
+& \begin{cases}
+x &= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \notag \\\\[2ex]
+y &= \cos(\theta_1) * \frac{\sin(\theta_2)}{\sin(\theta_1)} - \cos(\theta_2) \notag 
+\end{cases}
+\end{align}
+
+$$
+$$
+
+\begin{align}
+\Rightarrow 
+\overrightarrow{T} &= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \times \overrightarrow{L} + (\cos(\theta_1) \times \frac{\sin(\theta_2)}{\sin(\theta_1)} - \cos(\theta_2)) \times \overrightarrow{n} \notag \\\\[2ex]
+\because \cos(\theta_2) &= \sqrt{1 - \sin^2(\theta_2)} \notag \\\\
+&= \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - \cos^2(\theta_1))} \notag \\\\
+&= \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}\notag
+\end{align}
+
+$$
+$$
+
+\begin{align}
+\Rightarrow \overrightarrow{T} &= -\frac{\sin(\theta_2)}{\sin(\theta_1)} \times \overrightarrow{L} + (\cos(\theta_1) \times \frac{\sin(\theta_2)}{\sin(\theta_1)} - \sqrt{1 - \frac{\sin^2(\theta_2)}{\sin^2(\theta_1)}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)}) \times \overrightarrow{n}\notag \\\\[2ex]
+&= -\frac{\eta_1}{\eta_2} \times \overrightarrow{L} + \overrightarrow{n}(\frac{\eta_1}{\eta_2}(\overrightarrow{L} \cdot \overrightarrow{n}) - \sqrt{1 - \frac{\eta_1^2}{\eta_2^2}(1 - (\overrightarrow{L} \cdot \overrightarrow{n})^2)})\notag
+\end{align}
+
+$$
         
     
     </div>

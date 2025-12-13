@@ -118,6 +118,22 @@ window.addEventListener('scroll', function() {
         }
     });
 
+    // 检测纯图片段落，添加并列布局类
+    $('.article-entry p').each(function() {
+        var $p = $(this);
+        var children = $p.contents().filter(function() {
+            // 过滤掉纯空白文本节点
+            return !(this.nodeType === 3 && !this.textContent.trim());
+        });
+        // 检查是否所有子元素都是 .gallery-item
+        var allGalleryItems = children.length > 1 && children.toArray().every(function(node) {
+            return $(node).hasClass('gallery-item');
+        });
+        if (allGalleryItems) {
+            $p.addClass('images-row');
+        }
+    });
+
     $('.article-entry').find('h1, h2, h3, h4, h5, h6').on('click', function () {
         if ($(this).get(0).id) {
             window.location.hash = $(this).get(0).id;
