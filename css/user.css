@@ -505,3 +505,141 @@ figure.highlight .code pre {
     height: 100%;
     object-fit: contain;
 }
+
+/* ========== 首页 Banner 样式 ========== */
+
+.hero-banner {
+    height: 60vh;
+    min-height: 400px;
+    background: url('/images/hero-banner.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.hero-content {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== 文章卡片样式 ========== */
+
+/* 横向卡片列表 */
+.article-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* 横向卡片 */
+.article-card {
+    display: flex;
+    height: 280px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.article-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* 交替布局：偶数卡片图片在右 */
+.article-card.card-reverse {
+    flex-direction: row-reverse;
+}
+
+/* 卡片图片 */
+.card-image {
+    width: 50%;
+    min-width: 50%;
+    background-size: cover;
+    background-position: center;
+    background-color: #f0f0f0;
+}
+
+/* 卡片内容 */
+.card-content {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+}
+
+/* 卡片标题 */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.4;
+    text-align: center;
+    margin: 0;
+}
+
+/* 响应式：移动端垂直布局 */
+@media (max-width: 768px) {
+    .hero-banner {
+        height: 50vh;
+        min-height: 300px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .article-card {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .article-card.card-reverse {
+        flex-direction: column;
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .card-content {
+        width: 100%;
+        padding: 24px;
+    }
+    
+    .card-title {
+        font-size: 1.25rem;
+    }
+}
