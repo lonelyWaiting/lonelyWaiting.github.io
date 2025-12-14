@@ -643,3 +643,26 @@ figure.highlight .code pre {
         font-size: 1.25rem;
     }
 }
+
+/* ========== 分类/标签页标题样式 ========== */
+
+.page-title-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    padding: 24px 0;
+}
+
+.page-title-box i {
+    font-size: 1.5rem;
+    color: #667eea;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
