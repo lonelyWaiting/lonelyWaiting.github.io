@@ -91,47 +91,57 @@ h1.article-title:hover:before {
 /* TOC样式 */
 .toc-container {
     position: fixed;
-    left: 0;
-    top: 5%;
-    margin: 5px;
+    left: 8px;
+    top: 100px;  /* 与正文区域顶部对齐 (navbar 52px + section padding 48px) */
+    margin: 0;
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     z-index: 100;
     max-width: 300px;
+    max-height: calc(100vh - 120px);  /* 视口高度 - 顶部100px - 底部留白20px */
     transition: transform 0.3s ease;
     border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
 }
 
 .toc-container.collapsed {
     transform: translateX(-100%);
 }
 
+/* 展开按钮 - 大圆形目录图标 */
 .toc-expand {
     position: fixed;
-    left: 0;
-    top: 5%;
-    margin: 5px;
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid #eee;
-    border-left: none;
-    border-radius: 0 4px 4px 0;
-    padding: 8px 4px;
+    left: 16px;
+    top: 100px;  /* 与 toc-container 顶部对齐 */
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50%;
     cursor: pointer;
-    color: #666;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     z-index: 99;
     display: none;
     transition: all 0.3s ease;
+    padding: 0;
 }
 
 .toc-expand:hover {
-    color: #333;
-    background-color: #f8f8f8;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.toc-expand:active {
+    transform: scale(0.95);
 }
 
 .toc-container.collapsed + .toc-expand {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .toc-header {
@@ -169,8 +179,47 @@ h1.article-title:hover:before {
     transform: rotate(180deg);
 }
 
+/* 收起按钮图标美化 */
+.toc-toggle i {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    font-size: 10px;
+    transition: all 0.2s ease;
+}
+
+.toc-toggle:hover i {
+    background: rgba(50, 115, 220, 0.1);
+    color: #3273dc;
+}
+
+/* 展开按钮图标 */
+.toc-expand i {
+    font-size: 16px;
+    color: #fff;
+}
+
+/* 点击反馈 */
+.toc-toggle:active {
+    transform: scale(0.92);
+}
+
+.toc-toggle:active i {
+    background-color: rgba(50, 115, 220, 0.2);
+}
+
+/* 收起按钮特殊处理（有rotate） */
+.toc-toggle.collapsed:active {
+    transform: rotate(180deg) scale(0.92);
+}
+
 .toc-content {
-    max-height: calc(100vh - 200px);
+    flex: 1;  /* 自动填充剩余空间 */
+    min-height: 0;  /* 允许 flex 子项收缩 */
     overflow-y: auto;
     padding: 12px;
     font-size: 0.9rem;
@@ -212,38 +261,54 @@ h1.article-title:hover:before {
 .toc-content ul ul > li {
     margin-bottom: 4px;
 }
+/* inactive 默认状态 */
 .toc-content a {
-    color: #666 !important;
+    color: #888 !important;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
     display: block;
-    padding: 2px 0 2px 4px;
-    margin: 0;
+    padding: 2px 0 2px 8px;
+    margin: 0 0 0 -2px;
     position: relative;
+    border-left: 2px solid transparent;
+    text-align: left;
+    word-break: break-word;
+    white-space: normal;
 }
 
+/* hover 悬浮状态 */
 .toc-content a:hover {
-    color: #333;
+    color: #333 !important;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-left-color: #3273dc;
+    border-radius: 0 3px 3px 0;
 }
 
+/* active 当前章节 */
 .toc-content a.active {
     color: #3273dc !important;
-    font-weight: 500;
-    position: relative;
+    background-color: rgba(50, 115, 220, 0.08);
+    border-left-color: #3273dc;
+    font-weight: 600;
+    border-radius: 0 3px 3px 0;
 }
 
 .toc-content .toc-child {
     margin-left: 0;
 }
 
-/* 目录序号高亮 */
+/* 目录序号样式 */
 .toc-content a .toc-number {
-    color: #666;
-    margin-right: 2px;
+    color: #888;
+    margin-right: 4px;
+    transition: color 0.2s ease;
+}
+.toc-content a:hover .toc-number {
+    color: #333;
 }
 .toc-content a.active .toc-number {
     color: #3273dc;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .fast-btn {
@@ -665,4 +730,117 @@ figure.highlight .code pre {
     font-weight: 700;
     color: #333;
     margin: 0;
+}
+
+/* ========== 2D光照模拟效果 ========== */
+
+#light-sim-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;  /* 让鼠标事件穿透到下层 */
+    overflow: hidden;
+}
+
+#light-simulation-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.light-sim-hint {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    color: rgba(102, 126, 234, 0.7);
+    font-size: 12px;
+    font-family: 'Quicksand', sans-serif;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* 确保主内容在光照效果之上，并有白色背景遮挡 */
+.navbar {
+    position: relative;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.hero-banner {
+    position: relative;
+    z-index: 10;
+}
+
+.section {
+    position: relative;
+    z-index: 10;
+}
+
+.section > .container {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 12px 12px 0 0;  /* 只有顶部圆角，与 footer 衔接 */
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 页脚与内容区视觉统一 */
+.footer {
+    position: relative;
+    z-index: 10;
+    background: transparent;
+    padding: 0;
+    margin-top: -12px;  /* 向上偏移，消除与内容区的间隙 */
+}
+
+.footer .container {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 0 0 12px 12px;  /* 只有底部圆角 */
+    padding: 16px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 消除 footer 内部的间隙和分隔线 */
+.footer .content {
+    padding-top: 0;
+    border-top: none;
+}
+
+/* 文章页面内容区域 */
+.card {
+    background: rgba(255, 255, 255, 0.98);
+}
+
+/* 窄屏时恢复默认样式 */
+@media screen and (max-width: 1200px) {
+    #light-sim-container {
+        display: none;
+    }
+    
+    .section > .container {
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        border-radius: 0;
+    }
+    
+    .footer {
+        margin-top: 0;
+    }
+    
+    .footer .container {
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 16px 0;
+    }
 }

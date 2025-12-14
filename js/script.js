@@ -1,7 +1,12 @@
+// 目录自动收起的宽度阈值
+const TOC_AUTO_COLLAPSE_WIDTH = 1400;
+
 // 将toggleToc函数移到全局作用域
 function toggleToc() {
     const tocContainer = document.querySelector('.toc-container');
     const tocToggle = document.querySelector('.toc-toggle');
+    if (!tocContainer || !tocToggle) return;
+    
     const isCollapsed = tocContainer.classList.contains('collapsed');
     
     if (isCollapsed) {
@@ -12,6 +17,58 @@ function toggleToc() {
         tocToggle.classList.add('collapsed');
     }
 }
+
+// 根据窗口宽度自动收起/展开目录
+function autoCollapseToc() {
+    const tocContainer = document.querySelector('.toc-container');
+    const tocToggle = document.querySelector('.toc-toggle');
+    if (!tocContainer || !tocToggle) return;
+    
+    if (window.innerWidth < TOC_AUTO_COLLAPSE_WIDTH) {
+        // 窗口宽度不足，自动收起
+        tocContainer.classList.add('collapsed');
+        tocToggle.classList.add('collapsed');
+    } else {
+        // 窗口宽度足够，自动展开
+        tocContainer.classList.remove('collapsed');
+        tocToggle.classList.remove('collapsed');
+    }
+}
+
+// 页面加载时初始化目录状态
+document.addEventListener('DOMContentLoaded', autoCollapseToc);
+
+// 窗口大小变化时自动调整目录状态
+let resizeTocTimeout;
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTocTimeout);
+    resizeTocTimeout = setTimeout(autoCollapseToc, 150);
+});
+
+// 根据滚动位置动态调整目录顶部位置
+const TOC_TOP_ALIGNED = 100;  // 与正文对齐的位置
+const TOC_TOP_COMPACT = 60;   // 紧凑模式位置（navbar 下方）
+const TOC_SCROLL_THRESHOLD = TOC_TOP_ALIGNED - TOC_TOP_COMPACT;  // 触发切换的滚动距离
+
+function updateTocPosition() {
+    const tocContainer = document.querySelector('.toc-container');
+    const tocExpand = document.querySelector('.toc-expand');
+    if (!tocContainer) return;
+    
+    const scrollY = window.scrollY || window.pageYOffset;
+    const newTop = scrollY > TOC_SCROLL_THRESHOLD ? TOC_TOP_COMPACT : TOC_TOP_ALIGNED;
+    
+    tocContainer.style.top = newTop + 'px';
+    tocContainer.style.maxHeight = `calc(100vh - ${newTop + 20}px)`;
+    
+    if (tocExpand) {
+        tocExpand.style.top = newTop + 'px';
+    }
+}
+
+// 页面加载和滚动时更新目录位置
+document.addEventListener('DOMContentLoaded', updateTocPosition);
+window.addEventListener('scroll', updateTocPosition, { passive: true });
 
 let tocHighlightLock = false;
 
